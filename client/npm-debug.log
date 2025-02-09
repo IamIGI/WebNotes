@@ -1,0 +1,2444 @@
+0 info it worked if it ends with ok
+1 verbose cli [
+1 verbose cli   'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Users\\i.kłusek\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'i'
+1 verbose cli ]
+2 info using npm@2.15.12
+3 info using node@v22.13.1
+4 verbose readDependencies loading dependencies from C:\Users\i.kłusek\Desktop\Svelte\WebNotesApp\client\package.json
+5 verbose install where, deps [
+5 verbose install   'C:\\Users\\i.kłusek\\Desktop\\Svelte\\WebNotesApp\\client',
+5 verbose install   [
+5 verbose install     '@eslint/compat',
+5 verbose install     '@eslint/js',
+5 verbose install     '@sveltejs/adapter-auto',
+5 verbose install     '@sveltejs/kit',
+5 verbose install     '@sveltejs/vite-plugin-svelte',
+5 verbose install     '@testing-library/jest-dom',
+5 verbose install     '@testing-library/svelte',
+5 verbose install     'eslint',
+5 verbose install     'eslint-config-prettier',
+5 verbose install     'eslint-plugin-svelte',
+5 verbose install     'globals',
+5 verbose install     'jsdom',
+5 verbose install     'prettier',
+5 verbose install     'prettier-plugin-svelte',
+5 verbose install     'svelte',
+5 verbose install     'svelte-check',
+5 verbose install     'typescript',
+5 verbose install     'typescript-eslint',
+5 verbose install     'vite',
+5 verbose install     'vitest'
+5 verbose install   ]
+5 verbose install ]
+6 verbose install where, peers [ 'C:\\Users\\i.kłusek\\Desktop\\Svelte\\WebNotesApp\\client', [] ]
+7 verbose installManyTop reading for lifecycle C:\Users\i.kłusek\Desktop\Svelte\WebNotesApp\client\package.json
+8 info preinstall client@0.0.1
+9 verbose readDependencies loading dependencies from C:\Users\i.kłusek\Desktop\Svelte\WebNotesApp\client\package.json
+10 silly cache add args [ '@eslint/compat@^1.2.5', null ]
+11 verbose cache add spec @eslint/compat@^1.2.5
+12 silly cache add parsed spec Result {
+12 silly cache add   raw: '@eslint/compat@^1.2.5',
+12 silly cache add   scope: '@eslint',
+12 silly cache add   name: '@eslint/compat',
+12 silly cache add   rawSpec: '^1.2.5',
+12 silly cache add   spec: '>=1.2.5 <2.0.0',
+12 silly cache add   type: 'range'
+12 silly cache add }
+13 silly addNamed @eslint/compat@>=1.2.5 <2.0.0
+14 verbose addNamed ">=1.2.5 <2.0.0" is a valid semver range for @eslint/compat
+15 silly addNameRange { name: '@eslint/compat', range: '>=1.2.5 <2.0.0', hasData: false }
+16 silly mapToRegistry name @eslint/compat
+17 silly mapToRegistry scope (from package name) @eslint
+18 verbose mapToRegistry no registry URL found in name for scope @eslint
+19 silly mapToRegistry using default registry
+20 silly mapToRegistry registry https://registry.npmjs.org/
+21 silly mapToRegistry data Result {
+21 silly mapToRegistry   raw: '@eslint/compat',
+21 silly mapToRegistry   scope: '@eslint',
+21 silly mapToRegistry   name: '@eslint/compat',
+21 silly mapToRegistry   rawSpec: '',
+21 silly mapToRegistry   spec: 'latest',
+21 silly mapToRegistry   type: 'tag'
+21 silly mapToRegistry }
+22 silly mapToRegistry uri https://registry.npmjs.org/@eslint%2fcompat
+23 verbose addNameRange registry:https://registry.npmjs.org/@eslint%2fcompat not in flight; fetching
+24 silly cache add args [ '@eslint/js@^9.18.0', null ]
+25 verbose cache add spec @eslint/js@^9.18.0
+26 silly cache add parsed spec Result {
+26 silly cache add   raw: '@eslint/js@^9.18.0',
+26 silly cache add   scope: '@eslint',
+26 silly cache add   name: '@eslint/js',
+26 silly cache add   rawSpec: '^9.18.0',
+26 silly cache add   spec: '>=9.18.0 <10.0.0',
+26 silly cache add   type: 'range'
+26 silly cache add }
+27 silly addNamed @eslint/js@>=9.18.0 <10.0.0
+28 verbose addNamed ">=9.18.0 <10.0.0" is a valid semver range for @eslint/js
+29 silly addNameRange { name: '@eslint/js', range: '>=9.18.0 <10.0.0', hasData: false }
+30 silly mapToRegistry name @eslint/js
+31 silly mapToRegistry scope (from package name) @eslint
+32 verbose mapToRegistry no registry URL found in name for scope @eslint
+33 silly mapToRegistry using default registry
+34 silly mapToRegistry registry https://registry.npmjs.org/
+35 silly mapToRegistry data Result {
+35 silly mapToRegistry   raw: '@eslint/js',
+35 silly mapToRegistry   scope: '@eslint',
+35 silly mapToRegistry   name: '@eslint/js',
+35 silly mapToRegistry   rawSpec: '',
+35 silly mapToRegistry   spec: 'latest',
+35 silly mapToRegistry   type: 'tag'
+35 silly mapToRegistry }
+36 silly mapToRegistry uri https://registry.npmjs.org/@eslint%2fjs
+37 verbose addNameRange registry:https://registry.npmjs.org/@eslint%2fjs not in flight; fetching
+38 silly cache add args [ '@sveltejs/adapter-auto@^4.0.0', null ]
+39 verbose cache add spec @sveltejs/adapter-auto@^4.0.0
+40 silly cache add parsed spec Result {
+40 silly cache add   raw: '@sveltejs/adapter-auto@^4.0.0',
+40 silly cache add   scope: '@sveltejs',
+40 silly cache add   name: '@sveltejs/adapter-auto',
+40 silly cache add   rawSpec: '^4.0.0',
+40 silly cache add   spec: '>=4.0.0 <5.0.0',
+40 silly cache add   type: 'range'
+40 silly cache add }
+41 silly addNamed @sveltejs/adapter-auto@>=4.0.0 <5.0.0
+42 verbose addNamed ">=4.0.0 <5.0.0" is a valid semver range for @sveltejs/adapter-auto
+43 silly addNameRange {
+43 silly addNameRange   name: '@sveltejs/adapter-auto',
+43 silly addNameRange   range: '>=4.0.0 <5.0.0',
+43 silly addNameRange   hasData: false
+43 silly addNameRange }
+44 silly mapToRegistry name @sveltejs/adapter-auto
+45 silly mapToRegistry scope (from package name) @sveltejs
+46 verbose mapToRegistry no registry URL found in name for scope @sveltejs
+47 silly mapToRegistry using default registry
+48 silly mapToRegistry registry https://registry.npmjs.org/
+49 silly mapToRegistry data Result {
+49 silly mapToRegistry   raw: '@sveltejs/adapter-auto',
+49 silly mapToRegistry   scope: '@sveltejs',
+49 silly mapToRegistry   name: '@sveltejs/adapter-auto',
+49 silly mapToRegistry   rawSpec: '',
+49 silly mapToRegistry   spec: 'latest',
+49 silly mapToRegistry   type: 'tag'
+49 silly mapToRegistry }
+50 silly mapToRegistry uri https://registry.npmjs.org/@sveltejs%2fadapter-auto
+51 verbose addNameRange registry:https://registry.npmjs.org/@sveltejs%2fadapter-auto not in flight; fetching
+52 silly cache add args [ '@sveltejs/kit@^2.16.0', null ]
+53 verbose cache add spec @sveltejs/kit@^2.16.0
+54 silly cache add parsed spec Result {
+54 silly cache add   raw: '@sveltejs/kit@^2.16.0',
+54 silly cache add   scope: '@sveltejs',
+54 silly cache add   name: '@sveltejs/kit',
+54 silly cache add   rawSpec: '^2.16.0',
+54 silly cache add   spec: '>=2.16.0 <3.0.0',
+54 silly cache add   type: 'range'
+54 silly cache add }
+55 silly addNamed @sveltejs/kit@>=2.16.0 <3.0.0
+56 verbose addNamed ">=2.16.0 <3.0.0" is a valid semver range for @sveltejs/kit
+57 silly addNameRange { name: '@sveltejs/kit', range: '>=2.16.0 <3.0.0', hasData: false }
+58 silly mapToRegistry name @sveltejs/kit
+59 silly mapToRegistry scope (from package name) @sveltejs
+60 verbose mapToRegistry no registry URL found in name for scope @sveltejs
+61 silly mapToRegistry using default registry
+62 silly mapToRegistry registry https://registry.npmjs.org/
+63 silly mapToRegistry data Result {
+63 silly mapToRegistry   raw: '@sveltejs/kit',
+63 silly mapToRegistry   scope: '@sveltejs',
+63 silly mapToRegistry   name: '@sveltejs/kit',
+63 silly mapToRegistry   rawSpec: '',
+63 silly mapToRegistry   spec: 'latest',
+63 silly mapToRegistry   type: 'tag'
+63 silly mapToRegistry }
+64 silly mapToRegistry uri https://registry.npmjs.org/@sveltejs%2fkit
+65 verbose addNameRange registry:https://registry.npmjs.org/@sveltejs%2fkit not in flight; fetching
+66 silly cache add args [ '@sveltejs/vite-plugin-svelte@^5.0.0', null ]
+67 verbose cache add spec @sveltejs/vite-plugin-svelte@^5.0.0
+68 silly cache add parsed spec Result {
+68 silly cache add   raw: '@sveltejs/vite-plugin-svelte@^5.0.0',
+68 silly cache add   scope: '@sveltejs',
+68 silly cache add   name: '@sveltejs/vite-plugin-svelte',
+68 silly cache add   rawSpec: '^5.0.0',
+68 silly cache add   spec: '>=5.0.0 <6.0.0',
+68 silly cache add   type: 'range'
+68 silly cache add }
+69 silly addNamed @sveltejs/vite-plugin-svelte@>=5.0.0 <6.0.0
+70 verbose addNamed ">=5.0.0 <6.0.0" is a valid semver range for @sveltejs/vite-plugin-svelte
+71 silly addNameRange {
+71 silly addNameRange   name: '@sveltejs/vite-plugin-svelte',
+71 silly addNameRange   range: '>=5.0.0 <6.0.0',
+71 silly addNameRange   hasData: false
+71 silly addNameRange }
+72 silly mapToRegistry name @sveltejs/vite-plugin-svelte
+73 silly mapToRegistry scope (from package name) @sveltejs
+74 verbose mapToRegistry no registry URL found in name for scope @sveltejs
+75 silly mapToRegistry using default registry
+76 silly mapToRegistry registry https://registry.npmjs.org/
+77 silly mapToRegistry data Result {
+77 silly mapToRegistry   raw: '@sveltejs/vite-plugin-svelte',
+77 silly mapToRegistry   scope: '@sveltejs',
+77 silly mapToRegistry   name: '@sveltejs/vite-plugin-svelte',
+77 silly mapToRegistry   rawSpec: '',
+77 silly mapToRegistry   spec: 'latest',
+77 silly mapToRegistry   type: 'tag'
+77 silly mapToRegistry }
+78 silly mapToRegistry uri https://registry.npmjs.org/@sveltejs%2fvite-plugin-svelte
+79 verbose addNameRange registry:https://registry.npmjs.org/@sveltejs%2fvite-plugin-svelte not in flight; fetching
+80 silly cache add args [ '@testing-library/jest-dom@^6.6.3', null ]
+81 verbose cache add spec @testing-library/jest-dom@^6.6.3
+82 silly cache add parsed spec Result {
+82 silly cache add   raw: '@testing-library/jest-dom@^6.6.3',
+82 silly cache add   scope: '@testing-library',
+82 silly cache add   name: '@testing-library/jest-dom',
+82 silly cache add   rawSpec: '^6.6.3',
+82 silly cache add   spec: '>=6.6.3 <7.0.0',
+82 silly cache add   type: 'range'
+82 silly cache add }
+83 silly addNamed @testing-library/jest-dom@>=6.6.3 <7.0.0
+84 verbose addNamed ">=6.6.3 <7.0.0" is a valid semver range for @testing-library/jest-dom
+85 silly addNameRange {
+85 silly addNameRange   name: '@testing-library/jest-dom',
+85 silly addNameRange   range: '>=6.6.3 <7.0.0',
+85 silly addNameRange   hasData: false
+85 silly addNameRange }
+86 silly mapToRegistry name @testing-library/jest-dom
+87 silly mapToRegistry scope (from package name) @testing-library
+88 verbose mapToRegistry no registry URL found in name for scope @testing-library
+89 silly mapToRegistry using default registry
+90 silly mapToRegistry registry https://registry.npmjs.org/
+91 silly mapToRegistry data Result {
+91 silly mapToRegistry   raw: '@testing-library/jest-dom',
+91 silly mapToRegistry   scope: '@testing-library',
+91 silly mapToRegistry   name: '@testing-library/jest-dom',
+91 silly mapToRegistry   rawSpec: '',
+91 silly mapToRegistry   spec: 'latest',
+91 silly mapToRegistry   type: 'tag'
+91 silly mapToRegistry }
+92 silly mapToRegistry uri https://registry.npmjs.org/@testing-library%2fjest-dom
+93 verbose addNameRange registry:https://registry.npmjs.org/@testing-library%2fjest-dom not in flight; fetching
+94 silly cache add args [ '@testing-library/svelte@^5.2.4', null ]
+95 verbose cache add spec @testing-library/svelte@^5.2.4
+96 silly cache add parsed spec Result {
+96 silly cache add   raw: '@testing-library/svelte@^5.2.4',
+96 silly cache add   scope: '@testing-library',
+96 silly cache add   name: '@testing-library/svelte',
+96 silly cache add   rawSpec: '^5.2.4',
+96 silly cache add   spec: '>=5.2.4 <6.0.0',
+96 silly cache add   type: 'range'
+96 silly cache add }
+97 silly addNamed @testing-library/svelte@>=5.2.4 <6.0.0
+98 verbose addNamed ">=5.2.4 <6.0.0" is a valid semver range for @testing-library/svelte
+99 silly addNameRange {
+99 silly addNameRange   name: '@testing-library/svelte',
+99 silly addNameRange   range: '>=5.2.4 <6.0.0',
+99 silly addNameRange   hasData: false
+99 silly addNameRange }
+100 silly mapToRegistry name @testing-library/svelte
+101 silly mapToRegistry scope (from package name) @testing-library
+102 verbose mapToRegistry no registry URL found in name for scope @testing-library
+103 silly mapToRegistry using default registry
+104 silly mapToRegistry registry https://registry.npmjs.org/
+105 silly mapToRegistry data Result {
+105 silly mapToRegistry   raw: '@testing-library/svelte',
+105 silly mapToRegistry   scope: '@testing-library',
+105 silly mapToRegistry   name: '@testing-library/svelte',
+105 silly mapToRegistry   rawSpec: '',
+105 silly mapToRegistry   spec: 'latest',
+105 silly mapToRegistry   type: 'tag'
+105 silly mapToRegistry }
+106 silly mapToRegistry uri https://registry.npmjs.org/@testing-library%2fsvelte
+107 verbose addNameRange registry:https://registry.npmjs.org/@testing-library%2fsvelte not in flight; fetching
+108 silly cache add args [ 'eslint@^9.18.0', null ]
+109 verbose cache add spec eslint@^9.18.0
+110 silly cache add parsed spec Result {
+110 silly cache add   raw: 'eslint@^9.18.0',
+110 silly cache add   scope: null,
+110 silly cache add   name: 'eslint',
+110 silly cache add   rawSpec: '^9.18.0',
+110 silly cache add   spec: '>=9.18.0 <10.0.0',
+110 silly cache add   type: 'range'
+110 silly cache add }
+111 silly addNamed eslint@>=9.18.0 <10.0.0
+112 verbose addNamed ">=9.18.0 <10.0.0" is a valid semver range for eslint
+113 silly addNameRange { name: 'eslint', range: '>=9.18.0 <10.0.0', hasData: false }
+114 silly mapToRegistry name eslint
+115 silly mapToRegistry using default registry
+116 silly mapToRegistry registry https://registry.npmjs.org/
+117 silly mapToRegistry data Result {
+117 silly mapToRegistry   raw: 'eslint',
+117 silly mapToRegistry   scope: null,
+117 silly mapToRegistry   name: 'eslint',
+117 silly mapToRegistry   rawSpec: '',
+117 silly mapToRegistry   spec: 'latest',
+117 silly mapToRegistry   type: 'tag'
+117 silly mapToRegistry }
+118 silly mapToRegistry uri https://registry.npmjs.org/eslint
+119 verbose addNameRange registry:https://registry.npmjs.org/eslint not in flight; fetching
+120 silly cache add args [ 'eslint-config-prettier@^10.0.1', null ]
+121 verbose cache add spec eslint-config-prettier@^10.0.1
+122 silly cache add parsed spec Result {
+122 silly cache add   raw: 'eslint-config-prettier@^10.0.1',
+122 silly cache add   scope: null,
+122 silly cache add   name: 'eslint-config-prettier',
+122 silly cache add   rawSpec: '^10.0.1',
+122 silly cache add   spec: '>=10.0.1 <11.0.0',
+122 silly cache add   type: 'range'
+122 silly cache add }
+123 silly addNamed eslint-config-prettier@>=10.0.1 <11.0.0
+124 verbose addNamed ">=10.0.1 <11.0.0" is a valid semver range for eslint-config-prettier
+125 silly addNameRange {
+125 silly addNameRange   name: 'eslint-config-prettier',
+125 silly addNameRange   range: '>=10.0.1 <11.0.0',
+125 silly addNameRange   hasData: false
+125 silly addNameRange }
+126 silly mapToRegistry name eslint-config-prettier
+127 silly mapToRegistry using default registry
+128 silly mapToRegistry registry https://registry.npmjs.org/
+129 silly mapToRegistry data Result {
+129 silly mapToRegistry   raw: 'eslint-config-prettier',
+129 silly mapToRegistry   scope: null,
+129 silly mapToRegistry   name: 'eslint-config-prettier',
+129 silly mapToRegistry   rawSpec: '',
+129 silly mapToRegistry   spec: 'latest',
+129 silly mapToRegistry   type: 'tag'
+129 silly mapToRegistry }
+130 silly mapToRegistry uri https://registry.npmjs.org/eslint-config-prettier
+131 verbose addNameRange registry:https://registry.npmjs.org/eslint-config-prettier not in flight; fetching
+132 silly cache add args [ 'eslint-plugin-svelte@^2.46.1', null ]
+133 verbose cache add spec eslint-plugin-svelte@^2.46.1
+134 silly cache add parsed spec Result {
+134 silly cache add   raw: 'eslint-plugin-svelte@^2.46.1',
+134 silly cache add   scope: null,
+134 silly cache add   name: 'eslint-plugin-svelte',
+134 silly cache add   rawSpec: '^2.46.1',
+134 silly cache add   spec: '>=2.46.1 <3.0.0',
+134 silly cache add   type: 'range'
+134 silly cache add }
+135 silly addNamed eslint-plugin-svelte@>=2.46.1 <3.0.0
+136 verbose addNamed ">=2.46.1 <3.0.0" is a valid semver range for eslint-plugin-svelte
+137 silly addNameRange {
+137 silly addNameRange   name: 'eslint-plugin-svelte',
+137 silly addNameRange   range: '>=2.46.1 <3.0.0',
+137 silly addNameRange   hasData: false
+137 silly addNameRange }
+138 silly mapToRegistry name eslint-plugin-svelte
+139 silly mapToRegistry using default registry
+140 silly mapToRegistry registry https://registry.npmjs.org/
+141 silly mapToRegistry data Result {
+141 silly mapToRegistry   raw: 'eslint-plugin-svelte',
+141 silly mapToRegistry   scope: null,
+141 silly mapToRegistry   name: 'eslint-plugin-svelte',
+141 silly mapToRegistry   rawSpec: '',
+141 silly mapToRegistry   spec: 'latest',
+141 silly mapToRegistry   type: 'tag'
+141 silly mapToRegistry }
+142 silly mapToRegistry uri https://registry.npmjs.org/eslint-plugin-svelte
+143 verbose addNameRange registry:https://registry.npmjs.org/eslint-plugin-svelte not in flight; fetching
+144 silly cache add args [ 'globals@^15.14.0', null ]
+145 verbose cache add spec globals@^15.14.0
+146 silly cache add parsed spec Result {
+146 silly cache add   raw: 'globals@^15.14.0',
+146 silly cache add   scope: null,
+146 silly cache add   name: 'globals',
+146 silly cache add   rawSpec: '^15.14.0',
+146 silly cache add   spec: '>=15.14.0 <16.0.0',
+146 silly cache add   type: 'range'
+146 silly cache add }
+147 silly addNamed globals@>=15.14.0 <16.0.0
+148 verbose addNamed ">=15.14.0 <16.0.0" is a valid semver range for globals
+149 silly addNameRange { name: 'globals', range: '>=15.14.0 <16.0.0', hasData: false }
+150 silly mapToRegistry name globals
+151 silly mapToRegistry using default registry
+152 silly mapToRegistry registry https://registry.npmjs.org/
+153 silly mapToRegistry data Result {
+153 silly mapToRegistry   raw: 'globals',
+153 silly mapToRegistry   scope: null,
+153 silly mapToRegistry   name: 'globals',
+153 silly mapToRegistry   rawSpec: '',
+153 silly mapToRegistry   spec: 'latest',
+153 silly mapToRegistry   type: 'tag'
+153 silly mapToRegistry }
+154 silly mapToRegistry uri https://registry.npmjs.org/globals
+155 verbose addNameRange registry:https://registry.npmjs.org/globals not in flight; fetching
+156 silly cache add args [ 'jsdom@^25.0.1', null ]
+157 verbose cache add spec jsdom@^25.0.1
+158 silly cache add parsed spec Result {
+158 silly cache add   raw: 'jsdom@^25.0.1',
+158 silly cache add   scope: null,
+158 silly cache add   name: 'jsdom',
+158 silly cache add   rawSpec: '^25.0.1',
+158 silly cache add   spec: '>=25.0.1 <26.0.0',
+158 silly cache add   type: 'range'
+158 silly cache add }
+159 silly addNamed jsdom@>=25.0.1 <26.0.0
+160 verbose addNamed ">=25.0.1 <26.0.0" is a valid semver range for jsdom
+161 silly addNameRange { name: 'jsdom', range: '>=25.0.1 <26.0.0', hasData: false }
+162 silly mapToRegistry name jsdom
+163 silly mapToRegistry using default registry
+164 silly mapToRegistry registry https://registry.npmjs.org/
+165 silly mapToRegistry data Result {
+165 silly mapToRegistry   raw: 'jsdom',
+165 silly mapToRegistry   scope: null,
+165 silly mapToRegistry   name: 'jsdom',
+165 silly mapToRegistry   rawSpec: '',
+165 silly mapToRegistry   spec: 'latest',
+165 silly mapToRegistry   type: 'tag'
+165 silly mapToRegistry }
+166 silly mapToRegistry uri https://registry.npmjs.org/jsdom
+167 verbose addNameRange registry:https://registry.npmjs.org/jsdom not in flight; fetching
+168 silly cache add args [ 'prettier@^3.4.2', null ]
+169 verbose cache add spec prettier@^3.4.2
+170 silly cache add parsed spec Result {
+170 silly cache add   raw: 'prettier@^3.4.2',
+170 silly cache add   scope: null,
+170 silly cache add   name: 'prettier',
+170 silly cache add   rawSpec: '^3.4.2',
+170 silly cache add   spec: '>=3.4.2 <4.0.0',
+170 silly cache add   type: 'range'
+170 silly cache add }
+171 silly addNamed prettier@>=3.4.2 <4.0.0
+172 verbose addNamed ">=3.4.2 <4.0.0" is a valid semver range for prettier
+173 silly addNameRange { name: 'prettier', range: '>=3.4.2 <4.0.0', hasData: false }
+174 silly mapToRegistry name prettier
+175 silly mapToRegistry using default registry
+176 silly mapToRegistry registry https://registry.npmjs.org/
+177 silly mapToRegistry data Result {
+177 silly mapToRegistry   raw: 'prettier',
+177 silly mapToRegistry   scope: null,
+177 silly mapToRegistry   name: 'prettier',
+177 silly mapToRegistry   rawSpec: '',
+177 silly mapToRegistry   spec: 'latest',
+177 silly mapToRegistry   type: 'tag'
+177 silly mapToRegistry }
+178 silly mapToRegistry uri https://registry.npmjs.org/prettier
+179 verbose addNameRange registry:https://registry.npmjs.org/prettier not in flight; fetching
+180 silly cache add args [ 'prettier-plugin-svelte@^3.3.3', null ]
+181 verbose cache add spec prettier-plugin-svelte@^3.3.3
+182 silly cache add parsed spec Result {
+182 silly cache add   raw: 'prettier-plugin-svelte@^3.3.3',
+182 silly cache add   scope: null,
+182 silly cache add   name: 'prettier-plugin-svelte',
+182 silly cache add   rawSpec: '^3.3.3',
+182 silly cache add   spec: '>=3.3.3 <4.0.0',
+182 silly cache add   type: 'range'
+182 silly cache add }
+183 silly addNamed prettier-plugin-svelte@>=3.3.3 <4.0.0
+184 verbose addNamed ">=3.3.3 <4.0.0" is a valid semver range for prettier-plugin-svelte
+185 silly addNameRange {
+185 silly addNameRange   name: 'prettier-plugin-svelte',
+185 silly addNameRange   range: '>=3.3.3 <4.0.0',
+185 silly addNameRange   hasData: false
+185 silly addNameRange }
+186 silly mapToRegistry name prettier-plugin-svelte
+187 silly mapToRegistry using default registry
+188 silly mapToRegistry registry https://registry.npmjs.org/
+189 silly mapToRegistry data Result {
+189 silly mapToRegistry   raw: 'prettier-plugin-svelte',
+189 silly mapToRegistry   scope: null,
+189 silly mapToRegistry   name: 'prettier-plugin-svelte',
+189 silly mapToRegistry   rawSpec: '',
+189 silly mapToRegistry   spec: 'latest',
+189 silly mapToRegistry   type: 'tag'
+189 silly mapToRegistry }
+190 silly mapToRegistry uri https://registry.npmjs.org/prettier-plugin-svelte
+191 verbose addNameRange registry:https://registry.npmjs.org/prettier-plugin-svelte not in flight; fetching
+192 verbose request uri https://registry.npmjs.org/@testing-library%2fjest-dom
+193 verbose request no auth needed
+194 info attempt registry request try #1 at 16:13:45
+195 verbose request using bearer token for auth
+196 verbose request id f81e7dadaa7cc101
+197 http request GET https://registry.npmjs.org/@testing-library%2fjest-dom
+198 verbose request uri https://registry.npmjs.org/@testing-library%2fsvelte
+199 verbose request no auth needed
+200 info attempt registry request try #1 at 16:13:45
+201 verbose request using bearer token for auth
+202 http request GET https://registry.npmjs.org/@testing-library%2fsvelte
+203 verbose request uri https://registry.npmjs.org/jsdom
+204 verbose request no auth needed
+205 info attempt registry request try #1 at 16:13:45
+206 verbose request using bearer token for auth
+207 http request GET https://registry.npmjs.org/jsdom
+208 silly cache add args [ 'svelte@^5.0.0', null ]
+209 verbose cache add spec svelte@^5.0.0
+210 silly cache add parsed spec Result {
+210 silly cache add   raw: 'svelte@^5.0.0',
+210 silly cache add   scope: null,
+210 silly cache add   name: 'svelte',
+210 silly cache add   rawSpec: '^5.0.0',
+210 silly cache add   spec: '>=5.0.0 <6.0.0',
+210 silly cache add   type: 'range'
+210 silly cache add }
+211 silly addNamed svelte@>=5.0.0 <6.0.0
+212 verbose addNamed ">=5.0.0 <6.0.0" is a valid semver range for svelte
+213 silly addNameRange { name: 'svelte', range: '>=5.0.0 <6.0.0', hasData: false }
+214 silly mapToRegistry name svelte
+215 silly mapToRegistry using default registry
+216 silly mapToRegistry registry https://registry.npmjs.org/
+217 silly mapToRegistry data Result {
+217 silly mapToRegistry   raw: 'svelte',
+217 silly mapToRegistry   scope: null,
+217 silly mapToRegistry   name: 'svelte',
+217 silly mapToRegistry   rawSpec: '',
+217 silly mapToRegistry   spec: 'latest',
+217 silly mapToRegistry   type: 'tag'
+217 silly mapToRegistry }
+218 silly mapToRegistry uri https://registry.npmjs.org/svelte
+219 verbose addNameRange registry:https://registry.npmjs.org/svelte not in flight; fetching
+220 silly cache add args [ 'svelte-check@^4.0.0', null ]
+221 verbose cache add spec svelte-check@^4.0.0
+222 silly cache add parsed spec Result {
+222 silly cache add   raw: 'svelte-check@^4.0.0',
+222 silly cache add   scope: null,
+222 silly cache add   name: 'svelte-check',
+222 silly cache add   rawSpec: '^4.0.0',
+222 silly cache add   spec: '>=4.0.0 <5.0.0',
+222 silly cache add   type: 'range'
+222 silly cache add }
+223 silly addNamed svelte-check@>=4.0.0 <5.0.0
+224 verbose addNamed ">=4.0.0 <5.0.0" is a valid semver range for svelte-check
+225 silly addNameRange { name: 'svelte-check', range: '>=4.0.0 <5.0.0', hasData: false }
+226 silly mapToRegistry name svelte-check
+227 silly mapToRegistry using default registry
+228 silly mapToRegistry registry https://registry.npmjs.org/
+229 silly mapToRegistry data Result {
+229 silly mapToRegistry   raw: 'svelte-check',
+229 silly mapToRegistry   scope: null,
+229 silly mapToRegistry   name: 'svelte-check',
+229 silly mapToRegistry   rawSpec: '',
+229 silly mapToRegistry   spec: 'latest',
+229 silly mapToRegistry   type: 'tag'
+229 silly mapToRegistry }
+230 silly mapToRegistry uri https://registry.npmjs.org/svelte-check
+231 verbose addNameRange registry:https://registry.npmjs.org/svelte-check not in flight; fetching
+232 silly cache add args [ 'typescript@^5.0.0', null ]
+233 verbose cache add spec typescript@^5.0.0
+234 silly cache add parsed spec Result {
+234 silly cache add   raw: 'typescript@^5.0.0',
+234 silly cache add   scope: null,
+234 silly cache add   name: 'typescript',
+234 silly cache add   rawSpec: '^5.0.0',
+234 silly cache add   spec: '>=5.0.0 <6.0.0',
+234 silly cache add   type: 'range'
+234 silly cache add }
+235 silly addNamed typescript@>=5.0.0 <6.0.0
+236 verbose addNamed ">=5.0.0 <6.0.0" is a valid semver range for typescript
+237 silly addNameRange { name: 'typescript', range: '>=5.0.0 <6.0.0', hasData: false }
+238 silly mapToRegistry name typescript
+239 silly mapToRegistry using default registry
+240 silly mapToRegistry registry https://registry.npmjs.org/
+241 silly mapToRegistry data Result {
+241 silly mapToRegistry   raw: 'typescript',
+241 silly mapToRegistry   scope: null,
+241 silly mapToRegistry   name: 'typescript',
+241 silly mapToRegistry   rawSpec: '',
+241 silly mapToRegistry   spec: 'latest',
+241 silly mapToRegistry   type: 'tag'
+241 silly mapToRegistry }
+242 silly mapToRegistry uri https://registry.npmjs.org/typescript
+243 verbose addNameRange registry:https://registry.npmjs.org/typescript not in flight; fetching
+244 silly cache add args [ 'typescript-eslint@^8.20.0', null ]
+245 verbose cache add spec typescript-eslint@^8.20.0
+246 silly cache add parsed spec Result {
+246 silly cache add   raw: 'typescript-eslint@^8.20.0',
+246 silly cache add   scope: null,
+246 silly cache add   name: 'typescript-eslint',
+246 silly cache add   rawSpec: '^8.20.0',
+246 silly cache add   spec: '>=8.20.0 <9.0.0',
+246 silly cache add   type: 'range'
+246 silly cache add }
+247 silly addNamed typescript-eslint@>=8.20.0 <9.0.0
+248 verbose addNamed ">=8.20.0 <9.0.0" is a valid semver range for typescript-eslint
+249 silly addNameRange { name: 'typescript-eslint', range: '>=8.20.0 <9.0.0', hasData: false }
+250 silly mapToRegistry name typescript-eslint
+251 silly mapToRegistry using default registry
+252 silly mapToRegistry registry https://registry.npmjs.org/
+253 silly mapToRegistry data Result {
+253 silly mapToRegistry   raw: 'typescript-eslint',
+253 silly mapToRegistry   scope: null,
+253 silly mapToRegistry   name: 'typescript-eslint',
+253 silly mapToRegistry   rawSpec: '',
+253 silly mapToRegistry   spec: 'latest',
+253 silly mapToRegistry   type: 'tag'
+253 silly mapToRegistry }
+254 silly mapToRegistry uri https://registry.npmjs.org/typescript-eslint
+255 verbose addNameRange registry:https://registry.npmjs.org/typescript-eslint not in flight; fetching
+256 silly cache add args [ 'vite@^6.0.0', null ]
+257 verbose cache add spec vite@^6.0.0
+258 silly cache add parsed spec Result {
+258 silly cache add   raw: 'vite@^6.0.0',
+258 silly cache add   scope: null,
+258 silly cache add   name: 'vite',
+258 silly cache add   rawSpec: '^6.0.0',
+258 silly cache add   spec: '>=6.0.0 <7.0.0',
+258 silly cache add   type: 'range'
+258 silly cache add }
+259 silly addNamed vite@>=6.0.0 <7.0.0
+260 verbose addNamed ">=6.0.0 <7.0.0" is a valid semver range for vite
+261 silly addNameRange { name: 'vite', range: '>=6.0.0 <7.0.0', hasData: false }
+262 silly mapToRegistry name vite
+263 silly mapToRegistry using default registry
+264 silly mapToRegistry registry https://registry.npmjs.org/
+265 silly mapToRegistry data Result {
+265 silly mapToRegistry   raw: 'vite',
+265 silly mapToRegistry   scope: null,
+265 silly mapToRegistry   name: 'vite',
+265 silly mapToRegistry   rawSpec: '',
+265 silly mapToRegistry   spec: 'latest',
+265 silly mapToRegistry   type: 'tag'
+265 silly mapToRegistry }
+266 silly mapToRegistry uri https://registry.npmjs.org/vite
+267 verbose addNameRange registry:https://registry.npmjs.org/vite not in flight; fetching
+268 silly cache add args [ 'vitest@^3.0.0', null ]
+269 verbose cache add spec vitest@^3.0.0
+270 silly cache add parsed spec Result {
+270 silly cache add   raw: 'vitest@^3.0.0',
+270 silly cache add   scope: null,
+270 silly cache add   name: 'vitest',
+270 silly cache add   rawSpec: '^3.0.0',
+270 silly cache add   spec: '>=3.0.0 <4.0.0',
+270 silly cache add   type: 'range'
+270 silly cache add }
+271 silly addNamed vitest@>=3.0.0 <4.0.0
+272 verbose addNamed ">=3.0.0 <4.0.0" is a valid semver range for vitest
+273 silly addNameRange { name: 'vitest', range: '>=3.0.0 <4.0.0', hasData: false }
+274 silly mapToRegistry name vitest
+275 silly mapToRegistry using default registry
+276 silly mapToRegistry registry https://registry.npmjs.org/
+277 silly mapToRegistry data Result {
+277 silly mapToRegistry   raw: 'vitest',
+277 silly mapToRegistry   scope: null,
+277 silly mapToRegistry   name: 'vitest',
+277 silly mapToRegistry   rawSpec: '',
+277 silly mapToRegistry   spec: 'latest',
+277 silly mapToRegistry   type: 'tag'
+277 silly mapToRegistry }
+278 silly mapToRegistry uri https://registry.npmjs.org/vitest
+279 verbose addNameRange registry:https://registry.npmjs.org/vitest not in flight; fetching
+280 verbose request uri https://registry.npmjs.org/vitest
+281 verbose request no auth needed
+282 info attempt registry request try #1 at 16:13:45
+283 verbose request using bearer token for auth
+284 http request GET https://registry.npmjs.org/vitest
+285 verbose request uri https://registry.npmjs.org/@eslint%2fcompat
+286 verbose request no auth needed
+287 info attempt registry request try #1 at 16:13:45
+288 verbose request using bearer token for auth
+289 verbose etag W/"40a67a2746096ee2e710a3f6a4947557"
+290 verbose lastModified Fri, 31 Jan 2025 17:22:12 GMT
+291 http request GET https://registry.npmjs.org/@eslint%2fcompat
+292 verbose request uri https://registry.npmjs.org/@eslint%2fjs
+293 verbose request no auth needed
+294 info attempt registry request try #1 at 16:13:45
+295 verbose request using bearer token for auth
+296 verbose etag W/"ab9315f92757bbeaaa671dedbeae94db"
+297 verbose lastModified Fri, 24 Jan 2025 18:47:20 GMT
+298 http request GET https://registry.npmjs.org/@eslint%2fjs
+299 verbose request uri https://registry.npmjs.org/@sveltejs%2fvite-plugin-svelte
+300 verbose request no auth needed
+301 info attempt registry request try #1 at 16:13:45
+302 verbose request using bearer token for auth
+303 verbose etag W/"752c4feeb8156f896b2882a28cb81bd7"
+304 verbose lastModified Wed, 18 Dec 2024 10:08:23 GMT
+305 http request GET https://registry.npmjs.org/@sveltejs%2fvite-plugin-svelte
+306 verbose request uri https://registry.npmjs.org/globals
+307 verbose request no auth needed
+308 info attempt registry request try #1 at 16:13:45
+309 verbose request using bearer token for auth
+310 verbose etag W/"60c63c94e815ffc1394817bb9914c1da"
+311 verbose lastModified Wed, 18 Dec 2024 13:39:23 GMT
+312 http request GET https://registry.npmjs.org/globals
+313 verbose request uri https://registry.npmjs.org/eslint-config-prettier
+314 verbose request no auth needed
+315 info attempt registry request try #1 at 16:13:45
+316 verbose request using bearer token for auth
+317 verbose etag W/"c7c10184e2cadd6a02784b349dccffd0"
+318 verbose lastModified Mon, 13 Jan 2025 14:41:48 GMT
+319 http request GET https://registry.npmjs.org/eslint-config-prettier
+320 verbose request uri https://registry.npmjs.org/@sveltejs%2fadapter-auto
+321 verbose request no auth needed
+322 info attempt registry request try #1 at 16:13:45
+323 verbose request using bearer token for auth
+324 verbose etag W/"2a60646f5b17dd74b59ec1b6d7b56fa0"
+325 verbose lastModified Wed, 15 Jan 2025 12:27:26 GMT
+326 http request GET https://registry.npmjs.org/@sveltejs%2fadapter-auto
+327 verbose request uri https://registry.npmjs.org/prettier-plugin-svelte
+328 verbose request no auth needed
+329 info attempt registry request try #1 at 16:13:46
+330 verbose request using bearer token for auth
+331 verbose etag W/"5772c94d4fdb46ab109337f757383ec4"
+332 verbose lastModified Mon, 13 Jan 2025 10:09:53 GMT
+333 http request GET https://registry.npmjs.org/prettier-plugin-svelte
+334 verbose request uri https://registry.npmjs.org/eslint-plugin-svelte
+335 verbose request no auth needed
+336 info attempt registry request try #1 at 16:13:46
+337 verbose request using bearer token for auth
+338 verbose etag W/"11e583f342015b7404a0a97927b1c3cc"
+339 verbose lastModified Mon, 03 Feb 2025 03:24:07 GMT
+340 http request GET https://registry.npmjs.org/eslint-plugin-svelte
+341 verbose request uri https://registry.npmjs.org/prettier
+342 verbose request no auth needed
+343 info attempt registry request try #1 at 16:13:46
+344 verbose request using bearer token for auth
+345 verbose etag W/"a02a77b7cd4a158b4f18d94821d4792d"
+346 verbose lastModified Wed, 04 Dec 2024 07:04:09 GMT
+347 http request GET https://registry.npmjs.org/prettier
+348 verbose request uri https://registry.npmjs.org/svelte-check
+349 verbose request no auth needed
+350 info attempt registry request try #1 at 16:13:46
+351 verbose request using bearer token for auth
+352 verbose etag W/"682a3698e4e81e8779cf4a85044c1ab7"
+353 verbose lastModified Mon, 13 Jan 2025 09:34:28 GMT
+354 http request GET https://registry.npmjs.org/svelte-check
+355 verbose request uri https://registry.npmjs.org/eslint
+356 verbose request no auth needed
+357 info attempt registry request try #1 at 16:13:46
+358 verbose request using bearer token for auth
+359 verbose etag W/"00707cd5f98e2d9849a9afd76f0ccbdd"
+360 verbose lastModified Fri, 24 Jan 2025 19:05:49 GMT
+361 http request GET https://registry.npmjs.org/eslint
+362 verbose request uri https://registry.npmjs.org/typescript-eslint
+363 verbose request no auth needed
+364 info attempt registry request try #1 at 16:13:46
+365 verbose request using bearer token for auth
+366 verbose etag W/"194093a51de05da8ab86a301ed67d1db"
+367 verbose lastModified Fri, 07 Feb 2025 11:34:28 GMT
+368 http request GET https://registry.npmjs.org/typescript-eslint
+369 verbose request uri https://registry.npmjs.org/@sveltejs%2fkit
+370 verbose request no auth needed
+371 info attempt registry request try #1 at 16:13:46
+372 verbose request using bearer token for auth
+373 verbose etag W/"dc723e2fc38885a5e3f68b26377c4f87"
+374 verbose lastModified Mon, 03 Feb 2025 15:01:06 GMT
+375 http request GET https://registry.npmjs.org/@sveltejs%2fkit
+376 verbose request uri https://registry.npmjs.org/svelte
+377 verbose request no auth needed
+378 info attempt registry request try #1 at 16:13:46
+379 verbose request using bearer token for auth
+380 verbose etag W/"e37e82cf20fe85428a46eaea450f9bde"
+381 verbose lastModified Thu, 06 Feb 2025 21:31:36 GMT
+382 http request GET https://registry.npmjs.org/svelte
+383 http 200 https://registry.npmjs.org/@eslint%2fcompat
+384 verbose headers {
+384 verbose headers   date: 'Sun, 09 Feb 2025 15:13:44 GMT',
+384 verbose headers   'content-type': 'application/json',
+384 verbose headers   'transfer-encoding': 'chunked',
+384 verbose headers   connection: 'keep-alive',
+384 verbose headers   'cf-ray': '90f4ce1f7ad5eeca-WAW',
+384 verbose headers   'cf-cache-status': 'HIT',
+384 verbose headers   'access-control-allow-origin': '*',
+384 verbose headers   age: '47',
+384 verbose headers   'cache-control': 'public, max-age=300',
+384 verbose headers   etag: 'W/"40a67a2746096ee2e710a3f6a4947557"',
+384 verbose headers   'last-modified': 'Fri, 31 Jan 2025 17:22:12 GMT',
+384 verbose headers   vary: 'accept-encoding, accept',
+384 verbose headers   'set-cookie': [
+384 verbose headers     '_cfuvid=L2.bZOleKbvAJqkBznnNYq9kbGqvNmj8KBtv58BrA0M-1739114024909-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+384 verbose headers   ],
+384 verbose headers   server: 'cloudflare',
+384 verbose headers   'content-encoding': 'gzip'
+384 verbose headers }
+385 silly get cb [
+385 silly get   200,
+385 silly get   {
+385 silly get     date: 'Sun, 09 Feb 2025 15:13:44 GMT',
+385 silly get     'content-type': 'application/json',
+385 silly get     'transfer-encoding': 'chunked',
+385 silly get     connection: 'keep-alive',
+385 silly get     'cf-ray': '90f4ce1f7ad5eeca-WAW',
+385 silly get     'cf-cache-status': 'HIT',
+385 silly get     'access-control-allow-origin': '*',
+385 silly get     age: '47',
+385 silly get     'cache-control': 'public, max-age=300',
+385 silly get     etag: 'W/"40a67a2746096ee2e710a3f6a4947557"',
+385 silly get     'last-modified': 'Fri, 31 Jan 2025 17:22:12 GMT',
+385 silly get     vary: 'accept-encoding, accept',
+385 silly get     'set-cookie': [
+385 silly get       '_cfuvid=L2.bZOleKbvAJqkBznnNYq9kbGqvNmj8KBtv58BrA0M-1739114024909-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+385 silly get     ],
+385 silly get     server: 'cloudflare',
+385 silly get     'content-encoding': 'gzip'
+385 silly get   }
+385 silly get ]
+386 verbose get saving @eslint/compat to C:\Users\i.kłusek\AppData\Local\npm-cache\registry.npmjs.org\_40eslint_252fcompat\.cache.json
+387 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+388 http 200 https://registry.npmjs.org/@eslint%2fjs
+389 verbose headers {
+389 verbose headers   date: 'Sun, 09 Feb 2025 15:13:44 GMT',
+389 verbose headers   'content-type': 'application/json',
+389 verbose headers   'transfer-encoding': 'chunked',
+389 verbose headers   connection: 'keep-alive',
+389 verbose headers   'cf-ray': '90f4ce1f8a30c05c-WAW',
+389 verbose headers   'cf-cache-status': 'HIT',
+389 verbose headers   'access-control-allow-origin': '*',
+389 verbose headers   age: '24',
+389 verbose headers   'cache-control': 'public, max-age=300',
+389 verbose headers   etag: 'W/"f81b5e970d915da8fbe6dc6a25523580"',
+389 verbose headers   'last-modified': 'Fri, 07 Feb 2025 21:08:29 GMT',
+389 verbose headers   vary: 'accept-encoding, accept',
+389 verbose headers   'set-cookie': [
+389 verbose headers     '_cfuvid=NsQ_SXQpJKPhRGXEFpfuCfDMDAj5xOfHAMeUC2ppI4o-1739114024930-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+389 verbose headers   ],
+389 verbose headers   server: 'cloudflare',
+389 verbose headers   'content-encoding': 'gzip'
+389 verbose headers }
+390 silly get cb [
+390 silly get   200,
+390 silly get   {
+390 silly get     date: 'Sun, 09 Feb 2025 15:13:44 GMT',
+390 silly get     'content-type': 'application/json',
+390 silly get     'transfer-encoding': 'chunked',
+390 silly get     connection: 'keep-alive',
+390 silly get     'cf-ray': '90f4ce1f8a30c05c-WAW',
+390 silly get     'cf-cache-status': 'HIT',
+390 silly get     'access-control-allow-origin': '*',
+390 silly get     age: '24',
+390 silly get     'cache-control': 'public, max-age=300',
+390 silly get     etag: 'W/"f81b5e970d915da8fbe6dc6a25523580"',
+390 silly get     'last-modified': 'Fri, 07 Feb 2025 21:08:29 GMT',
+390 silly get     vary: 'accept-encoding, accept',
+390 silly get     'set-cookie': [
+390 silly get       '_cfuvid=NsQ_SXQpJKPhRGXEFpfuCfDMDAj5xOfHAMeUC2ppI4o-1739114024930-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+390 silly get     ],
+390 silly get     server: 'cloudflare',
+390 silly get     'content-encoding': 'gzip'
+390 silly get   }
+390 silly get ]
+391 verbose get saving @eslint/js to C:\Users\i.kłusek\AppData\Local\npm-cache\registry.npmjs.org\_40eslint_252fjs\.cache.json
+392 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+393 http 200 https://registry.npmjs.org/prettier-plugin-svelte
+394 verbose headers {
+394 verbose headers   date: 'Sun, 09 Feb 2025 15:13:44 GMT',
+394 verbose headers   'content-type': 'application/json',
+394 verbose headers   'transfer-encoding': 'chunked',
+394 verbose headers   connection: 'keep-alive',
+394 verbose headers   'cf-ray': '90f4ce1fb9adbbe4-WAW',
+394 verbose headers   'cf-cache-status': 'HIT',
+394 verbose headers   'access-control-allow-origin': '*',
+394 verbose headers   'cache-control': 'public, max-age=300',
+394 verbose headers   etag: 'W/"5772c94d4fdb46ab109337f757383ec4"',
+394 verbose headers   'last-modified': 'Mon, 13 Jan 2025 10:09:53 GMT',
+394 verbose headers   vary: 'accept-encoding, accept',
+394 verbose headers   'set-cookie': [
+394 verbose headers     '_cfuvid=bgoMczZtMx.9LxdjQrxtjZGjkqXObTrF3XLMY8TX5og-1739114024972-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+394 verbose headers   ],
+394 verbose headers   server: 'cloudflare',
+394 verbose headers   'content-encoding': 'gzip'
+394 verbose headers }
+395 silly get cb [
+395 silly get   200,
+395 silly get   {
+395 silly get     date: 'Sun, 09 Feb 2025 15:13:44 GMT',
+395 silly get     'content-type': 'application/json',
+395 silly get     'transfer-encoding': 'chunked',
+395 silly get     connection: 'keep-alive',
+395 silly get     'cf-ray': '90f4ce1fb9adbbe4-WAW',
+395 silly get     'cf-cache-status': 'HIT',
+395 silly get     'access-control-allow-origin': '*',
+395 silly get     'cache-control': 'public, max-age=300',
+395 silly get     etag: 'W/"5772c94d4fdb46ab109337f757383ec4"',
+395 silly get     'last-modified': 'Mon, 13 Jan 2025 10:09:53 GMT',
+395 silly get     vary: 'accept-encoding, accept',
+395 silly get     'set-cookie': [
+395 silly get       '_cfuvid=bgoMczZtMx.9LxdjQrxtjZGjkqXObTrF3XLMY8TX5og-1739114024972-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+395 silly get     ],
+395 silly get     server: 'cloudflare',
+395 silly get     'content-encoding': 'gzip'
+395 silly get   }
+395 silly get ]
+396 verbose get saving prettier-plugin-svelte to C:\Users\i.kłusek\AppData\Local\npm-cache\registry.npmjs.org\prettier-plugin-svelte\.cache.json
+397 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+398 silly addNameRange number 2 { name: '@eslint/compat', range: '>=1.2.5 <2.0.0', hasData: true }
+399 silly addNameRange versions [
+399 silly addNameRange   '@eslint/compat',
+399 silly addNameRange   [
+399 silly addNameRange     '1.0.1', '1.0.3',
+399 silly addNameRange     '1.1.0', '1.1.1',
+399 silly addNameRange     '1.2.0', '1.2.1',
+399 silly addNameRange     '1.2.2', '1.2.3',
+399 silly addNameRange     '1.2.4', '1.2.5',
+399 silly addNameRange     '1.2.6'
+399 silly addNameRange   ]
+399 silly addNameRange ]
+400 silly addNamed @eslint/compat@1.2.6
+401 verbose addNamed "1.2.6" is a plain semver version for @eslint/compat
+402 http 200 https://registry.npmjs.org/eslint-config-prettier
+403 verbose headers {
+403 verbose headers   date: 'Sun, 09 Feb 2025 15:13:44 GMT',
+403 verbose headers   'content-type': 'application/json',
+403 verbose headers   'transfer-encoding': 'chunked',
+403 verbose headers   connection: 'keep-alive',
+403 verbose headers   'cf-ray': '90f4ce1f88b001fe-WAW',
+403 verbose headers   'cf-cache-status': 'HIT',
+403 verbose headers   'access-control-allow-origin': '*',
+403 verbose headers   age: '107',
+403 verbose headers   'cache-control': 'public, max-age=300',
+403 verbose headers   etag: 'W/"c7c10184e2cadd6a02784b349dccffd0"',
+403 verbose headers   'last-modified': 'Mon, 13 Jan 2025 14:41:48 GMT',
+403 verbose headers   vary: 'accept-encoding, accept',
+403 verbose headers   'set-cookie': [
+403 verbose headers     '_cfuvid=L2.bZOleKbvAJqkBznnNYq9kbGqvNmj8KBtv58BrA0M-1739114024909-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+403 verbose headers   ],
+403 verbose headers   server: 'cloudflare',
+403 verbose headers   'content-encoding': 'gzip'
+403 verbose headers }
+404 silly get cb [
+404 silly get   200,
+404 silly get   {
+404 silly get     date: 'Sun, 09 Feb 2025 15:13:44 GMT',
+404 silly get     'content-type': 'application/json',
+404 silly get     'transfer-encoding': 'chunked',
+404 silly get     connection: 'keep-alive',
+404 silly get     'cf-ray': '90f4ce1f88b001fe-WAW',
+404 silly get     'cf-cache-status': 'HIT',
+404 silly get     'access-control-allow-origin': '*',
+404 silly get     age: '107',
+404 silly get     'cache-control': 'public, max-age=300',
+404 silly get     etag: 'W/"c7c10184e2cadd6a02784b349dccffd0"',
+404 silly get     'last-modified': 'Mon, 13 Jan 2025 14:41:48 GMT',
+404 silly get     vary: 'accept-encoding, accept',
+404 silly get     'set-cookie': [
+404 silly get       '_cfuvid=L2.bZOleKbvAJqkBznnNYq9kbGqvNmj8KBtv58BrA0M-1739114024909-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+404 silly get     ],
+404 silly get     server: 'cloudflare',
+404 silly get     'content-encoding': 'gzip'
+404 silly get   }
+404 silly get ]
+405 verbose get saving eslint-config-prettier to C:\Users\i.kłusek\AppData\Local\npm-cache\registry.npmjs.org\eslint-config-prettier\.cache.json
+406 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+407 silly addNameRange number 2 { name: '@eslint/js', range: '>=9.18.0 <10.0.0', hasData: true }
+408 silly addNameRange versions [
+408 silly addNameRange   '@eslint/js',
+408 silly addNameRange   [
+408 silly addNameRange     '8.33.0',        '8.34.0',        '8.35.0',        '8.36.0',
+408 silly addNameRange     '8.37.0',        '8.38.0',        '8.39.0',        '8.40.0',
+408 silly addNameRange     '8.41.0',        '8.42.0',        '8.43.0',        '8.44.0',
+408 silly addNameRange     '8.45.0',        '8.46.0',        '8.47.0',        '8.48.0',
+408 silly addNameRange     '8.49.0',        '8.50.0',        '8.51.0',        '8.52.0',
+408 silly addNameRange     '8.53.0',        '8.54.0',        '8.55.0',        '8.56.0',
+408 silly addNameRange     '9.0.0-alpha.0', '9.0.0-alpha.1', '9.0.0-alpha.2', '9.0.0-beta.0',
+408 silly addNameRange     '8.57.0',        '9.0.0-beta.1',  '9.0.0-beta.2',  '9.0.0-rc.0',
+408 silly addNameRange     '9.0.0',         '9.1.0',         '9.1.1',         '9.2.0',
+408 silly addNameRange     '9.3.0',         '9.4.0',         '9.5.0',         '9.6.0',
+408 silly addNameRange     '9.7.0',         '10.0.0',        '9.8.0',         '9.9.0',
+408 silly addNameRange     '9.9.1',         '9.10.0',        '8.57.1',        '9.11.0',
+408 silly addNameRange     '9.11.1',        '9.12.0',        '9.13.0',        '9.14.0',
+408 silly addNameRange     '9.15.0',        '9.16.0',        '9.17.0',        '9.18.0',
+408 silly addNameRange     '9.19.0',        '9.20.0'
+408 silly addNameRange   ]
+408 silly addNameRange ]
+409 silly addNamed @eslint/js@9.20.0
+410 verbose addNamed "9.20.0" is a plain semver version for @eslint/js
+411 http 200 https://registry.npmjs.org/globals
+412 verbose headers {
+412 verbose headers   date: 'Sun, 09 Feb 2025 15:13:44 GMT',
+412 verbose headers   'content-type': 'application/json',
+412 verbose headers   'transfer-encoding': 'chunked',
+412 verbose headers   connection: 'keep-alive',
+412 verbose headers   'cf-ray': '90f4ce1f8d4f027a-WAW',
+412 verbose headers   'cf-cache-status': 'HIT',
+412 verbose headers   'access-control-allow-origin': '*',
+412 verbose headers   age: '243',
+412 verbose headers   'cache-control': 'public, max-age=300',
+412 verbose headers   etag: 'W/"60c63c94e815ffc1394817bb9914c1da"',
+412 verbose headers   'last-modified': 'Wed, 18 Dec 2024 13:39:23 GMT',
+412 verbose headers   vary: 'accept-encoding, accept',
+412 verbose headers   'set-cookie': [
+412 verbose headers     '_cfuvid=IOonhkDbWWNt1M9nKYGuA2XOv16wz1ESLpk3xahv.00-1739114024901-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+412 verbose headers   ],
+412 verbose headers   server: 'cloudflare',
+412 verbose headers   'content-encoding': 'gzip'
+412 verbose headers }
+413 silly get cb [
+413 silly get   200,
+413 silly get   {
+413 silly get     date: 'Sun, 09 Feb 2025 15:13:44 GMT',
+413 silly get     'content-type': 'application/json',
+413 silly get     'transfer-encoding': 'chunked',
+413 silly get     connection: 'keep-alive',
+413 silly get     'cf-ray': '90f4ce1f8d4f027a-WAW',
+413 silly get     'cf-cache-status': 'HIT',
+413 silly get     'access-control-allow-origin': '*',
+413 silly get     age: '243',
+413 silly get     'cache-control': 'public, max-age=300',
+413 silly get     etag: 'W/"60c63c94e815ffc1394817bb9914c1da"',
+413 silly get     'last-modified': 'Wed, 18 Dec 2024 13:39:23 GMT',
+413 silly get     vary: 'accept-encoding, accept',
+413 silly get     'set-cookie': [
+413 silly get       '_cfuvid=IOonhkDbWWNt1M9nKYGuA2XOv16wz1ESLpk3xahv.00-1739114024901-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+413 silly get     ],
+413 silly get     server: 'cloudflare',
+413 silly get     'content-encoding': 'gzip'
+413 silly get   }
+413 silly get ]
+414 verbose get saving globals to C:\Users\i.kłusek\AppData\Local\npm-cache\registry.npmjs.org\globals\.cache.json
+415 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+416 silly mapToRegistry name @eslint/js
+417 silly mapToRegistry scope (from package name) @eslint
+418 verbose mapToRegistry no registry URL found in name for scope @eslint
+419 silly mapToRegistry using default registry
+420 silly mapToRegistry registry https://registry.npmjs.org/
+421 silly mapToRegistry data Result {
+421 silly mapToRegistry   raw: '@eslint/js',
+421 silly mapToRegistry   scope: '@eslint',
+421 silly mapToRegistry   name: '@eslint/js',
+421 silly mapToRegistry   rawSpec: '',
+421 silly mapToRegistry   spec: 'latest',
+421 silly mapToRegistry   type: 'tag'
+421 silly mapToRegistry }
+422 silly mapToRegistry uri https://registry.npmjs.org/@eslint%2fjs
+423 verbose addRemoteTarball https://registry.npmjs.org/@eslint/js/-/js-9.20.0.tgz not in flight; adding
+424 verbose addRemoteTarball [
+424 verbose addRemoteTarball   'https://registry.npmjs.org/@eslint/js/-/js-9.20.0.tgz',
+424 verbose addRemoteTarball   '7421bcbe74889fcd65d1be59f00130c289856eb4'
+424 verbose addRemoteTarball ]
+425 silly cache afterAdd @eslint/compat@1.2.6
+426 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\@eslint\compat\1.2.6\package\package.json not in flight; writing
+427 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+428 http 200 https://registry.npmjs.org/@sveltejs%2fadapter-auto
+429 verbose headers {
+429 verbose headers   date: 'Sun, 09 Feb 2025 15:13:44 GMT',
+429 verbose headers   'content-type': 'application/json',
+429 verbose headers   'transfer-encoding': 'chunked',
+429 verbose headers   connection: 'keep-alive',
+429 verbose headers   'cf-ray': '90f4ce1f8cf2eeb3-WAW',
+429 verbose headers   'cf-cache-status': 'HIT',
+429 verbose headers   'access-control-allow-origin': '*',
+429 verbose headers   age: '187',
+429 verbose headers   'cache-control': 'public, max-age=300',
+429 verbose headers   etag: 'W/"2a60646f5b17dd74b59ec1b6d7b56fa0"',
+429 verbose headers   'last-modified': 'Wed, 15 Jan 2025 12:27:26 GMT',
+429 verbose headers   vary: 'accept-encoding, accept',
+429 verbose headers   'set-cookie': [
+429 verbose headers     '_cfuvid=jKqrqP6KOPYyRpGDWlv6LOLfurpW2_13PA2EpqWGLkM-1739114024952-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+429 verbose headers   ],
+429 verbose headers   server: 'cloudflare',
+429 verbose headers   'content-encoding': 'gzip'
+429 verbose headers }
+430 silly get cb [
+430 silly get   200,
+430 silly get   {
+430 silly get     date: 'Sun, 09 Feb 2025 15:13:44 GMT',
+430 silly get     'content-type': 'application/json',
+430 silly get     'transfer-encoding': 'chunked',
+430 silly get     connection: 'keep-alive',
+430 silly get     'cf-ray': '90f4ce1f8cf2eeb3-WAW',
+430 silly get     'cf-cache-status': 'HIT',
+430 silly get     'access-control-allow-origin': '*',
+430 silly get     age: '187',
+430 silly get     'cache-control': 'public, max-age=300',
+430 silly get     etag: 'W/"2a60646f5b17dd74b59ec1b6d7b56fa0"',
+430 silly get     'last-modified': 'Wed, 15 Jan 2025 12:27:26 GMT',
+430 silly get     vary: 'accept-encoding, accept',
+430 silly get     'set-cookie': [
+430 silly get       '_cfuvid=jKqrqP6KOPYyRpGDWlv6LOLfurpW2_13PA2EpqWGLkM-1739114024952-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+430 silly get     ],
+430 silly get     server: 'cloudflare',
+430 silly get     'content-encoding': 'gzip'
+430 silly get   }
+430 silly get ]
+431 verbose get saving @sveltejs/adapter-auto to C:\Users\i.kłusek\AppData\Local\npm-cache\registry.npmjs.org\_40sveltejs_252fadapter-auto\.cache.json
+432 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+433 silly addNameRange number 2 {
+433 silly addNameRange   name: 'prettier-plugin-svelte',
+433 silly addNameRange   range: '>=3.3.3 <4.0.0',
+433 silly addNameRange   hasData: true
+433 silly addNameRange }
+434 silly addNameRange versions [
+434 silly addNameRange   'prettier-plugin-svelte',
+434 silly addNameRange   [
+434 silly addNameRange     '0.1.0', '0.1.1', '0.2.0', '0.3.0',  '0.4.0',
+434 silly addNameRange     '0.4.1', '0.4.2', '0.5.0', '0.5.1',  '0.6.0',
+434 silly addNameRange     '0.7.0', '1.0.0', '1.1.0', '1.1.1',  '1.2.0',
+434 silly addNameRange     '1.2.1', '1.3.0', '1.4.0', '1.4.1',  '1.4.2',
+434 silly addNameRange     '2.0.0', '2.0.1', '2.0.2', '2.0.3',  '2.1.0',
+434 silly addNameRange     '2.1.1', '2.1.2', '2.1.3', '2.1.4',  '2.1.5',
+434 silly addNameRange     '2.1.6', '2.2.0', '2.3.0', '2.3.1',  '2.4.0',
+434 silly addNameRange     '2.5.0', '2.5.1', '2.6.0', '2.7.0',  '2.7.1',
+434 silly addNameRange     '2.8.0', '2.8.1', '2.9.0', '2.10.0', '2.10.1',
+434 silly addNameRange     '3.0.0', '3.0.1', '3.0.2', '3.0.3',  '3.1.0',
+434 silly addNameRange     '3.1.1', '3.1.2', '3.2.0', '3.2.1',  '3.2.2',
+434 silly addNameRange     '3.2.3', '3.2.4', '3.2.5', '3.2.6',  '3.2.7',
+434 silly addNameRange     '3.2.8', '3.3.0', '3.3.1', '3.3.2',  '3.3.3'
+434 silly addNameRange   ]
+434 silly addNameRange ]
+435 silly addNamed prettier-plugin-svelte@3.3.3
+436 verbose addNamed "3.3.3" is a plain semver version for prettier-plugin-svelte
+437 verbose request uri https://registry.npmjs.org/typescript
+438 verbose request no auth needed
+439 info attempt registry request try #1 at 16:13:46
+440 verbose request using bearer token for auth
+441 verbose etag W/"e31fd58ca74f7b624f0fd11b5227c5be"
+442 verbose lastModified Fri, 07 Feb 2025 07:15:12 GMT
+443 http request GET https://registry.npmjs.org/typescript
+444 silly addNameRange number 2 {
+444 silly addNameRange   name: 'eslint-config-prettier',
+444 silly addNameRange   range: '>=10.0.1 <11.0.0',
+444 silly addNameRange   hasData: true
+444 silly addNameRange }
+445 silly addNameRange versions [
+445 silly addNameRange   'eslint-config-prettier',
+445 silly addNameRange   [
+445 silly addNameRange     '1.0.0',  '1.0.1',  '1.0.2',  '1.0.3',  '1.1.0',  '1.1.1',
+445 silly addNameRange     '1.2.0',  '1.3.0',  '1.4.0',  '1.4.1',  '1.5.0',  '1.6.0',
+445 silly addNameRange     '1.7.0',  '2.0.0',  '2.1.0',  '2.1.1',  '2.2.0',  '2.3.0',
+445 silly addNameRange     '2.4.0',  '2.5.0',  '2.6.0',  '2.7.0',  '2.8.0',  '2.9.0',
+445 silly addNameRange     '2.10.0', '3.0.0',  '3.0.1',  '3.1.0',  '3.2.0',  '3.3.0',
+445 silly addNameRange     '3.4.0',  '3.5.0',  '3.6.0',  '4.0.0',  '4.1.0',  '4.2.0',
+445 silly addNameRange     '4.3.0',  '5.0.0',  '5.1.0',  '6.0.0',  '6.1.0',  '6.2.0',
+445 silly addNameRange     '6.3.0',  '6.4.0',  '6.5.0',  '6.6.0',  '6.7.0',  '6.8.0',
+445 silly addNameRange     '6.9.0',  '6.10.0', '6.10.1', '6.11.0', '6.12.0', '6.13.0',
+445 silly addNameRange     '6.14.0', '6.15.0', '7.0.0',  '7.1.0',  '7.2.0',  '8.0.0',
+445 silly addNameRange     '8.1.0',  '8.2.0',  '8.3.0',  '8.4.0',  '8.5.0',  '8.6.0',
+445 silly addNameRange     '8.7.0',  '8.8.0',  '8.9.0',  '8.10.0', '9.0.0',  '9.1.0',
+445 silly addNameRange     '10.0.0', '10.0.1'
+445 silly addNameRange   ]
+445 silly addNameRange ]
+446 silly addNamed eslint-config-prettier@10.0.1
+447 verbose addNamed "10.0.1" is a plain semver version for eslint-config-prettier
+448 silly addNameRange number 2 { name: 'globals', range: '>=15.14.0 <16.0.0', hasData: true }
+449 silly addNameRange versions [
+449 silly addNameRange   'globals',
+449 silly addNameRange   [
+449 silly addNameRange     '0.1.0',   '0.1.1',   '1.0.0',   '2.0.0',   '3.0.0',   '4.0.0',
+449 silly addNameRange     '5.0.0',   '5.1.0',   '6.0.0',   '6.1.0',   '6.2.0',   '6.3.0',
+449 silly addNameRange     '6.4.0',   '6.4.1',   '7.0.0',   '7.1.0',   '8.0.0',   '8.1.0',
+449 silly addNameRange     '8.2.0',   '8.3.0',   '8.4.0',   '8.5.0',   '8.6.0',   '8.7.0',
+449 silly addNameRange     '8.8.0',   '8.9.0',   '8.10.0',  '8.11.0',  '8.12.0',  '8.12.1',
+449 silly addNameRange     '8.13.0',  '8.14.0',  '8.15.0',  '8.16.0',  '8.17.0',  '8.18.0',
+449 silly addNameRange     '9.0.0',   '9.1.0',   '9.2.0',   '9.3.0',   '9.4.0',   '9.5.0',
+449 silly addNameRange     '9.6.0',   '9.7.0',   '9.8.0',   '9.9.0',   '9.10.0',  '9.11.0',
+449 silly addNameRange     '9.12.0',  '9.13.0',  '9.14.0',  '9.15.0',  '9.16.0',  '9.17.0',
+449 silly addNameRange     '9.18.0',  '10.0.0',  '10.1.0',  '10.2.0',  '10.3.0',  '10.4.0',
+449 silly addNameRange     '11.0.0',  '11.0.1',  '11.1.0',  '11.2.0',  '11.3.0',  '11.4.0',
+449 silly addNameRange     '11.5.0',  '11.6.0',  '11.7.0',  '11.8.0',  '11.9.0',  '11.10.0',
+449 silly addNameRange     '11.11.0', '11.12.0', '12.0.0',  '12.1.0',  '12.1.1',  '12.2.0',
+449 silly addNameRange     '12.3.0',  '12.4.0',  '13.0.0',  '13.1.0',  '13.2.0',  '13.3.0',
+449 silly addNameRange     '13.4.0',  '13.5.0',  '13.6.0',  '13.7.0',  '13.8.0',  '13.9.0',
+449 silly addNameRange     '13.10.0', '13.11.0', '13.12.0', '13.12.1', '13.13.0', '13.14.0',
+449 silly addNameRange     '13.15.0', '13.16.0', '13.17.0', '13.18.0',
+449 silly addNameRange     ... 22 more items
+449 silly addNameRange   ]
+449 silly addNameRange ]
+450 silly addNamed globals@15.14.0
+451 verbose addNamed "15.14.0" is a plain semver version for globals
+452 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\@eslint\compat\1.2.6\package\package.json written
+453 info retry fetch attempt 1 at 16:13:46
+454 info attempt registry request try #1 at 16:13:46
+455 http fetch GET https://registry.npmjs.org/@eslint/js/-/js-9.20.0.tgz
+456 verbose request using bearer token for auth
+457 http 200 https://registry.npmjs.org/@testing-library%2fjest-dom
+458 verbose headers {
+458 verbose headers   date: 'Sun, 09 Feb 2025 15:13:44 GMT',
+458 verbose headers   'content-type': 'application/json',
+458 verbose headers   'transfer-encoding': 'chunked',
+458 verbose headers   connection: 'keep-alive',
+458 verbose headers   'cf-ray': '90f4ce1f7983c060-WAW',
+458 verbose headers   'cf-cache-status': 'HIT',
+458 verbose headers   'access-control-allow-origin': '*',
+458 verbose headers   age: '171',
+458 verbose headers   'cache-control': 'public, max-age=300',
+458 verbose headers   etag: 'W/"efd7abbf477c9797dc4aade082e719f4"',
+458 verbose headers   'last-modified': 'Thu, 31 Oct 2024 15:11:27 GMT',
+458 verbose headers   vary: 'accept-encoding, accept',
+458 verbose headers   'set-cookie': [
+458 verbose headers     '_cfuvid=O7IJEujHvITzSeCPh4n8Ftw.EX0_knXdTZRgPQFCSQo-1739114024994-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+458 verbose headers   ],
+458 verbose headers   server: 'cloudflare',
+458 verbose headers   'content-encoding': 'gzip'
+458 verbose headers }
+459 silly get cb [
+459 silly get   200,
+459 silly get   {
+459 silly get     date: 'Sun, 09 Feb 2025 15:13:44 GMT',
+459 silly get     'content-type': 'application/json',
+459 silly get     'transfer-encoding': 'chunked',
+459 silly get     connection: 'keep-alive',
+459 silly get     'cf-ray': '90f4ce1f7983c060-WAW',
+459 silly get     'cf-cache-status': 'HIT',
+459 silly get     'access-control-allow-origin': '*',
+459 silly get     age: '171',
+459 silly get     'cache-control': 'public, max-age=300',
+459 silly get     etag: 'W/"efd7abbf477c9797dc4aade082e719f4"',
+459 silly get     'last-modified': 'Thu, 31 Oct 2024 15:11:27 GMT',
+459 silly get     vary: 'accept-encoding, accept',
+459 silly get     'set-cookie': [
+459 silly get       '_cfuvid=O7IJEujHvITzSeCPh4n8Ftw.EX0_knXdTZRgPQFCSQo-1739114024994-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+459 silly get     ],
+459 silly get     server: 'cloudflare',
+459 silly get     'content-encoding': 'gzip'
+459 silly get   }
+459 silly get ]
+460 verbose get saving @testing-library/jest-dom to C:\Users\i.kłusek\AppData\Local\npm-cache\registry.npmjs.org\_40testing-library_252fjest-dom\.cache.json
+461 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+462 silly cache afterAdd prettier-plugin-svelte@3.3.3
+463 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\prettier-plugin-svelte\3.3.3\package\package.json not in flight; writing
+464 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+465 silly addNameRange number 2 {
+465 silly addNameRange   name: '@sveltejs/adapter-auto',
+465 silly addNameRange   range: '>=4.0.0 <5.0.0',
+465 silly addNameRange   hasData: true
+465 silly addNameRange }
+466 silly addNameRange versions [
+466 silly addNameRange   '@sveltejs/adapter-auto',
+466 silly addNameRange   [
+466 silly addNameRange     '1.0.0-next.0',  '1.0.0-next.1',  '1.0.0-next.2',  '1.0.0-next.3',
+466 silly addNameRange     '1.0.0-next.4',  '1.0.0-next.5',  '1.0.0-next.6',  '1.0.0-next.7',
+466 silly addNameRange     '1.0.0-next.8',  '1.0.0-next.9',  '1.0.0-next.10', '1.0.0-next.11',
+466 silly addNameRange     '1.0.0-next.12', '1.0.0-next.13', '1.0.0-next.14', '1.0.0-next.15',
+466 silly addNameRange     '1.0.0-next.16', '1.0.0-next.17', '1.0.0-next.18', '1.0.0-next.19',
+466 silly addNameRange     '1.0.0-next.20', '1.0.0-next.21', '1.0.0-next.22', '1.0.0-next.23',
+466 silly addNameRange     '1.0.0-next.24', '1.0.0-next.25', '1.0.0-next.26', '0.0.1',
+466 silly addNameRange     '1.0.0-next.27', '1.0.0-next.28', '1.0.0-next.29', '1.0.0-next.30',
+466 silly addNameRange     '1.0.0-next.31', '1.0.0-next.32', '1.0.0-next.33', '1.0.0-next.34',
+466 silly addNameRange     '1.0.0-next.35', '1.0.0-next.36', '1.0.0-next.37', '1.0.0-next.38',
+466 silly addNameRange     '1.0.0-next.39', '1.0.0-next.40', '1.0.0-next.41', '1.0.0-next.42',
+466 silly addNameRange     '1.0.0-next.43', '1.0.0-next.44', '1.0.0-next.45', '1.0.0-next.46',
+466 silly addNameRange     '1.0.0-next.47', '1.0.0-next.48', '1.0.0-next.49', '1.0.0-next.50',
+466 silly addNameRange     '1.0.0-next.51', '1.0.0-next.52', '1.0.0-next.53', '1.0.0-next.54',
+466 silly addNameRange     '1.0.0-next.55', '1.0.0-next.56', '1.0.0-next.57', '1.0.0-next.58',
+466 silly addNameRange     '1.0.0-next.59', '1.0.0-next.60', '1.0.0-next.61', '1.0.0-next.62',
+466 silly addNameRange     '1.0.0-next.63', '1.0.0-next.64', '1.0.0-next.65', '1.0.0-next.66',
+466 silly addNameRange     '1.0.0-next.67', '1.0.0-next.68', '1.0.0-next.69', '1.0.0-next.70',
+466 silly addNameRange     '1.0.0-next.71', '1.0.0-next.72', '1.0.0-next.73', '1.0.0-next.74',
+466 silly addNameRange     '1.0.0-next.75', '1.0.0-next.76', '1.0.0-next.77', '1.0.0-next.78',
+466 silly addNameRange     '1.0.0-next.79', '1.0.0-next.80', '1.0.0-next.81', '1.0.0-next.82',
+466 silly addNameRange     '1.0.0-next.83', '1.0.0-next.84', '1.0.0-next.85', '1.0.0-next.86',
+466 silly addNameRange     '1.0.0-next.87', '1.0.0-next.88', '1.0.0-next.89', '1.0.0-next.90',
+466 silly addNameRange     '1.0.0-next.91', '1.0.0',         '1.0.1',         '1.0.2',
+466 silly addNameRange     '1.0.3',         '2.0.0',         '2.0.1',         '2.1.0',
+466 silly addNameRange     ... 14 more items
+466 silly addNameRange   ]
+466 silly addNameRange ]
+467 silly addNamed @sveltejs/adapter-auto@4.0.0
+468 verbose addNamed "4.0.0" is a plain semver version for @sveltejs/adapter-auto
+469 silly cache afterAdd globals@15.14.0
+470 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\globals\15.14.0\package\package.json not in flight; writing
+471 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+472 silly cache afterAdd eslint-config-prettier@10.0.1
+473 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\eslint-config-prettier\10.0.1\package\package.json not in flight; writing
+474 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+475 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\prettier-plugin-svelte\3.3.3\package\package.json written
+476 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\globals\15.14.0\package\package.json written
+477 silly cache afterAdd @sveltejs/adapter-auto@4.0.0
+478 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\@sveltejs\adapter-auto\4.0.0\package\package.json not in flight; writing
+479 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+480 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\eslint-config-prettier\10.0.1\package\package.json written
+481 http fetch 200 https://registry.npmjs.org/@eslint/js/-/js-9.20.0.tgz
+482 http 200 https://registry.npmjs.org/@testing-library%2fsvelte
+483 verbose headers {
+483 verbose headers   date: 'Sun, 09 Feb 2025 15:13:45 GMT',
+483 verbose headers   'content-type': 'application/json',
+483 verbose headers   'transfer-encoding': 'chunked',
+483 verbose headers   connection: 'keep-alive',
+483 verbose headers   'cf-ray': '90f4ce1f4fdec3d3-WAW',
+483 verbose headers   'cf-cache-status': 'HIT',
+483 verbose headers   'access-control-allow-origin': '*',
+483 verbose headers   age: '141',
+483 verbose headers   'cache-control': 'public, max-age=300',
+483 verbose headers   etag: 'W/"532da54e7a8ae73945bb7ebfec8fe125"',
+483 verbose headers   'last-modified': 'Tue, 19 Nov 2024 17:23:06 GMT',
+483 verbose headers   vary: 'accept-encoding, accept',
+483 verbose headers   'set-cookie': [
+483 verbose headers     '_cfuvid=JfZ4PLpWPxiO9OifOWTtfs8p3.tKaa21c7BFXgcZfgI-1739114025037-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+483 verbose headers   ],
+483 verbose headers   server: 'cloudflare',
+483 verbose headers   'content-encoding': 'gzip'
+483 verbose headers }
+484 silly get cb [
+484 silly get   200,
+484 silly get   {
+484 silly get     date: 'Sun, 09 Feb 2025 15:13:45 GMT',
+484 silly get     'content-type': 'application/json',
+484 silly get     'transfer-encoding': 'chunked',
+484 silly get     connection: 'keep-alive',
+484 silly get     'cf-ray': '90f4ce1f4fdec3d3-WAW',
+484 silly get     'cf-cache-status': 'HIT',
+484 silly get     'access-control-allow-origin': '*',
+484 silly get     age: '141',
+484 silly get     'cache-control': 'public, max-age=300',
+484 silly get     etag: 'W/"532da54e7a8ae73945bb7ebfec8fe125"',
+484 silly get     'last-modified': 'Tue, 19 Nov 2024 17:23:06 GMT',
+484 silly get     vary: 'accept-encoding, accept',
+484 silly get     'set-cookie': [
+484 silly get       '_cfuvid=JfZ4PLpWPxiO9OifOWTtfs8p3.tKaa21c7BFXgcZfgI-1739114025037-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+484 silly get     ],
+484 silly get     server: 'cloudflare',
+484 silly get     'content-encoding': 'gzip'
+484 silly get   }
+484 silly get ]
+485 verbose get saving @testing-library/svelte to C:\Users\i.kłusek\AppData\Local\npm-cache\registry.npmjs.org\_40testing-library_252fsvelte\.cache.json
+486 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+487 silly addNameRange number 2 {
+487 silly addNameRange   name: '@testing-library/jest-dom',
+487 silly addNameRange   range: '>=6.6.3 <7.0.0',
+487 silly addNameRange   hasData: true
+487 silly addNameRange }
+488 silly addNameRange versions [ '@testing-library/jest-dom', [] ]
+489 silly fetchAndShaCheck shasum 7421bcbe74889fcd65d1be59f00130c289856eb4
+490 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\@sveltejs\adapter-auto\4.0.0\package\package.json written
+491 verbose addTmpTarball C:\Users\I582A~1.KUS\AppData\Local\Temp\npm-20992-accf2d26\registry.npmjs.org\_40eslint\js\-\js-9.20.0.tgz not in flight; adding
+492 verbose addTmpTarball already have metadata; skipping unpack for @eslint/js@9.20.0
+493 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+494 http 200 https://registry.npmjs.org/eslint-plugin-svelte
+495 verbose headers {
+495 verbose headers   date: 'Sun, 09 Feb 2025 15:13:44 GMT',
+495 verbose headers   'content-type': 'application/json',
+495 verbose headers   'transfer-encoding': 'chunked',
+495 verbose headers   connection: 'keep-alive',
+495 verbose headers   'cf-ray': '90f4ce1fcbb0c3bb-WAW',
+495 verbose headers   'cf-cache-status': 'HIT',
+495 verbose headers   'access-control-allow-origin': '*',
+495 verbose headers   'cache-control': 'public, max-age=300',
+495 verbose headers   etag: 'W/"11e583f342015b7404a0a97927b1c3cc"',
+495 verbose headers   'last-modified': 'Mon, 03 Feb 2025 03:24:07 GMT',
+495 verbose headers   vary: 'accept-encoding, accept',
+495 verbose headers   'set-cookie': [
+495 verbose headers     '_cfuvid=Wze0tAKRjHDAgLgRCiFy3zKhEsK7n0Ad8ktFtSprS.o-1739114024985-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+495 verbose headers   ],
+495 verbose headers   server: 'cloudflare',
+495 verbose headers   'content-encoding': 'gzip'
+495 verbose headers }
+496 silly get cb [
+496 silly get   200,
+496 silly get   {
+496 silly get     date: 'Sun, 09 Feb 2025 15:13:44 GMT',
+496 silly get     'content-type': 'application/json',
+496 silly get     'transfer-encoding': 'chunked',
+496 silly get     connection: 'keep-alive',
+496 silly get     'cf-ray': '90f4ce1fcbb0c3bb-WAW',
+496 silly get     'cf-cache-status': 'HIT',
+496 silly get     'access-control-allow-origin': '*',
+496 silly get     'cache-control': 'public, max-age=300',
+496 silly get     etag: 'W/"11e583f342015b7404a0a97927b1c3cc"',
+496 silly get     'last-modified': 'Mon, 03 Feb 2025 03:24:07 GMT',
+496 silly get     vary: 'accept-encoding, accept',
+496 silly get     'set-cookie': [
+496 silly get       '_cfuvid=Wze0tAKRjHDAgLgRCiFy3zKhEsK7n0Ad8ktFtSprS.o-1739114024985-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+496 silly get     ],
+496 silly get     server: 'cloudflare',
+496 silly get     'content-encoding': 'gzip'
+496 silly get   }
+496 silly get ]
+497 verbose get saving eslint-plugin-svelte to C:\Users\i.kłusek\AppData\Local\npm-cache\registry.npmjs.org\eslint-plugin-svelte\.cache.json
+498 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+499 http 200 https://registry.npmjs.org/prettier
+500 verbose headers {
+500 verbose headers   date: 'Sun, 09 Feb 2025 15:13:45 GMT',
+500 verbose headers   'content-type': 'application/json',
+500 verbose headers   'transfer-encoding': 'chunked',
+500 verbose headers   connection: 'keep-alive',
+500 verbose headers   'cf-ray': '90f4ce202dbcc3c3-WAW',
+500 verbose headers   'cf-cache-status': 'HIT',
+500 verbose headers   'access-control-allow-origin': '*',
+500 verbose headers   age: '260',
+500 verbose headers   'cache-control': 'public, max-age=300',
+500 verbose headers   etag: 'W/"e9a910d1f5c41fa43284893d14ddd2cd"',
+500 verbose headers   'last-modified': 'Sun, 09 Feb 2025 11:23:42 GMT',
+500 verbose headers   vary: 'accept-encoding, accept',
+500 verbose headers   'set-cookie': [
+500 verbose headers     '_cfuvid=RTAeUu.Fl26h0q7FYmByI0Vm1AdHNpT5lj6JaSDFtFI-1739114025012-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+500 verbose headers   ],
+500 verbose headers   server: 'cloudflare',
+500 verbose headers   'content-encoding': 'gzip'
+500 verbose headers }
+501 silly get cb [
+501 silly get   200,
+501 silly get   {
+501 silly get     date: 'Sun, 09 Feb 2025 15:13:45 GMT',
+501 silly get     'content-type': 'application/json',
+501 silly get     'transfer-encoding': 'chunked',
+501 silly get     connection: 'keep-alive',
+501 silly get     'cf-ray': '90f4ce202dbcc3c3-WAW',
+501 silly get     'cf-cache-status': 'HIT',
+501 silly get     'access-control-allow-origin': '*',
+501 silly get     age: '260',
+501 silly get     'cache-control': 'public, max-age=300',
+501 silly get     etag: 'W/"e9a910d1f5c41fa43284893d14ddd2cd"',
+501 silly get     'last-modified': 'Sun, 09 Feb 2025 11:23:42 GMT',
+501 silly get     vary: 'accept-encoding, accept',
+501 silly get     'set-cookie': [
+501 silly get       '_cfuvid=RTAeUu.Fl26h0q7FYmByI0Vm1AdHNpT5lj6JaSDFtFI-1739114025012-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+501 silly get     ],
+501 silly get     server: 'cloudflare',
+501 silly get     'content-encoding': 'gzip'
+501 silly get   }
+501 silly get ]
+502 verbose get saving prettier to C:\Users\i.kłusek\AppData\Local\npm-cache\registry.npmjs.org\prettier\.cache.json
+503 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+504 silly addNameRange number 2 {
+504 silly addNameRange   name: '@testing-library/svelte',
+504 silly addNameRange   range: '>=5.2.4 <6.0.0',
+504 silly addNameRange   hasData: true
+504 silly addNameRange }
+505 silly addNameRange versions [
+505 silly addNameRange   '@testing-library/svelte',
+505 silly addNameRange   [
+505 silly addNameRange     '2.0.0',        '1.7.0',        '1.7.1',
+505 silly addNameRange     '1.8.0',        '1.9.0',        '1.9.1',
+505 silly addNameRange     '1.10.0',       '1.11.0',       '1.11.1',
+505 silly addNameRange     '1.11.2',       '3.0.0',        '3.0.1',
+505 silly addNameRange     '3.0.2',        '3.0.3',        '3.1.0',
+505 silly addNameRange     '3.1.1',        '3.1.2',        '3.1.3',
+505 silly addNameRange     '3.2.0',        '3.2.1',        '3.2.2',
+505 silly addNameRange     '4.0.0',        '4.0.1',        '4.0.2',
+505 silly addNameRange     '4.0.3',        '4.0.4',        '4.0.5',
+505 silly addNameRange     '4.0.6',        '4.1.0',        '4.2.0',
+505 silly addNameRange     '4.2.1',        '4.2.2',        '4.2.3',
+505 silly addNameRange     '5.0.0',        '5.0.1',        '5.1.0',
+505 silly addNameRange     '5.2.0-next.1', '5.2.0-next.2', '5.2.0-next.3',
+505 silly addNameRange     '5.2.0',        '5.2.1',        '5.2.2',
+505 silly addNameRange     '5.2.3',        '5.2.4',        '5.2.5',
+505 silly addNameRange     '5.2.6'
+505 silly addNameRange   ]
+505 silly addNameRange ]
+506 silly addNamed @testing-library/svelte@5.2.6
+507 verbose addNamed "5.2.6" is a plain semver version for @testing-library/svelte
+508 silly mapToRegistry name @testing-library/svelte
+509 silly mapToRegistry scope (from package name) @testing-library
+510 verbose mapToRegistry no registry URL found in name for scope @testing-library
+511 silly mapToRegistry using default registry
+512 silly mapToRegistry registry https://registry.npmjs.org/
+513 silly mapToRegistry data Result {
+513 silly mapToRegistry   raw: '@testing-library/svelte',
+513 silly mapToRegistry   scope: '@testing-library',
+513 silly mapToRegistry   name: '@testing-library/svelte',
+513 silly mapToRegistry   rawSpec: '',
+513 silly mapToRegistry   spec: 'latest',
+513 silly mapToRegistry   type: 'tag'
+513 silly mapToRegistry }
+514 silly mapToRegistry uri https://registry.npmjs.org/@testing-library%2fsvelte
+515 verbose addRemoteTarball https://registry.npmjs.org/@testing-library/svelte/-/svelte-5.2.6.tgz not in flight; adding
+516 verbose addRemoteTarball [
+516 verbose addRemoteTarball   'https://registry.npmjs.org/@testing-library/svelte/-/svelte-5.2.6.tgz',
+516 verbose addRemoteTarball   'fdbb1a8950d8b57c75602e4fda8b4627e7c37eac'
+516 verbose addRemoteTarball ]
+517 http 200 https://registry.npmjs.org/@sveltejs%2fvite-plugin-svelte
+518 verbose headers {
+518 verbose headers   date: 'Sun, 09 Feb 2025 15:13:45 GMT',
+518 verbose headers   'content-type': 'application/json',
+518 verbose headers   'transfer-encoding': 'chunked',
+518 verbose headers   connection: 'keep-alive',
+518 verbose headers   'cf-ray': '90f4ce1f8c04bf88-WAW',
+518 verbose headers   'cf-cache-status': 'HIT',
+518 verbose headers   'access-control-allow-origin': '*',
+518 verbose headers   'cache-control': 'public, max-age=300',
+518 verbose headers   etag: 'W/"752c4feeb8156f896b2882a28cb81bd7"',
+518 verbose headers   'last-modified': 'Wed, 18 Dec 2024 10:08:23 GMT',
+518 verbose headers   vary: 'accept-encoding, accept',
+518 verbose headers   'set-cookie': [
+518 verbose headers     '_cfuvid=bKEEcKYM9aKSh75v_urYQom9SXwHZqM_wrquGxRFUw4-1739114025100-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+518 verbose headers   ],
+518 verbose headers   server: 'cloudflare',
+518 verbose headers   'content-encoding': 'gzip'
+518 verbose headers }
+519 silly get cb [
+519 silly get   200,
+519 silly get   {
+519 silly get     date: 'Sun, 09 Feb 2025 15:13:45 GMT',
+519 silly get     'content-type': 'application/json',
+519 silly get     'transfer-encoding': 'chunked',
+519 silly get     connection: 'keep-alive',
+519 silly get     'cf-ray': '90f4ce1f8c04bf88-WAW',
+519 silly get     'cf-cache-status': 'HIT',
+519 silly get     'access-control-allow-origin': '*',
+519 silly get     'cache-control': 'public, max-age=300',
+519 silly get     etag: 'W/"752c4feeb8156f896b2882a28cb81bd7"',
+519 silly get     'last-modified': 'Wed, 18 Dec 2024 10:08:23 GMT',
+519 silly get     vary: 'accept-encoding, accept',
+519 silly get     'set-cookie': [
+519 silly get       '_cfuvid=bKEEcKYM9aKSh75v_urYQom9SXwHZqM_wrquGxRFUw4-1739114025100-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+519 silly get     ],
+519 silly get     server: 'cloudflare',
+519 silly get     'content-encoding': 'gzip'
+519 silly get   }
+519 silly get ]
+520 verbose get saving @sveltejs/vite-plugin-svelte to C:\Users\i.kłusek\AppData\Local\npm-cache\registry.npmjs.org\_40sveltejs_252fvite-plugin-svelte\.cache.json
+521 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+522 silly cache afterAdd @eslint/js@9.20.0
+523 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\@eslint\js\9.20.0\package\package.json not in flight; writing
+524 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+525 info retry fetch attempt 1 at 16:13:46
+526 info attempt registry request try #1 at 16:13:46
+527 http fetch GET https://registry.npmjs.org/@testing-library/svelte/-/svelte-5.2.6.tgz
+528 verbose request using bearer token for auth
+529 silly addNameRange number 2 {
+529 silly addNameRange   name: 'eslint-plugin-svelte',
+529 silly addNameRange   range: '>=2.46.1 <3.0.0',
+529 silly addNameRange   hasData: true
+529 silly addNameRange }
+530 silly addNameRange versions [
+530 silly addNameRange   'eslint-plugin-svelte',
+530 silly addNameRange   [
+530 silly addNameRange     '0.1.0',          '1.1.1',          '1.1.2',          '2.0.0',
+530 silly addNameRange     '2.1.0',          '2.1.1',          '2.2.0',          '2.3.0',
+530 silly addNameRange     '2.3.1',          '2.4.0',          '2.4.1',          '2.5.0',
+530 silly addNameRange     '2.6.0',          '2.7.0',          '2.8.0',          '2.9.0',
+530 silly addNameRange     '2.10.0',         '2.11.0',         '2.12.0',         '2.13.0',
+530 silly addNameRange     '2.13.1',         '2.14.0',         '2.14.1',         '2.15.0',
+530 silly addNameRange     '2.16.0',         '2.17.0',         '2.18.0',         '2.19.0',
+530 silly addNameRange     '2.19.1',         '2.19.2',         '2.20.0',         '2.20.1',
+530 silly addNameRange     '2.20.2',         '2.21.0',         '2.22.0',         '2.23.0',
+530 silly addNameRange     '2.23.1',         '2.24.0',         '2.25.0',         '2.26.0',
+530 silly addNameRange     '2.27.0',         '2.27.1',         '2.27.2',         '2.27.3',
+530 silly addNameRange     '2.27.4',         '2.28.0',         '2.29.0',         '2.30.0',
+530 silly addNameRange     '2.31.0',         '2.31.1',         '2.32.0',         '2.32.1',
+530 silly addNameRange     '2.32.2',         '2.32.3',         '2.32.4',         '2.33.0',
+530 silly addNameRange     '2.33.1',         '2.33.2',         '2.34.0',         '2.34.1',
+530 silly addNameRange     '2.35.0',         '2.35.1',         '2.36.0-next.0',  '2.36.0-next.1',
+530 silly addNameRange     '2.36.0-next.2',  '2.36.0-next.3',  '2.36.0-next.4',  '2.36.0-next.5',
+530 silly addNameRange     '2.36.0-next.6',  '2.36.0-next.7',  '2.36.0-next.8',  '2.36.0-next.9',
+530 silly addNameRange     '2.36.0-next.10', '2.36.0-next.11', '2.36.0-next.12', '2.36.0-next.13',
+530 silly addNameRange     '2.36.0',         '2.37.0',         '2.38.0',         '2.39.0',
+530 silly addNameRange     '2.39.1',         '2.39.2',         '2.39.3',         '2.39.4',
+530 silly addNameRange     '2.39.5',         '2.40.0',         '2.41.0',         '2.42.0',
+530 silly addNameRange     '2.43.0',         '2.44.0',         '2.44.1',         '2.45.0',
+530 silly addNameRange     '2.45.1',         '2.46.0',         '3.0.0-next.0',   '3.0.0-next.1',
+530 silly addNameRange     '2.46.1',         '3.0.0-next.2',   '3.0.0-next.3',   '3.0.0-next.4',
+530 silly addNameRange     ... 14 more items
+530 silly addNameRange   ]
+530 silly addNameRange ]
+531 silly addNamed eslint-plugin-svelte@2.46.1
+532 verbose addNamed "2.46.1" is a plain semver version for eslint-plugin-svelte
+533 http 200 https://registry.npmjs.org/jsdom
+534 verbose headers {
+534 verbose headers   date: 'Sun, 09 Feb 2025 15:13:44 GMT',
+534 verbose headers   'content-type': 'application/json',
+534 verbose headers   'transfer-encoding': 'chunked',
+534 verbose headers   connection: 'keep-alive',
+534 verbose headers   'cf-ray': '90f4ce1f6e15c3f6-WAW',
+534 verbose headers   'cf-cache-status': 'HIT',
+534 verbose headers   'access-control-allow-origin': '*',
+534 verbose headers   age: '2',
+534 verbose headers   'cache-control': 'public, max-age=300',
+534 verbose headers   etag: 'W/"7a4cff3ebabe1e0649c111a7a4d118ee"',
+534 verbose headers   'last-modified': 'Thu, 09 Jan 2025 05:58:53 GMT',
+534 verbose headers   vary: 'accept-encoding, accept',
+534 verbose headers   'set-cookie': [
+534 verbose headers     '_cfuvid=Kdy1UzJ4eoUjWhchLC6z0MBcEMianydzWzMjKolvZyI-1739114024895-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+534 verbose headers   ],
+534 verbose headers   server: 'cloudflare',
+534 verbose headers   'content-encoding': 'gzip'
+534 verbose headers }
+535 silly get cb [
+535 silly get   200,
+535 silly get   {
+535 silly get     date: 'Sun, 09 Feb 2025 15:13:44 GMT',
+535 silly get     'content-type': 'application/json',
+535 silly get     'transfer-encoding': 'chunked',
+535 silly get     connection: 'keep-alive',
+535 silly get     'cf-ray': '90f4ce1f6e15c3f6-WAW',
+535 silly get     'cf-cache-status': 'HIT',
+535 silly get     'access-control-allow-origin': '*',
+535 silly get     age: '2',
+535 silly get     'cache-control': 'public, max-age=300',
+535 silly get     etag: 'W/"7a4cff3ebabe1e0649c111a7a4d118ee"',
+535 silly get     'last-modified': 'Thu, 09 Jan 2025 05:58:53 GMT',
+535 silly get     vary: 'accept-encoding, accept',
+535 silly get     'set-cookie': [
+535 silly get       '_cfuvid=Kdy1UzJ4eoUjWhchLC6z0MBcEMianydzWzMjKolvZyI-1739114024895-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+535 silly get     ],
+535 silly get     server: 'cloudflare',
+535 silly get     'content-encoding': 'gzip'
+535 silly get   }
+535 silly get ]
+536 verbose get saving jsdom to C:\Users\i.kłusek\AppData\Local\npm-cache\registry.npmjs.org\jsdom\.cache.json
+537 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+538 silly addNameRange number 2 { name: 'prettier', range: '>=3.4.2 <4.0.0', hasData: true }
+539 silly addNameRange versions [
+539 silly addNameRange   'prettier',
+539 silly addNameRange   [
+539 silly addNameRange     '0.0.1',  '0.0.2',  '0.0.3',       '0.0.4',  '0.0.5',
+539 silly addNameRange     '0.0.6',  '0.0.7',  '0.0.8',       '0.0.9',  '0.0.10',
+539 silly addNameRange     '0.11.0', '0.13.1', '0.14.0',      '0.14.1', '0.15.0',
+539 silly addNameRange     '0.16.0', '0.17.0', '0.17.1',      '0.18.0', '0.19.0',
+539 silly addNameRange     '0.20.0', '0.21.0', '0.22.0',      '1.0.0',  '1.0.1',
+539 silly addNameRange     '1.0.2',  '1.1.0',  '1.2.0',       '1.2.1',  '1.2.2',
+539 silly addNameRange     '1.3.0',  '1.3.1',  '1.4.0-beta',  '1.4.0',  '1.4.1',
+539 silly addNameRange     '1.4.2',  '1.4.3',  '1.4.4',       '1.5.0',  '1.5.1',
+539 silly addNameRange     '1.5.2',  '1.5.3',  '1.6.0-beta2', '1.6.0',  '1.6.1',
+539 silly addNameRange     '1.7.0',  '1.7.1',  '1.7.2',       '1.7.3',  '1.7.4',
+539 silly addNameRange     '1.8.0',  '1.8.1',  '1.8.2',       '1.9.0',  '1.9.1',
+539 silly addNameRange     '1.9.2',  '1.10.0', '1.10.1',      '1.10.2', '1.11.0-rc.1',
+539 silly addNameRange     '1.11.0', '1.11.1', '1.12.0',      '1.12.1', '1.13.0',
+539 silly addNameRange     '1.13.1', '1.13.2', '1.13.3',      '1.13.4', '1.13.5',
+539 silly addNameRange     '1.13.6', '1.13.7', '1.14.0',      '1.14.1', '1.14.2',
+539 silly addNameRange     '1.14.3', '1.15.0', '1.15.1',      '1.15.2', '1.15.3',
+539 silly addNameRange     '1.16.0', '1.16.1', '1.16.2',      '1.16.3', '1.16.4',
+539 silly addNameRange     '1.17.0', '1.17.1', '1.18.0',      '1.18.1', '1.18.2',
+539 silly addNameRange     '1.19.0', '1.19.1', '2.0.0',       '2.0.1',  '2.0.2',
+539 silly addNameRange     '2.0.3',  '2.0.4',  '2.0.5',       '2.1.0',  '2.1.1',
+539 silly addNameRange     ... 68 more items
+539 silly addNameRange   ]
+539 silly addNameRange ]
+540 silly addNamed prettier@3.5.0
+541 verbose addNamed "3.5.0" is a plain semver version for prettier
+542 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\@eslint\js\9.20.0\package\package.json written
+543 silly mapToRegistry name prettier
+544 silly mapToRegistry using default registry
+545 silly mapToRegistry registry https://registry.npmjs.org/
+546 silly mapToRegistry data Result {
+546 silly mapToRegistry   raw: 'prettier',
+546 silly mapToRegistry   scope: null,
+546 silly mapToRegistry   name: 'prettier',
+546 silly mapToRegistry   rawSpec: '',
+546 silly mapToRegistry   spec: 'latest',
+546 silly mapToRegistry   type: 'tag'
+546 silly mapToRegistry }
+547 silly mapToRegistry uri https://registry.npmjs.org/prettier
+548 verbose addRemoteTarball https://registry.npmjs.org/prettier/-/prettier-3.5.0.tgz not in flight; adding
+549 verbose addRemoteTarball [
+549 verbose addRemoteTarball   'https://registry.npmjs.org/prettier/-/prettier-3.5.0.tgz',
+549 verbose addRemoteTarball   '50325a28887c6dfdf2ca3f8eaba02b66a8429ca7'
+549 verbose addRemoteTarball ]
+550 silly addNameRange number 2 {
+550 silly addNameRange   name: '@sveltejs/vite-plugin-svelte',
+550 silly addNameRange   range: '>=5.0.0 <6.0.0',
+550 silly addNameRange   hasData: true
+550 silly addNameRange }
+551 silly addNameRange versions [
+551 silly addNameRange   '@sveltejs/vite-plugin-svelte',
+551 silly addNameRange   [
+551 silly addNameRange     '1.0.0-next.0',  '1.0.0-next.1',  '1.0.0-next.2',  '1.0.0-next.3',
+551 silly addNameRange     '1.0.0-next.5',  '1.0.0-next.6',  '1.0.0-next.7',  '1.0.0-next.8',
+551 silly addNameRange     '1.0.0-next.9',  '1.0.0-next.10', '1.0.0-next.11', '1.0.0-next.12',
+551 silly addNameRange     '1.0.0-next.13', '1.0.0-next.14', '1.0.0-next.15', '1.0.0-next.16',
+551 silly addNameRange     '1.0.0-next.17', '1.0.0-next.18', '1.0.0-next.19', '1.0.0-next.20',
+551 silly addNameRange     '1.0.0-next.21', '1.0.0-next.22', '1.0.0-next.23', '1.0.0-next.24',
+551 silly addNameRange     '1.0.0-next.25', '1.0.0-next.26', '1.0.0-next.27', '1.0.0-next.28',
+551 silly addNameRange     '1.0.0-next.29', '1.0.0-next.30', '1.0.0-next.31', '1.0.0-next.32',
+551 silly addNameRange     '1.0.0-next.33', '1.0.0-next.34', '1.0.0-next.35', '1.0.0-next.36',
+551 silly addNameRange     '1.0.0-next.37', '1.0.0-next.38', '1.0.0-next.39', '1.0.0-next.40',
+551 silly addNameRange     '1.0.0-next.41', '1.0.0-next.42', '1.0.0-next.43', '1.0.0-next.44',
+551 silly addNameRange     '1.0.0-next.45', '1.0.0-next.46', '1.0.0-next.47', '1.0.0-next.48',
+551 silly addNameRange     '1.0.0-next.49', '1.0.0',         '1.0.1',         '1.0.2',
+551 silly addNameRange     '1.0.3',         '1.0.4',         '1.0.5',         '1.0.6',
+551 silly addNameRange     '1.0.7',         '1.0.8',         '1.0.9',         '1.1.0',
+551 silly addNameRange     '1.1.1',         '1.2.0',         '1.3.0',         '1.3.1',
+551 silly addNameRange     '1.4.0',         '2.0.0-beta.0',  '2.0.0-beta.1',  '2.0.0-beta.2',
+551 silly addNameRange     '2.0.0-beta.3',  '2.0.0',         '2.0.1',         '2.0.2',
+551 silly addNameRange     '2.0.3',         '2.0.4',         '2.1.0',         '2.1.1',
+551 silly addNameRange     '2.2.0',         '2.3.0',         '2.4.0',         '2.4.1',
+551 silly addNameRange     '2.4.2',         '2.4.3',         '2.4.4',         '2.4.5',
+551 silly addNameRange     '2.4.6',         '3.0.0-next.0',  '3.0.0-next.1',  '3.0.0-next.2',
+551 silly addNameRange     '2.5.0',         '2.5.1',         '2.5.2',         '3.0.0-next.3',
+551 silly addNameRange     '3.0.0',         '3.0.1',         '2.5.3',         '3.0.2',
+551 silly addNameRange     '3.1.0',         '4.0.0-next.0',  '4.0.0-next.1',  '4.0.0-next.2',
+551 silly addNameRange     ... 18 more items
+551 silly addNameRange   ]
+551 silly addNameRange ]
+552 silly addNamed @sveltejs/vite-plugin-svelte@5.0.3
+553 verbose addNamed "5.0.3" is a plain semver version for @sveltejs/vite-plugin-svelte
+554 info retry fetch attempt 1 at 16:13:46
+555 info attempt registry request try #1 at 16:13:46
+556 http fetch GET https://registry.npmjs.org/prettier/-/prettier-3.5.0.tgz
+557 verbose request using bearer token for auth
+558 silly cache afterAdd eslint-plugin-svelte@2.46.1
+559 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\eslint-plugin-svelte\2.46.1\package\package.json not in flight; writing
+560 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+561 http fetch 200 https://registry.npmjs.org/@testing-library/svelte/-/svelte-5.2.6.tgz
+562 silly cache afterAdd @sveltejs/vite-plugin-svelte@5.0.3
+563 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\@sveltejs\vite-plugin-svelte\5.0.3\package\package.json not in flight; writing
+564 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+565 silly addNameRange number 2 { name: 'jsdom', range: '>=25.0.1 <26.0.0', hasData: true }
+566 silly addNameRange versions [
+566 silly addNameRange   'jsdom',
+566 silly addNameRange   [
+566 silly addNameRange     '0.0.1',       '0.1.2',       '0.1.4',       '0.1.5',       '0.1.6',
+566 silly addNameRange     '0.1.7',       '0.1.8',       '0.1.9',       '0.1.10',      '0.1.11',
+566 silly addNameRange     '0.1.12',      '0.1.13',      '0.1.15',      '0.1.16',      '0.1.17',
+566 silly addNameRange     '0.1.18',      '0.1.19',      '0.1.20',      '0.1.21',      '0.1.22',
+566 silly addNameRange     '0.1.23',      '0.2.0',       '0.2.1',       '0.2.2',       '0.2.3',
+566 silly addNameRange     '0.2.4',       '0.2.5',       '0.2.6',       '0.2.7',       '0.2.8',
+566 silly addNameRange     '0.2.9',       '0.2.10',      '0.2.11',      '0.2.12',      '0.2.13',
+566 silly addNameRange     '0.2.14',      '0.2.15',      '0.2.16',      '0.2.17',      '0.2.18',
+566 silly addNameRange     '0.2.19',      '0.3.0',       '0.3.1',       '0.3.2',       '0.3.3',
+566 silly addNameRange     '0.3.4',       '0.4.0',       '0.4.1',       '0.4.2',       '0.5.0',
+566 silly addNameRange     '0.5.1',       '0.5.2',       '0.5.3',       '0.5.4',       '0.5.5',
+566 silly addNameRange     '0.5.6',       '0.5.7',       '0.6.0',       '0.6.1',       '0.6.2',
+566 silly addNameRange     '0.6.3',       '0.6.4',       '0.6.5',       '0.7.0',       '0.8.0',
+566 silly addNameRange     '0.8.1',       '0.8.2',       '0.8.3',       '0.8.4',       '0.8.5',
+566 silly addNameRange     '0.8.6',       '0.8.7',       '0.8.8',       '0.8.9',       '0.8.10',
+566 silly addNameRange     '0.8.11',      '0.9.0',       '0.10.0',      '0.10.1',      '0.10.2',
+566 silly addNameRange     '0.10.3',      '0.10.4',      '0.10.5',      '0.10.6',      '0.11.0',
+566 silly addNameRange     '0.11.1',      '1.0.0-pre.1', '1.0.0-pre.3', '1.0.0-pre.4', '1.0.0-pre.5',
+566 silly addNameRange     '1.0.0-pre.6', '1.0.0-pre.7', '1.0.0',       '1.0.1',       '1.0.2',
+566 silly addNameRange     '1.0.3',       '1.1.0',       '1.2.0',       '1.2.1',       '1.2.2',
+566 silly addNameRange     ... 165 more items
+566 silly addNameRange   ]
+566 silly addNameRange ]
+567 silly addNamed jsdom@25.0.1
+568 verbose addNamed "25.0.1" is a plain semver version for jsdom
+569 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\eslint-plugin-svelte\2.46.1\package\package.json written
+570 silly fetchAndShaCheck shasum fdbb1a8950d8b57c75602e4fda8b4627e7c37eac
+571 silly mapToRegistry name jsdom
+572 silly mapToRegistry using default registry
+573 silly mapToRegistry registry https://registry.npmjs.org/
+574 silly mapToRegistry data Result {
+574 silly mapToRegistry   raw: 'jsdom',
+574 silly mapToRegistry   scope: null,
+574 silly mapToRegistry   name: 'jsdom',
+574 silly mapToRegistry   rawSpec: '',
+574 silly mapToRegistry   spec: 'latest',
+574 silly mapToRegistry   type: 'tag'
+574 silly mapToRegistry }
+575 silly mapToRegistry uri https://registry.npmjs.org/jsdom
+576 verbose addRemoteTarball https://registry.npmjs.org/jsdom/-/jsdom-25.0.1.tgz not in flight; adding
+577 verbose addRemoteTarball [
+577 verbose addRemoteTarball   'https://registry.npmjs.org/jsdom/-/jsdom-25.0.1.tgz',
+577 verbose addRemoteTarball   '536ec685c288fc8a5773a65f82d8b44badcc73ef'
+577 verbose addRemoteTarball ]
+578 http 200 https://registry.npmjs.org/svelte-check
+579 verbose headers {
+579 verbose headers   date: 'Sun, 09 Feb 2025 15:13:45 GMT',
+579 verbose headers   'content-type': 'application/json',
+579 verbose headers   'transfer-encoding': 'chunked',
+579 verbose headers   connection: 'keep-alive',
+579 verbose headers   'cf-ray': '90f4ce205ed7eed2-WAW',
+579 verbose headers   'cf-cache-status': 'HIT',
+579 verbose headers   'access-control-allow-origin': '*',
+579 verbose headers   age: '247',
+579 verbose headers   'cache-control': 'public, max-age=300',
+579 verbose headers   etag: 'W/"682a3698e4e81e8779cf4a85044c1ab7"',
+579 verbose headers   'last-modified': 'Mon, 13 Jan 2025 09:34:28 GMT',
+579 verbose headers   vary: 'accept-encoding, accept',
+579 verbose headers   'set-cookie': [
+579 verbose headers     '_cfuvid=NFoNHnxq8APgF6Jitwqbxz02AdbCBH.qimhzDq6gEE8-1739114025038-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+579 verbose headers   ],
+579 verbose headers   server: 'cloudflare',
+579 verbose headers   'content-encoding': 'gzip'
+579 verbose headers }
+580 silly get cb [
+580 silly get   200,
+580 silly get   {
+580 silly get     date: 'Sun, 09 Feb 2025 15:13:45 GMT',
+580 silly get     'content-type': 'application/json',
+580 silly get     'transfer-encoding': 'chunked',
+580 silly get     connection: 'keep-alive',
+580 silly get     'cf-ray': '90f4ce205ed7eed2-WAW',
+580 silly get     'cf-cache-status': 'HIT',
+580 silly get     'access-control-allow-origin': '*',
+580 silly get     age: '247',
+580 silly get     'cache-control': 'public, max-age=300',
+580 silly get     etag: 'W/"682a3698e4e81e8779cf4a85044c1ab7"',
+580 silly get     'last-modified': 'Mon, 13 Jan 2025 09:34:28 GMT',
+580 silly get     vary: 'accept-encoding, accept',
+580 silly get     'set-cookie': [
+580 silly get       '_cfuvid=NFoNHnxq8APgF6Jitwqbxz02AdbCBH.qimhzDq6gEE8-1739114025038-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+580 silly get     ],
+580 silly get     server: 'cloudflare',
+580 silly get     'content-encoding': 'gzip'
+580 silly get   }
+580 silly get ]
+581 verbose get saving svelte-check to C:\Users\i.kłusek\AppData\Local\npm-cache\registry.npmjs.org\svelte-check\.cache.json
+582 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+583 verbose addTmpTarball C:\Users\I582A~1.KUS\AppData\Local\Temp\npm-20992-accf2d26\registry.npmjs.org\_40testing-library\svelte\-\svelte-5.2.6.tgz not in flight; adding
+584 verbose addTmpTarball already have metadata; skipping unpack for @testing-library/svelte@5.2.6
+585 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+586 info retry fetch attempt 1 at 16:13:46
+587 info attempt registry request try #1 at 16:13:46
+588 http fetch GET https://registry.npmjs.org/jsdom/-/jsdom-25.0.1.tgz
+589 verbose request using bearer token for auth
+590 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\@sveltejs\vite-plugin-svelte\5.0.3\package\package.json written
+591 verbose request uri https://registry.npmjs.org/vite
+592 verbose request no auth needed
+593 info attempt registry request try #1 at 16:13:47
+594 verbose request using bearer token for auth
+595 verbose etag W/"2a84d0323857e10fa69b44c5439805e3"
+596 verbose lastModified Wed, 05 Feb 2025 13:17:15 GMT
+597 http request GET https://registry.npmjs.org/vite
+598 http fetch 200 https://registry.npmjs.org/jsdom/-/jsdom-25.0.1.tgz
+599 http fetch 200 https://registry.npmjs.org/prettier/-/prettier-3.5.0.tgz
+600 silly addNameRange number 2 { name: 'svelte-check', range: '>=4.0.0 <5.0.0', hasData: true }
+601 silly addNameRange versions [
+601 silly addNameRange   'svelte-check',
+601 silly addNameRange   [
+601 silly addNameRange     '0.1.2',  '0.1.3',  '0.1.4',  '0.1.5',  '0.1.6',  '0.1.7',
+601 silly addNameRange     '0.1.8',  '0.1.9',  '0.1.10', '0.1.11', '0.1.12', '0.1.13',
+601 silly addNameRange     '0.1.14', '0.1.15', '0.1.16', '0.1.17', '0.1.18', '0.1.19',
+601 silly addNameRange     '0.1.20', '0.1.21', '0.1.22', '0.1.23', '0.1.24', '0.1.25',
+601 silly addNameRange     '0.1.26', '0.1.27', '0.1.28', '0.1.29', '0.1.30', '0.1.31',
+601 silly addNameRange     '0.1.32', '0.1.33', '0.1.34', '0.1.35', '0.1.36', '0.1.37',
+601 silly addNameRange     '0.1.38', '0.1.39', '0.1.40', '0.1.41', '0.1.42', '0.1.43',
+601 silly addNameRange     '0.1.44', '0.1.45', '0.1.46', '0.1.47', '0.1.48', '0.1.49',
+601 silly addNameRange     '0.1.50', '0.1.51', '0.1.52', '0.1.53', '0.1.54', '0.1.55',
+601 silly addNameRange     '0.1.56', '0.1.57', '0.1.58', '0.1.59', '1.0.0',  '1.0.1',
+601 silly addNameRange     '1.0.2',  '1.0.3',  '1.0.4',  '1.0.5',  '1.0.6',  '1.0.7',
+601 silly addNameRange     '1.0.8',  '1.0.9',  '1.0.10', '1.0.11', '1.0.12', '1.0.13',
+601 silly addNameRange     '1.0.14', '1.0.15', '1.0.16', '1.0.17', '1.0.18', '1.0.19',
+601 silly addNameRange     '1.0.20', '1.0.21', '1.0.22', '1.0.23', '1.0.24', '1.0.25',
+601 silly addNameRange     '1.0.26', '1.0.27', '1.0.28', '1.0.29', '1.0.30', '1.0.31',
+601 silly addNameRange     '1.0.32', '1.0.33', '1.0.34', '1.0.35', '1.0.36', '1.0.37',
+601 silly addNameRange     '1.0.38', '1.0.39', '1.0.40', '1.0.41',
+601 silly addNameRange     ... 167 more items
+601 silly addNameRange   ]
+601 silly addNameRange ]
+602 silly addNamed svelte-check@4.1.4
+603 verbose addNamed "4.1.4" is a plain semver version for svelte-check
+604 silly cache afterAdd @testing-library/svelte@5.2.6
+605 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\@testing-library\svelte\5.2.6\package\package.json not in flight; writing
+606 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+607 silly cache afterAdd svelte-check@4.1.4
+608 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\svelte-check\4.1.4\package\package.json not in flight; writing
+609 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+610 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\@testing-library\svelte\5.2.6\package\package.json written
+611 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\svelte-check\4.1.4\package\package.json written
+612 http 200 https://registry.npmjs.org/vitest
+613 verbose headers {
+613 verbose headers   date: 'Sun, 09 Feb 2025 15:13:44 GMT',
+613 verbose headers   'content-type': 'application/json',
+613 verbose headers   'transfer-encoding': 'chunked',
+613 verbose headers   connection: 'keep-alive',
+613 verbose headers   'cf-ray': '90f4ce1f7cadb179-WAW',
+613 verbose headers   'cf-cache-status': 'HIT',
+613 verbose headers   'access-control-allow-origin': '*',
+613 verbose headers   age: '289',
+613 verbose headers   'cache-control': 'public, max-age=300',
+613 verbose headers   etag: 'W/"fd3ec73fdd8d33df030c7bc5acc7db82"',
+613 verbose headers   'last-modified': 'Mon, 03 Feb 2025 14:02:30 GMT',
+613 verbose headers   vary: 'accept-encoding, accept',
+613 verbose headers   'set-cookie': [
+613 verbose headers     '_cfuvid=p3voFFPrZQV3ZSyZIRpegqbJT0XkJbcG3nUCV8SNa9c-1739114024924-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+613 verbose headers   ],
+613 verbose headers   server: 'cloudflare',
+613 verbose headers   'content-encoding': 'gzip'
+613 verbose headers }
+614 silly get cb [
+614 silly get   200,
+614 silly get   {
+614 silly get     date: 'Sun, 09 Feb 2025 15:13:44 GMT',
+614 silly get     'content-type': 'application/json',
+614 silly get     'transfer-encoding': 'chunked',
+614 silly get     connection: 'keep-alive',
+614 silly get     'cf-ray': '90f4ce1f7cadb179-WAW',
+614 silly get     'cf-cache-status': 'HIT',
+614 silly get     'access-control-allow-origin': '*',
+614 silly get     age: '289',
+614 silly get     'cache-control': 'public, max-age=300',
+614 silly get     etag: 'W/"fd3ec73fdd8d33df030c7bc5acc7db82"',
+614 silly get     'last-modified': 'Mon, 03 Feb 2025 14:02:30 GMT',
+614 silly get     vary: 'accept-encoding, accept',
+614 silly get     'set-cookie': [
+614 silly get       '_cfuvid=p3voFFPrZQV3ZSyZIRpegqbJT0XkJbcG3nUCV8SNa9c-1739114024924-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+614 silly get     ],
+614 silly get     server: 'cloudflare',
+614 silly get     'content-encoding': 'gzip'
+614 silly get   }
+614 silly get ]
+615 verbose get saving vitest to C:\Users\i.kłusek\AppData\Local\npm-cache\registry.npmjs.org\vitest\.cache.json
+616 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+617 silly fetchAndShaCheck shasum 536ec685c288fc8a5773a65f82d8b44badcc73ef
+618 verbose addTmpTarball C:\Users\I582A~1.KUS\AppData\Local\Temp\npm-20992-accf2d26\registry.npmjs.org\jsdom\-\jsdom-25.0.1.tgz not in flight; adding
+619 verbose addTmpTarball already have metadata; skipping unpack for jsdom@25.0.1
+620 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+621 silly addNameRange number 2 { name: 'vitest', range: '>=3.0.0 <4.0.0', hasData: true }
+622 silly addNameRange versions [
+622 silly addNameRange   'vitest',
+622 silly addNameRange   [
+622 silly addNameRange     '0.0.0',  '0.0.1',  '0.0.2',   '0.0.3',   '0.0.4',  '0.0.6',
+622 silly addNameRange     '0.0.7',  '0.0.8',  '0.0.9',   '0.0.10',  '0.0.11', '0.0.12',
+622 silly addNameRange     '0.0.13', '0.0.14', '0.0.15',  '0.0.16',  '0.0.17', '0.0.18',
+622 silly addNameRange     '0.0.19', '0.0.20', '0.0.21',  '0.0.22',  '0.0.23', '0.0.24',
+622 silly addNameRange     '0.0.25', '0.0.26', '0.0.27',  '0.0.28',  '0.0.29', '0.0.30',
+622 silly addNameRange     '0.0.31', '0.0.32', '0.0.33',  '0.0.34',  '0.0.35', '0.0.36',
+622 silly addNameRange     '0.0.37', '0.0.38', '0.0.39',  '0.0.40',  '0.0.41', '0.0.42',
+622 silly addNameRange     '0.0.43', '0.0.44', '0.0.45',  '0.0.46',  '0.0.47', '0.0.48',
+622 silly addNameRange     '0.0.49', '0.0.50', '0.0.51',  '0.0.52',  '0.0.53', '0.0.54',
+622 silly addNameRange     '0.0.55', '0.0.56', '0.0.57',  '0.0.58',  '0.0.59', '0.0.60',
+622 silly addNameRange     '0.0.61', '0.0.62', '0.0.63',  '0.0.64',  '0.0.65', '0.0.66',
+622 silly addNameRange     '0.0.67', '0.0.68', '0.0.69',  '0.0.70',  '0.0.71', '0.0.72',
+622 silly addNameRange     '0.0.73', '0.0.74', '0.0.75',  '0.0.76',  '0.0.77', '0.0.78',
+622 silly addNameRange     '0.0.79', '0.0.80', '0.0.81',  '0.0.82',  '0.0.83', '0.0.84',
+622 silly addNameRange     '0.0.85', '0.0.87', '0.0.88',  '0.0.89',  '0.0.90', '0.0.91',
+622 silly addNameRange     '0.0.92', '0.0.93', '0.0.94',  '0.0.95',  '0.0.96', '0.0.97',
+622 silly addNameRange     '0.0.98', '0.0.99', '0.0.100', '0.0.101',
+622 silly addNameRange     ... 293 more items
+622 silly addNameRange   ]
+622 silly addNameRange ]
+623 silly addNamed vitest@3.0.5
+624 verbose addNamed "3.0.5" is a plain semver version for vitest
+625 silly mapToRegistry name vitest
+626 silly mapToRegistry using default registry
+627 silly mapToRegistry registry https://registry.npmjs.org/
+628 silly mapToRegistry data Result {
+628 silly mapToRegistry   raw: 'vitest',
+628 silly mapToRegistry   scope: null,
+628 silly mapToRegistry   name: 'vitest',
+628 silly mapToRegistry   rawSpec: '',
+628 silly mapToRegistry   spec: 'latest',
+628 silly mapToRegistry   type: 'tag'
+628 silly mapToRegistry }
+629 silly mapToRegistry uri https://registry.npmjs.org/vitest
+630 verbose addRemoteTarball https://registry.npmjs.org/vitest/-/vitest-3.0.5.tgz not in flight; adding
+631 verbose addRemoteTarball [
+631 verbose addRemoteTarball   'https://registry.npmjs.org/vitest/-/vitest-3.0.5.tgz',
+631 verbose addRemoteTarball   'a9a3fa1203d85869c9ba66f3ea990b72d00ddeb0'
+631 verbose addRemoteTarball ]
+632 info retry fetch attempt 1 at 16:13:47
+633 info attempt registry request try #1 at 16:13:47
+634 http fetch GET https://registry.npmjs.org/vitest/-/vitest-3.0.5.tgz
+635 verbose request using bearer token for auth
+636 http 200 https://registry.npmjs.org/eslint
+637 verbose headers {
+637 verbose headers   date: 'Sun, 09 Feb 2025 15:13:45 GMT',
+637 verbose headers   'content-type': 'application/json',
+637 verbose headers   'transfer-encoding': 'chunked',
+637 verbose headers   connection: 'keep-alive',
+637 verbose headers   'cf-ray': '90f4ce207b48eec3-WAW',
+637 verbose headers   'cf-cache-status': 'HIT',
+637 verbose headers   'access-control-allow-origin': '*',
+637 verbose headers   age: '293',
+637 verbose headers   'cache-control': 'public, max-age=300',
+637 verbose headers   etag: 'W/"719f86a67bfe5ceb4fffc93282cf412e"',
+637 verbose headers   'last-modified': 'Fri, 07 Feb 2025 21:36:56 GMT',
+637 verbose headers   vary: 'accept-encoding, accept',
+637 verbose headers   'set-cookie': [
+637 verbose headers     '_cfuvid=jP7Wo3Hat2EW0ULuwYyYrDf7YHm_o4V4kmKtLFproPw-1739114025075-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+637 verbose headers   ],
+637 verbose headers   server: 'cloudflare',
+637 verbose headers   'content-encoding': 'gzip'
+637 verbose headers }
+638 silly get cb [
+638 silly get   200,
+638 silly get   {
+638 silly get     date: 'Sun, 09 Feb 2025 15:13:45 GMT',
+638 silly get     'content-type': 'application/json',
+638 silly get     'transfer-encoding': 'chunked',
+638 silly get     connection: 'keep-alive',
+638 silly get     'cf-ray': '90f4ce207b48eec3-WAW',
+638 silly get     'cf-cache-status': 'HIT',
+638 silly get     'access-control-allow-origin': '*',
+638 silly get     age: '293',
+638 silly get     'cache-control': 'public, max-age=300',
+638 silly get     etag: 'W/"719f86a67bfe5ceb4fffc93282cf412e"',
+638 silly get     'last-modified': 'Fri, 07 Feb 2025 21:36:56 GMT',
+638 silly get     vary: 'accept-encoding, accept',
+638 silly get     'set-cookie': [
+638 silly get       '_cfuvid=jP7Wo3Hat2EW0ULuwYyYrDf7YHm_o4V4kmKtLFproPw-1739114025075-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+638 silly get     ],
+638 silly get     server: 'cloudflare',
+638 silly get     'content-encoding': 'gzip'
+638 silly get   }
+638 silly get ]
+639 verbose get saving eslint to C:\Users\i.kłusek\AppData\Local\npm-cache\registry.npmjs.org\eslint\.cache.json
+640 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+641 http fetch 200 https://registry.npmjs.org/vitest/-/vitest-3.0.5.tgz
+642 silly cache afterAdd jsdom@25.0.1
+643 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\jsdom\25.0.1\package\package.json not in flight; writing
+644 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+645 silly addNameRange number 2 { name: 'eslint', range: '>=9.18.0 <10.0.0', hasData: true }
+646 silly addNameRange versions [
+646 silly addNameRange   'eslint',
+646 silly addNameRange   [
+646 silly addNameRange     '0.0.4',        '0.0.5',          '0.0.6',          '0.0.7',
+646 silly addNameRange     '0.1.0-dev',    '0.1.0',          '0.1.1',          '0.1.2',
+646 silly addNameRange     '0.1.3',        '0.1.4',          '0.2.0',          '0.3.0',
+646 silly addNameRange     '0.4.0',        '0.4.1',          '0.4.2',          '0.4.3',
+646 silly addNameRange     '0.4.4',        '0.4.5',          '0.5.0',          '0.5.1',
+646 silly addNameRange     '0.6.0',        '0.6.1',          '0.6.2',          '0.7.1',
+646 silly addNameRange     '0.7.2',        '0.7.3',          '0.7.4',          '0.8.0',
+646 silly addNameRange     '0.8.1',        '0.8.2',          '0.9.0',          '0.9.1',
+646 silly addNameRange     '0.9.2',        '0.10.0-alpha',   '0.10.0-alpha.1', '0.10.0-alpha.2',
+646 silly addNameRange     '0.10.0',       '0.11.0-alpha.0', '0.10.1',         '0.10.2',
+646 silly addNameRange     '0.11.0',       '0.12.0',         '0.13.0',         '0.14.0',
+646 silly addNameRange     '0.14.1',       '0.15.0',         '0.15.1',         '0.16.0',
+646 silly addNameRange     '0.16.1',       '0.16.2',         '0.17.0',         '0.17.1',
+646 silly addNameRange     '0.18.0',       '0.19.0',         '0.20.0',         '0.21.0',
+646 silly addNameRange     '0.21.1',       '0.21.2',         '0.22.0',         '0.22.1',
+646 silly addNameRange     '0.23.0',       '0.24.0',         '0.24.1',         '1.0.0-rc-1',
+646 silly addNameRange     '1.0.0-rc-2',   '1.0.0-rc-3',     '1.0.0',          '1.1.0',
+646 silly addNameRange     '1.2.0',        '1.2.1',          '1.3.0',          '1.3.1',
+646 silly addNameRange     '1.4.0',        '1.4.1',          '1.4.2',          '1.4.3',
+646 silly addNameRange     '1.5.0',        '1.5.1',          '1.6.0',          '1.7.0',
+646 silly addNameRange     '1.7.1',        '1.7.2',          '1.7.3',          '1.8.0',
+646 silly addNameRange     '1.9.0',        '1.10.0',         '1.10.1',         '1.10.2',
+646 silly addNameRange     '1.10.3',       '2.0.0-alpha-1',  '2.0.0-alpha-2',  '2.0.0-beta.1',
+646 silly addNameRange     '2.0.0-beta.2', '2.0.0-beta.3',   '2.0.0-rc.0',     '2.0.0-rc.1',
+646 silly addNameRange     '2.0.0',        '2.1.0',          '2.2.0',          '2.3.0',
+646 silly addNameRange     ... 278 more items
+646 silly addNameRange   ]
+646 silly addNameRange ]
+647 silly addNamed eslint@9.20.0
+648 verbose addNamed "9.20.0" is a plain semver version for eslint
+649 silly mapToRegistry name eslint
+650 silly mapToRegistry using default registry
+651 silly mapToRegistry registry https://registry.npmjs.org/
+652 silly mapToRegistry data Result {
+652 silly mapToRegistry   raw: 'eslint',
+652 silly mapToRegistry   scope: null,
+652 silly mapToRegistry   name: 'eslint',
+652 silly mapToRegistry   rawSpec: '',
+652 silly mapToRegistry   spec: 'latest',
+652 silly mapToRegistry   type: 'tag'
+652 silly mapToRegistry }
+653 silly mapToRegistry uri https://registry.npmjs.org/eslint
+654 verbose addRemoteTarball https://registry.npmjs.org/eslint/-/eslint-9.20.0.tgz not in flight; adding
+655 verbose addRemoteTarball [
+655 verbose addRemoteTarball   'https://registry.npmjs.org/eslint/-/eslint-9.20.0.tgz',
+655 verbose addRemoteTarball   '6244c46c1640cd5e577a31ebc460fca87838c0b7'
+655 verbose addRemoteTarball ]
+656 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\jsdom\25.0.1\package\package.json written
+657 info retry fetch attempt 1 at 16:13:47
+658 info attempt registry request try #1 at 16:13:47
+659 http fetch GET https://registry.npmjs.org/eslint/-/eslint-9.20.0.tgz
+660 verbose request using bearer token for auth
+661 silly fetchAndShaCheck shasum a9a3fa1203d85869c9ba66f3ea990b72d00ddeb0
+662 verbose addTmpTarball C:\Users\I582A~1.KUS\AppData\Local\Temp\npm-20992-accf2d26\registry.npmjs.org\vitest\-\vitest-3.0.5.tgz not in flight; adding
+663 verbose addTmpTarball already have metadata; skipping unpack for vitest@3.0.5
+664 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+665 silly cache afterAdd vitest@3.0.5
+666 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\vitest\3.0.5\package\package.json not in flight; writing
+667 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+668 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\vitest\3.0.5\package\package.json written
+669 http fetch 200 https://registry.npmjs.org/eslint/-/eslint-9.20.0.tgz
+670 http 200 https://registry.npmjs.org/typescript-eslint
+671 verbose headers {
+671 verbose headers   date: 'Sun, 09 Feb 2025 15:13:45 GMT',
+671 verbose headers   'content-type': 'application/json',
+671 verbose headers   'transfer-encoding': 'chunked',
+671 verbose headers   connection: 'keep-alive',
+671 verbose headers   'cf-ray': '90f4ce207a09c414-WAW',
+671 verbose headers   'cf-cache-status': 'HIT',
+671 verbose headers   'access-control-allow-origin': '*',
+671 verbose headers   age: '161',
+671 verbose headers   'cache-control': 'public, max-age=300',
+671 verbose headers   etag: 'W/"066aa2e3f157dbba05d41e21a08beff9"',
+671 verbose headers   'last-modified': 'Sat, 08 Feb 2025 19:44:31 GMT',
+671 verbose headers   vary: 'accept-encoding, accept',
+671 verbose headers   'set-cookie': [
+671 verbose headers     '_cfuvid=liYyFBkORa7Q7PL8wz78j0A0MwEkYt3y40SZ5KJyMFA-1739114025058-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+671 verbose headers   ],
+671 verbose headers   server: 'cloudflare',
+671 verbose headers   'content-encoding': 'gzip'
+671 verbose headers }
+672 silly get cb [
+672 silly get   200,
+672 silly get   {
+672 silly get     date: 'Sun, 09 Feb 2025 15:13:45 GMT',
+672 silly get     'content-type': 'application/json',
+672 silly get     'transfer-encoding': 'chunked',
+672 silly get     connection: 'keep-alive',
+672 silly get     'cf-ray': '90f4ce207a09c414-WAW',
+672 silly get     'cf-cache-status': 'HIT',
+672 silly get     'access-control-allow-origin': '*',
+672 silly get     age: '161',
+672 silly get     'cache-control': 'public, max-age=300',
+672 silly get     etag: 'W/"066aa2e3f157dbba05d41e21a08beff9"',
+672 silly get     'last-modified': 'Sat, 08 Feb 2025 19:44:31 GMT',
+672 silly get     vary: 'accept-encoding, accept',
+672 silly get     'set-cookie': [
+672 silly get       '_cfuvid=liYyFBkORa7Q7PL8wz78j0A0MwEkYt3y40SZ5KJyMFA-1739114025058-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+672 silly get     ],
+672 silly get     server: 'cloudflare',
+672 silly get     'content-encoding': 'gzip'
+672 silly get   }
+672 silly get ]
+673 verbose get saving typescript-eslint to C:\Users\i.kłusek\AppData\Local\npm-cache\registry.npmjs.org\typescript-eslint\.cache.json
+674 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+675 silly fetchAndShaCheck shasum 50325a28887c6dfdf2ca3f8eaba02b66a8429ca7
+676 silly addNameRange number 2 { name: 'typescript-eslint', range: '>=8.20.0 <9.0.0', hasData: true }
+677 silly addNameRange versions [
+677 silly addNameRange   'typescript-eslint',
+677 silly addNameRange   [
+677 silly addNameRange     '0.0.1-alpha.0',  '7.0.0',          '7.0.1',          '7.0.2-alpha.1',
+677 silly addNameRange     '7.0.2-alpha.2',  '7.0.2-alpha.3',  '7.0.2-alpha.4',  '7.0.2-alpha.5',
+677 silly addNameRange     '7.0.2-alpha.6',  '7.0.2-alpha.7',  '7.0.2-alpha.8',  '7.0.2-alpha.9',
+677 silly addNameRange     '7.0.2-alpha.10', '7.0.2-alpha.11', '7.0.2',          '7.0.3-alpha.0',
+677 silly addNameRange     '7.0.3-alpha.1',  '7.0.3-alpha.2',  '7.0.3-alpha.3',  '7.0.3-alpha.4',
+677 silly addNameRange     '7.0.3-alpha.5',  '7.0.3-alpha.6',  '7.0.3-alpha.7',  '7.0.3-alpha.8',
+677 silly addNameRange     '7.0.3-alpha.9',  '7.0.3-alpha.10', '7.0.3-alpha.11', '7.0.3-alpha.12',
+677 silly addNameRange     '7.0.3-alpha.13', '7.0.3-alpha.14', '7.0.3-alpha.15', '7.0.3-alpha.16',
+677 silly addNameRange     '7.0.3-alpha.17', '7.0.3-alpha.18', '7.0.3-alpha.19', '7.0.3-alpha.20',
+677 silly addNameRange     '7.1.0',          '7.1.1-alpha.0',  '7.1.1-alpha.1',  '7.1.1-alpha.2',
+677 silly addNameRange     '7.1.1',          '7.1.2-alpha.0',  '7.1.2-alpha.1',  '7.1.2-alpha.2',
+677 silly addNameRange     '7.1.2-alpha.3',  '7.1.2-alpha.4',  '7.1.2-alpha.5',  '7.1.2-alpha.6',
+677 silly addNameRange     '7.1.2-alpha.7',  '7.1.2-alpha.8',  '7.1.2-alpha.9',  '7.1.2-alpha.10',
+677 silly addNameRange     '7.1.2-alpha.11', '7.1.2-alpha.12', '7.1.2-alpha.13', '7.1.2-alpha.14',
+677 silly addNameRange     '7.1.2-alpha.15', '7.1.2-alpha.16', '7.2.0',          '7.2.1-alpha.0',
+677 silly addNameRange     '7.2.1-alpha.1',  '7.2.1-alpha.2',  '7.2.1-alpha.3',  '7.2.1-alpha.4',
+677 silly addNameRange     '7.2.1-alpha.5',  '7.3.0',          '7.3.1-alpha.0',  '7.3.1-alpha.1',
+677 silly addNameRange     '7.3.1',          '7.3.2-alpha.0',  '7.3.2-alpha.1',  '7.3.2-alpha.2',
+677 silly addNameRange     '7.3.2-alpha.3',  '7.3.2-alpha.4',  '7.3.2-alpha.5',  '7.3.2-alpha.6',
+677 silly addNameRange     '7.3.2-alpha.7',  '7.3.2-alpha.8',  '7.3.2-alpha.9',  '7.3.2-alpha.10',
+677 silly addNameRange     '7.3.2-alpha.11', '7.4.0',          '7.4.1-alpha.0',  '7.4.1-alpha.1',
+677 silly addNameRange     '7.4.1-alpha.2',  '7.4.1-alpha.3',  '7.4.1-alpha.4',  '7.4.1-alpha.5',
+677 silly addNameRange     '7.5.0',          '7.5.1-alpha.0',  '7.5.1-alpha.1',  '7.5.1-alpha.2',
+677 silly addNameRange     '7.5.1-alpha.3',  '7.5.1-alpha.4',  '7.5.1-alpha.5',  '7.5.1-alpha.6',
+677 silly addNameRange     '7.5.1-alpha.7',  '7.5.1-alpha.8',  '7.5.1-alpha.9',  '7.5.1-alpha.10',
+677 silly addNameRange     ... 687 more items
+677 silly addNameRange   ]
+677 silly addNameRange ]
+678 silly addNamed typescript-eslint@8.23.0
+679 verbose addNamed "8.23.0" is a plain semver version for typescript-eslint
+680 http 200 https://registry.npmjs.org/@sveltejs%2fkit
+681 verbose headers {
+681 verbose headers   date: 'Sun, 09 Feb 2025 15:13:45 GMT',
+681 verbose headers   'content-type': 'application/json',
+681 verbose headers   'transfer-encoding': 'chunked',
+681 verbose headers   connection: 'keep-alive',
+681 verbose headers   'cf-ray': '90f4ce202f8f027a-WAW',
+681 verbose headers   'cf-cache-status': 'HIT',
+681 verbose headers   'access-control-allow-origin': '*',
+681 verbose headers   'cache-control': 'public, max-age=300',
+681 verbose headers   etag: 'W/"dc723e2fc38885a5e3f68b26377c4f87"',
+681 verbose headers   'last-modified': 'Mon, 03 Feb 2025 15:01:06 GMT',
+681 verbose headers   vary: 'accept-encoding, accept',
+681 verbose headers   'set-cookie': [
+681 verbose headers     '_cfuvid=HG14uXfcJReZuyH1wHaSxd.NZBt26n7Q8Wx9J0QgcG8-1739114025145-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+681 verbose headers   ],
+681 verbose headers   server: 'cloudflare',
+681 verbose headers   'content-encoding': 'gzip'
+681 verbose headers }
+682 silly get cb [
+682 silly get   200,
+682 silly get   {
+682 silly get     date: 'Sun, 09 Feb 2025 15:13:45 GMT',
+682 silly get     'content-type': 'application/json',
+682 silly get     'transfer-encoding': 'chunked',
+682 silly get     connection: 'keep-alive',
+682 silly get     'cf-ray': '90f4ce202f8f027a-WAW',
+682 silly get     'cf-cache-status': 'HIT',
+682 silly get     'access-control-allow-origin': '*',
+682 silly get     'cache-control': 'public, max-age=300',
+682 silly get     etag: 'W/"dc723e2fc38885a5e3f68b26377c4f87"',
+682 silly get     'last-modified': 'Mon, 03 Feb 2025 15:01:06 GMT',
+682 silly get     vary: 'accept-encoding, accept',
+682 silly get     'set-cookie': [
+682 silly get       '_cfuvid=HG14uXfcJReZuyH1wHaSxd.NZBt26n7Q8Wx9J0QgcG8-1739114025145-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+682 silly get     ],
+682 silly get     server: 'cloudflare',
+682 silly get     'content-encoding': 'gzip'
+682 silly get   }
+682 silly get ]
+683 verbose get saving @sveltejs/kit to C:\Users\i.kłusek\AppData\Local\npm-cache\registry.npmjs.org\_40sveltejs_252fkit\.cache.json
+684 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+685 silly cache afterAdd typescript-eslint@8.23.0
+686 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\typescript-eslint\8.23.0\package\package.json not in flight; writing
+687 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+688 http 200 https://registry.npmjs.org/svelte
+689 verbose headers {
+689 verbose headers   date: 'Sun, 09 Feb 2025 15:13:45 GMT',
+689 verbose headers   'content-type': 'application/json',
+689 verbose headers   'transfer-encoding': 'chunked',
+689 verbose headers   connection: 'keep-alive',
+689 verbose headers   'cf-ray': '90f4ce205af3c05c-WAW',
+689 verbose headers   'cf-cache-status': 'HIT',
+689 verbose headers   'access-control-allow-origin': '*',
+689 verbose headers   age: '289',
+689 verbose headers   'cache-control': 'public, max-age=300',
+689 verbose headers   etag: 'W/"e37e82cf20fe85428a46eaea450f9bde"',
+689 verbose headers   'last-modified': 'Thu, 06 Feb 2025 21:31:36 GMT',
+689 verbose headers   vary: 'accept-encoding, accept',
+689 verbose headers   'set-cookie': [
+689 verbose headers     '_cfuvid=sTcGejDZSMiYiO.bnfvBbEU2WWRBZS.jsxl5xp0eky8-1739114025045-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+689 verbose headers   ],
+689 verbose headers   server: 'cloudflare',
+689 verbose headers   'content-encoding': 'gzip'
+689 verbose headers }
+690 silly get cb [
+690 silly get   200,
+690 silly get   {
+690 silly get     date: 'Sun, 09 Feb 2025 15:13:45 GMT',
+690 silly get     'content-type': 'application/json',
+690 silly get     'transfer-encoding': 'chunked',
+690 silly get     connection: 'keep-alive',
+690 silly get     'cf-ray': '90f4ce205af3c05c-WAW',
+690 silly get     'cf-cache-status': 'HIT',
+690 silly get     'access-control-allow-origin': '*',
+690 silly get     age: '289',
+690 silly get     'cache-control': 'public, max-age=300',
+690 silly get     etag: 'W/"e37e82cf20fe85428a46eaea450f9bde"',
+690 silly get     'last-modified': 'Thu, 06 Feb 2025 21:31:36 GMT',
+690 silly get     vary: 'accept-encoding, accept',
+690 silly get     'set-cookie': [
+690 silly get       '_cfuvid=sTcGejDZSMiYiO.bnfvBbEU2WWRBZS.jsxl5xp0eky8-1739114025045-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+690 silly get     ],
+690 silly get     server: 'cloudflare',
+690 silly get     'content-encoding': 'gzip'
+690 silly get   }
+690 silly get ]
+691 verbose get saving svelte to C:\Users\i.kłusek\AppData\Local\npm-cache\registry.npmjs.org\svelte\.cache.json
+692 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+693 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\typescript-eslint\8.23.0\package\package.json written
+694 silly fetchAndShaCheck shasum 6244c46c1640cd5e577a31ebc460fca87838c0b7
+695 silly addNameRange number 2 { name: 'svelte', range: '>=5.0.0 <6.0.0', hasData: true }
+696 silly addNameRange versions [
+696 silly addNameRange   'svelte',
+696 silly addNameRange   [
+696 silly addNameRange     '0.0.1',  '0.0.2',  '0.1.0',  '0.1.1',  '0.2.0',  '0.2.1',
+696 silly addNameRange     '0.2.2',  '0.3.0',  '1.0.0',  '1.0.1',  '1.0.2',  '1.0.3',
+696 silly addNameRange     '1.0.4',  '1.0.5',  '1.0.6',  '1.0.7',  '1.1.0',  '1.1.1',
+696 silly addNameRange     '1.1.2',  '1.1.3',  '1.2.0',  '1.2.1',  '1.2.2',  '1.2.3',
+696 silly addNameRange     '1.2.4',  '1.2.5',  '1.3.0',  '1.3.1',  '1.4.0',  '1.5.0',
+696 silly addNameRange     '1.6.0',  '1.6.1',  '1.6.2',  '1.6.3',  '1.6.4',  '1.6.5',
+696 silly addNameRange     '1.6.6',  '1.6.7',  '1.6.8',  '1.6.9',  '1.6.10', '1.6.11',
+696 silly addNameRange     '1.7.0',  '1.7.1',  '1.8.0',  '1.8.1',  '1.9.0',  '1.9.1',
+696 silly addNameRange     '1.10.0', '1.10.1', '1.10.2', '1.10.3', '1.11.0', '1.11.1',
+696 silly addNameRange     '1.11.2', '1.11.3', '1.11.4', '1.12.0', '1.12.1', '1.13.0',
+696 silly addNameRange     '1.13.1', '1.13.2', '1.13.3', '1.13.4', '1.13.5', '1.13.6',
+696 silly addNameRange     '1.13.7', '1.14.0', '1.14.1', '1.15.0', '1.15.1', '1.16.0',
+696 silly addNameRange     '1.17.0', '1.17.1', '1.17.2', '1.18.0', '1.18.1', '1.18.2',
+696 silly addNameRange     '1.19.0', '1.19.1', '1.20.0', '1.20.1', '1.20.2', '1.21.0',
+696 silly addNameRange     '1.22.0', '1.22.1', '1.22.2', '1.22.3', '1.22.4', '1.22.5',
+696 silly addNameRange     '1.23.0', '1.23.1', '1.23.2', '1.23.3', '1.23.4', '1.24.0',
+696 silly addNameRange     '1.25.0', '1.25.1', '1.26.0', '1.26.1',
+696 silly addNameRange     ... 743 more items
+696 silly addNameRange   ]
+696 silly addNameRange ]
+697 silly addNamed svelte@5.19.9
+698 verbose addNamed "5.19.9" is a plain semver version for svelte
+699 verbose addTmpTarball C:\Users\I582A~1.KUS\AppData\Local\Temp\npm-20992-accf2d26\registry.npmjs.org\prettier\-\prettier-3.5.0.tgz not in flight; adding
+700 verbose addTmpTarball already have metadata; skipping unpack for prettier@3.5.0
+701 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+702 silly addNameRange number 2 { name: '@sveltejs/kit', range: '>=2.16.0 <3.0.0', hasData: true }
+703 silly addNameRange versions [
+703 silly addNameRange   '@sveltejs/kit',
+703 silly addNameRange   [
+703 silly addNameRange     '0.0.8',         '0.0.9',         '0.0.10',        '0.0.11',
+703 silly addNameRange     '0.0.12',        '0.0.13',        '0.0.14',        '0.0.15',
+703 silly addNameRange     '0.0.16',        '0.0.17',        '0.0.18',        '0.0.19',
+703 silly addNameRange     '0.0.21',        '0.0.22',        '0.0.23',        '0.0.24',
+703 silly addNameRange     '0.0.25',        '0.0.26',        '0.0.27',        '0.0.29',
+703 silly addNameRange     '0.0.30',        '1.0.0-next.0',  '1.0.0-next.1',  '1.0.0-next.2',
+703 silly addNameRange     '1.0.0-next.3',  '1.0.0-next.4',  '1.0.0-next.5',  '1.0.0-next.6',
+703 silly addNameRange     '1.0.0-next.7',  '1.0.0-next.8',  '1.0.0-next.9',  '1.0.0-next.10',
+703 silly addNameRange     '1.0.0-next.11', '1.0.0-next.13', '1.0.0-next.14', '1.0.0-next.15',
+703 silly addNameRange     '1.0.0-next.16', '1.0.0-next.17', '1.0.0-next.18', '1.0.0-next.19',
+703 silly addNameRange     '1.0.0-next.20', '1.0.0-next.21', '1.0.0-next.22', '1.0.0-next.23',
+703 silly addNameRange     '1.0.0-next.24', '1.0.0-next.25', '1.0.0-next.26', '1.0.0-next.27',
+703 silly addNameRange     '1.0.0-next.28', '1.0.0-next.29', '1.0.0-next.30', '1.0.0-next.31',
+703 silly addNameRange     '1.0.0-next.32', '1.0.0-next.33', '1.0.0-next.34', '1.0.0-next.35',
+703 silly addNameRange     '1.0.0-next.36', '1.0.0-next.37', '1.0.0-next.38', '1.0.0-next.39',
+703 silly addNameRange     '1.0.0-next.40', '1.0.0-next.41', '1.0.0-next.42', '1.0.0-next.43',
+703 silly addNameRange     '1.0.0-next.44', '1.0.0-next.45', '1.0.0-next.46', '1.0.0-next.47',
+703 silly addNameRange     '1.0.0-next.48', '1.0.0-next.49', '1.0.0-next.50', '1.0.0-next.51',
+703 silly addNameRange     '1.0.0-next.52', '1.0.0-next.53', '1.0.0-next.54', '1.0.0-next.55',
+703 silly addNameRange     '1.0.0-next.56', '1.0.0-next.57', '1.0.0-next.58', '1.0.0-next.59',
+703 silly addNameRange     '1.0.0-next.60', '1.0.0-next.61', '1.0.0-next.62', '1.0.0-next.63',
+703 silly addNameRange     '1.0.0-next.64', '1.0.0-next.65', '1.0.0-next.66', '1.0.0-next.67',
+703 silly addNameRange     '1.0.0-next.68', '1.0.0-next.69', '1.0.0-next.70', '1.0.0-next.71',
+703 silly addNameRange     '1.0.0-next.72', '1.0.0-next.73', '1.0.0-next.74', '1.0.0-next.75',
+703 silly addNameRange     '1.0.0-next.76', '1.0.0-next.77', '1.0.0-next.78', '1.0.0-next.79',
+703 silly addNameRange     ... 721 more items
+703 silly addNameRange   ]
+703 silly addNameRange ]
+704 silly addNamed @sveltejs/kit@2.17.1
+705 verbose addNamed "2.17.1" is a plain semver version for @sveltejs/kit
+706 silly cache afterAdd svelte@5.19.9
+707 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\svelte\5.19.9\package\package.json not in flight; writing
+708 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+709 silly cache afterAdd @sveltejs/kit@2.17.1
+710 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\@sveltejs\kit\2.17.1\package\package.json not in flight; writing
+711 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+712 verbose addTmpTarball C:\Users\I582A~1.KUS\AppData\Local\Temp\npm-20992-accf2d26\registry.npmjs.org\eslint\-\eslint-9.20.0.tgz not in flight; adding
+713 verbose addTmpTarball already have metadata; skipping unpack for eslint@9.20.0
+714 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+715 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\svelte\5.19.9\package\package.json written
+716 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\@sveltejs\kit\2.17.1\package\package.json written
+717 silly cache afterAdd eslint@9.20.0
+718 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\eslint\9.20.0\package\package.json not in flight; writing
+719 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+720 silly cache afterAdd prettier@3.5.0
+721 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\prettier\3.5.0\package\package.json not in flight; writing
+722 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+723 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\eslint\9.20.0\package\package.json written
+724 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\prettier\3.5.0\package\package.json written
+725 http 200 https://registry.npmjs.org/typescript
+726 verbose headers {
+726 verbose headers   date: 'Sun, 09 Feb 2025 15:13:45 GMT',
+726 verbose headers   'content-type': 'application/json',
+726 verbose headers   'transfer-encoding': 'chunked',
+726 verbose headers   connection: 'keep-alive',
+726 verbose headers   'cf-ray': '90f4ce21cc00eed2-WAW',
+726 verbose headers   'cf-cache-status': 'HIT',
+726 verbose headers   'access-control-allow-origin': '*',
+726 verbose headers   age: '5',
+726 verbose headers   'cache-control': 'public, max-age=300',
+726 verbose headers   etag: 'W/"401c5f56a4e2551413e15d60565444e5"',
+726 verbose headers   'last-modified': 'Sun, 09 Feb 2025 07:15:14 GMT',
+726 verbose headers   vary: 'accept-encoding, accept',
+726 verbose headers   'set-cookie': [
+726 verbose headers     '_cfuvid=lxMmFfzufTgILoVWyyYwsLiBgivxiK4VPvACXUvAOpQ-1739114025271-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+726 verbose headers   ],
+726 verbose headers   server: 'cloudflare',
+726 verbose headers   'content-encoding': 'gzip'
+726 verbose headers }
+727 silly get cb [
+727 silly get   200,
+727 silly get   {
+727 silly get     date: 'Sun, 09 Feb 2025 15:13:45 GMT',
+727 silly get     'content-type': 'application/json',
+727 silly get     'transfer-encoding': 'chunked',
+727 silly get     connection: 'keep-alive',
+727 silly get     'cf-ray': '90f4ce21cc00eed2-WAW',
+727 silly get     'cf-cache-status': 'HIT',
+727 silly get     'access-control-allow-origin': '*',
+727 silly get     age: '5',
+727 silly get     'cache-control': 'public, max-age=300',
+727 silly get     etag: 'W/"401c5f56a4e2551413e15d60565444e5"',
+727 silly get     'last-modified': 'Sun, 09 Feb 2025 07:15:14 GMT',
+727 silly get     vary: 'accept-encoding, accept',
+727 silly get     'set-cookie': [
+727 silly get       '_cfuvid=lxMmFfzufTgILoVWyyYwsLiBgivxiK4VPvACXUvAOpQ-1739114025271-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+727 silly get     ],
+727 silly get     server: 'cloudflare',
+727 silly get     'content-encoding': 'gzip'
+727 silly get   }
+727 silly get ]
+728 verbose get saving typescript to C:\Users\i.kłusek\AppData\Local\npm-cache\registry.npmjs.org\typescript\.cache.json
+729 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+730 silly addNameRange number 2 { name: 'typescript', range: '>=5.0.0 <6.0.0', hasData: true }
+731 silly addNameRange versions [
+731 silly addNameRange   'typescript',
+731 silly addNameRange   [
+731 silly addNameRange     '0.8.0',              '0.8.1',                '0.8.1-1',
+731 silly addNameRange     '0.8.2',              '0.8.3',                '0.9.0',
+731 silly addNameRange     '0.9.0-1',            '0.9.1',                '0.9.1-1',
+731 silly addNameRange     '0.9.5',              '0.9.7',                '1.0.0',
+731 silly addNameRange     '1.0.1',              '1.1.0-1',              '1.3.0',
+731 silly addNameRange     '1.4.1',              '1.5.0-alpha',          '1.5.0-beta',
+731 silly addNameRange     '1.5.3',              '1.6.0-dev.20150722.1', '1.6.0-dev.20150723',
+731 silly addNameRange     '1.6.0-dev.20150724', '1.6.0-dev.20150725',   '1.6.0-dev.20150726',
+731 silly addNameRange     '1.6.0-dev.20150727', '1.6.0-dev.20150728',   '1.6.0-dev.20150729',
+731 silly addNameRange     '1.6.0-dev.20150730', '1.6.0-dev.20150731',   '1.6.0-dev.20150801',
+731 silly addNameRange     '1.6.0-dev.20150802', '1.6.0-dev.20150803',   '1.6.0-dev.20150804',
+731 silly addNameRange     '1.6.0-dev.20150805', '1.6.0-dev.20150806',   '1.6.0-dev.20150807',
+731 silly addNameRange     '1.6.0-dev.20150808', '1.6.0-dev.20150809',   '1.6.0-dev.20150810',
+731 silly addNameRange     '1.6.0-dev.20150811', '1.6.0-dev.20150812',   '1.6.0-dev.20150813',
+731 silly addNameRange     '1.6.0-dev.20150814', '1.6.0-dev.20150815',   '1.6.0-dev.20150816',
+731 silly addNameRange     '1.6.0-dev.20150817', '1.6.0-dev.20150818',   '1.6.0-dev.20150819',
+731 silly addNameRange     '1.6.0-dev.20150820', '1.6.0-dev.20150821',   '1.6.0-dev.20150822',
+731 silly addNameRange     '1.6.0-dev.20150823', '1.6.0-dev.20150824',   '1.6.0-dev.20150825',
+731 silly addNameRange     '1.7.0-dev.20150826', '1.7.0-dev.20150827',   '1.7.0-dev.20150828',
+731 silly addNameRange     '1.7.0-dev.20150829', '1.7.0-dev.20150830',   '1.7.0-dev.20150831',
+731 silly addNameRange     '1.7.0-dev.20150901', '1.7.0-dev.20150902',   '1.6.0-beta',
+731 silly addNameRange     '1.7.0-dev.20150903', '1.7.0-dev.20150904',   '1.6.0-dev.20150905',
+731 silly addNameRange     '1.6.0-dev.20150906', '1.6.0-dev.20150907',   '1.6.0-dev.20150908',
+731 silly addNameRange     '1.6.0-dev.20150909', '1.6.0-dev.20150910',   '1.6.0-dev.20150911',
+731 silly addNameRange     '1.6.0-dev.20150912', '1.6.0-dev.20150913',   '1.6.0-dev.20150914',
+731 silly addNameRange     '1.6.0-dev.20150915', '1.7.0-dev.20150916',   '1.6.2',
+731 silly addNameRange     '1.7.0-dev.20150917', '1.7.0-dev.20150918',   '1.7.0-dev.20150919',
+731 silly addNameRange     '1.7.0-dev.20150920', '1.7.0-dev.20150921',   '1.7.0-dev.20150922',
+731 silly addNameRange     '1.7.0-dev.20150923', '1.7.0-dev.20150924',   '1.7.0-dev.20150925',
+731 silly addNameRange     '1.7.0-dev.20150926', '1.7.0-dev.20150927',   '1.7.0-dev.20150928',
+731 silly addNameRange     '1.7.0-dev.20150929', '1.7.0-dev.20150930',   '1.7.0-dev.20151001',
+731 silly addNameRange     '1.7.0-dev.20151002', '1.7.0-dev.20151003',   '1.7.0-dev.20151004',
+731 silly addNameRange     '1.7.0-dev.20151005', '1.7.0-dev.20151006',   '1.7.0-dev.20151014',
+731 silly addNameRange     '1.7.0-dev.20151015',
+731 silly addNameRange     ... 3242 more items
+731 silly addNameRange   ]
+731 silly addNameRange ]
+732 silly addNamed typescript@5.7.3
+733 verbose addNamed "5.7.3" is a plain semver version for typescript
+734 silly cache afterAdd typescript@5.7.3
+735 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\typescript\5.7.3\package\package.json not in flight; writing
+736 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+737 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\typescript\5.7.3\package\package.json written
+738 http 200 https://registry.npmjs.org/vite
+739 verbose headers {
+739 verbose headers   date: 'Sun, 09 Feb 2025 15:13:45 GMT',
+739 verbose headers   'content-type': 'application/json',
+739 verbose headers   'transfer-encoding': 'chunked',
+739 verbose headers   connection: 'keep-alive',
+739 verbose headers   'cf-ray': '90f4ce259d78bf88-WAW',
+739 verbose headers   'cf-cache-status': 'HIT',
+739 verbose headers   'access-control-allow-origin': '*',
+739 verbose headers   age: '98',
+739 verbose headers   'cache-control': 'public, max-age=300',
+739 verbose headers   etag: 'W/"2a84d0323857e10fa69b44c5439805e3"',
+739 verbose headers   'last-modified': 'Wed, 05 Feb 2025 13:17:15 GMT',
+739 verbose headers   vary: 'accept-encoding, accept',
+739 verbose headers   'set-cookie': [
+739 verbose headers     '_cfuvid=x_yDS2_0C10E.jODvUoC5iFkaUaKmgonXKhBdbSbVPI-1739114025882-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+739 verbose headers   ],
+739 verbose headers   server: 'cloudflare',
+739 verbose headers   'content-encoding': 'gzip'
+739 verbose headers }
+740 silly get cb [
+740 silly get   200,
+740 silly get   {
+740 silly get     date: 'Sun, 09 Feb 2025 15:13:45 GMT',
+740 silly get     'content-type': 'application/json',
+740 silly get     'transfer-encoding': 'chunked',
+740 silly get     connection: 'keep-alive',
+740 silly get     'cf-ray': '90f4ce259d78bf88-WAW',
+740 silly get     'cf-cache-status': 'HIT',
+740 silly get     'access-control-allow-origin': '*',
+740 silly get     age: '98',
+740 silly get     'cache-control': 'public, max-age=300',
+740 silly get     etag: 'W/"2a84d0323857e10fa69b44c5439805e3"',
+740 silly get     'last-modified': 'Wed, 05 Feb 2025 13:17:15 GMT',
+740 silly get     vary: 'accept-encoding, accept',
+740 silly get     'set-cookie': [
+740 silly get       '_cfuvid=x_yDS2_0C10E.jODvUoC5iFkaUaKmgonXKhBdbSbVPI-1739114025882-0.0.1.1-604800000; path=/; domain=.npmjs.org; HttpOnly; Secure; SameSite=None'
+740 silly get     ],
+740 silly get     server: 'cloudflare',
+740 silly get     'content-encoding': 'gzip'
+740 silly get   }
+740 silly get ]
+741 verbose get saving vite to C:\Users\i.kłusek\AppData\Local\npm-cache\registry.npmjs.org\vite\.cache.json
+742 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+743 silly addNameRange number 2 { name: 'vite', range: '>=6.0.0 <7.0.0', hasData: true }
+744 silly addNameRange versions [
+744 silly addNameRange   'vite',
+744 silly addNameRange   [
+744 silly addNameRange     '0.1.0',         '0.1.1',         '0.1.2',        '0.2.0',
+744 silly addNameRange     '0.3.0',         '0.3.1',         '0.3.2',        '0.4.0',
+744 silly addNameRange     '0.5.0',         '0.5.1',         '0.5.2',        '0.5.3',
+744 silly addNameRange     '0.6.0',         '0.6.1',         '0.7.0',        '0.8.0',
+744 silly addNameRange     '0.8.1',         '0.9.0',         '0.9.1',        '0.10.0',
+744 silly addNameRange     '0.10.1',        '0.10.2',        '0.10.3',       '0.11.0',
+744 silly addNameRange     '0.11.1',        '0.11.2',        '0.11.3',       '0.11.4',
+744 silly addNameRange     '0.11.5',        '0.12.0',        '0.13.0',       '0.13.1',
+744 silly addNameRange     '0.13.2',        '0.14.0',        '0.14.1',       '0.14.2',
+744 silly addNameRange     '0.14.3',        '0.14.4',        '0.15.0',       '0.15.1',
+744 silly addNameRange     '0.15.2',        '0.15.3',        '0.15.4',       '0.15.5',
+744 silly addNameRange     '0.15.6',        '0.16.0',        '0.16.1',       '0.16.2',
+744 silly addNameRange     '0.16.3',        '0.16.4',        '0.16.5',       '0.16.6',
+744 silly addNameRange     '0.16.7',        '0.16.8',        '0.16.9',       '0.16.10',
+744 silly addNameRange     '0.16.11',       '0.16.12',       '0.17.0',       '0.17.1',
+744 silly addNameRange     '0.17.2',        '0.18.0',        '0.18.1',       '0.19.0',
+744 silly addNameRange     '0.19.1',        '0.19.2',        '0.19.3',       '0.20.0',
+744 silly addNameRange     '0.20.1',        '0.20.2',        '0.20.3',       '0.20.4',
+744 silly addNameRange     '0.20.5',        '0.20.6',        '0.20.7',       '0.20.8',
+744 silly addNameRange     '0.20.9',        '0.20.10',       '1.0.0-beta.1', '1.0.0-beta.2',
+744 silly addNameRange     '1.0.0-beta.3',  '1.0.0-beta.4',  '1.0.0-beta.5', '1.0.0-beta.6',
+744 silly addNameRange     '1.0.0-beta.7',  '1.0.0-beta.8',  '1.0.0-beta.9', '1.0.0-beta.10',
+744 silly addNameRange     '1.0.0-beta.11', '1.0.0-beta.12', '1.0.0-rc.1',   '1.0.0-rc.2',
+744 silly addNameRange     '1.0.0-rc.3',    '1.0.0-rc.4',    '1.0.0-rc.5',   '1.0.0-rc.6',
+744 silly addNameRange     '1.0.0-rc.7',    '1.0.0-rc.8',    '1.0.0-rc.9',   '1.0.0-rc.10',
+744 silly addNameRange     ... 513 more items
+744 silly addNameRange   ]
+744 silly addNameRange ]
+745 silly addNamed vite@6.1.0
+746 verbose addNamed "6.1.0" is a plain semver version for vite
+747 silly cache afterAdd vite@6.1.0
+748 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\vite\6.1.0\package\package.json not in flight; writing
+749 verbose correctMkdir C:\Users\i.kłusek\AppData\Local\npm-cache correctMkdir not in flight; initializing
+750 verbose afterAdd C:\Users\i.kłusek\AppData\Local\npm-cache\vite\6.1.0\package\package.json written
+751 verbose stack Error: No compatible version found: @testing-library/jest-dom@'>=6.6.3 <7.0.0'
+751 verbose stack No valid targets found.
+751 verbose stack Perhaps not compatible with your version of node?
+751 verbose stack     at installTargetsError (C:\Users\i.kłusek\node_modules\npm\lib\cache\add-named.js:284:12)
+751 verbose stack     at next (C:\Users\i.kłusek\node_modules\npm\lib\cache\add-named.js:262:19)
+751 verbose stack     at setData (C:\Users\i.kłusek\node_modules\npm\lib\cache\add-named.js:236:5)
+751 verbose stack     at RES (C:\Users\i.kłusek\node_modules\npm\node_modules\inflight\inflight.js:23:14)
+751 verbose stack     at f (C:\Users\i.kłusek\node_modules\npm\node_modules\once\once.js:25:25)
+751 verbose stack     at fixName (C:\Users\i.kłusek\node_modules\npm\lib\cache\add-named.js:29:5)
+751 verbose stack     at saved (C:\Users\i.kłusek\node_modules\npm\lib\cache\caching-client.js:173:7)
+751 verbose stack     at C:\Users\i.kłusek\node_modules\npm\node_modules\graceful-fs\polyfills.js:233:18
+751 verbose stack     at FSReqCallback.oncomplete (node:fs:188:23)
+752 verbose cwd C:\Users\i.kłusek\Desktop\Svelte\WebNotesApp\client
+753 error Windows_NT 10.0.19044
+754 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Users\\i.kłusek\\node_modules\\npm\\bin\\npm-cli.js" "i"
+755 error node v22.13.1
+756 error npm  v2.15.12
+757 error code ETARGET
+758 error notarget No compatible version found: @testing-library/jest-dom@'>=6.6.3 <7.0.0'
+758 error notarget No valid targets found.
+758 error notarget Perhaps not compatible with your version of node?
+758 error notarget This is most likely not a problem with npm itself.
+758 error notarget In most cases you or one of your dependencies are requesting
+758 error notarget a package version that doesn't exist.
+758 error notarget
+758 error notarget It was specified as a dependency of 'client'
+759 verbose exit [ 1, true ]
