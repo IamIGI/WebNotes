@@ -1,0 +1,39 @@
+:root {
+	//font
+	--font-size-h1: 30px;
+	--font-size-h2: 27px;
+	--font-size-h3: 24px;
+	--font-size-h4: 20px;
+	--font-size-h5: 17px;
+	--font-size-p: 17px;
+	--font-size-li: 17px;
+	--font-size-minV2: 14px;
+	--font-size-footer: 11px;
+
+	// colors
+	--main-background-color: #202020;
+	--main-input-color: #404040;
+	--main-second-color: #333333;
+	--main-second-background-color: #fff;
+	--main-accent-color: #626262;
+	--main-text-color: #eeeeee;
+
+	--bookmark-color-1: #e6b904;
+	--bookmark-color-2: #65ba5a;
+	--bookmark-color-3: #ea86c2;
+	--bookmark-color-4: #b07fe0;
+	--bookmark-color-5: #59c0e7;
+	--bookmark-color-6: #8d8d8d;
+
+	//https://codepen.io/sosuke/pen/Pjoqqp
+	--main-svg-filter: invert(41%) sepia(0%) saturate(1%) hue-rotate(187deg) brightness(90%)
+		contrast(89%);
+
+	// app size:
+	--max-width: 700px;
+	--min-width: 350px;
+	--min-height: 300px;
+
+	//others
+	--main-border-radius: 10px;
+}
