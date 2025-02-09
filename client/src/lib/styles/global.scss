@@ -1,0 +1,116 @@
+@import 'global.vars.scss';
+
+/* Reset basic browser styles */
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	max-width: 100vw; /* Prevent elements from extending past the viewport */
+	// overflow-x: hidden; /* Ensure no overflow happens on any element */
+}
+
+/* Ensure full height for body and html */
+html,
+body {
+	height: 100%; // Ensure the html and body take up full height
+	margin: 0;
+	// overflow-x: hidden; // window.scrollY do not work, when this settings is set
+}
+
+/* Set a common font and smooth scrolling */
+body {
+	font-family: Arial, sans-serif; /* You can replace this with your desired font */
+	line-height: 1.5;
+	scroll-behavior: smooth;
+	overflow-x: hidden;
+	color: var(--main-text-color);
+	background-color: var(--main-background-color);
+}
+
+/* Set 100% width and height for media elements like videos */
+img,
+video {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+/* Remove default list styles */
+ul,
+ol {
+	padding: 5px 5px 5px 15px;
+	list-style: disc;
+}
+
+/* Remove link underlines */
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+h1 {
+	font-size: var(--font-size-h1);
+	margin: 0;
+	padding: 0;
+	line-height: var(--font-size-h1);
+}
+h2 {
+	font-size: var(--font-size-h2);
+}
+h3 {
+	font-size: var(--font-size-h3);
+	font-weight: 500;
+}
+h4 {
+	font-size: var(--font-size-h4);
+	font-weight: 500;
+}
+h5 {
+	font-size: var(--font-size-h5);
+	// font-weight: 500;
+}
+p {
+	font-size: var(--font-size-p);
+	margin: 0;
+	padding: 0;
+}
+li {
+	font-size: var(--font-size-li);
+}
+
+@media (max-width: 550px) {
+	h1 {
+		font-size: calc(var(--font-size-h1) - 17px);
+	}
+	h2 {
+		font-size: calc(var(--font-size-h2) - 10px);
+	}
+	h3 {
+		font-size: calc(var(--font-size-h3) - 5px);
+		font-weight: 500;
+	}
+	h4 {
+		font-size: calc(var(--font-size-h4) - 3px);
+		font-weight: 500;
+	}
+	h5 {
+		font-size: var(--font-size-h5);
+		// font-weight: 500;
+	}
+	p {
+		font-size: calc(var(--font-size-p) - 1px);
+		margin: 0;
+		padding: 0;
+	}
+}
+
+.svg-icon {
+	//https://codepen.io/sosuke/pen/Pjoqqp
+	filter: var(--main-svg-filter);
+}
+
+button {
+	cursor: pointer;
+}
