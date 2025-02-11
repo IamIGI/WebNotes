@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Navigation from './navigation.svelte';
+	import Search from './search.svelte';
 </script>
 
 <nav>
@@ -7,9 +8,7 @@
 	<div class="app-title">
 		<h1>WebNotes<span>by_IgI</span></h1>
 	</div>
-	<div class="search-wrapper">
-		<input />
-	</div>
+	<Search />
 </nav>
 
 <style lang="scss">
@@ -33,16 +32,6 @@
 				color: var(--main-accent-color);
 				font-size: var(--font-size-p);
 			}
-		}
-	}
-
-	.search-wrapper {
-		width: 100%;
-		position: relative;
-
-		input {
-			width: 100%;
-			height: 35px;
 		}
 	}
 </style>
