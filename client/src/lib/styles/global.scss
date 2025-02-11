@@ -35,7 +35,7 @@ textarea {
 	border: none;
 	background-color: var(--main-second-color);
 	color: var(--main-text-color);
-	padding-left: 0.5rem;
+	padding-left: 0.6rem;
 }
 
 /* Set 100% width and height for media elements like videos */
@@ -89,31 +89,31 @@ li {
 	font-size: var(--font-size-li);
 }
 
-@media (max-width: 550px) {
-	h1 {
-		font-size: calc(var(--font-size-h1) - 17px);
-	}
-	h2 {
-		font-size: calc(var(--font-size-h2) - 10px);
-	}
-	h3 {
-		font-size: calc(var(--font-size-h3) - 5px);
-		font-weight: 500;
-	}
-	h4 {
-		font-size: calc(var(--font-size-h4) - 3px);
-		font-weight: 500;
-	}
-	h5 {
-		font-size: var(--font-size-h5);
-		// font-weight: 500;
-	}
-	p {
-		font-size: calc(var(--font-size-p) - 1px);
-		margin: 0;
-		padding: 0;
-	}
-}
+// @media (max-width: 550px) {
+// 	h1 {
+// 		font-size: calc(var(--font-size-h1) - 17px);
+// 	}
+// 	h2 {
+// 		font-size: calc(var(--font-size-h2) - 10px);
+// 	}
+// 	h3 {
+// 		font-size: calc(var(--font-size-h3) - 5px);
+// 		font-weight: 500;
+// 	}
+// 	h4 {
+// 		font-size: calc(var(--font-size-h4) - 3px);
+// 		font-weight: 500;
+// 	}
+// 	h5 {
+// 		font-size: var(--font-size-h5);
+// 		// font-weight: 500;
+// 	}
+// 	p {
+// 		font-size: calc(var(--font-size-p) - 1px);
+// 		margin: 0;
+// 		padding: 0;
+// 	}
+// }
 
 .svg-icon {
 	//https://codepen.io/sosuke/pen/Pjoqqp
