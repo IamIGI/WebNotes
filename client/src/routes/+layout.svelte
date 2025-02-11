@@ -1,5 +1,5 @@
 <script lang="ts">
-	import AppMenu from '$lib/components/appMenu.svelte';
+	import AppMenu from '$lib/components/appMenu/appMenu.svelte';
 	import '$lib/styles/global.scss';
 </script>
 
@@ -14,6 +14,7 @@
 		max-width: var(--max-width);
 		min-width: var(--min-width);
 		min-height: var(--min-height);
+		width: 100%;
 		margin: auto;
 
 		display: flex;
