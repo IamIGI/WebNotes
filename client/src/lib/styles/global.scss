@@ -1,4 +1,4 @@
-@import 'global.vars.scss';
+@use 'global.vars.scss' as *;
 
 /* Reset basic browser styles */
 *,
@@ -27,6 +27,15 @@ body {
 	overflow-x: hidden;
 	color: var(--main-text-color);
 	background-color: var(--main-background-color);
+}
+
+input,
+textarea {
+	outline: none;
+	border: none;
+	background-color: var(--main-second-color);
+	color: var(--main-text-color);
+	padding-left: 0.5rem;
 }
 
 /* Set 100% width and height for media elements like videos */
