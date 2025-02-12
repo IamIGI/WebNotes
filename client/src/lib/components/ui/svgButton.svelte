@@ -1,13 +1,16 @@
 <script lang="ts">
 	import { base } from '$app/paths';
 
-	export let src: string;
-	export let alt: string;
+	interface Props {
+		src: string;
+		alt: string;
+	}
+	let { src, alt }: Props = $props();
 
 	const handleClick = () => console.log('click');
 </script>
 
-<button class="media-icon" on:click={() => handleClick()}>
+<button class="media-icon" onclick={() => handleClick()}>
 	<img src={`${base}${src}`} {alt} class="svg-icon" />
 </button>
 

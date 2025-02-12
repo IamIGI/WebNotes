@@ -18,8 +18,9 @@
 		flex-direction: column;
 		justify-content: flex-start;
 		align-items: flex-start;
-		padding: 0 0.7rem;
+		background-color: var(--main-background-color);
 		gap: 0.2rem;
+		padding: 0.5rem 0 0.7rem 0;
 	}
 
 	.app-title {
