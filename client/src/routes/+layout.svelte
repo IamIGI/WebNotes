@@ -1,8 +1,11 @@
 <script lang="ts">
 	import Navigation from '$lib/components/appMenu/navigation.svelte';
+	import selectedNotesStore from '$lib/stores/selectedNotes.store';
 	import '$lib/styles/global.scss';
 
 	let { children } = $props();
+
+	selectedNotesStore.subscribe((store) => console.log(store));
 </script>
 
 <main>

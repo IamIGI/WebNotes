@@ -1,4 +1,10 @@
 <script lang="ts">
 </script>
 
-<style lang="scss"></style>
+<div class="wrapper"></div>
+
+<style lang="scss">
+	.wrapper {
+		flex: 1;
+	}
+</style>

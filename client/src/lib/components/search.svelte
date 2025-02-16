@@ -1,11 +1,17 @@
 <script lang="ts">
+	interface Props {
+		showSearchButton?: boolean;
+	}
+	let { showSearchButton = true }: Props = $props();
 </script>
 
 <div class="search-wrapper">
 	<input placeholder="Wyszukaj..." />
-	<button>
-		<img class="svg-icon" src="svg/button/search.svg" alt="search" />
-	</button>
+	{#if showSearchButton}
+		<button>
+			<img class="svg-icon" src="svg/button/search.svg" alt="search" />
+		</button>
+	{/if}
 </div>
 
 <style lang="scss">
@@ -18,7 +24,7 @@
 		margin-bottom: 0.5rem;
 
 		input {
-			flex: 1;
+			width: 100%;
 			height: 100%;
 			font-size: var(--font-size-p);
 		}
@@ -30,8 +36,7 @@
 			background-color: var(--main-second-color);
 			outline: none;
 			border: none;
-			/* color: var(--main-text-color); */
-			/* outline: 1px solid red; */
+
 			img {
 				height: 75%;
 				width: 75%;
