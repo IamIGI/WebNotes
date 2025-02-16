@@ -1,13 +1,16 @@
 <script lang="ts">
-	import AppMenu from '$lib/components/appMenu/appMenu.svelte';
+	import Navigation from '$lib/components/appMenu/navigation.svelte';
 	import '$lib/styles/global.scss';
+
+	let { children } = $props();
 </script>
 
 <main>
-	<div class="menu-container">
-		<AppMenu />
+	<Navigation />
+
+	<div class="main-container">
+		{@render children()}
 	</div>
-	<slot />
 </main>
 
 <style lang="scss">
@@ -25,17 +28,13 @@
 		flex-direction: column;
 		justify-content: flex-start;
 		align-items: center;
-		gap: 1rem;
 
 		position: relative;
 	}
 
-	.menu-container {
-		position: sticky;
-		top: 0;
-		width: 100%;
-		z-index: 1000; // Keep it above other elements
-		/* padding: 0.5rem 0; */
-		/* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Optional shadow effect */
+	.main-container {
+		display: flex;
+		justify-content: flex-start;
+		align-items: flex-start;
 	}
 </style>

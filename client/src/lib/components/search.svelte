@@ -15,6 +15,7 @@
 		justify-content: flex-start;
 		align-items: center;
 		height: 35px;
+		margin-bottom: 0.5rem;
 
 		input {
 			flex: 1;

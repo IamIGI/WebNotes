@@ -5,7 +5,9 @@
 
 <div class="list-wrapper">
 	{#each notes.slice(undefined, 10) as note}
-		<NotePreview {note} />
+		<a href="/display-note">
+			<NotePreview {note} />
+		</a>
 	{/each}
 </div>
 
@@ -20,6 +22,7 @@
 		gap: 1rem;
 		max-height: calc(100vh - 180px);
 		overflow: auto;
+
 		padding-right: 0.5rem;
 		scrollbar-gutter: stable; // ensures space for the scrollbar even when it’s not visible.
 	}

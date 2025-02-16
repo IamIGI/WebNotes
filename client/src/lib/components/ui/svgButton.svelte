@@ -1,16 +1,15 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import type { HTMLButtonAttributes } from 'svelte/elements';
 
-	interface Props {
+	interface Props extends HTMLButtonAttributes {
 		src: string;
 		alt: string;
 	}
-	let { src, alt }: Props = $props();
-
-	const handleClick = () => console.log('click');
+	let { src, alt, ...restProps }: Props = $props();
 </script>
 
-<button class="media-icon" onclick={() => handleClick()}>
+<button class="media-icon" {...restProps}>
 	<img src={`${base}${src}`} {alt} class="svg-icon" />
 </button>
 
