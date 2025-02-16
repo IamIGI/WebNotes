@@ -26,19 +26,17 @@
 	</div>
 	<div class="content">
 		{note.textPreview}
+		{#if note.isOpen}
+			<div class="marked-as-open-white"></div>
+			<div class="marked-as-open-black"></div>
+		{/if}
 	</div>
-	{#if note.isOpen}
-		<div class="open-indicator">MARKED AS OPEN</div>
-	{/if}
 </div>
 
 <style lang="scss">
 	.note-container {
 		width: 100%;
-		/* border: 1px solid #ccc; */
 		background: #fff;
-		position: relative;
-		/* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 	}
 
 	.bookmark {
@@ -51,7 +49,7 @@
 		font-size: var(--font-size-p);
 		font-weight: bold;
 		color: var(--main-accent-color);
-		/* color: var(--main-text-color); */
+
 		white-space: nowrap;
 		text-overflow: ellipsis;
 
@@ -62,24 +60,40 @@
 	}
 
 	.content {
-		padding: 0.7rem;
+		padding: 0.4rem 1.5rem 0.4rem 0.4rem;
 		font-size: var(--font-size-minV2);
 		color: var(--main-text-color);
-		background-color: var(--main-accent-color);
 		background-color: var(--main-second-color);
 		line-height: 1.4;
-		max-height: 120px;
-
+		max-height: 115px;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		display: -webkit-box;
 		-webkit-line-clamp: 5;
 		line-clamp: 5;
 		-webkit-box-orient: vertical;
+
+		position: relative;
+		$markSize: 20px;
+		.marked-as-open-white {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			border-left: 0px solid transparent;
+			border-right: $markSize solid transparent;
+			border-top: $markSize solid var(--main-accent-color);
+		}
+		.marked-as-open-black {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			border-left: $markSize solid transparent;
+			border-right: 00px solid transparent;
+			border-bottom: $markSize solid var(--main-background-color);
+		}
 	}
 
 	.text-wrapper {
-		/* margin: 20px; */
 		padding: 0 10px 0 15px;
 		max-height: 115px;
 		height: 100%;
@@ -90,14 +104,5 @@
 		line-clamp: 6;
 		-webkit-box-orient: vertical;
 		width: 100%;
-	}
-
-	.open-indicator {
-		position: absolute;
-		bottom: 5px;
-		right: 10px;
-		font-size: 12px;
-		color: #ff0000;
-		font-weight: bold;
 	}
 </style>

@@ -18,7 +18,7 @@ export const notes: NoteItem[] = [
 			updatedAt: new Date('2024-01-28')
 		},
 		textPreview:
-			'During the sprint review meeting, the team discussed recent accomplishments, challenges faced, and areas for improvement. The primary focus was on optimizing workflows and enhancing collaboration among team members. Several key takeaways included the importance of early testing, refining user stories, and addressing dependencies proactively. Actionable insights were documented to guide future sprints and drive continuous improvement in our development cycle. Ensuring that feedback loops remain open is crucial to maintaining an agile and adaptive workflow.',
+			'During the sprint review meeting, the team discussed recent accomplishments, challenges faced.',
 		isOpen: false
 	},
 	{
