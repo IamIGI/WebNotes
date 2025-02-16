@@ -11,7 +11,7 @@
 
 <style lang="scss">
 	.list-wrapper {
-		min-width: 100%;
+		width: 100%;
 		padding-bottom: 1rem;
 		display: flex;
 		flex-direction: column;
