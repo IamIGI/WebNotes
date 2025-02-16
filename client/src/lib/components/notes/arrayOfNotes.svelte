@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { notes } from '$lib/mocks';
-	import NoteItem from './noteItem.svelte';
+	import NotePreview from './notePreview.svelte';
 </script>
 
 <div class="list-wrapper">
-	{#each notes as note}
-		<NoteItem {note} />
+	{#each notes.slice(undefined, 10) as note}
+		<NotePreview {note} />
 	{/each}
 </div>
 
@@ -20,5 +20,7 @@
 		gap: 1rem;
 		max-height: calc(100vh - 180px);
 		overflow: auto;
+		padding-right: 0.5rem;
+		scrollbar-gutter: stable; // ensures space for the scrollbar even when it’s not visible.
 	}
 </style>

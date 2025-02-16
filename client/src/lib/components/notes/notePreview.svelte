@@ -1,29 +1,21 @@
 <script lang="ts">
-	import type { NoteItem } from '$lib/interfaces';
+	import type { NotePreview } from '$lib/interfaces';
+	import Bookmark from './bookmark.svelte';
 
 	interface Props {
-		note: NoteItem;
+		note: NotePreview;
 	}
-
 	let { note }: Props = $props();
-
-	// Format the date
-	function formatDate(date: Date): string {
-		const d = new Date(date);
-		const now = new Date();
-		const options: Intl.DateTimeFormatOptions =
-			now.getFullYear() === d.getFullYear()
-				? { day: '2-digit', month: 'short' }
-				: { day: '2-digit', month: 'short', year: 'numeric' };
-		return d.toLocaleDateString(undefined, options);
-	}
 </script>
 
 <div class="note-container">
-	<div class="bookmark" style="background-color: {note.bookmark.color}">
-		<span>{note.bookmark.title}</span>
-		<span>{formatDate(note.bookmark.updatedAt)}</span>
-	</div>
+	<Bookmark
+		data={{
+			title: note.bookmark.title,
+			color: note.bookmark.color,
+			updatedAt: note.bookmark.updatedAt
+		}}
+	/>
 	<div class="content">
 		{note.textPreview}
 		{#if note.isOpen}
@@ -37,26 +29,6 @@
 	.note-container {
 		width: 100%;
 		background: #fff;
-	}
-
-	.bookmark {
-		height: 40px;
-		width: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 0 0.3rem 0 1rem;
-		font-size: var(--font-size-p);
-		font-weight: bold;
-		color: var(--main-accent-color);
-
-		white-space: nowrap;
-		text-overflow: ellipsis;
-
-		span:nth-of-type(2) {
-			padding-top: 1rem;
-			font-size: var(--font-size-minV2);
-		}
 	}
 
 	.content {
@@ -91,18 +63,5 @@
 			border-right: 00px solid transparent;
 			border-bottom: $markSize solid var(--main-background-color);
 		}
-	}
-
-	.text-wrapper {
-		padding: 0 10px 0 15px;
-		max-height: 115px;
-		height: 100%;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		display: -webkit-box;
-		-webkit-line-clamp: 6;
-		line-clamp: 6;
-		-webkit-box-orient: vertical;
-		width: 100%;
 	}
 </style>

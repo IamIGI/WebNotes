@@ -1,6 +1,6 @@
-import type { NoteItem } from '$lib/interfaces';
+import type { NotePreview } from '$lib/interfaces';
 
-export const notes: NoteItem[] = [
+export const notes: NotePreview[] = [
 	{
 		bookmark: {
 			title: 'Project Roadmap',
