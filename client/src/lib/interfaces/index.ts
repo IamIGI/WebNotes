@@ -16,3 +16,7 @@ export interface Note {
 	bookmark: Bookmark;
 	text: string;
 }
+
+export interface BookmarkWithNoteId extends Bookmark {
+	id: string;
+}

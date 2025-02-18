@@ -5,12 +5,18 @@
 	interface Props extends HTMLButtonAttributes {
 		src: string;
 		alt: string;
+		size?: string;
 	}
-	let { src, alt, ...restProps }: Props = $props();
+	let { src, alt, size, ...restProps }: Props = $props();
 </script>
 
 <button class="media-icon" {...restProps}>
-	<img src={`${base}${src}`} {alt} class="svg-icon" />
+	<img
+		src={`${base}${src}`}
+		{alt}
+		class="svg-icon"
+		style={size && `height: ${size}; width: ${size}`}
+	/>
 </button>
 
 <style lang="scss">

@@ -22,8 +22,8 @@
 		max-width: var(--max-width);
 		min-width: var(--min-width);
 		min-height: var(--min-height);
-
 		width: 100%;
+
 		margin: auto;
 		padding: 0 0.7rem 0.5rem 0.7rem;
 
@@ -36,8 +36,10 @@
 	}
 
 	.main-container {
+		/* outline: 2px solid green; */
 		display: flex;
 		justify-content: flex-start;
 		align-items: flex-start;
+		width: 100%;
 	}
 </style>

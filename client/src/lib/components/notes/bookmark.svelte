@@ -19,7 +19,7 @@
 </script>
 
 <div class="bookmark" style="background-color: {data.color}">
-	<span>{data.title}</span>
+	<h5>{data.title}</h5>
 	{#if isSideMenu === false}
 		<span>{formatDate(data.updatedAt)}</span>
 	{/if}
@@ -40,13 +40,13 @@
 		white-space: nowrap;
 		text-overflow: ellipsis;
 
-		span:nth-of-type(1) {
-			line-height: var(--font-size-p);
+		h5 {
+			/* line-height: var(--font-size-p); */
 			overflow: hidden;
 			white-space: nowrap;
 			text-overflow: ellipsis;
 		}
-		span:nth-of-type(2) {
+		span {
 			padding-top: 1rem;
 			font-size: var(--font-size-minV2);
 		}
