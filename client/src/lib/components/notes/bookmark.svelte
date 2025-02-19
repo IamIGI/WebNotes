@@ -1,10 +1,11 @@
 <script lang="ts">
-	import type { BookmarkPreview } from '$lib/interfaces';
+	import type { Bookmark } from '$lib/interfaces';
 
 	interface Props {
-		data: BookmarkPreview;
+		data: Bookmark;
+		isSideMenu: boolean;
 	}
-	let { data }: Props = $props();
+	let { data, isSideMenu }: Props = $props();
 
 	function formatDate(date: Date): string {
 		const d = new Date(date);
@@ -18,8 +19,10 @@
 </script>
 
 <div class="bookmark" style="background-color: {data.color}">
-	<span>{data.title}</span>
-	<span>{formatDate(data.updatedAt)}</span>
+	<h5>{data.title}</h5>
+	{#if isSideMenu === false}
+		<span>{formatDate(data.updatedAt)}</span>
+	{/if}
 </div>
 
 <style lang="scss">
@@ -29,7 +32,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 0 0.3rem 0 1rem;
+		padding: 0 0.3rem 0 0.6rem;
 		font-size: var(--font-size-p);
 		font-weight: bold;
 		color: var(--main-accent-color);
@@ -37,10 +40,13 @@
 		white-space: nowrap;
 		text-overflow: ellipsis;
 
-		span:nth-of-type(1) {
-			line-height: var(--font-size-p);
+		h5 {
+			/* line-height: var(--font-size-p); */
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
 		}
-		span:nth-of-type(2) {
+		span {
 			padding-top: 1rem;
 			font-size: var(--font-size-minV2);
 		}

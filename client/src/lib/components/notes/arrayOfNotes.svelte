@@ -1,11 +1,16 @@
 <script lang="ts">
-	import { notes } from '$lib/mocks';
+	import { notesPreview } from '$lib/mocks';
 	import NotePreview from './notePreview.svelte';
+
+	interface Props {
+		isSideMenu?: boolean;
+	}
+	let { isSideMenu = false }: Props = $props();
 </script>
 
 <div class="list-wrapper">
-	{#each notes.slice(undefined, 10) as note}
-		<NotePreview {note} />
+	{#each notesPreview.slice(undefined, 10) as note}
+		<NotePreview {note} {isSideMenu} />
 	{/each}
 </div>
 
@@ -20,6 +25,7 @@
 		gap: 1rem;
 		max-height: calc(100vh - 180px);
 		overflow: auto;
+
 		padding-right: 0.5rem;
 		scrollbar-gutter: stable; // ensures space for the scrollbar even when it’s not visible.
 	}

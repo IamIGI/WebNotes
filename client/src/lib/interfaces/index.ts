@@ -1,5 +1,6 @@
 export interface NotePreview {
-	bookmark: BookmarkPreview;
+	id: string;
+	bookmark: Bookmark;
 	textPreview: string;
 	isOpen: boolean;
 }
@@ -7,16 +8,15 @@ export interface NotePreview {
 export interface Bookmark {
 	title: string;
 	color: string;
-}
-
-export interface BookmarkPreview extends Bookmark {
 	updatedAt: Date;
 }
 
 export interface Note {
-	bookmark: {
-		title: string;
-		color: string;
-	};
+	id: string;
+	bookmark: Bookmark;
 	text: string;
+}
+
+export interface BookmarkWithNoteId extends Bookmark {
+	id: string;
 }

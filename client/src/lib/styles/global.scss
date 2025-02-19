@@ -15,6 +15,7 @@ html,
 body {
 	height: 100%;
 	margin: 0;
+	box-sizing: border-box;
 }
 
 body {
@@ -119,4 +120,6 @@ li {
 
 button {
 	cursor: pointer;
+	outline: none;
+	border: none;
 }

@@ -1,20 +1,34 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+	import { page } from '$app/state';
 	import type { NotePreview } from '$lib/interfaces';
+	import selectedNotesStore from '$lib/stores/selectedNotes.store';
 	import Bookmark from './bookmark.svelte';
 
 	interface Props {
 		note: NotePreview;
+		isSideMenu: boolean;
 	}
-	let { note }: Props = $props();
+	let { note, isSideMenu }: Props = $props();
+
+	function navigate() {
+		selectedNotesStore.add(note.id);
+		if (page.url.pathname === '/') {
+			goto('/display-notes');
+		} else {
+			// console.log('t1');
+		}
+	}
 </script>
 
-<div class="note-container">
+<button class="note-container" onclick={navigate}>
 	<Bookmark
 		data={{
 			title: note.bookmark.title,
 			color: note.bookmark.color,
 			updatedAt: note.bookmark.updatedAt
 		}}
+		{isSideMenu}
 	/>
 	<div class="content">
 		{note.textPreview}
@@ -23,16 +37,17 @@
 			<div class="marked-as-open-black"></div>
 		{/if}
 	</div>
-</div>
+</button>
 
 <style lang="scss">
 	.note-container {
 		width: 100%;
 		background: #fff;
+		text-align: left;
 	}
 
 	.content {
-		padding: 0.4rem 1.5rem 0.4rem 0.4rem;
+		padding: 0.4rem;
 		font-size: var(--font-size-minV2);
 		color: var(--main-text-color);
 		background-color: var(--main-second-color);
