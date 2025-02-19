@@ -14,7 +14,7 @@
 <div class="wrapper">
 	{#each bookmarks as bookmark}
 		<div class="bookmark" style="background-color: {bookmark.color};">
-			<button><h5>{bookmark.title}</h5></button>
+			<button onclick={() => selectedNotesStore.select(bookmark.id)}>{bookmark.title}</button>
 			{#if bookmark.id === selectedNoteId}
 				<div class="marked-as-open-white"></div>
 				<div class="marked-as-open-black"></div>
@@ -31,10 +31,11 @@
 
 <style lang="scss">
 	.wrapper {
-		/* outline: 1px solid green; */
 		display: flex;
 		flex-direction: row;
 		justify-content: flex-start;
+		flex-wrap: nowrap;
+		overflow: hidden;
 		align-items: center;
 		max-height: 35px;
 		height: 35px;
@@ -46,14 +47,15 @@
 
 	.bookmark {
 		position: relative;
-		flex: 1;
+		min-width: 50%;
 		max-width: 50%;
+		width: 50%;
+		overflow: hidden;
 
 		display: flex;
 		flex-direction: row;
 		justify-content: flex-start;
 		align-items: center;
-
 		height: 100%;
 
 		/* padding: 1rem; */
@@ -62,25 +64,24 @@
 			padding-left: 0.5rem;
 			height: 100%;
 			background-color: transparent;
+			min-width: 80%;
+			max-width: 80%;
 			width: 80%;
 			text-align: left;
-
 			display: flex;
 			align-items: flex-end;
-			padding-bottom: 0.2rem;
+			font-size: var(--font-size-h5);
+			font-weight: 700;
+			color: var(--main-accent-color);
 
-			h5 {
-				overflow: hidden;
-				white-space: nowrap;
-				text-overflow: ellipsis;
-				color: var(--main-accent-color);
-			}
+			max-width: 200px; //Change on wider container
+			overflow: hidden;
+			white-space: nowrap;
+			display: block;
+			text-overflow: ellipsis;
 		}
 	}
-	/* 
-	.selected-bookmark-cut {
-		clip-path: polygon(0% 100%, 0% 0%, 100% 0%, 91.6% 0%, 100% 50%, 100% 100%);
-	} */
+
 	$markSize: 20px;
 	.marked-as-open-white {
 		position: absolute;

@@ -16,7 +16,7 @@
 		if (page.url.pathname === '/') {
 			goto('/display-notes');
 		} else {
-			console.log('t1');
+			// console.log('t1');
 		}
 	}
 </script>

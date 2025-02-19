@@ -24,15 +24,17 @@ function selectedNotesStore() {
 				return prev;
 			}
 			if (get(store).notes.find((storedNote) => storedNote.id === id)) {
-				console.log('Note is already displayed');
 				prev.selectedNoteId = id;
 				return prev;
 			}
 
 			if (get(store).notes.length === 2) {
-				console.log('replace last selected note');
-				prev.notes[prev.notes.length - 1] = note;
-				prev.selectedNoteId = id;
+				const index = prev.notes.findIndex((note) => note.id === prev.selectedNoteId);
+
+				if (index !== -1) {
+					prev.notes[index] = note;
+					prev.selectedNoteId = id;
+				}
 				return prev;
 			} else {
 				// add new note
