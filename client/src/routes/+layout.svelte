@@ -1,16 +1,21 @@
 <script lang="ts">
 	import Navigation from '$lib/components/appMenu/navigation.svelte';
-	import selectedNotesStore from '$lib/stores/selectedNotes.store';
+	import notesStore from '$lib/stores/notes.store';
 	import '$lib/styles/global.scss';
+	import { onMount } from 'svelte';
 
 	let { children } = $props();
 
-	selectedNotesStore.subscribe((store) => console.log(store));
+	// selectedNotesStore.subscribe((store) => console.log(store));
+
+	onMount(() => {
+		//TODO: Add loading
+		notesStore.fetchNotes();
+	});
 </script>
 
 <main>
 	<Navigation />
-
 	<div class="main-container">
 		{@render children()}
 	</div>
