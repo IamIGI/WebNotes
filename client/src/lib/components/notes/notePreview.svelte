@@ -1,15 +1,16 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
-	import type { NotePreview } from '$lib/interfaces';
+	import type { Note, NotePreview } from '$lib/interfaces';
 	import selectedNotesStore from '$lib/stores/selectedNotes.store';
 	import Bookmark from './bookmark.svelte';
 
 	interface Props {
 		note: NotePreview;
+		isOpen: boolean;
 		isSideMenu: boolean;
 	}
-	let { note, isSideMenu }: Props = $props();
+	let { note, isOpen, isSideMenu }: Props = $props();
 
 	function navigate() {
 		selectedNotesStore.add(note.id);
@@ -32,7 +33,7 @@
 	/>
 	<div class="content">
 		{note.textPreview}
-		{#if note.isOpen}
+		{#if isOpen}
 			<div class="marked-as-open-white"></div>
 			<div class="marked-as-open-black"></div>
 		{/if}

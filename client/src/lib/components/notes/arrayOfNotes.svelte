@@ -1,16 +1,18 @@
 <script lang="ts">
-	import { notesPreview } from '$lib/mocks';
 	import NotePreview from './notePreview.svelte';
+	import { type NotePreview as NotePreviewInterface } from '../../interfaces/index';
 
 	interface Props {
+		notes: NotePreviewInterface[];
+		openNotesIds: string[];
 		isSideMenu?: boolean;
 	}
-	let { isSideMenu = false }: Props = $props();
+	let { notes, openNotesIds, isSideMenu = false }: Props = $props();
 </script>
 
 <div class="list-wrapper">
-	{#each notesPreview.slice(undefined, 10) as note}
-		<NotePreview {note} {isSideMenu} />
+	{#each notes.slice(undefined, 10) as note}
+		<NotePreview {note} isOpen={openNotesIds.includes(note.id)} {isSideMenu} />
 	{/each}
 </div>
 
