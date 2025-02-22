@@ -22,3 +22,12 @@ export interface Note {
 export interface BookmarkWithNoteId extends Bookmark {
 	id: string;
 }
+
+export interface User {
+	name: string;
+	email: string;
+	password: string;
+	verified: boolean;
+	createAt: Date;
+	updatedAt: Date;
+}

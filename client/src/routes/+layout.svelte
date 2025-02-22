@@ -6,8 +6,6 @@
 
 	let { children } = $props();
 
-	// selectedNotesStore.subscribe((store) => console.log(store));
-
 	onMount(() => {
 		//TODO: Add loading
 		notesStore.fetchNotes();
