@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import type { Bookmark } from '$lib/api/generated';
 	import selectedNotesStore from '$lib/stores/selectedNotes.store';
 	import SvgButton from '../ui/svgButton.svelte';
@@ -10,8 +11,12 @@
 		bookmarks: SelectedNoteBookmark[]; //only two bookmarks for current state
 		selectedNoteId: string | null;
 	}
-
 	let { bookmarks, selectedNoteId }: Props = $props();
+
+	function onNoteDelete(_id: string) {
+		selectedNotesStore.remove(_id);
+		if (bookmarks.length === 0) goto('/');
+	}
 </script>
 
 <div class="wrapper">
@@ -26,7 +31,7 @@
 				src="/svg/button/close.svg"
 				alt="close"
 				size="30px"
-				onclick={() => selectedNotesStore.remove(bookmark._id)}
+				onclick={() => onNoteDelete(bookmark._id)}
 			/>
 		</div>
 	{/each}
@@ -40,8 +45,7 @@
 		flex-wrap: nowrap;
 		overflow: hidden;
 		align-items: center;
-		max-height: 35px;
-		height: 35px;
+		min-height: 35px;
 		width: 100%;
 		border-bottom: 1px solid var(--main-accent-color_2);
 		gap: 0.5rem;

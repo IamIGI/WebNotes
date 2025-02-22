@@ -4,38 +4,26 @@ import AppError from './appError.utils';
 const VALIDATION = 'Validation';
 
 function validateId(id: string | null, idName?: string) {
-  console.log('validateId');
-  console.log(id);
+  console.log('validateId: ', id);
+
   if (id === ':id') {
     throw new AppError(HttpStatusCode.NotAcceptable, 'ID is empty', VALIDATION);
   }
   if (!id || id.length !== 24) {
     throw new AppError(
       HttpStatusCode.NotAcceptable,
-      `${
-        idName !== undefined ? `${idName} || ` : ''
-      }Provided ID is not valid: ${id}`,
+      `${idName !== undefined ? `${idName} || ` : ''}Provided ID is not valid: ${id}`,
       VALIDATION
     );
   }
 }
 
-function isValidPayload<T>(
-  payload: Partial<T>,
-  requiredKeys: Array<keyof T>,
-  payloadName?: string
-): void {
+function isValidPayload<T>(payload: Partial<T>, requiredKeys: Array<keyof T>, payloadName?: string): void {
   console.log(payload);
-  if (
-    !payload ||
-    typeof payload !== 'object' ||
-    JSON.stringify(payload) === '{}'
-  ) {
+  if (!payload || typeof payload !== 'object' || JSON.stringify(payload) === '{}') {
     throw new AppError(
       HttpStatusCode.NotAcceptable,
-      `${
-        payloadName !== undefined ? `${payloadName} || ` : ''
-      }No payload provided`,
+      `${payloadName !== undefined ? `${payloadName} || ` : ''}No payload provided`,
       VALIDATION
     );
   }
@@ -45,9 +33,7 @@ function isValidPayload<T>(
     if (!(key in payload)) {
       throw new AppError(
         HttpStatusCode.NotAcceptable,
-        `${
-          payloadName !== undefined ? `${payloadName} || ` : ''
-        }Missing required key: ${String(key)}`,
+        `${payloadName !== undefined ? `${payloadName} || ` : ''}Missing required key: ${String(key)}`,
         VALIDATION
       );
     }
@@ -60,9 +46,7 @@ function isValidPayload<T>(
     ) {
       throw new AppError(
         HttpStatusCode.NotAcceptable,
-        `${payloadName ? `${payloadName} || ` : ''}Key '${String(
-          key
-        )}' is empty.`,
+        `${payloadName ? `${payloadName} || ` : ''}Key '${String(key)}' is empty.`,
         VALIDATION
       );
     }
@@ -78,13 +62,7 @@ function isValidPayload<T>(
   }
 }
 
-function isValidArraySize(
-  keyName: string,
-  value: any[],
-  min: number,
-  max: number,
-  exactly: boolean = false
-) {
+function isValidArraySize(keyName: string, value: any[], min: number, max: number, exactly: boolean = false) {
   if (exactly) {
     console.log(value);
     if (value.length !== min && value.length !== max) {
