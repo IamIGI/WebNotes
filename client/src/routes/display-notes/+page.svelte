@@ -14,10 +14,12 @@
 			openNotesIds={$selectedNotesStore.notes.map((note) => note._id)}
 		/>
 	</div>
-	<SelectedNotes
-		notes={$selectedNotesStore.notes}
-		selectedNoteId={$selectedNotesStore.selectedNoteId}
-	/>
+	{#if $selectedNotesStore.notes.length > 0}
+		<SelectedNotes
+			notes={$selectedNotesStore.notes}
+			selectedNoteId={$selectedNotesStore.selectedNoteId}
+		/>
+	{/if}
 </div>
 
 <style lang="scss">

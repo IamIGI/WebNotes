@@ -16,8 +16,6 @@
 		await selectedNotesStore.add(note._id);
 		if (page.url.pathname === '/') {
 			goto('/display-notes');
-		} else {
-			// console.log('t1');
 		}
 	}
 </script>
