@@ -1,54 +1,54 @@
-import type { Note } from '$lib/interfaces';
-import { get, writable } from 'svelte/store';
-import { notes as notesMock } from '$lib/mocks';
+import { writable } from 'svelte/store';
+import type { Note } from '$lib/api/generated';
+import webNotesServer from '$lib/api/api.config';
 
-export interface SelectedNotesInterface {
+export interface SelectedNotesStore {
 	notes: Note[];
 	selectedNoteId: string | null;
 }
 
-const init: SelectedNotesInterface = {
+const init: SelectedNotesStore = {
 	notes: [],
 	selectedNoteId: null
 };
 
 function selectedNotesStore() {
-	const store = writable<SelectedNotesInterface>(init);
+	const store = writable<SelectedNotesStore>(init);
 	const { update, subscribe } = store;
 
-	const add = (id: string) =>
-		update((prev) => {
-			const note = notesMock.find((n) => n.id === id);
-			if (!note) {
-				console.error(`Note not found, id: ${id}`);
-				return prev;
-			}
-			if (get(store).notes.find((storedNote) => storedNote.id === id)) {
-				prev.selectedNoteId = id;
-				return prev;
-			}
+	const add = async (id: string) => {
+		const note = await webNotesServer.notesService.notesIdGet(id);
 
-			if (get(store).notes.length === 2) {
-				const index = prev.notes.findIndex((note) => note.id === prev.selectedNoteId);
-
-				if (index !== -1) {
-					prev.notes[index] = note;
+		if (note) {
+			update((prev) => {
+				//When already opened, just select it again
+				if (prev.notes.find((storedNote) => storedNote._id === id)) {
 					prev.selectedNoteId = id;
+					return prev;
 				}
-				return prev;
-			} else {
-				// add new note
-				prev.selectedNoteId = id;
-				prev.notes.push(note);
-				return prev;
-			}
-		});
 
+				if (prev.notes.length === 2) {
+					//replace current selected note with new opened
+					const index = prev.notes.findIndex((note) => note._id === prev.selectedNoteId);
+					if (index !== -1) {
+						prev.notes[index] = note;
+						prev.selectedNoteId = id;
+					}
+				} else {
+					// add new note
+					prev.selectedNoteId = id;
+					prev.notes.push(note);
+				}
+
+				return prev;
+			});
+		}
+	};
 	const remove = (id: string) =>
 		update((prev) => {
-			prev.notes = prev.notes.filter((n) => n.id !== id);
+			prev.notes = prev.notes.filter((n) => n._id !== id);
 			if (prev.notes.length === 1) {
-				prev.selectedNoteId = prev.notes[0].id;
+				prev.selectedNoteId = prev.notes[0]._id;
 			} else {
 				prev.selectedNoteId = null;
 			}
@@ -57,7 +57,7 @@ function selectedNotesStore() {
 
 	const select = (id: string) =>
 		update((prev) => {
-			const selectedNote = prev.notes.find((n) => n.id === id);
+			const selectedNote = prev.notes.find((n) => n._id === id);
 			if (selectedNote) prev.selectedNoteId = id;
 			return prev;
 		});

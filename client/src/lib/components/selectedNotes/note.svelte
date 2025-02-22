@@ -1,11 +1,11 @@
 <script lang="ts">
-	import type { Note } from '$lib/interfaces';
+	import type { Note } from '$lib/api/generated';
 
-	let { text, id }: Omit<Note, 'bookmark'> = $props();
+	let { text, _id }: Omit<Note, 'bookmark' | 'updatedAt' | 'createdAt'> = $props();
 </script>
 
 <div class="wrapper">
-	<textarea name="" id="" bind:value={text}></textarea>
+	<textarea name="" id={_id} bind:value={text}></textarea>
 </div>
 
 <style lang="scss">

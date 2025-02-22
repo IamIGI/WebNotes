@@ -1,10 +1,13 @@
 <script lang="ts">
-	import type { BookmarkWithNoteId } from '$lib/interfaces';
+	import type { Bookmark } from '$lib/api/generated';
 	import selectedNotesStore from '$lib/stores/selectedNotes.store';
 	import SvgButton from '../ui/svgButton.svelte';
 
+	interface SelectedNoteBookmark extends Bookmark {
+		_id: string;
+	}
 	interface Props {
-		bookmarks: BookmarkWithNoteId[]; //only two bookmarks
+		bookmarks: SelectedNoteBookmark[]; //only two bookmarks for current state
 		selectedNoteId: string | null;
 	}
 
@@ -14,8 +17,8 @@
 <div class="wrapper">
 	{#each bookmarks as bookmark}
 		<div class="bookmark" style="background-color: {bookmark.color};">
-			<button onclick={() => selectedNotesStore.select(bookmark.id)}>{bookmark.title}</button>
-			{#if bookmark.id === selectedNoteId}
+			<button onclick={() => selectedNotesStore.select(bookmark._id)}>{bookmark.title}</button>
+			{#if bookmark._id === selectedNoteId}
 				<div class="marked-as-open-white"></div>
 				<div class="marked-as-open-black"></div>
 			{/if}
@@ -23,7 +26,7 @@
 				src="/svg/button/close.svg"
 				alt="close"
 				size="30px"
-				onclick={() => selectedNotesStore.remove(bookmark.id)}
+				onclick={() => selectedNotesStore.remove(bookmark._id)}
 			/>
 		</div>
 	{/each}

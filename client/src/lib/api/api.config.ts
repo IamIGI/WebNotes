@@ -3,7 +3,7 @@
 import envConstants from '$lib/constants/env.constants';
 import { Configuration, NotesApi, ResponseError } from './generated';
 
-class MagnetsServerApi {
+class WebNotesServer {
 	public notesService: NotesApi;
 
 	constructor() {
@@ -51,5 +51,5 @@ class MagnetsServerApi {
 	}
 }
 
-const magnetsServerApi = new MagnetsServerApi();
-export default magnetsServerApi;
+const webNotesServer = new WebNotesServer();
+export default webNotesServer;

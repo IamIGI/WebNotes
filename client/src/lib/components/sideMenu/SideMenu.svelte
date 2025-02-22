@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { NotePreview } from '$lib/interfaces';
+	import type { NotePreview } from '$lib/api/generated';
 	import ArrayOfNotes from '../notes/arrayOfNotes.svelte';
 	import Search from '../search.svelte';
 

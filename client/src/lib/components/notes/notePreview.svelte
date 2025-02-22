@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
-	import type { Note, NotePreview } from '$lib/interfaces';
+	import type { NotePreview } from '$lib/api/generated';
 	import selectedNotesStore from '$lib/stores/selectedNotes.store';
 	import Bookmark from './bookmark.svelte';
 
@@ -12,8 +12,8 @@
 	}
 	let { note, isOpen, isSideMenu }: Props = $props();
 
-	function navigate() {
-		selectedNotesStore.add(note.id);
+	async function navigate() {
+		await selectedNotesStore.add(note._id);
 		if (page.url.pathname === '/') {
 			goto('/display-notes');
 		} else {
@@ -26,9 +26,9 @@
 	<Bookmark
 		data={{
 			title: note.bookmark.title,
-			color: note.bookmark.color,
-			updatedAt: note.bookmark.updatedAt
+			color: note.bookmark.color
 		}}
+		updatedAt={note.updatedAt}
 		{isSideMenu}
 	/>
 	<div class="content">

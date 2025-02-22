@@ -58,13 +58,13 @@ export class NotesApi extends runtime.BaseAPI {
      * Returns a list of note previews with truncated text.
      * Get all note previews
      */
-    async noteAllPreviewsGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<NotePreview>>> {
+    async notesAllPreviewsGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<NotePreview>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/note/all/previews`,
+            path: `/notes/all/previews`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -77,8 +77,8 @@ export class NotesApi extends runtime.BaseAPI {
      * Returns a list of note previews with truncated text.
      * Get all note previews
      */
-    async noteAllPreviewsGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<NotePreview>> {
-        const response = await this.noteAllPreviewsGetRaw(initOverrides);
+    async notesAllPreviewsGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<NotePreview>> {
+        const response = await this.notesAllPreviewsGetRaw(initOverrides);
         return await response.value();
     }
 

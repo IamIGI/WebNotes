@@ -27,7 +27,7 @@ const getRecent = async (limit: number): Promise<Note[]> => {
 };
 
 const getById = async (id: string) => {
-  return [];
+  return await NoteModel.findById(id).lean();
 };
 
 const add = async (payload: NoteUpdate): Promise<Note> => {

@@ -2,6 +2,9 @@ import noteService from '../services/note.service';
 import validateRequestUtil from '../utils/validateRequest.utils';
 import catchErrors from '../utils/catchErrors.utils';
 import { NoteUpdate } from '../api/api/generated';
+import appAssert from '../utils/appErrorAssert.utils';
+import { HttpStatusCode } from '../constants/error.constants';
+import { DB_COLLECTIONS } from '../config/MongoDB.config';
 
 const REQUIRED_KEYS: Array<keyof NoteUpdate> = ['bookmark', 'text'];
 
@@ -28,8 +31,9 @@ const getById = catchErrors(async (req, res) => {
 
   validateRequestUtil.validateId(id);
   const note = await noteService.getById(id);
+  appAssert(note, HttpStatusCode.NotFound, `Note not found/updated, id: ${id}`, DB_COLLECTIONS.Notes);
 
-  res.status(200).json(note);
+  res.status(HttpStatusCode.OK).json(note);
 });
 
 const add = catchErrors(async (req, res) => {
@@ -39,7 +43,7 @@ const add = catchErrors(async (req, res) => {
 
   const newProduct = await noteService.add(payload);
 
-  res.status(201).json(newProduct);
+  res.status(HttpStatusCode.Created).json(newProduct);
 });
 
 const editById = catchErrors(async (req, res) => {
@@ -50,10 +54,9 @@ const editById = catchErrors(async (req, res) => {
   validateRequestUtil.isValidPayload(payload, REQUIRED_KEYS);
 
   const updatedNote = await noteService.editById(id, payload);
-  if (!updatedNote) {
-    res.status(404).json({ message: 'Product not found' });
-  }
-  res.status(200).json(updatedNote);
+  appAssert(updatedNote, HttpStatusCode.NotFound, `Note not found/updated, id: ${id}`, DB_COLLECTIONS.Notes);
+
+  res.status(HttpStatusCode.OK).json(updatedNote);
 });
 
 const removeById = catchErrors(async (req, res) => {
@@ -62,7 +65,7 @@ const removeById = catchErrors(async (req, res) => {
   validateRequestUtil.validateId(id);
   await noteService.removeById(id);
 
-  res.status(200).send({ id });
+  res.status(HttpStatusCode.OK).send({ id });
 });
 
 export default {

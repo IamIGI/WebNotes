@@ -32,7 +32,7 @@ export interface Note {
      * @type {string}
      * @memberof Note
      */
-    id: string;
+    _id: string;
     /**
      * 
      * @type {Bookmark}
@@ -63,7 +63,7 @@ export interface Note {
  * Check if a given object implements the Note interface.
  */
 export function instanceOfNote(value: object): value is Note {
-    if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('_id' in value) || value['_id'] === undefined) return false;
     if (!('bookmark' in value) || value['bookmark'] === undefined) return false;
     if (!('text' in value) || value['text'] === undefined) return false;
     if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
@@ -81,7 +81,7 @@ export function NoteFromJSONTyped(json: any, ignoreDiscriminator: boolean): Note
     }
     return {
         
-        'id': json['id'],
+        '_id': json['_id'],
         'bookmark': BookmarkFromJSON(json['bookmark']),
         'text': json['text'],
         'updatedAt': json['updatedAt'],
@@ -100,7 +100,7 @@ export function NoteToJSONTyped(value?: Note | null, ignoreDiscriminator: boolea
 
     return {
         
-        'id': value['id'],
+        '_id': value['_id'],
         'bookmark': BookmarkToJSON(value['bookmark']),
         'text': value['text'],
         'updatedAt': value['updatedAt'],
