@@ -45,6 +45,10 @@ export interface NotesPostRequest {
     noteUpdate: NoteUpdate;
 }
 
+export interface NotesRecentGetRequest {
+    limit?: number;
+}
+
 /**
  * 
  */
@@ -54,13 +58,13 @@ export class NotesApi extends runtime.BaseAPI {
      * Returns a list of note previews with truncated text.
      * Get all note previews
      */
-    async notePreviewsGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<NotePreview>>> {
+    async noteAllPreviewsGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<NotePreview>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/note/previews`,
+            path: `/note/all/previews`,
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -73,8 +77,8 @@ export class NotesApi extends runtime.BaseAPI {
      * Returns a list of note previews with truncated text.
      * Get all note previews
      */
-    async notePreviewsGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<NotePreview>> {
-        const response = await this.notePreviewsGetRaw(initOverrides);
+    async noteAllPreviewsGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<NotePreview>> {
+        const response = await this.noteAllPreviewsGetRaw(initOverrides);
         return await response.value();
     }
 
@@ -231,11 +235,15 @@ export class NotesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the last 5 opened notes when the app starts.
-     * Get 5 most recently opened notes
+     * Returns a specified number of recently opened notes.
+     * Get recently opened notes
      */
-    async notesRecentGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Note>>> {
+    async notesRecentGetRaw(requestParameters: NotesRecentGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Note>>> {
         const queryParameters: any = {};
+
+        if (requestParameters['limit'] != null) {
+            queryParameters['limit'] = requestParameters['limit'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -250,11 +258,11 @@ export class NotesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the last 5 opened notes when the app starts.
-     * Get 5 most recently opened notes
+     * Returns a specified number of recently opened notes.
+     * Get recently opened notes
      */
-    async notesRecentGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Note>> {
-        const response = await this.notesRecentGetRaw(initOverrides);
+    async notesRecentGet(limit?: number, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Note>> {
+        const response = await this.notesRecentGetRaw({ limit: limit }, initOverrides);
         return await response.value();
     }
 

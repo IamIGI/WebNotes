@@ -2,12 +2,11 @@ import noteService from '../services/note.service';
 import validateRequestUtil from '../utils/validateRequest.utils';
 import catchErrors from '../utils/catchErrors.utils';
 import { NoteUpdate } from '../api/api/generated';
-import NoteModel from '../models/Note.model';
 
 const REQUIRED_KEYS: Array<keyof NoteUpdate> = ['bookmark', 'text'];
 
 const getPreviews = catchErrors(async (req, res) => {
-  const notes = await noteService.getAll();
+  const notes = await noteService.getPreviews();
   res.status(200).json(notes);
 });
 
@@ -15,13 +14,7 @@ const getRecent = catchErrors(async (req, res) => {
   try {
     const limit = parseInt(req.query.limit as string) || 5; // Default to 5 if not provided
 
-    if (limit < 1) {
-      return res.status(400).json({ message: 'Limit must be at least 1' });
-    }
-
-    const recentNotes = await NoteModel.find()
-      .sort({ updatedAt: -1 }) // Get the most recently updated notes
-      .limit(limit);
+    const recentNotes = await noteService.getRecent(limit);
 
     res.status(200).json(recentNotes);
   } catch (error) {

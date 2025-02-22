@@ -2,12 +2,28 @@ import { DB_COLLECTIONS } from '../config/MongoDB.config';
 import NoteModel from '../models/Note.model';
 import { HttpStatusCode } from '../constants/error.constants';
 import appAssert from '../utils/appErrorAssert.utils';
-import { Note, NoteUpdate } from '../api/api/generated';
+import { Note, NotePreview, NoteUpdate } from '../api/api/generated';
 
 const SERVICE_NAME = DB_COLLECTIONS.Notes;
 
-const getAll = async (): Promise<Note[]> => {
-  return await NoteModel.find();
+const getPreviews = async (): Promise<NotePreview[]> => {
+  const notes = (await NoteModel.find().lean()) as Note[];
+  const notePreviews: NotePreview[] = notes.map((note) => ({
+    ...note,
+    textPreview: note.text.slice(0, 200),
+    text: undefined,
+  }));
+
+  return notePreviews;
+};
+
+const getRecent = async (limit: number): Promise<Note[]> => {
+  const recentNotes = await NoteModel.find()
+    .lean()
+    .sort({ updatedAt: -1 }) // Get the most recently updated notes
+    .limit(limit);
+
+  return recentNotes;
 };
 
 const getById = async (id: string) => {
@@ -15,13 +31,7 @@ const getById = async (id: string) => {
 };
 
 const add = async (payload: NoteUpdate): Promise<Note> => {
-  const note: Omit<Note, 'id'> = {
-    ...payload,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-  };
-
-  const newNote = new NoteModel(note);
+  const newNote = new NoteModel(payload);
 
   return await newNote.save();
 };
@@ -31,13 +41,7 @@ const editById = async (id: string, payload: NoteUpdate) => {
 
   appAssert(note, HttpStatusCode.NotFound, `Not found. UserId: ${id}`, SERVICE_NAME);
 
-  const updateData: Note = {
-    ...note,
-    createdAt: note.createdAt,
-    updatedAt: new Date().toISOString(),
-  };
-
-  return await NoteModel.findByIdAndUpdate(id, updateData, {
+  return await NoteModel.findByIdAndUpdate(id, payload, {
     new: true,
     runValidators: true,
   });
@@ -51,7 +55,8 @@ const removeById = async (id: string) => {
 };
 
 export default {
-  getAll,
+  getPreviews,
+  getRecent,
   getById,
   add,
   editById,
