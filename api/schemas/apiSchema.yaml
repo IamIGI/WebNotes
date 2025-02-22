@@ -13,7 +13,7 @@ tags:
     description: Endpoints related to note management
 
 paths:
-  /notespreviews:
+  /note/all/previews:
     get:
       summary: Get all note previews
       description: Returns a list of note previews with truncated text.
@@ -66,7 +66,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Note'
+              $ref: '#/components/schemas/NoteUpdate'
       responses:
         '200':
           description: Note updated successfully
@@ -106,7 +106,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Note'
+              $ref: '#/components/schemas/NoteUpdate'
       responses:
         '201':
           description: Note created successfully
@@ -119,10 +119,19 @@ paths:
 
   /notes/recent:
     get:
-      summary: Get 5 most recently opened notes
-      description: Returns the last 5 opened notes when the app starts.
+      summary: Get recently opened notes
+      description: Returns a specified number of recently opened notes.
       tags:
         - notes
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          description: The number of recent notes to retrieve (default is 5).
+          schema:
+            type: integer
+            minimum: 1
+            default: 5
       responses:
         '200':
           description: Recently opened notes
@@ -144,7 +153,16 @@ components:
           $ref: '#/components/schemas/Bookmark'
         textPreview:
           type: string
-          maxLength: 200
+        updatedAt:
+          type: string
+        createdAt:
+          type: string
+      required:
+        - id
+        - bookmark
+        - textPreview
+        - updatedAt
+        - createdAt
 
     Note:
       type: object
@@ -155,6 +173,27 @@ components:
           $ref: '#/components/schemas/Bookmark'
         text:
           type: string
+        updatedAt:
+          type: string
+        createdAt:
+          type: string
+      required:
+        - id
+        - bookmark
+        - text
+        - updatedAt
+        - createdAt
+
+    NoteUpdate:
+      type: object
+      properties:
+        bookmark:
+          $ref: '#/components/schemas/Bookmark'
+        text:
+          type: string
+      required:
+        - bookmark
+        - text
 
     Bookmark:
       type: object
@@ -163,9 +202,9 @@ components:
           type: string
         color:
           type: string
-        updatedAt:
-          type: string
-          format: date-time
+      required:
+        - title
+        - color
 
     BookmarkWithNoteId:
       allOf:
@@ -188,7 +227,5 @@ components:
           type: boolean
         createAt:
           type: string
-          format: date-time
         updatedAt:
           type: string
-          format: date-time
