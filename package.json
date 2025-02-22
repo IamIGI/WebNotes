@@ -5,7 +5,7 @@
     "dev:app": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
     "build:app": "npm run build --prefix server && npm run build --prefix client",
     "prod:app": "concurrently \"npm run prod --prefix server\" \"npm run preview --prefix client\"",
-    "gen:api": "npm run gen:magnets-api --prefix client && npm run gen:magnets-api --prefix admin-client && npm run gen:magnets-api --prefix server"
+    "gen:api-app": "npm run gen:api --prefix client && npm run gen:api --prefix server"
   },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.16.3"
