@@ -9,7 +9,10 @@
 
 <div class="wrapper">
 	<div class="side-menu-wrapper">
-		<SideMenu notes={$notesStore} openNotesIds={$selectedNotesStore.notes.map((note) => note.id)} />
+		<SideMenu
+			notes={$notesStore}
+			openNotesIds={$selectedNotesStore.notes.map((note) => note._id)}
+		/>
 	</div>
 	<SelectedNotes
 		notes={$selectedNotesStore.notes}

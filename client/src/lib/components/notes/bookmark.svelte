@@ -1,13 +1,14 @@
 <script lang="ts">
-	import type { Bookmark } from '$lib/interfaces';
+	import type { Bookmark } from '$lib/api/generated';
 
 	interface Props {
 		data: Bookmark;
+		updatedAt: string;
 		isSideMenu: boolean;
 	}
-	let { data, isSideMenu }: Props = $props();
+	let { data, isSideMenu, updatedAt }: Props = $props();
 
-	function formatDate(date: Date): string {
+	function formatDate(date: string): string {
 		const d = new Date(date);
 		const now = new Date();
 		const options: Intl.DateTimeFormatOptions =
@@ -21,7 +22,7 @@
 <div class="bookmark" style="background-color: {data.color}">
 	<h5>{data.title}</h5>
 	{#if isSideMenu === false}
-		<span>{formatDate(data.updatedAt)}</span>
+		<span>{formatDate(updatedAt)}</span>
 	{/if}
 </div>
 

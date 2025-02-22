@@ -1,6 +1,6 @@
 <script lang="ts">
 	import NotePreview from './notePreview.svelte';
-	import { type NotePreview as NotePreviewInterface } from '../../interfaces/index';
+	import type { NotePreview as NotePreviewInterface } from '$lib/api/generated';
 
 	interface Props {
 		notes: NotePreviewInterface[];
@@ -12,7 +12,7 @@
 
 <div class="list-wrapper">
 	{#each notes.slice(undefined, 10) as note}
-		<NotePreview {note} isOpen={openNotesIds.includes(note.id)} {isSideMenu} />
+		<NotePreview {note} isOpen={openNotesIds.includes(note._id)} {isSideMenu} />
 	{/each}
 </div>
 

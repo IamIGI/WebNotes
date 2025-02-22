@@ -11,7 +11,7 @@
 	<Search />
 	<ArrayOfNotes
 		notes={$notesStore}
-		openNotesIds={$selectedNotesStore.notes.map((note) => note.id)}
+		openNotesIds={$selectedNotesStore.notes.map((note) => note._id)}
 	/>
 </div>
 

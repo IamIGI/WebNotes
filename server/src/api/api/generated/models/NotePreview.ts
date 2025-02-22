@@ -32,7 +32,7 @@ export interface NotePreview {
      * @type {string}
      * @memberof NotePreview
      */
-    id: string;
+    _id: string;
     /**
      * 
      * @type {Bookmark}
@@ -63,7 +63,7 @@ export interface NotePreview {
  * Check if a given object implements the NotePreview interface.
  */
 export function instanceOfNotePreview(value: object): value is NotePreview {
-    if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('_id' in value) || value['_id'] === undefined) return false;
     if (!('bookmark' in value) || value['bookmark'] === undefined) return false;
     if (!('textPreview' in value) || value['textPreview'] === undefined) return false;
     if (!('updatedAt' in value) || value['updatedAt'] === undefined) return false;
@@ -81,7 +81,7 @@ export function NotePreviewFromJSONTyped(json: any, ignoreDiscriminator: boolean
     }
     return {
         
-        'id': json['id'],
+        '_id': json['_id'],
         'bookmark': BookmarkFromJSON(json['bookmark']),
         'textPreview': json['textPreview'],
         'updatedAt': json['updatedAt'],
@@ -100,7 +100,7 @@ export function NotePreviewToJSONTyped(value?: NotePreview | null, ignoreDiscrim
 
     return {
         
-        'id': value['id'],
+        '_id': value['_id'],
         'bookmark': BookmarkToJSON(value['bookmark']),
         'textPreview': value['textPreview'],
         'updatedAt': value['updatedAt'],

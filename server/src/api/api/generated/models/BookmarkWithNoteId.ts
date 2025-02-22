@@ -36,7 +36,7 @@ export interface BookmarkWithNoteId {
      * @type {string}
      * @memberof BookmarkWithNoteId
      */
-    id?: string;
+    _id?: string;
 }
 
 /**
@@ -60,7 +60,7 @@ export function BookmarkWithNoteIdFromJSONTyped(json: any, ignoreDiscriminator: 
         
         'title': json['title'],
         'color': json['color'],
-        'id': json['id'] == null ? undefined : json['id'],
+        '_id': json['_id'] == null ? undefined : json['_id'],
     };
 }
 
@@ -77,7 +77,7 @@ export function BookmarkWithNoteIdToJSONTyped(value?: BookmarkWithNoteId | null,
         
         'title': value['title'],
         'color': value['color'],
-        'id': value['id'],
+        '_id': value['_id'],
     };
 }
 

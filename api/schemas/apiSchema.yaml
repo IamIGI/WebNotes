@@ -13,7 +13,7 @@ tags:
     description: Endpoints related to note management
 
 paths:
-  /note/all/previews:
+  /notes/all/previews:
     get:
       summary: Get all note previews
       description: Returns a list of note previews with truncated text.
@@ -147,8 +147,9 @@ components:
     NotePreview:
       type: object
       properties:
-        id:
+        _id:
           type: string
+          x-originalName: _id
         bookmark:
           $ref: '#/components/schemas/Bookmark'
         textPreview:
@@ -158,7 +159,7 @@ components:
         createdAt:
           type: string
       required:
-        - id
+        - _id
         - bookmark
         - textPreview
         - updatedAt
@@ -167,8 +168,9 @@ components:
     Note:
       type: object
       properties:
-        id:
+        _id:
           type: string
+          x-originalName: _id
         bookmark:
           $ref: '#/components/schemas/Bookmark'
         text:
@@ -178,7 +180,7 @@ components:
         createdAt:
           type: string
       required:
-        - id
+        - _id
         - bookmark
         - text
         - updatedAt
@@ -211,7 +213,7 @@ components:
         - $ref: '#/components/schemas/Bookmark'
         - type: object
           properties:
-            id:
+            _id:
               type: string
 
     User:
