@@ -10,8 +10,9 @@
 	interface Props {
 		bookmarks: SelectedNoteBookmark[]; //only two bookmarks for current state
 		selectedNoteId: string | null;
+		onSettingsOpen: (noteId: string) => void;
 	}
-	let { bookmarks, selectedNoteId }: Props = $props();
+	let { bookmarks, selectedNoteId, onSettingsOpen }: Props = $props();
 
 	function onNoteDelete(_id: string) {
 		selectedNotesStore.remove(_id);
@@ -28,9 +29,15 @@
 				<div class="marked-as-open-black"></div>
 			{/if}
 			<SvgButton
+				src="/svg/button/options.svg"
+				alt="options"
+				size="17px"
+				onclick={() => onSettingsOpen(bookmark._id)}
+			/>
+			<SvgButton
 				src="/svg/button/close.svg"
 				alt="close"
-				size="30px"
+				size="25px"
 				onclick={() => onNoteDelete(bookmark._id)}
 			/>
 		</div>
@@ -68,7 +75,7 @@
 		/* padding: 1rem; */
 
 		button {
-			padding-left: 0.5rem;
+			padding-left: 1.5rem;
 			height: 100%;
 			background-color: transparent;
 			min-width: 80%;
@@ -93,17 +100,17 @@
 	.marked-as-open-white {
 		position: absolute;
 		top: 0;
-		right: 0;
-		border-left: 0px solid transparent;
-		border-right: $markSize solid transparent;
+		left: 0;
+		border-right: 0px solid transparent;
+		border-left: $markSize solid transparent;
 		border-bottom: $markSize solid var(--main-accent-color);
 	}
 	.marked-as-open-black {
 		position: absolute;
 		top: 0;
-		right: 0;
-		border-left: $markSize solid transparent;
-		border-right: 00px solid transparent;
+		left: 0;
+		border-right: $markSize solid transparent;
+		border-left: 00px solid transparent;
 		border-top: $markSize solid var(--main-background-color);
 	}
 </style>

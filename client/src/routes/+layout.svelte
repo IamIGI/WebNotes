@@ -1,5 +1,7 @@
 <script lang="ts">
 	import Navigation from '$lib/components/appMenu/navigation.svelte';
+	import GlobalDimmer from '$lib/components/globalDimmer.svelte';
+	import appStore from '$lib/stores/app.store';
 	import notesStore from '$lib/stores/notes.store';
 	import '$lib/styles/global.scss';
 	import { onMount } from 'svelte';
@@ -17,6 +19,9 @@
 	<div class="main-container">
 		{@render children()}
 	</div>
+	{#if $appStore.globalDimmer}
+		<GlobalDimmer />
+	{/if}
 </main>
 
 <style lang="scss">
