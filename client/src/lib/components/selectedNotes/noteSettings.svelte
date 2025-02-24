@@ -1,21 +1,24 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import type { Note } from '$lib/api/generated';
 	import { bookmarkColors } from '$lib/mocks';
+	import noteUtils from '$lib/utils/note.utils';
 	import { onDestroy, onMount } from 'svelte';
 	interface Props {
-		_id: string;
+		note: Note;
 		onCloseSettings: () => void;
 	}
-	let { _id, onCloseSettings }: Props = $props();
+	let { note, onCloseSettings }: Props = $props();
 	let wrapper: HTMLElement | null = null;
 	let onMountTimer: NodeJS.Timeout;
 
 	async function deleteNote() {
-		console.log('deleteNote, ', _id);
+		console.log('deleteNote, ', note._id);
 	}
 
-	async function changeColor() {
-		console.log('changeColor, ', _id);
+	async function updateColor(note: Note, color: string) {
+		noteUtils.updateColor(note, color);
+		onCloseSettings();
 	}
 
 	// Function to detect clicks outside the component
@@ -43,7 +46,7 @@
 				aria-label="change_color"
 				class="color-item"
 				style="background-color: {color}"
-				onclick={changeColor}
+				onclick={() => updateColor(note, color)}
 			></button>
 		{/each}
 	</div>

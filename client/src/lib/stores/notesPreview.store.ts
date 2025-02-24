@@ -3,9 +3,9 @@ import type { NotePreview } from '$lib/api/generated';
 
 import { get, writable } from 'svelte/store';
 
-function notesStore() {
+function notesPreviewStore() {
 	const store = writable<NotePreview[]>([]);
-	const { set, subscribe } = store;
+	const { set, update, subscribe } = store;
 
 	const fetchNotes = async () => {
 		const notesPreviews = await webNotesServer.notesService.notesAllPreviewsGet();
@@ -13,13 +13,21 @@ function notesStore() {
 		return notesPreviews;
 	};
 
+	const updateColor = async (id: string, color: string) =>
+		update((prev) =>
+			prev.map((note) =>
+				note._id === id ? { ...note, bookmark: { ...note.bookmark, color } } : note
+			)
+		);
+
 	const getNotes = () => get(store);
 
 	return {
 		fetchNotes,
 		getNotes,
+		updateColor,
 		subscribe
 	};
 }
 
-export default notesStore();
+export default notesPreviewStore();

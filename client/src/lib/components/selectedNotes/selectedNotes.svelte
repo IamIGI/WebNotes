@@ -1,27 +1,21 @@
 <script lang="ts">
 	import appStore from '$lib/stores/app.store';
-	import type { SelectedNotesStore } from '$lib/stores/selectedNotes.store';
+	import type { NoteSelectedStore } from '$lib/stores/noteSelected.store';
 	import Note from './note.svelte';
 	import NoteSettings from './noteSettings.svelte';
 	import SelectedNotesMenu from './selectedNotesMenu.svelte';
 
-	let { notes, selectedNoteId }: SelectedNotesStore = $props();
-	let selectedNote = $derived.by(() => {
-		const note = notes.find((note) => note._id === selectedNoteId)!;
-		return { _id: note._id, text: note.text };
-	});
+	let { notes, selectedNoteId }: NoteSelectedStore = $props();
+	let selectedNote = $derived.by(() => notes.find((note) => note._id === selectedNoteId)!);
+
 	let settingsMenu = $state<{ noteId: string | null; isOpen: boolean }>({
 		noteId: null,
 		isOpen: false
 	});
 
 	function onSettingsOpen(noteId: string) {
-		console.log('onSettingsOpen');
-
 		settingsMenu = { noteId, isOpen: true };
 		appStore.setGlobalDimmer(true);
-
-		console.log(settingsMenu);
 	}
 
 	function onCloseSettings() {
@@ -38,9 +32,9 @@
 	/>
 
 	{#if settingsMenu.isOpen}
-		<NoteSettings _id={settingsMenu.noteId!} {onCloseSettings} />
+		<NoteSettings note={selectedNote} {onCloseSettings} />
 	{/if}
-	<Note {...selectedNote} />
+	<Note _id={selectedNote._id} text={selectedNote.text} />
 </div>
 
 <style lang="scss">

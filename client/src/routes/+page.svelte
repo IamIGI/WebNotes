@@ -2,16 +2,16 @@
 	import AppTitle from '$lib/components/appTitle.svelte';
 	import Search from '$lib/components/search.svelte';
 	import ArrayOfNotes from '$lib/components/notes/arrayOfNotes.svelte';
-	import notesStore from '$lib/stores/notes.store';
-	import selectedNotesStore from '$lib/stores/selectedNotes.store';
+	import notesPreviewStore from '$lib/stores/notesPreview.store';
+	import noteSelectedStore from '$lib/stores/noteSelected.store';
 </script>
 
 <div class="wrapper">
 	<AppTitle />
 	<Search />
 	<ArrayOfNotes
-		notes={$notesStore}
-		openNotesIds={$selectedNotesStore.notes.map((note) => note._id)}
+		notes={$notesPreviewStore}
+		openNotesIds={$noteSelectedStore.notes.map((note) => note._id)}
 	/>
 </div>
 

@@ -3,8 +3,6 @@
 	import SvgButton from '../ui/svgButton.svelte';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
-
-	// $inspect('result: ', page.url.pathname);
 </script>
 
 <nav>

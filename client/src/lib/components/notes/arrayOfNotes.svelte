@@ -11,7 +11,7 @@
 </script>
 
 <div class="list-wrapper">
-	{#each notes.slice(undefined, 10) as note}
+	{#each notes as note}
 		<NotePreview {note} isOpen={openNotesIds.includes(note._id)} {isSideMenu} />
 	{/each}
 </div>

@@ -2,21 +2,23 @@ import { writable } from 'svelte/store';
 import type { Note } from '$lib/api/generated';
 import webNotesServer from '$lib/api/api.config';
 
-export interface SelectedNotesStore {
+export interface NoteSelectedStore {
 	notes: Note[];
 	selectedNoteId: string | null;
 }
 
-const init: SelectedNotesStore = {
+const init: NoteSelectedStore = {
 	notes: [],
 	selectedNoteId: null
 };
 
-function selectedNotesStore() {
-	const store = writable<SelectedNotesStore>(init);
+function noteSelectedStore() {
+	const store = writable<NoteSelectedStore>(init);
 	const { update, subscribe } = store;
 
-	const add = async (id: string) => {
+	const addNew = async () => {};
+
+	const addExisted = async (id: string) => {
 		const note = await webNotesServer.notesService.notesIdGet(id);
 
 		if (note) {
@@ -44,6 +46,15 @@ function selectedNotesStore() {
 			});
 		}
 	};
+
+	const updateColor = async (id: string, color: string) =>
+		update((prev) => ({
+			...prev,
+			notes: prev.notes.map((note) =>
+				note._id === id ? { ...note, bookmark: { ...note.bookmark, color } } : note
+			)
+		}));
+
 	const remove = (id: string) =>
 		update((prev) => {
 			prev.notes = prev.notes.filter((n) => n._id !== id);
@@ -63,11 +74,13 @@ function selectedNotesStore() {
 		});
 
 	return {
-		add,
+		addNew,
+		addExisted,
+		updateColor,
 		remove,
 		select,
 		subscribe
 	};
 }
 
-export default selectedNotesStore();
+export default noteSelectedStore();

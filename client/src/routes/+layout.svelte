@@ -2,7 +2,7 @@
 	import Navigation from '$lib/components/appMenu/navigation.svelte';
 	import GlobalDimmer from '$lib/components/globalDimmer.svelte';
 	import appStore from '$lib/stores/app.store';
-	import notesStore from '$lib/stores/notes.store';
+	import notesPreviewStore from '$lib/stores/notesPreview.store';
 	import '$lib/styles/global.scss';
 	import { onMount } from 'svelte';
 
@@ -10,7 +10,7 @@
 
 	onMount(() => {
 		//TODO: Add loading
-		notesStore.fetchNotes();
+		notesPreviewStore.fetchNotes();
 	});
 </script>
 

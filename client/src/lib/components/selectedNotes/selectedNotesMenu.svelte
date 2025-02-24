@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import type { Bookmark } from '$lib/api/generated';
-	import selectedNotesStore from '$lib/stores/selectedNotes.store';
+	import noteSelectedStore from '$lib/stores/noteSelected.store';
 	import SvgButton from '../ui/svgButton.svelte';
 
 	interface SelectedNoteBookmark extends Bookmark {
@@ -15,7 +15,7 @@
 	let { bookmarks, selectedNoteId, onSettingsOpen }: Props = $props();
 
 	function onNoteDelete(_id: string) {
-		selectedNotesStore.remove(_id);
+		noteSelectedStore.remove(_id);
 		if (bookmarks.length === 0) goto('/');
 	}
 </script>
@@ -23,7 +23,7 @@
 <div class="wrapper">
 	{#each bookmarks as bookmark}
 		<div class="bookmark" style="background-color: {bookmark.color};">
-			<button onclick={() => selectedNotesStore.select(bookmark._id)}>{bookmark.title}</button>
+			<button onclick={() => noteSelectedStore.select(bookmark._id)}>{bookmark.title}</button>
 			{#if bookmark._id === selectedNoteId}
 				<div class="marked-as-open-white"></div>
 				<div class="marked-as-open-black"></div>
