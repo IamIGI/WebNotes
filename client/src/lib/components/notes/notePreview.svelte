@@ -2,7 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import type { NotePreview } from '$lib/api/generated';
-	import selectedNotesStore from '$lib/stores/selectedNotes.store';
+	import noteSelectedStore from '$lib/stores/noteSelected.store';
 	import Bookmark from './bookmark.svelte';
 
 	interface Props {
@@ -13,7 +13,7 @@
 	let { note, isOpen, isSideMenu }: Props = $props();
 
 	async function navigate() {
-		await selectedNotesStore.add(note._id);
+		await noteSelectedStore.addExisted(note._id);
 		if (page.url.pathname === '/') {
 			goto('/display-notes');
 		}

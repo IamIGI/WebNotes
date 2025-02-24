@@ -19,16 +19,17 @@
 	--main-accent-color_2: #c1bebe;
 	--main-text-color: #eeeeee;
 
-	--bookmark-color-1: #e6b904;
-	--bookmark-color-2: #65ba5a;
-	--bookmark-color-3: #ea86c2;
-	--bookmark-color-4: #b07fe0;
-	--bookmark-color-5: #59c0e7;
-	--bookmark-color-6: #8d8d8d;
+	--bookmark-color-1: #dfb40b;
+	--bookmark-color-2: #38912c;
+	--bookmark-color-3: #ef90c9;
+	--bookmark-color-4: #b07ee1;
+	--bookmark-color-5: #d74747;
 
 	//https://codepen.io/sosuke/pen/Pjoqqp
 	--main-svg-filter: invert(41%) sepia(0%) saturate(1%) hue-rotate(187deg) brightness(90%)
 		contrast(89%);
+	--white-svg-filter: invert(85%) sepia(45%) saturate(0%) hue-rotate(163deg) brightness(106%)
+		contrast(104%);
 
 	// app size:
 	--max-width: 700px;
