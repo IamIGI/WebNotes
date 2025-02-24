@@ -11,8 +11,8 @@
 		height: 100%;
 		top: 0;
 		left: 0;
-		background: rgba(255, 255, 255, 0.1);
-		backdrop-filter: blur(2px);
+		background: rgba(0, 0, 0, 0.5);
+		backdrop-filter: blur(1px);
 		z-index: 1;
 		/* pointer-events: none; */
 	}

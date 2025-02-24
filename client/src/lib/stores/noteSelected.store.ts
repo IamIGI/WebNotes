@@ -1,4 +1,4 @@
-import { writable } from 'svelte/store';
+import { get, writable } from 'svelte/store';
 import type { Note } from '$lib/api/generated';
 import webNotesServer from '$lib/api/api.config';
 
@@ -25,6 +25,9 @@ function noteSelectedStore() {
 	const addNew = async () => {};
 
 	const addExisted = async (id: string) => {
+		const isNoteInStore = get(store).notes.some((note) => note._id === id);
+		if (isNoteInStore) return;
+
 		const note = await webNotesServer.notesService.notesIdGet(id);
 		if (!note) return;
 
