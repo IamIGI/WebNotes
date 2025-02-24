@@ -16,35 +16,39 @@ function noteSelectedStore() {
 	const store = writable<NoteSelectedStore>(init);
 	const { update, subscribe } = store;
 
+	const select = (id: string) =>
+		update((prev) => ({
+			...prev,
+			selectedNoteId: prev.notes.some((n) => n._id === id) ? id : prev.selectedNoteId
+		}));
+
 	const addNew = async () => {};
 
 	const addExisted = async (id: string) => {
 		const note = await webNotesServer.notesService.notesIdGet(id);
+		if (!note) return;
 
-		if (note) {
-			update((prev) => {
-				//When already opened, just select it again
-				if (prev.notes.find((storedNote) => storedNote._id === id)) {
-					prev.selectedNoteId = id;
-					return prev;
+		update((prev) => {
+			//When already opened, then select it again
+			if (prev.notes.some((storedNote) => storedNote._id === id)) {
+				return { ...prev, selectedNoteId: id };
+			}
+
+			if (prev.notes.length === 2) {
+				// replace last note
+				const index = prev.notes.findIndex((n) => n._id === prev.selectedNoteId);
+				if (index !== -1) {
+					const newNotes = [...prev.notes];
+					newNotes[index] = note;
+					return { ...prev, notes: newNotes, selectedNoteId: id };
 				}
+			} else {
+				//add new note
+				return { ...prev, notes: [...prev.notes, note], selectedNoteId: id };
+			}
 
-				if (prev.notes.length === 2) {
-					//replace current selected note with new opened
-					const index = prev.notes.findIndex((note) => note._id === prev.selectedNoteId);
-					if (index !== -1) {
-						prev.notes[index] = note;
-						prev.selectedNoteId = id;
-					}
-				} else {
-					// add new note
-					prev.selectedNoteId = id;
-					prev.notes.push(note);
-				}
-
-				return prev;
-			});
-		}
+			return prev;
+		});
 	};
 
 	const updateColor = async (id: string, color: string) =>
@@ -57,20 +61,10 @@ function noteSelectedStore() {
 
 	const remove = (id: string) =>
 		update((prev) => {
-			prev.notes = prev.notes.filter((n) => n._id !== id);
-			if (prev.notes.length === 1) {
-				prev.selectedNoteId = prev.notes[0]._id;
-			} else {
-				prev.selectedNoteId = null;
-			}
-			return prev;
-		});
+			const newNotes = prev.notes.filter((n) => n._id !== id);
+			const newSelectedNoteId = newNotes.length === 1 ? newNotes[0]._id : null;
 
-	const select = (id: string) =>
-		update((prev) => {
-			const selectedNote = prev.notes.find((n) => n._id === id);
-			if (selectedNote) prev.selectedNoteId = id;
-			return prev;
+			return { ...prev, notes: newNotes, selectedNoteId: newSelectedNoteId };
 		});
 
 	return {
