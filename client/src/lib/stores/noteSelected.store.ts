@@ -62,7 +62,7 @@ function noteSelectedStore() {
 			)
 		}));
 
-	const remove = (id: string) =>
+	const removeOne = (id: string) =>
 		update((prev) => {
 			const newNotes = prev.notes.filter((n) => n._id !== id);
 			const newSelectedNoteId = newNotes.length === 1 ? newNotes[0]._id : null;
@@ -74,7 +74,7 @@ function noteSelectedStore() {
 		addNew,
 		addExisted,
 		updateColor,
-		remove,
+		removeOne,
 		select,
 		subscribe
 	};

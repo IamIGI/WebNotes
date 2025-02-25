@@ -22,10 +22,13 @@ function notesPreviewStore() {
 
 	const getNotes = () => get(store);
 
+	const removeOne = (id: string) => update((prev) => prev.filter((note) => note._id !== id));
+
 	return {
 		fetchNotes,
 		getNotes,
 		updateColor,
+		removeOne,
 		subscribe
 	};
 }
