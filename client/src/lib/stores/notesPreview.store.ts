@@ -13,6 +13,8 @@ function notesPreviewStore() {
 		return notesPreviews;
 	};
 
+	const getNotes = () => get(store);
+
 	const updateColor = async (id: string, color: string) =>
 		update((prev) =>
 			prev.map((note) =>
@@ -20,7 +22,13 @@ function notesPreviewStore() {
 			)
 		);
 
-	const getNotes = () => get(store);
+	const updateTitle = (id: string, title: string) => {
+		update((prev) =>
+			prev.map((note) =>
+				note._id === id ? { ...note, bookmark: { ...note.bookmark, title } } : note
+			)
+		);
+	};
 
 	const removeOne = (id: string) => update((prev) => prev.filter((note) => note._id !== id));
 
@@ -28,6 +36,7 @@ function notesPreviewStore() {
 		fetchNotes,
 		getNotes,
 		updateColor,
+		updateTitle,
 		removeOne,
 		subscribe
 	};

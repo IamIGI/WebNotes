@@ -16,6 +16,12 @@ function noteSelectedStore() {
 	const store = writable<NoteSelectedStore>(init);
 	const { update, subscribe } = store;
 
+	const getNote = (id: string) => {
+		const selectedNote = get(store).notes.find((n) => n._id === id);
+		if (!selectedNote) throw new Error('Note not found');
+		return selectedNote;
+	};
+
 	const select = (id: string) =>
 		update((prev) => ({
 			...prev,
@@ -54,13 +60,22 @@ function noteSelectedStore() {
 		});
 	};
 
-	const updateColor = async (id: string, color: string) =>
+	const updateColor = (id: string, color: string) =>
 		update((prev) => ({
 			...prev,
 			notes: prev.notes.map((note) =>
 				note._id === id ? { ...note, bookmark: { ...note.bookmark, color } } : note
 			)
 		}));
+
+	const updateTitle = (id: string, title: string) => {
+		update((prev) => {
+			const updatedNotes = prev.notes.map((note) =>
+				note._id === id ? { ...note, bookmark: { ...note.bookmark, title } } : note
+			);
+			return { notes: updatedNotes, selectedNoteId: prev.selectedNoteId };
+		});
+	};
 
 	const removeOne = (id: string) =>
 		update((prev) => {
@@ -76,6 +91,8 @@ function noteSelectedStore() {
 		updateColor,
 		removeOne,
 		select,
+		getNote,
+		updateTitle,
 		subscribe
 	};
 }
