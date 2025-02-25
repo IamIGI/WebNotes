@@ -14,6 +14,15 @@ async function updateColor(note: Note, color: string) {
 	}
 }
 
+async function removeOneNote(id: string) {
+	//Update stores
+	noteSelectedStore.removeOne(id);
+	notesPreviewStore.removeOne(id);
+	//Update database
+	await webNotesServer.notesService.notesIdDelete(id);
+}
+
 export default {
-	updateColor
+	updateColor,
+	removeOneNote
 };

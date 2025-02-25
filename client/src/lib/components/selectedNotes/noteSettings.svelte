@@ -12,8 +12,9 @@
 	let wrapper: HTMLElement | null = null;
 	let onMountTimer: NodeJS.Timeout;
 
-	async function deleteNote() {
-		console.log('deleteNote, ', note._id);
+	async function deleteNote(id: string) {
+		noteUtils.removeOneNote(id);
+		onCloseSettings();
 	}
 
 	async function updateColor(note: Note, color: string) {
@@ -51,7 +52,7 @@
 		{/each}
 	</div>
 	<div class="settings">
-		<button class="setting-item" onclick={deleteNote}>
+		<button class="setting-item" onclick={() => deleteNote(note._id)}>
 			<img src={`${base}/svg/button/delete.svg`} alt="remove note" class="svg-icon" />
 			<span>Usuń notakę</span>
 		</button>
