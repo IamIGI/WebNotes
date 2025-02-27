@@ -32,7 +32,10 @@ function noteSelectedStore() {
 
 	const addExisted = async (id: string) => {
 		const isNoteInStore = get(store).notes.some((note) => note._id === id);
-		if (isNoteInStore) return;
+		if (isNoteInStore) {
+			select(id);
+			return;
+		}
 
 		const note = await webNotesServer.notesService.notesIdGet(id);
 		if (!note) return;
