@@ -1,6 +1,7 @@
 <script lang="ts">
 	import appStore from '$lib/stores/app.store';
 	import type { NoteSelectedStore } from '$lib/stores/noteSelected.store';
+	import noteSelectedStore from '$lib/stores/noteSelected.store';
 	import Note from './note.svelte';
 	import NoteSettings from './noteSettings.svelte';
 	import SelectedNotesMenu from './selectedNotesMenu.svelte';
@@ -14,6 +15,7 @@
 	});
 
 	function onSettingsOpen(noteId: string) {
+		noteSelectedStore.select(noteId);
 		settingsMenu = { noteId, isOpen: true };
 		appStore.setGlobalDimmer(true);
 	}
