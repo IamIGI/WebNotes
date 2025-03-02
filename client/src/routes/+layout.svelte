@@ -2,16 +2,9 @@
 	import Navigation from '$lib/components/appMenu/navigation.svelte';
 	import GlobalDimmer from '$lib/components/globalDimmer.svelte';
 	import appStore from '$lib/stores/app.store';
-	import notesPreviewStore from '$lib/stores/notesPreview.store';
 	import '$lib/styles/global.scss';
-	import { onMount } from 'svelte';
 
 	let { children } = $props();
-
-	onMount(() => {
-		//TODO: Add loading
-		notesPreviewStore.fetchNotes();
-	});
 </script>
 
 <main>
@@ -31,6 +24,7 @@
 		min-width: var(--min-width);
 		min-height: var(--min-height);
 		width: 100%;
+		height: 100%;
 
 		margin: auto;
 		padding: 0 0.7rem 0.5rem 0.7rem;
@@ -49,5 +43,6 @@
 		justify-content: flex-start;
 		align-items: flex-start;
 		width: 100%;
+		height: 100%;
 	}
 </style>
