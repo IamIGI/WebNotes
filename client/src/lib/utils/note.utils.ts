@@ -1,5 +1,5 @@
 import webNotesServer from '$lib/api/api.config';
-import type { Note, NoteUpdate } from '$lib/api/generated';
+import type { Note, NotePreview, NoteUpdate } from '$lib/api/generated';
 import notesPreviewStore from '$lib/stores/notesPreview.store';
 import noteSelectedStore from '$lib/stores/noteSelected.store';
 
@@ -34,8 +34,15 @@ async function removeOneNote(id: string) {
 	await webNotesServer.notesService.notesIdDelete(id);
 }
 
+function filterNotesBySearchTerm(notesPreviews: NotePreview[], searchTerm: string) {
+	return notesPreviews.filter((note) =>
+		note.textPreview.toLowerCase().includes(searchTerm.toLowerCase())
+	);
+}
+
 export default {
 	updateColor,
 	updateTitle,
-	removeOneNote
+	removeOneNote,
+	filterNotesBySearchTerm
 };

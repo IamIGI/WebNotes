@@ -3,8 +3,6 @@
 	import SideMenu from '$lib/components/sideMenu/SideMenu.svelte';
 	import notesPreviewStore from '$lib/stores/notesPreview.store';
 	import noteSelectedStore from '$lib/stores/noteSelected.store';
-
-	//TODO: WN-24
 </script>
 
 <div class="wrapper">
@@ -31,6 +29,7 @@
 	}
 
 	.side-menu-wrapper {
+		min-width: 200px;
 		width: 30%;
 		padding-right: 1rem;
 	}

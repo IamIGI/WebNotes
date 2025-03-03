@@ -5,11 +5,14 @@
 	import notesPreviewStore from '$lib/stores/notesPreview.store';
 	import noteSelectedStore from '$lib/stores/noteSelected.store';
 	import LoadAnimation from '$lib/components/ui/loadAnimation.svelte';
+	import noteUtils from '$lib/utils/note.utils';
+
+	let searchTerm = $state('');
 </script>
 
 <div class="wrapper">
 	<AppTitle />
-	<Search />
+	<Search handleSearch={(text) => (searchTerm = text)} />
 	{#await notesPreviewStore.fetchNotes()}
 		<LoadAnimation
 			time={3}
@@ -23,7 +26,7 @@
 		/>
 	{:then data}
 		<ArrayOfNotes
-			notes={$notesPreviewStore}
+			notes={noteUtils.filterNotesBySearchTerm($notesPreviewStore, searchTerm)}
 			openNotesIds={$noteSelectedStore.notes.map((note) => note._id)}
 		/>
 	{/await}

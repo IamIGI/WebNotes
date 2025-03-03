@@ -1,12 +1,16 @@
 <script lang="ts">
 	interface Props {
 		showSearchButton?: boolean;
+		handleSearch: (value: string) => void;
 	}
-	let { showSearchButton = true }: Props = $props();
+	let { showSearchButton = true, handleSearch }: Props = $props();
 </script>
 
 <div class="search-wrapper">
-	<input placeholder="Wyszukaj..." />
+	<input
+		placeholder="Wyszukaj..."
+		oninput={(e) => handleSearch((e.target as HTMLInputElement).value)}
+	/>
 	{#if showSearchButton}
 		<button>
 			<img class="svg-icon" src="svg/button/search.svg" alt="search" />
