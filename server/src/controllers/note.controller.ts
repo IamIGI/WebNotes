@@ -1,12 +1,17 @@
 import noteService from '../services/note.service';
 import validateRequestUtil from '../utils/validateRequest.utils';
 import catchErrors from '../utils/catchErrors.utils';
-import { NoteUpdate } from '../api/api/generated';
+import { NoteUpdate } from '../api/generated';
 import appAssert from '../utils/appErrorAssert.utils';
 import { HttpStatusCode } from '../constants/error.constants';
 import { DB_COLLECTIONS } from '../config/MongoDB.config';
 
 const REQUIRED_KEYS: Array<keyof NoteUpdate> = ['bookmark', 'text'];
+
+const getAll = catchErrors(async (req, res) => {
+  const notes = await noteService.getAll();
+  res.status(200).json(notes);
+});
 
 const getPreviews = catchErrors(async (req, res) => {
   const notes = await noteService.getPreviews();
@@ -85,4 +90,5 @@ export default {
   add,
   removeById,
   opened,
+  getAll,
 };

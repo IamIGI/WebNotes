@@ -1,24 +1,34 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
+	interface Props {
+		texts?: string[];
+		time?: number;
+		animationType?: 'ball' | 'spinner';
+	}
 
-	let { texts, time }: { texts?: string[]; time?: number } = $props();
+	let { texts, time, animationType = 'spinner' }: Props = $props();
 
+	let intervalInstance: NodeJS.Timeout;
 	let displayedText = $state<string>(texts && texts?.length > 0 ? texts[0] : '');
 
 	onMount(() => {
 		if (time && texts && texts.length > 0) {
-			setInterval(() => {
+			intervalInstance = setInterval(() => {
 				const previousIndex = texts.findIndex((t) => t === displayedText)!;
 				const newIndex = previousIndex + 1 < texts.length ? previousIndex + 1 : 0;
 				displayedText = texts[newIndex];
 			}, time * 1000);
 		}
 	});
+
+	onDestroy(() => clearInterval(intervalInstance));
 </script>
 
 <div class="wrapper">
-	<div class="loader"></div>
-	<h4>{displayedText}</h4>
+	<div class={animationType === 'spinner' ? 'loader-spinner' : 'loader-ball'}></div>
+	{#if displayedText}
+		<h4>{displayedText}</h4>
+	{/if}
 </div>
 
 <style lang="scss">
@@ -31,7 +41,28 @@
 		align-items: center;
 		gap: 1rem;
 	}
-	.loader {
+
+	.loader-spinner {
+		width: 25px;
+		padding: 4px;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		background: #0c750c;
+		--_m: conic-gradient(#0000 10%, #000), linear-gradient(#000 0 0) content-box;
+		-webkit-mask: var(--_m);
+		mask: var(--_m);
+		-webkit-mask-composite: source-out;
+		mask-composite: subtract;
+		animation: l3 1s infinite linear;
+	}
+	@keyframes l3 {
+		to {
+			transform: rotate(1turn);
+		}
+	}
+	/* ---------- */
+
+	.loader-ball {
 		height: 60px;
 		aspect-ratio: 2;
 		border-bottom: 3px solid #0000;
@@ -39,7 +70,7 @@
 		position: relative;
 		animation: l3-0 0.75s linear infinite;
 	}
-	.loader:before {
+	.loader-ball:before {
 		content: '';
 		position: absolute;
 		inset: auto 42.5% 0;

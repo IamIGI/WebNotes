@@ -2,12 +2,14 @@ import { DB_COLLECTIONS } from '../config/MongoDB.config';
 import NoteModel from '../models/Note.model';
 import { HttpStatusCode } from '../constants/error.constants';
 import appAssert from '../utils/appErrorAssert.utils';
-import { Note, NotePreview, NoteUpdate } from '../api/api/generated';
+import { Note, NotePreview, NoteUpdate } from '../api/generated';
 
 const SERVICE_NAME = DB_COLLECTIONS.Notes;
 
+const getAll = async (): Promise<Note[]> => await NoteModel.find().lean().sort({ updatedAt: -1 });
+
 const getPreviews = async (): Promise<NotePreview[]> => {
-  const notes = (await NoteModel.find().lean().sort({ updatedAt: -1 })) as Note[];
+  const notes = await getAll();
   const notePreviews: NotePreview[] = notes.map((note) => ({
     ...note,
     textPreview: note.text.slice(0, 200),
@@ -64,6 +66,7 @@ const opened = async (id: string) => {
 };
 
 export default {
+  getAll,
   getPreviews,
   getRecent,
   getById,

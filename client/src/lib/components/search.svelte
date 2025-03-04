@@ -1,9 +1,12 @@
 <script lang="ts">
+	import LoadAnimation from './ui/loadAnimation.svelte';
+
 	interface Props {
 		showSearchButton?: boolean;
 		handleSearch: (value: string) => void;
+		allNotesLoading?: boolean;
 	}
-	let { showSearchButton = true, handleSearch }: Props = $props();
+	let { showSearchButton = true, handleSearch, allNotesLoading }: Props = $props();
 </script>
 
 <div class="search-wrapper">
@@ -13,13 +16,18 @@
 	/>
 	{#if showSearchButton}
 		<button>
-			<img class="svg-icon" src="svg/button/search.svg" alt="search" />
+			{#if allNotesLoading}
+				<LoadAnimation />
+			{:else}
+				<img class="svg-icon" src="svg/button/search.svg" alt="search" />
+			{/if}
 		</button>
 	{/if}
 </div>
 
 <style lang="scss">
 	.search-wrapper {
+		position: relative;
 		width: 100%;
 		display: flex;
 		justify-content: flex-start;
@@ -51,5 +59,14 @@
 				color: var(--main-text-color);
 			}
 		}
+	}
+
+	.loading-indicator {
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		width: 10px;
+		height: 10px;
+		background-color: red;
 	}
 </style>

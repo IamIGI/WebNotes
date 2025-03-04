@@ -2,6 +2,20 @@ import webNotesServer from '$lib/api/api.config';
 import type { Note, NotePreview, NoteUpdate } from '$lib/api/generated';
 import notesPreviewStore from '$lib/stores/notesPreview.store';
 import noteSelectedStore from '$lib/stores/noteSelected.store';
+import appStore from '$lib/stores/app.store';
+
+async function fetchNotes() {
+	return notesPreviewStore.fetchNotesPreviews().then((data) => {
+		// Render  UI after  first fetch
+		setTimeout(async () => {
+			appStore.setFetchingAllNotesStatus(true);
+			await notesPreviewStore.fetchNotesAll(); // Start the second fetch in the background
+			appStore.setFetchingAllNotesStatus(false);
+		}, 0);
+
+		return data;
+	});
+}
 
 async function openNote(id: string) {
 	//Update stores
@@ -49,6 +63,7 @@ function filterNotesBySearchTerm(notesPreviews: NotePreview[], searchTerm: strin
 }
 
 export default {
+	fetchNotes,
 	updateColor,
 	updateTitle,
 	removeOneNote,

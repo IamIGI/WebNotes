@@ -7,9 +7,20 @@ function notesPreviewStore() {
 	const store = writable<NotePreview[]>([]);
 	const { set, update, subscribe } = store;
 
-	const fetchNotes = async () => {
+	const fetchNotesPreviews = async () => {
 		const notesPreviews = await webNotesServer.notesService.notesAllPreviewsGet();
 		set(notesPreviews);
+		return notesPreviews;
+	};
+
+	const fetchNotesAll = async () => {
+		const notesPreviews = await webNotesServer.notesService.notesAllGet();
+		const mapedToTextPreview = notesPreviews.map((note) => ({
+			...note,
+			textPreview: note.text,
+			text: undefined
+		}));
+		set(mapedToTextPreview);
 		return notesPreviews;
 	};
 
@@ -47,7 +58,8 @@ function notesPreviewStore() {
 
 	return {
 		subscribe,
-		fetchNotes,
+		fetchNotesAll,
+		fetchNotesPreviews,
 		getNotes,
 		updateColor,
 		updateTitle,

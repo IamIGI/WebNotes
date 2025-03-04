@@ -3,6 +3,7 @@
 	import noteUtils from '$lib/utils/note.utils';
 	import ArrayOfNotes from '../notes/arrayOfNotes.svelte';
 	import Search from '../search.svelte';
+	import appStore from '$lib/stores/app.store';
 
 	interface Props {
 		notes: NotePreview[];
@@ -13,7 +14,11 @@
 </script>
 
 <div class="wrapper">
-	<Search showSearchButton={false} handleSearch={(text) => (searchTerm = text)} />
+	<Search
+		showSearchButton={false}
+		handleSearch={(text) => (searchTerm = text)}
+		allNotesLoading={$appStore.fetchingAllNotes}
+	/>
 	<ArrayOfNotes
 		notes={noteUtils.filterNotesBySearchTerm(notes, searchTerm)}
 		{openNotesIds}
