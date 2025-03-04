@@ -3,6 +3,14 @@ import type { Note, NotePreview, NoteUpdate } from '$lib/api/generated';
 import notesPreviewStore from '$lib/stores/notesPreview.store';
 import noteSelectedStore from '$lib/stores/noteSelected.store';
 
+async function openNote(id: string) {
+	//Update stores
+	await noteSelectedStore.addExisted(id);
+	notesPreviewStore.selected(id);
+	//Update database
+	await webNotesServer.notesService.notesOpenedIdPut(id);
+}
+
 async function updateColor(note: Note, color: string) {
 	if (note.bookmark.color !== color) {
 		//Update stores
@@ -44,5 +52,6 @@ export default {
 	updateColor,
 	updateTitle,
 	removeOneNote,
-	filterNotesBySearchTerm
+	filterNotesBySearchTerm,
+	openNote
 };

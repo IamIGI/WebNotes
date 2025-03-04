@@ -7,7 +7,7 @@ import { Note, NotePreview, NoteUpdate } from '../api/api/generated';
 const SERVICE_NAME = DB_COLLECTIONS.Notes;
 
 const getPreviews = async (): Promise<NotePreview[]> => {
-  const notes = (await NoteModel.find().lean()) as Note[];
+  const notes = (await NoteModel.find().lean().sort({ updatedAt: -1 })) as Note[];
   const notePreviews: NotePreview[] = notes.map((note) => ({
     ...note,
     textPreview: note.text.slice(0, 200),
@@ -39,7 +39,7 @@ const add = async (payload: NoteUpdate): Promise<Note> => {
 const editById = async (id: string, payload: NoteUpdate) => {
   const note = await NoteModel.findById(id);
 
-  appAssert(note, HttpStatusCode.NotFound, `Not found. UserId: ${id}`, SERVICE_NAME);
+  appAssert(note, HttpStatusCode.NotFound, `Not found, id: ${id}`, SERVICE_NAME);
 
   return await NoteModel.findByIdAndUpdate(id, payload, {
     new: true,
@@ -49,9 +49,18 @@ const editById = async (id: string, payload: NoteUpdate) => {
 
 const removeById = async (id: string) => {
   const removedNote = await NoteModel.findByIdAndDelete(id);
-  appAssert(removedNote, HttpStatusCode.NotFound, `Not found. id: ${id}`, SERVICE_NAME);
+  appAssert(removedNote, HttpStatusCode.NotFound, `Not found, id: ${id}`, SERVICE_NAME);
 
   return removedNote;
+};
+
+const opened = async (id: string) => {
+  const note = await NoteModel.findById(id);
+
+  appAssert(note, HttpStatusCode.NotFound, `Not found, id: ${id}`, SERVICE_NAME);
+
+  await NoteModel.findByIdAndUpdate(id, { updatedAt: new Date() });
+  return;
 };
 
 export default {
@@ -61,4 +70,5 @@ export default {
   add,
   editById,
   removeById,
+  opened,
 };

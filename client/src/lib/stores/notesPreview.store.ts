@@ -32,13 +32,27 @@ function notesPreviewStore() {
 
 	const removeOne = (id: string) => update((prev) => prev.filter((note) => note._id !== id));
 
+	const selected = (id: string) =>
+		update((prev) => {
+			const note = prev.find((note) => note._id === id);
+			if (!note) return prev;
+
+			const index = prev.findIndex((note) => note._id === id);
+			const newNotes = [...prev];
+			newNotes.splice(index, 1);
+			newNotes.unshift(note);
+
+			return newNotes;
+		});
+
 	return {
+		subscribe,
 		fetchNotes,
 		getNotes,
 		updateColor,
 		updateTitle,
 		removeOne,
-		subscribe
+		selected
 	};
 }
 
