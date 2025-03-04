@@ -68,6 +68,15 @@ const removeById = catchErrors(async (req, res) => {
   res.status(HttpStatusCode.OK).send({ id });
 });
 
+const opened = catchErrors(async (req, res) => {
+  const { id } = req.params;
+
+  validateRequestUtil.validateId(id);
+  await noteService.opened(id);
+
+  res.sendStatus(HttpStatusCode.OK);
+});
+
 export default {
   getPreviews,
   getRecent,
@@ -75,4 +84,5 @@ export default {
   editById,
   add,
   removeById,
+  opened,
 };

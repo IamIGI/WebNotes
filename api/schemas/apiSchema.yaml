@@ -142,6 +142,26 @@ paths:
                 items:
                   $ref: '#/components/schemas/Note'
 
+  /notes/opened/{id}:
+    put:
+      summary: Update last opened time of note
+      description: Updates the `updatedAt` timestamp of a note based on its ID.
+      tags:
+        - notes
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Note last opened time updated successfully (No Content)
+        '400':
+          description: Invalid request data
+        '404':
+          description: Note not found
+
 components:
   schemas:
     NotePreview:
