@@ -2,6 +2,7 @@
 	import AppTitle from '$lib/components/appTitle.svelte';
 	import Search from '$lib/components/search.svelte';
 	import ArrayOfNotes from '$lib/components/notes/arrayOfNotes.svelte';
+	import appStore from '$lib/stores/app.store';
 	import notesPreviewStore from '$lib/stores/notesPreview.store';
 	import noteSelectedStore from '$lib/stores/noteSelected.store';
 	import LoadAnimation from '$lib/components/ui/loadAnimation.svelte';
@@ -12,10 +13,14 @@
 
 <div class="wrapper">
 	<AppTitle />
-	<Search handleSearch={(text) => (searchTerm = text)} />
-	{#await notesPreviewStore.fetchNotes()}
+	<Search
+		handleSearch={(text) => (searchTerm = text)}
+		allNotesLoading={$appStore.fetchingAllNotes}
+	/>
+	{#await noteUtils.fetchNotes()}
 		<LoadAnimation
-			time={3}
+			time={1}
+			animationType={'ball'}
 			texts={[
 				'Sciaganie danych...',
 				'Dane uciekaja...',

@@ -13,6 +13,22 @@ tags:
     description: Endpoints related to note management
 
 paths:
+  /notes/all:
+    get:
+      summary: Get all notes
+      description: Returns a list of note previews with truncated text.
+      tags:
+        - notes
+      responses:
+        '200':
+          description: A list of note previews
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Note'
+
   /notes/all/previews:
     get:
       summary: Get all note previews

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 import { DB_COLLECTIONS, MongoDocument } from '../config/MongoDB.config';
-import { Note } from '../api/api/generated';
+import { Note } from '../api/generated';
 
 export interface NoteDocument extends MongoDocument<Note> {}
 

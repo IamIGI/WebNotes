@@ -2,10 +2,12 @@ import { writable } from 'svelte/store';
 
 interface AppStore {
 	globalDimmer: boolean;
+	fetchingAllNotes: boolean;
 }
 
 const init: AppStore = {
-	globalDimmer: false
+	globalDimmer: false,
+	fetchingAllNotes: false
 };
 
 function appStore() {
@@ -15,8 +17,12 @@ function appStore() {
 	const setGlobalDimmer = (value: boolean) =>
 		update((state) => ({ ...state, globalDimmer: value }));
 
+	const setFetchingAllNotesStatus = (value: boolean) =>
+		update((state) => ({ ...state, fetchingAllNotes: value }));
+
 	return {
 		setGlobalDimmer,
+		setFetchingAllNotesStatus,
 		subscribe
 	};
 }
