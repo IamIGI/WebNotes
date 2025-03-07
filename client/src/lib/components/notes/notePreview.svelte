@@ -2,16 +2,17 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import type { NotePreview } from '$lib/api/generated';
-	import noteSelectedStore from '$lib/stores/noteSelected.store';
 	import noteUtils from '$lib/utils/note.utils';
+	import type { derived } from 'svelte/store';
 	import Bookmark from './bookmark.svelte';
 
 	interface Props {
 		note: NotePreview;
 		isOpen: boolean;
 		isSideMenu: boolean;
+		searchTerm: string;
 	}
-	let { note, isOpen, isSideMenu }: Props = $props();
+	let { note, isOpen, isSideMenu, searchTerm }: Props = $props();
 
 	async function navigate() {
 		await noteUtils.openNote(note._id);
@@ -19,6 +20,17 @@
 			goto('/display-notes');
 		}
 	}
+
+	let highlightedText = $state(note.textPreview);
+	$effect(() => {
+		highlightedText =
+			note.textPreview && searchTerm.length > 3
+				? note.textPreview.replace(
+						new RegExp(`(${searchTerm})`, 'gi'),
+						'<span style="background-color: green; font-weight: bold">$1</span>'
+					)
+				: note.textPreview;
+	});
 </script>
 
 <button class="note-container" onclick={navigate}>
@@ -31,7 +43,7 @@
 		{isSideMenu}
 	/>
 	<div class="content">
-		{note.textPreview}
+		{@html highlightedText}
 		{#if isOpen}
 			<div class="marked-as-open-white"></div>
 			<div class="marked-as-open-black"></div>

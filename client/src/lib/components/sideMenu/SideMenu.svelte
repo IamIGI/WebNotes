@@ -20,6 +20,7 @@
 		allNotesLoading={$appStore.fetchingAllNotes}
 	/>
 	<ArrayOfNotes
+		{searchTerm}
 		notes={noteUtils.filterNotesBySearchTerm(notes, searchTerm)}
 		{openNotesIds}
 		isSideMenu={true}
