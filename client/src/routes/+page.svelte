@@ -32,6 +32,7 @@
 	{:then data}
 		<ArrayOfNotes
 			notes={noteUtils.filterNotesBySearchTerm($notesPreviewStore, searchTerm)}
+			{searchTerm}
 			openNotesIds={$noteSelectedStore.notes.map((note) => note._id)}
 		/>
 	{/await}

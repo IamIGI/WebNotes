@@ -2,16 +2,17 @@
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import type { NotePreview } from '$lib/api/generated';
-	import noteSelectedStore from '$lib/stores/noteSelected.store';
 	import noteUtils from '$lib/utils/note.utils';
+	import type { derived } from 'svelte/store';
 	import Bookmark from './bookmark.svelte';
 
 	interface Props {
 		note: NotePreview;
 		isOpen: boolean;
 		isSideMenu: boolean;
+		searchTerm: string;
 	}
-	let { note, isOpen, isSideMenu }: Props = $props();
+	let { note, isOpen, isSideMenu, searchTerm }: Props = $props();
 
 	async function navigate() {
 		await noteUtils.openNote(note._id);
@@ -19,6 +20,40 @@
 			goto('/display-notes');
 		}
 	}
+
+	let highlightedText = $state(note.textPreview);
+
+	function getHighlightedText(text: string, searchTerm: string) {
+		if (!searchTerm || searchTerm.length <= 3) return text;
+
+		// Escape special characters and allow flexible spaces in search term
+		const safeSearchTerm = searchTerm
+			.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&') // Escape special chars
+			.replace(/\s+/g, '\\s+'); // Allow multiple spaces
+
+		const regex = new RegExp(`(${safeSearchTerm})`, 'gi');
+
+		// Highlight the search term first
+		const highlightedText = text.replace(
+			regex,
+			'<span style="background-color: green; font-weight: bold">$1</span>'
+		);
+
+		// Now split into words to find the search position
+		const words = highlightedText.split(/\s+/);
+		const searchIndex = words.findIndex((word) => word.includes('<span'));
+
+		if (searchIndex === -1) return highlightedText; // If no match, return full highlighted text
+
+		// Trim text while keeping at least 10 words before the match
+		const wordsBeforeSearchedTerm = 10;
+		const startIndex = Math.max(0, searchIndex - wordsBeforeSearchedTerm);
+		return words.slice(startIndex).join(' ');
+	}
+
+	$effect(() => {
+		highlightedText = getHighlightedText(note.textPreview, searchTerm);
+	});
 </script>
 
 <button class="note-container" onclick={navigate}>
@@ -31,7 +66,7 @@
 		{isSideMenu}
 	/>
 	<div class="content">
-		{note.textPreview}
+		{@html highlightedText}
 		{#if isOpen}
 			<div class="marked-as-open-white"></div>
 			<div class="marked-as-open-black"></div>

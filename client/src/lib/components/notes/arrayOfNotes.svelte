@@ -6,13 +6,14 @@
 		notes: NotePreviewInterface[];
 		openNotesIds: string[];
 		isSideMenu?: boolean;
+		searchTerm: string;
 	}
-	let { notes, openNotesIds, isSideMenu = false }: Props = $props();
+	let { notes, openNotesIds, isSideMenu = false, searchTerm }: Props = $props();
 </script>
 
 <div class="list-wrapper">
 	{#each notes as note}
-		<NotePreview {note} isOpen={openNotesIds.includes(note._id)} {isSideMenu} />
+		<NotePreview {searchTerm} {note} isOpen={openNotesIds.includes(note._id)} {isSideMenu} />
 	{/each}
 </div>
 
