@@ -22,14 +22,37 @@
 	}
 
 	let highlightedText = $state(note.textPreview);
+
+	function getHighlightedText(text: string, searchTerm: string) {
+		if (!searchTerm || searchTerm.length <= 3) return text;
+
+		// Escape special characters and allow flexible spaces in search term
+		const safeSearchTerm = searchTerm
+			.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&') // Escape special chars
+			.replace(/\s+/g, '\\s+'); // Allow multiple spaces
+
+		const regex = new RegExp(`(${safeSearchTerm})`, 'gi');
+
+		// Highlight the search term first
+		const highlightedText = text.replace(
+			regex,
+			'<span style="background-color: green; font-weight: bold">$1</span>'
+		);
+
+		// Now split into words to find the search position
+		const words = highlightedText.split(/\s+/);
+		const searchIndex = words.findIndex((word) => word.includes('<span'));
+
+		if (searchIndex === -1) return highlightedText; // If no match, return full highlighted text
+
+		// Trim text while keeping at least 10 words before the match
+		const wordsBeforeSearchedTerm = 10;
+		const startIndex = Math.max(0, searchIndex - wordsBeforeSearchedTerm);
+		return words.slice(startIndex).join(' ');
+	}
+
 	$effect(() => {
-		highlightedText =
-			note.textPreview && searchTerm.length > 3
-				? note.textPreview.replace(
-						new RegExp(`(${searchTerm})`, 'gi'),
-						'<span style="background-color: green; font-weight: bold">$1</span>'
-					)
-				: note.textPreview;
+		highlightedText = getHighlightedText(note.textPreview, searchTerm);
 	});
 </script>
 
