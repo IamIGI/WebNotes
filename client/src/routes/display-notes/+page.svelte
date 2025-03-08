@@ -3,6 +3,12 @@
 	import SideMenu from '$lib/components/sideMenu/SideMenu.svelte';
 	import notesPreviewStore from '$lib/stores/notesPreview.store';
 	import noteSelectedStore from '$lib/stores/noteSelected.store';
+	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
+
+	onMount(() => {
+		if (noteSelectedStore.getNotes().length === 0) goto('/');
+	});
 </script>
 
 <div class="wrapper">
