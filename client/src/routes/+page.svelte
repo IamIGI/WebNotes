@@ -7,8 +7,13 @@
 	import noteSelectedStore from '$lib/stores/noteSelected.store';
 	import LoadAnimation from '$lib/components/ui/loadAnimation.svelte';
 	import noteUtils from '$lib/utils/note.utils';
+	import { onMount } from 'svelte';
 
 	let searchTerm = $state('');
+
+	onMount(() => {
+		appStore.setHideMenuVisibility(false);
+	});
 </script>
 
 <div class="wrapper">

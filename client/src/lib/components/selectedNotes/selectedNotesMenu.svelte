@@ -18,7 +18,7 @@
 	let editingBookmarkTitleId = $state<string | null>(null);
 	let editTitleInputRef = $state<HTMLInputElement | null>(null);
 
-	function onNoteDelete(_id: string) {
+	function onNoteClose(_id: string) {
 		noteSelectedStore.removeOne(_id);
 		if (bookmarks.length === 0) goto('/');
 	}
@@ -78,7 +78,7 @@
 					src="/svg/button/close.svg"
 					alt="close"
 					size="25px"
-					onclick={() => onNoteDelete(bookmark._id)}
+					onclick={() => onNoteClose(bookmark._id)}
 				/>
 			</div>
 		{/if}
