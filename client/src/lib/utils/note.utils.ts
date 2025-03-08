@@ -68,6 +68,7 @@ async function removeOneNote(id: string) {
 	//Update stores
 	noteSelectedStore.removeOne(id);
 	notesPreviewStore.removeOne(id);
+	if (noteSelectedStore.getNotes().length === 0) goto('/');
 	//Update database
 	await webNotesServer.notesService.notesIdDelete(id);
 }
