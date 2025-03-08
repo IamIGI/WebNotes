@@ -3,6 +3,7 @@
 	import SvgButton from '../ui/svgButton.svelte';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
+	import noteUtils from '$lib/utils/note.utils';
 </script>
 
 <nav>
@@ -11,7 +12,7 @@
 			{#if page.url.pathname !== '/'}
 				<SvgButton src="/svg/button/back.svg" alt="back" onclick={() => goto('/')} />
 			{:else}
-				<SvgButton src="/svg/button/add.svg" alt="add" />
+				<SvgButton src="/svg/button/add.svg" alt="add" onclick={noteUtils.createNote} />
 			{/if}
 		</div>
 		<div class="right-nav">

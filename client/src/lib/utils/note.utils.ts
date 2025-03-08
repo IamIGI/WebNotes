@@ -3,6 +3,9 @@ import type { Note, NotePreview, NoteUpdate } from '$lib/api/generated';
 import notesPreviewStore from '$lib/stores/notesPreview.store';
 import noteSelectedStore from '$lib/stores/noteSelected.store';
 import appStore from '$lib/stores/app.store';
+import { bookmarkColors } from '$lib/mocks';
+import { page } from '$app/state';
+import { goto } from '$app/navigation';
 
 async function fetchNotes() {
 	return notesPreviewStore.fetchNotesPreviews().then((data) => {
@@ -17,10 +20,23 @@ async function fetchNotes() {
 	});
 }
 
+async function createNote() {
+	const color = bookmarkColors[Math.floor(Math.random() * bookmarkColors.length)];
+	const note = await webNotesServer.notesService.notesPost({
+		bookmark: { title: 'Happy Note', color },
+		text: ''
+	});
+	notesPreviewStore.addOne(note);
+	noteSelectedStore.addOne(note);
+	if (page.url.pathname === '/') goto('/display-notes');
+}
+
 async function openNote(id: string) {
 	//Update stores
 	await noteSelectedStore.addExisted(id);
 	notesPreviewStore.selected(id);
+	if (page.url.pathname === '/') goto('/display-notes');
+
 	//Update database
 	await webNotesServer.notesService.notesOpenedIdPut(id);
 }
@@ -68,5 +84,6 @@ export default {
 	updateTitle,
 	removeOneNote,
 	filterNotesBySearchTerm,
-	openNote
+	openNote,
+	createNote
 };

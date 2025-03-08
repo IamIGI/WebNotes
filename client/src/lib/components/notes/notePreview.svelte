@@ -1,9 +1,6 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-	import { page } from '$app/state';
 	import type { NotePreview } from '$lib/api/generated';
 	import noteUtils from '$lib/utils/note.utils';
-	import type { derived } from 'svelte/store';
 	import Bookmark from './bookmark.svelte';
 
 	interface Props {
@@ -13,13 +10,6 @@
 		searchTerm: string;
 	}
 	let { note, isOpen, isSideMenu, searchTerm }: Props = $props();
-
-	async function navigate() {
-		await noteUtils.openNote(note._id);
-		if (page.url.pathname === '/') {
-			goto('/display-notes');
-		}
-	}
 
 	let highlightedText = $state(note.textPreview);
 
@@ -56,7 +46,7 @@
 	});
 </script>
 
-<button class="note-container" onclick={navigate}>
+<button class="note-container" onclick={() => noteUtils.openNote(note._id)}>
 	<Bookmark
 		data={{
 			title: note.bookmark.title,
@@ -87,6 +77,7 @@
 		color: var(--main-text-color);
 		background-color: var(--main-second-color);
 		line-height: 1.4;
+		min-height: 2rem;
 		max-height: 115px;
 		overflow: hidden;
 		text-overflow: ellipsis;
