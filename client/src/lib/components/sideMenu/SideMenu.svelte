@@ -29,6 +29,7 @@
 
 <style lang="scss">
 	.wrapper {
+		height: 100%;
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;

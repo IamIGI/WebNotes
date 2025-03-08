@@ -19,6 +19,7 @@
 
 <style lang="scss">
 	.list-wrapper {
+		height: 100%;
 		width: 100%;
 		padding-bottom: 1rem;
 		display: flex;

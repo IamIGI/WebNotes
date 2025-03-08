@@ -4,6 +4,7 @@
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
 	import noteUtils from '$lib/utils/note.utils';
+	import appStore from '$lib/stores/app.store';
 </script>
 
 <nav>
@@ -11,6 +12,12 @@
 		<div class="left-nav">
 			{#if page.url.pathname !== '/'}
 				<SvgButton src="/svg/button/back.svg" alt="back" onclick={() => goto('/')} />
+				<SvgButton
+					src="/svg/button/sidebar.svg"
+					alt="sidebar"
+					shape={'rectangular'}
+					onclick={appStore.toggleHideMenuVisibility}
+				/>
 			{:else}
 				<SvgButton src="/svg/button/add.svg" alt="add" onclick={noteUtils.createNote} />
 			{/if}

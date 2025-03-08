@@ -1,21 +1,29 @@
 <script lang="ts">
 	import { base } from '$app/paths';
+	import { circIn } from 'svelte/easing';
 	import type { HTMLButtonAttributes } from 'svelte/elements';
 
 	interface Props extends HTMLButtonAttributes {
 		src: string;
 		alt: string;
 		size?: string;
+		shape?: 'rectangular' | 'circle';
 	}
-	let { src, alt, size, ...restProps }: Props = $props();
+	let { src, alt, size, shape = 'circle', ...restProps }: Props = $props();
 </script>
 
-<button class="media-icon" {...restProps}>
+<button
+	class="media-icon"
+	{...restProps}
+	style="border-radius: {shape === 'circle' ? '50%' : '0%'}"
+>
 	<img
 		src={`${base}${src}`}
 		{alt}
 		class="svg-icon"
-		style={size && `height: ${size}; width: ${size}`}
+		style="{size && `height: ${size}; width: ${size};`} border-radius: {shape === 'circle'
+			? '50%'
+			: '0%'}"
 	/>
 </button>
 
@@ -26,12 +34,10 @@
 		background-color: transparent;
 		border: none;
 		transition: 0.2s;
-		border-radius: 50%;
 
 		img {
 			height: $size;
 			width: $size;
-			border-radius: 50%;
 		}
 
 		&:hover {
