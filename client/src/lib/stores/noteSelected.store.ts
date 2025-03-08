@@ -28,7 +28,8 @@ function noteSelectedStore() {
 			selectedNoteId: prev.notes.some((n) => n._id === id) ? id : prev.selectedNoteId
 		}));
 
-	const addNew = async () => {};
+	const addOne = (newNote: Note) =>
+		update((prev) => ({ notes: [...prev.notes, newNote], selectedNoteId: newNote._id }));
 
 	const addExisted = async (id: string) => {
 		const isNoteInStore = get(store).notes.some((note) => note._id === id);
@@ -89,14 +90,14 @@ function noteSelectedStore() {
 		});
 
 	return {
-		addNew,
+		subscribe,
 		addExisted,
 		updateColor,
 		removeOne,
 		select,
 		getNote,
 		updateTitle,
-		subscribe
+		addOne
 	};
 }
 

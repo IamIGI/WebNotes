@@ -1,7 +1,16 @@
 import webNotesServer from '$lib/api/api.config';
-import type { NotePreview } from '$lib/api/generated';
+import type { Note, NotePreview } from '$lib/api/generated';
 
 import { get, writable } from 'svelte/store';
+
+const mapNote_NotePreview = (note: Note): NotePreview => {
+	const newNote = {
+		...note,
+		textPreview: note.text,
+		text: undefined
+	};
+	return newNote;
+};
 
 function notesPreviewStore() {
 	const store = writable<NotePreview[]>([]);
@@ -15,12 +24,8 @@ function notesPreviewStore() {
 
 	const fetchNotesAll = async () => {
 		const notesPreviews = await webNotesServer.notesService.notesAllGet();
-		const mapedToTextPreview = notesPreviews.map((note) => ({
-			...note,
-			textPreview: note.text,
-			text: undefined
-		}));
-		set(mapedToTextPreview);
+		const mappedToTextPreview = notesPreviews.map((note) => mapNote_NotePreview(note));
+		set(mappedToTextPreview);
 		return notesPreviews;
 	};
 
@@ -56,6 +61,8 @@ function notesPreviewStore() {
 			return newNotes;
 		});
 
+	const addOne = (newNote: Note) => update((prev) => [mapNote_NotePreview(newNote), ...prev]);
+
 	return {
 		subscribe,
 		fetchNotesAll,
@@ -64,7 +71,8 @@ function notesPreviewStore() {
 		updateColor,
 		updateTitle,
 		removeOne,
-		selected
+		selected,
+		addOne
 	};
 }
 

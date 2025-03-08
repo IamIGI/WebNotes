@@ -44,7 +44,7 @@ const getById = catchErrors(async (req, res) => {
 const add = catchErrors(async (req, res) => {
   const payload = req.body as NoteUpdate;
 
-  validateRequestUtil.isValidPayload(payload, REQUIRED_KEYS);
+  validateRequestUtil.isValidPayload(payload.bookmark, ['title', 'color']);
 
   const newProduct = await noteService.add(payload);
 
