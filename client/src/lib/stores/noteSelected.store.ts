@@ -16,6 +16,8 @@ function noteSelectedStore() {
 	const store = writable<NoteSelectedStore>(init);
 	const { update, subscribe } = store;
 
+	const getNotes = () => get(store).notes;
+
 	const getNote = (id: string) => {
 		const selectedNote = get(store).notes.find((n) => n._id === id);
 		if (!selectedNote) throw new Error('Note not found');
@@ -97,7 +99,8 @@ function noteSelectedStore() {
 		select,
 		getNote,
 		updateTitle,
-		addOne
+		addOne,
+		getNotes
 	};
 }
 
