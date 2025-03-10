@@ -38,7 +38,10 @@
 		"vitest": "^3.0.0"
 	},
 	"dependencies": {
-		"@friendofsvelte/tipex": "^0.0.7-fix-0",
+		"@tiptap/core": "^2.11.5",
+		"@tiptap/extension-underline": "^2.11.5",
+		"@tiptap/pm": "^2.11.5",
+		"@tiptap/starter-kit": "^2.11.5",
 		"svelte-i18n": "^4.0.1"
 	}
 }
