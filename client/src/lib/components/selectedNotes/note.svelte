@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Note } from '$lib/api/generated';
 	import { Tipex } from '@friendofsvelte/tipex';
+
 	import '@friendofsvelte/tipex/styles/Tipex.css';
 	import '@friendofsvelte/tipex/styles/ProseMirror.css';
 	import '@friendofsvelte/tipex/styles/Controls.css';
@@ -13,7 +14,7 @@
 </script>
 
 <div class="wrapper">
-	<Tipex {body} controls={true} floating={false} focal={false} />
+	<Tipex {body} controls={true} floating={false} focal={false}></Tipex>
 </div>
 
 <style lang="scss">
@@ -36,6 +37,20 @@
 			border-top: 1px solid var(--main-accent-color_2);
 			gap: 0rem;
 			padding: 0.3rem;
+		}
+		:global(.tipex-edit-button) {
+			background-color: var(--main-second-color);
+			color: var(--main-accent-color_2);
+			border-radius: 0;
+			font-size: var(--font-size-p);
+
+			&:hover {
+				background-color: var(--main-accent-color);
+			}
+		}
+
+		:global(.tipex-utilities) {
+			display: none;
 		}
 	}
 </style>
