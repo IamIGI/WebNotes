@@ -38,6 +38,7 @@
 		"vitest": "^3.0.0"
 	},
 	"dependencies": {
+		"@friendofsvelte/tipex": "^0.0.7-fix-0",
 		"svelte-i18n": "^4.0.1"
 	}
 }
