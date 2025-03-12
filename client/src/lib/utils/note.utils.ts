@@ -47,7 +47,7 @@ async function updateColor(note: Note, color: string) {
 		noteSelectedStore.updateColor(note._id, color);
 		notesPreviewStore.updateColor(note._id, color);
 		//Update database
-		const payload: NoteUpdate = { bookmark: { ...note.bookmark, color }, text: note?.text };
+		const payload: NoteUpdate = { ...note, bookmark: { ...note.bookmark, color } };
 		await webNotesServer.notesService.notesIdPut(payload, note._id);
 	}
 }
@@ -59,7 +59,21 @@ async function updateTitle(id: string, title: string) {
 		noteSelectedStore.updateTitle(note._id, title);
 		notesPreviewStore.updateTitle(note._id, title);
 		//Update database
-		const payload: NoteUpdate = { bookmark: { ...note.bookmark, title }, text: note?.text };
+		const payload: NoteUpdate = { ...note, bookmark: { ...note.bookmark, title } };
+		await webNotesServer.notesService.notesIdPut(payload, id);
+	}
+}
+
+async function updateText(id: string, text: string) {
+	console.log('updateText');
+
+	const note = noteSelectedStore.getNote(id);
+	if (note.text.length !== text.length) {
+		//Update stores
+		noteSelectedStore.updateText(note._id, text);
+		notesPreviewStore.updateText(note._id, text);
+		//Update database
+		const payload: NoteUpdate = { ...note, text };
 		await webNotesServer.notesService.notesIdPut(payload, id);
 	}
 }
@@ -83,6 +97,7 @@ export default {
 	fetchNotes,
 	updateColor,
 	updateTitle,
+	updateText,
 	removeOneNote,
 	filterNotesBySearchTerm,
 	openNote,

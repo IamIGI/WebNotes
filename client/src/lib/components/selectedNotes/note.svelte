@@ -6,7 +6,7 @@
 </script>
 
 <div class="wrapper">
-	<TipTap />
+	<TipTap {text} {_id} />
 </div>
 
 <style lang="scss">

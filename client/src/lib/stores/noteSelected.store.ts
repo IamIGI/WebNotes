@@ -83,6 +83,13 @@ function noteSelectedStore() {
 		});
 	};
 
+	const updateText = (id: string, text: string) => {
+		update((prev) => ({
+			...prev,
+			notes: prev.notes.map((note) => (note._id === id ? { ...note, text } : note))
+		}));
+	};
+
 	const removeOne = (id: string) =>
 		update((prev) => {
 			const newNotes = prev.notes.filter((n) => n._id !== id);
@@ -95,6 +102,7 @@ function noteSelectedStore() {
 		subscribe,
 		addExisted,
 		updateColor,
+		updateText,
 		removeOne,
 		select,
 		getNote,

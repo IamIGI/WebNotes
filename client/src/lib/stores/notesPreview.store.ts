@@ -46,6 +46,9 @@ function notesPreviewStore() {
 		);
 	};
 
+	const updateText = async (id: string, text: string) =>
+		update((prev) => prev.map((note) => (note._id === id ? { ...note, textPreview: text } : note)));
+
 	const removeOne = (id: string) => update((prev) => prev.filter((note) => note._id !== id));
 
 	const selected = (id: string) =>
@@ -70,6 +73,7 @@ function notesPreviewStore() {
 		getNotes,
 		updateColor,
 		updateTitle,
+		updateText,
 		removeOne,
 		selected,
 		addOne
