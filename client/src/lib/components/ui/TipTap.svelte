@@ -3,21 +3,51 @@
 	import { Editor } from '@tiptap/core';
 	import StarterKit from '@tiptap/starter-kit';
 	import Underline from '@tiptap/extension-underline';
+	import Code from '@tiptap/extension-code';
+	import type { Note } from '$lib/api/generated';
+	import noteUtils from '$lib/utils/note.utils';
 
-	let element: HTMLDivElement | null = null;
-	let editor: Editor | null = null;
+	let { text, _id }: Omit<Note, 'bookmark' | 'updatedAt' | 'createdAt'> = $props();
+	// $inspect(text);
+	let previousId = $state(_id);
+	let element: HTMLDivElement | null = $state(null);
+	let editor: Editor | null = $state(null);
+	let timeoutId: NodeJS.Timeout | undefined = $state(undefined);
+	let allowToUpdate: boolean = $state(true);
 
 	onMount(() => {
 		if (element) {
 			editor = new Editor({
 				element,
-				extensions: [StarterKit, Underline],
-				content: '<p>Hello World! 🌍️ </p>',
-				onTransaction: () => {
-					// Force re-render so that `editor.isActive` works as expected.
-					editor = editor;
+				extensions: [StarterKit, Underline, Code],
+				content: text,
+				// onTransaction: () => {
+				// 	// Force re-render so that `editor.isActive` works as expected.
+				// 	editor = editor;
+				// 	console.log(editor?.getHTML());
+				// }
+				onUpdate: ({ editor }) => {
+					const content = editor.getHTML();
+
+					if (allowToUpdate && content) {
+						allowToUpdate = false;
+						noteUtils.updateText(_id, content);
+
+						clearTimeout(timeoutId);
+						timeoutId = setTimeout(() => {
+							allowToUpdate = true;
+						}, 5000);
+					}
 				}
 			});
+		}
+	});
+
+	$effect(() => {
+		console.log(_id, previousId);
+		if (_id !== previousId) {
+			editor && editor.commands.setContent(text);
+			previousId = _id;
 		}
 	});
 
@@ -50,28 +80,34 @@
 				P
 			</button> -->
 			<button
-				on:click={() => editor?.chain().focus().toggleBold().run()}
+				onclick={() => editor?.chain().focus().toggleBold().run()}
 				class:active={editor?.isActive('bold')}
 			>
 				B
 			</button>
 			<button
-				on:click={() => editor?.chain().focus().toggleItalic().run()}
+				onclick={() => editor?.chain().focus().toggleItalic().run()}
 				class:active={editor?.isActive('italic')}
 			>
 				I
 			</button>
 			<button
-				on:click={() => editor?.chain().focus().toggleUnderline().run()}
+				onclick={() => editor?.chain().focus().toggleUnderline().run()}
 				class:active={editor?.isActive('underline')}
 			>
 				U
+			</button>
+			<button
+				onclick={() => editor?.chain().focus().toggleCode().run()}
+				class:active={editor?.isActive('code')}
+			>
+				<code>{`</>`}</code>
 			</button>
 		</div>
 	{/if}
 </div>
 
-<style>
+<style lang="scss">
 	.wrapper {
 		/* outline: 1px solid red; */
 		height: 100%;
@@ -89,6 +125,17 @@
 		:global(.ProseMirror) {
 			height: 100%;
 			outline: none;
+		}
+
+		:global(.ProseMirror code) {
+			background-color: #697566; /* Dark background */
+			color: #f8f8f2; /* Light text */
+			font-family: monospace;
+			padding: 5px 2px;
+
+			$fontSize: calc(var(--font-size-p) - 3px);
+			line-height: $fontSize;
+			font-size: $fontSize;
 		}
 	}
 	.controls {

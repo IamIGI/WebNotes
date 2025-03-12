@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { base } from '$app/paths';
-	import { circIn } from 'svelte/easing';
 	import type { HTMLButtonAttributes } from 'svelte/elements';
 
 	interface Props extends HTMLButtonAttributes {
