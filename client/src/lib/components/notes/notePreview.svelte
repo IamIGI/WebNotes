@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { NotePreview } from '$lib/api/generated';
+	import appStore from '$lib/stores/app.store';
 	import noteUtils from '$lib/utils/note.utils';
 	import Bookmark from './bookmark.svelte';
 
@@ -14,7 +15,7 @@
 	let highlightedText = $state(note.textPreview);
 
 	function getHighlightedText(text: string, searchTerm: string) {
-		if (!searchTerm || searchTerm.length <= 3) return text;
+		if (!searchTerm || searchTerm.length < appStore.getParameter().searchTermHighlight) return text;
 
 		// Escape special characters and allow flexible spaces in search term
 		const safeSearchTerm = searchTerm
