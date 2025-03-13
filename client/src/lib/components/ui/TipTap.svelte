@@ -6,14 +6,14 @@
 	import Code from '@tiptap/extension-code';
 	import type { Note } from '$lib/api/generated';
 	import noteUtils from '$lib/utils/note.utils';
+	import appUtils from '../../../utils/app.utils';
+	import appStore from '$lib/stores/app.store';
 
 	let { text, _id }: Omit<Note, 'bookmark' | 'updatedAt' | 'createdAt'> = $props();
-	// $inspect(text);
+
 	let previousId = $state(_id);
 	let element: HTMLDivElement | null = $state(null);
 	let editor: Editor | null = $state(null);
-	let timeoutId: NodeJS.Timeout | undefined = $state(undefined);
-	let allowToUpdate: boolean = $state(true);
 
 	onMount(() => {
 		if (element) {
@@ -28,28 +28,22 @@
 				// }
 				onUpdate: ({ editor }) => {
 					const content = editor.getHTML();
-
-					if (allowToUpdate && content) {
-						allowToUpdate = false;
-						noteUtils.updateText(_id, content);
-
-						clearTimeout(timeoutId);
-						timeoutId = setTimeout(() => {
-							allowToUpdate = true;
-						}, 5000);
-					}
+					debouncedUpdateText(_id, content);
 				}
 			});
 		}
 	});
 
 	$effect(() => {
-		console.log(_id, previousId);
 		if (_id !== previousId) {
 			editor && editor.commands.setContent(text);
 			previousId = _id;
 		}
 	});
+
+	const debouncedUpdateText = appUtils.debounce((id: string, content: string) => {
+		noteUtils.updateText(id, content);
+	}, appStore.getParameter().debounceTimeToSaveNote);
 
 	onDestroy(() => {
 		editor?.destroy();
