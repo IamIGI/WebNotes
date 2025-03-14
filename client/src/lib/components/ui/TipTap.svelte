@@ -11,7 +11,7 @@
 
 	let { text, _id }: Omit<Note, 'bookmark' | 'updatedAt' | 'createdAt'> = $props();
 
-	let previousId = $state(_id);
+	let noteId = $state(_id);
 	let element: HTMLDivElement | null = $state(null);
 	let editor: Editor | null = $state(null);
 
@@ -27,25 +27,31 @@
 				// 	console.log(editor?.getHTML());
 				// }
 				onUpdate: ({ editor }) => {
-					const content = editor.getHTML();
-					debouncedUpdateText(_id, content);
+					const updatedNote = editor.getHTML();
+					debouncedUpdateText(_id, updatedNote);
 				}
 			});
 		}
 	});
 
 	$effect(() => {
-		if (_id !== previousId) {
+		if (_id !== noteId) {
 			editor && editor.commands.setContent(text);
-			previousId = _id;
+			noteId = _id;
 		}
 	});
 
-	const debouncedUpdateText = appUtils.debounce((id: string, content: string) => {
-		noteUtils.updateText(id, content);
+	const debouncedUpdateText = appUtils.debounce((id: string, updatedNote: string) => {
+		noteUtils.updateText(id, updatedNote);
 	}, appStore.getParameter().debounceTimeToSaveNote);
 
-	onDestroy(() => {
+	onDestroy(async () => {
+		//DB is updated, but after the data is fetched from db, so we get obsolete data in note previews
+		debouncedUpdateText.cancel();
+		const updatedNote = editor?.getHTML();
+		if (updatedNote) {
+			await noteUtils.updateText(noteId, updatedNote, { onNoteClose: true });
+		}
 		editor?.destroy();
 	});
 </script>

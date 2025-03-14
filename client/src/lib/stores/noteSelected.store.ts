@@ -20,7 +20,10 @@ function noteSelectedStore() {
 
 	const getNote = (id: string) => {
 		const selectedNote = get(store).notes.find((n) => n._id === id);
-		if (!selectedNote) throw new Error('Note not found');
+		if (!selectedNote) {
+			console.error('Note not found');
+			return;
+		}
 		return selectedNote;
 	};
 

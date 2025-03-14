@@ -18,6 +18,7 @@ function notesPreviewStore() {
 
 	const fetchNotesPreviews = async () => {
 		const notesPreviews = await webNotesServer.notesService.notesAllPreviewsGet();
+
 		set(notesPreviews);
 		return notesPreviews;
 	};
@@ -25,6 +26,7 @@ function notesPreviewStore() {
 	const fetchNotesAll = async () => {
 		const notesPreviews = await webNotesServer.notesService.notesAllGet();
 		const mappedToTextPreview = notesPreviews.map((note) => mapNote_NotePreview(note));
+
 		set(mappedToTextPreview);
 		return notesPreviews;
 	};
