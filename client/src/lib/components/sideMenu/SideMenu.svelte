@@ -21,7 +21,9 @@
 	/>
 	<ArrayOfNotes
 		{searchTerm}
-		notes={noteUtils.filterNotesBySearchTerm(notes, searchTerm)}
+		notes={searchTerm.length < $appStore.parameters.searchTermHighlight
+			? notes
+			: noteUtils.filterNotesBySearchTerm(notes, searchTerm)}
 		{openNotesIds}
 		isSideMenu={true}
 	/>

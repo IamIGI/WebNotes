@@ -8,7 +8,7 @@ import { page } from '$app/state';
 import { goto } from '$app/navigation';
 
 async function fetchNotes() {
-	return notesPreviewStore.fetchNotesPreviews().then((data) => {
+	return await notesPreviewStore.fetchNotesPreviews().then((data) => {
 		// Render  UI after  first fetch
 		setTimeout(async () => {
 			appStore.setFetchingAllNotesStatus(true);
@@ -54,7 +54,7 @@ async function updateColor(note: Note, color: string) {
 
 async function updateTitle(id: string, title: string) {
 	const note = noteSelectedStore.getNote(id);
-	if (note.bookmark.title !== title) {
+	if (note && note.bookmark.title !== title) {
 		//Update stores
 		noteSelectedStore.updateTitle(note._id, title);
 		notesPreviewStore.updateTitle(note._id, title);
@@ -64,11 +64,16 @@ async function updateTitle(id: string, title: string) {
 	}
 }
 
-async function updateText(id: string, text: string) {
-	console.log('updateText');
+async function updateText(
+	id: string,
+	text: string,
+	params: { onNoteClose: boolean } = { onNoteClose: false }
+) {
+	const note = params.onNoteClose
+		? await webNotesServer.notesService.notesIdGet(id)
+		: noteSelectedStore.getNote(id);
 
-	const note = noteSelectedStore.getNote(id);
-	if (note.text.length !== text.length) {
+	if (note && note.text.length !== text.length) {
 		//Update stores
 		noteSelectedStore.updateText(note._id, text);
 		notesPreviewStore.updateText(note._id, text);

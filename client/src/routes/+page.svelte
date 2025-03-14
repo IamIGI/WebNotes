@@ -14,6 +14,11 @@
 	onMount(() => {
 		appStore.setHideMenuVisibility(false);
 	});
+
+	const getNotesOrFetch = async () => {
+		const notes = notesPreviewStore.getNotes();
+		return notes.length > 0 ? notes : await noteUtils.fetchNotes();
+	};
 </script>
 
 <div class="wrapper">
@@ -22,7 +27,7 @@
 		handleSearch={(text) => (searchTerm = text)}
 		allNotesLoading={$appStore.fetchingAllNotes}
 	/>
-	{#await noteUtils.fetchNotes()}
+	{#await getNotesOrFetch()}
 		<LoadAnimation
 			time={1}
 			animationType={'ball'}
@@ -36,7 +41,9 @@
 		/>
 	{:then data}
 		<ArrayOfNotes
-			notes={noteUtils.filterNotesBySearchTerm($notesPreviewStore, searchTerm)}
+			notes={searchTerm.length < $appStore.parameters.searchTermHighlight
+				? $notesPreviewStore
+				: noteUtils.filterNotesBySearchTerm($notesPreviewStore, searchTerm)}
 			{searchTerm}
 			openNotesIds={$noteSelectedStore.notes.map((note) => note._id)}
 		/>
