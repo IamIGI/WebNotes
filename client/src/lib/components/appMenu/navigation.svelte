@@ -5,6 +5,7 @@
 	import { goto } from '$app/navigation';
 	import noteUtils from '$lib/utils/note.utils';
 	import appStore from '$lib/stores/app.store';
+	import electronUtils from '$lib/utils/electron.utils';
 </script>
 
 <nav>
@@ -25,7 +26,7 @@
 		<div class="right-nav">
 			<SvgButton src="/svg/button/settings.svg" alt="settings" />
 			<ImgButton src="/img/profile.JPG" alt="profile" />
-			<SvgButton src="/svg/button/close.svg" alt="close" />
+			<SvgButton src="/svg/button/close.svg" alt="close" onclick={electronUtils.closeApp} />
 		</div>
 	</div>
 </nav>
