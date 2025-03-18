@@ -23,4 +23,6 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();
 });
 
-ipcMain.on('close-app', () => app.quit());
+ipcMain.on('e_close', () => app.quit());
+ipcMain.on('e_hide', () => mainWindow && mainWindow.minimize());
+ipcMain.on('e_toggle_fullscreen', () => mainWindow && mainWindow.setFullScreen(!mainWindow.isFullScreen()));

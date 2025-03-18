@@ -26,6 +26,19 @@
 		<div class="right-nav">
 			<SvgButton src="/svg/button/settings.svg" alt="settings" />
 			<ImgButton src="/img/profile.JPG" alt="profile" />
+			<SvgButton
+				src="/svg/button/windows_hide.svg"
+				alt="windows_hide"
+				size="35px"
+				onclick={electronUtils.hideWindow}
+			/>
+			<SvgButton
+				src="/svg/button/windows_full_screen.svg"
+				alt="windows_full_screen"
+				shape="rectangular"
+				size="35px"
+				onclick={electronUtils.toggleFullScreen}
+			/>
 			<SvgButton src="/svg/button/close.svg" alt="close" onclick={electronUtils.closeApp} />
 		</div>
 	</div>
@@ -62,7 +75,7 @@
 			display: flex;
 			justify-content: flex-end;
 			align-items: center;
-			gap: 1rem;
+			gap: 0.7rem;
 		}
 	}
 </style>
