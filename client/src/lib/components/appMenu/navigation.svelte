@@ -23,6 +23,7 @@
 				<SvgButton src="/svg/button/add.svg" alt="add" onclick={noteUtils.createNote} />
 			{/if}
 		</div>
+		<div class="drag-area"></div>
 		<div class="right-nav">
 			<SvgButton src="/svg/button/settings.svg" alt="settings" />
 			<ImgButton src="/img/profile.JPG" alt="profile" />
@@ -52,13 +53,11 @@
 		justify-content: flex-start;
 		align-items: flex-start;
 		background-color: var(--main-background-color);
-		padding-top: 0.5rem;
 	}
 	.navigation-wrapper {
 		/* outline: 1px solid blue; */
 		width: 100%;
 		min-height: 55px;
-		gap: 1rem;
 
 		display: flex;
 		justify-content: space-between;
@@ -69,9 +68,18 @@
 			justify-content: flex-start;
 			align-items: center;
 			gap: 1rem;
+			padding-top: 0.5rem;
+		}
+		.drag-area {
+			outline: 1px solid green;
+			height: 100%;
+			flex: 1;
+			//Electron style that set this region to be draggable, allowing drag the app window
+			app-region: drag;
 		}
 
 		.right-nav {
+			padding-top: 0.5rem;
 			display: flex;
 			justify-content: flex-end;
 			align-items: center;
