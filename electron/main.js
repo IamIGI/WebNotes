@@ -1,13 +1,23 @@
 const electron = require('electron');
-const { app, BrowserWindow, ipcMain } = electron; // Extracting from `electron` object
+const { app, BrowserWindow, ipcMain } = electron;
 const path = require('path');
 
 let mainWindow;
 
+app.setName('WebNotesIGI');
+app.setAppUserModelId('WebNotesIGI');
+
 app.whenReady().then(() => {
   mainWindow = new BrowserWindow({
+    //Title bar settings
+    titleBarStyle: 'hidden',
+
+    //Window size settings
     width: 800,
     height: 600,
+
+    //Others
+    icon: path.join(__dirname, 'assets', 'icon.ico'), // Set the icon here
     webPreferences: {
       preload: path.join(__dirname, '/preload.js'),
       contextIsolation: true,
