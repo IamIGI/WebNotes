@@ -8,14 +8,29 @@ app.setName('WebNotesIGI');
 app.setAppUserModelId('WebNotesIGI');
 
 app.whenReady().then(() => {
+  const INIT_WIDTH = 800;
+  const INIT_HEIGHT = 600;
+  // Create the splash screen window
+  splashWindow = new BrowserWindow({
+    height: INIT_HEIGHT,
+    width: INIT_WIDTH,
+    frame: false, // No title bar
+    alwaysOnTop: true, // Keeps it on top
+    transparent: true, // Enables transparency
+    resizable: false,
+  });
+
+  splashWindow.loadFile(path.join(__dirname, 'splash.html'));
+
+  // Create the main app window
   mainWindow = new BrowserWindow({
     //Title bar settings
     titleBarStyle: 'hidden',
 
     //Window size settings
-    width: 800,
-    height: 600,
-
+    height: INIT_HEIGHT,
+    width: INIT_WIDTH,
+    show: false,
     //Others
     icon: path.join(__dirname, 'assets', 'icon.ico'), // Set the icon here
     webPreferences: {
@@ -26,6 +41,12 @@ app.whenReady().then(() => {
   });
 
   mainWindow.loadURL('http://localhost:5173');
+  // Wait until the main window is ready, then close the splash screen
+  mainWindow.once('ready-to-show', () => {
+    splashWindow.close(); // Remove splash screen
+    mainWindow.show(); // Show the main app window
+  });
+
   mainWindow.on('closed', () => (mainWindow = null));
 });
 
