@@ -27,6 +27,11 @@ function noteSelectedStore() {
 		return selectedNote;
 	};
 
+	const getSelectedNote = () => {
+		const storeData = get(store);
+		return storeData.notes.find((n) => n._id === storeData.selectedNoteId);
+	};
+
 	const select = (id: string) =>
 		update((prev) => ({
 			...prev,
@@ -111,7 +116,8 @@ function noteSelectedStore() {
 		getNote,
 		updateTitle,
 		addOne,
-		getNotes
+		getNotes,
+		getSelectedNote
 	};
 }
 
