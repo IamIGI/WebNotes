@@ -6,6 +6,12 @@
 	import noteUtils from '$lib/utils/note.utils';
 	import appStore from '$lib/stores/app.store';
 	import electronUtils from '$lib/utils/electron.utils';
+
+	const closeApp = async () => {
+		const noteText = document.querySelector('.editor p');
+		if (noteText) await noteUtils.updateTextOnAppClose(JSON.stringify(noteText?.innerHTML));
+		electronUtils.closeApp();
+	};
 </script>
 
 <nav>
@@ -42,7 +48,7 @@
 				size="35px"
 				onclick={electronUtils.toggleFullScreen}
 			/> -->
-			<SvgButton src="/svg/button/close.svg" alt="close" onclick={electronUtils.closeApp} />
+			<SvgButton src="/svg/button/close.svg" alt="close" onclick={closeApp} />
 		</div>
 	</div>
 </nav>

@@ -98,6 +98,15 @@ function filterNotesBySearchTerm(notesPreviews: NotePreview[], searchTerm: strin
 	);
 }
 
+async function updateTextOnAppClose(noteText: string) {
+	const selectedNote = noteSelectedStore.getSelectedNote();
+	const updatedNoteText = noteText.slice(1, -1); // remove "
+	if (selectedNote?._id && noteText && selectedNote?.text !== updatedNoteText) {
+		const payload: NoteUpdate = { ...selectedNote, text: updatedNoteText };
+		await webNotesServer.notesService.notesIdPut(payload, selectedNote._id);
+	}
+}
+
 export default {
 	fetchNotes,
 	updateColor,
@@ -106,5 +115,6 @@ export default {
 	removeOneNote,
 	filterNotesBySearchTerm,
 	openNote,
-	createNote
+	createNote,
+	updateTextOnAppClose
 };

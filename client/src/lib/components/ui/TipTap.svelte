@@ -49,9 +49,7 @@
 		//DB is updated, but after the data is fetched from db, so we get obsolete data in note previews
 		debouncedUpdateText.cancel();
 		const updatedNote = editor?.getHTML();
-		if (updatedNote) {
-			await noteUtils.updateText(noteId, updatedNote, { onNoteClose: true });
-		}
+		if (updatedNote) await noteUtils.updateText(noteId, updatedNote, { onNoteClose: true });
 		editor?.destroy();
 	});
 </script>
