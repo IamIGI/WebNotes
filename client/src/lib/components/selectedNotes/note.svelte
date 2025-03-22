@@ -5,14 +5,14 @@
 	let { text, _id }: Omit<Note, 'bookmark' | 'updatedAt' | 'createdAt'> = $props();
 </script>
 
-<div class="wrapper">
+<div class="note-wrapper">
 	<TipTap {text} {_id} />
 </div>
 
 <style lang="scss">
-	.wrapper {
+	.note-wrapper {
 		width: 100%;
-		height: 100%;
+		height: calc(100% - 45px);
 
 		display: flex;
 		flex-direction: column;

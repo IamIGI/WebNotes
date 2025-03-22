@@ -32,10 +32,10 @@
 			time={1}
 			animationType={'ball'}
 			texts={[
-				'Sciaganie danych...',
-				'Dane uciekaja...',
+				'Sciaganie notatek...',
+				'Zastawianie pułapki...',
 				'Halo... gdzie sa?',
-				'Ide ich poszukać...',
+				'poszukiwanie notatek.',
 				'Tutaj są!!!'
 			]}
 		/>

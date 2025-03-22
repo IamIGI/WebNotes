@@ -13,12 +13,14 @@
 		<div class="left-nav">
 			{#if page.url.pathname !== '/'}
 				<SvgButton src="/svg/button/back.svg" alt="back" onclick={() => goto('/')} />
-				<SvgButton
-					src="/svg/button/sidebar.svg"
-					alt="sidebar"
-					shape={'rectangular'}
-					onclick={appStore.toggleHideMenuVisibility}
-				/>
+				<div class="sidebar-icon">
+					<SvgButton
+						src="/svg/button/sidebar.svg"
+						alt="sidebar"
+						shape={'rectangular'}
+						onclick={appStore.toggleHideMenuVisibility}
+					/>
+				</div>
 			{:else}
 				<SvgButton src="/svg/button/add.svg" alt="add" onclick={noteUtils.createNote} />
 			{/if}
@@ -33,13 +35,13 @@
 				size="35px"
 				onclick={electronUtils.hideWindow}
 			/>
-			<SvgButton
+			<!-- <SvgButton
 				src="/svg/button/windows_full_screen.svg"
 				alt="windows_full_screen"
 				shape="rectangular"
 				size="35px"
 				onclick={electronUtils.toggleFullScreen}
-			/>
+			/> -->
 			<SvgButton src="/svg/button/close.svg" alt="close" onclick={electronUtils.closeApp} />
 		</div>
 	</div>
@@ -48,6 +50,7 @@
 <style lang="scss">
 	nav {
 		width: 100%;
+		height: 55px;
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
@@ -55,7 +58,6 @@
 		background-color: var(--main-background-color);
 	}
 	.navigation-wrapper {
-		/* outline: 1px solid blue; */
 		width: 100%;
 		min-height: 55px;
 
@@ -71,7 +73,6 @@
 			padding-top: 0.5rem;
 		}
 		.drag-area {
-			outline: 1px solid green;
 			height: 100%;
 			flex: 1;
 			//Electron style that set this region to be draggable, allowing drag the app window
@@ -84,6 +85,12 @@
 			justify-content: flex-end;
 			align-items: center;
 			gap: 0.7rem;
+		}
+
+		.sidebar-icon {
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 	}
 </style>

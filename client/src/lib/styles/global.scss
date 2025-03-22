@@ -7,15 +7,13 @@
 *::after {
 	margin: 0;
 	padding: 0;
-	box-sizing: border-box;
+	box-sizing: border-box; //include margin, padding, border width to defined height/width
 	max-width: 100vw; /* Prevent elements from extending past the viewport */
 }
 
 html,
 body {
 	height: 100%;
-	margin: 0;
-	box-sizing: border-box;
 }
 
 body {

@@ -8,8 +8,7 @@
 <style lang="scss">
 	.app-title {
 		width: 100%;
-		/* padding-left: 1rem; */
-		/* outline: 1px solid green; */
+
 		height: 35px;
 		h1 {
 			span {

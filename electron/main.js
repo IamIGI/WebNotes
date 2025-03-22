@@ -8,12 +8,13 @@ app.setName('WebNotesIGI');
 app.setAppUserModelId('WebNotesIGI');
 
 app.whenReady().then(() => {
-  const INIT_WIDTH = 800;
+  const INIT_WIDTH = 700;
   const INIT_HEIGHT = 600;
   // Create the splash screen window
   splashWindow = new BrowserWindow({
     height: INIT_HEIGHT,
     width: INIT_WIDTH,
+    icon: path.join(__dirname, 'assets', 'icon.ico'), // Set the icon here
     frame: false, // No title bar
     alwaysOnTop: true, // Keeps it on top
     transparent: true, // Enables transparency
@@ -30,7 +31,10 @@ app.whenReady().then(() => {
     //Window size settings
     height: INIT_HEIGHT,
     width: INIT_WIDTH,
+    minHeight: 310,
+    minWidth: 450,
     show: false,
+
     //Others
     icon: path.join(__dirname, 'assets', 'icon.ico'), // Set the icon here
     webPreferences: {

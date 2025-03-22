@@ -33,7 +33,7 @@
 		justify-content: flex-start;
 		align-items: center;
 		height: 35px;
-		margin-bottom: 0.5rem;
+		margin-bottom: 8px;
 
 		input {
 			width: 100%;

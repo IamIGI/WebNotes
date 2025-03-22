@@ -31,7 +31,7 @@
 	}
 
 	onMount(() => {
-		onMountTimer = setTimeout(() => document.addEventListener('click', handleClickOutside), 1000);
+		onMountTimer = setTimeout(() => document.addEventListener('click', handleClickOutside), 300);
 	});
 
 	onDestroy(() => {

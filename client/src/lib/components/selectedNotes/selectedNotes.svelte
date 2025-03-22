@@ -26,7 +26,7 @@
 	}
 </script>
 
-<div class="wrapper">
+<div class="wrapper_k">
 	<SelectedNotesMenu
 		bookmarks={notes.map((note) => ({ ...note.bookmark, _id: note._id }))}
 		{selectedNoteId}
@@ -40,14 +40,12 @@
 </div>
 
 <style lang="scss">
-	.wrapper {
+	.wrapper_k {
 		position: relative;
-		width: 100%;
-		/* outline: 1px solid red; */
+		flex: 1;
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
 		align-items: flex-start;
-		gap: 1rem;
 	}
 </style>
