@@ -40,7 +40,7 @@
 	}
 </script>
 
-<div class="wrapper">
+<div class="wrapper-selected-menu">
 	{#each bookmarks as bookmark}
 		{#if !editingBookmarkTitleId || editingBookmarkTitleId === bookmark._id}
 			<!-- Show only the editing bookmark or both if nothing is being edited -->
@@ -86,25 +86,26 @@
 </div>
 
 <style lang="scss">
-	.wrapper {
+	.wrapper-selected-menu {
+		min-height: 45px;
+		max-height: 45px;
+		width: 100%;
 		display: flex;
 		flex-direction: row;
 		justify-content: flex-start;
 		flex-wrap: nowrap;
-		overflow: hidden;
 		align-items: center;
-		min-height: 35px;
-		width: 100%;
 		border-bottom: 1px solid var(--main-accent-color_2);
 		gap: 0.5rem;
 		padding: 0 0.2rem;
+		padding-bottom: 10px;
 	}
 
 	.bookmark {
 		position: relative;
-		min-width: 50%;
-		max-width: 50%;
-		width: 50%;
+		min-width: 49%;
+		max-width: 49%;
+
 		overflow: hidden;
 		display: flex;
 		flex-direction: row;
@@ -114,7 +115,6 @@
 
 		@mixin title-wrapper {
 			padding-left: 1.5rem;
-
 			text-align: left;
 			display: flex;
 			align-items: flex-end;
@@ -125,6 +125,12 @@
 			white-space: nowrap;
 			display: block;
 			text-overflow: ellipsis;
+
+			@media screen and (max-width: 650px) {
+				white-space: wrap;
+				font-size: var(--font-size-minV2);
+				line-height: calc(var(--font-size-minV2) + 1px);
+			}
 		}
 
 		button {
@@ -136,9 +142,13 @@
 			height: 100%;
 			background-color: transparent;
 			max-width: 200px;
+			overflow: hidden;
+
+			@media screen and (max-width: 550px) {
+				max-width: 10px;
+			}
 		}
 
-		/* editTitle input */
 		input {
 			@include title-wrapper;
 			color: var(--main-text-color);
@@ -150,7 +160,6 @@
 		}
 	}
 
-	/* Full width when editing */
 	.full-width {
 		min-width: 100%;
 		max-width: 100%;

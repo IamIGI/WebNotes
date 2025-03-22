@@ -109,21 +109,20 @@
 
 <style lang="scss">
 	.wrapper {
-		/* outline: 1px solid red; */
 		height: 100%;
 		width: 100%;
 		background-color: var(--main-second-color);
 	}
 	.editor {
 		padding: 0.5rem;
-		/* outline: 1px solid green; */
+		word-break: break-word;
 		width: 100%;
 		height: calc(100% - 50px);
-
 		color: var(--main-text-color);
 
 		:global(.ProseMirror) {
 			height: 100%;
+			overflow: auto;
 			outline: none;
 		}
 
@@ -132,7 +131,6 @@
 			color: #f8f8f2; /* Light text */
 			font-family: monospace;
 			padding: 5px 2px;
-
 			$fontSize: calc(var(--font-size-p) - 3px);
 			line-height: $fontSize;
 			font-size: $fontSize;
@@ -140,6 +138,7 @@
 	}
 	.controls {
 		border-top: 1px solid var(--main-accent-color_2);
+		background-color: var(--main-second-color);
 		height: 50px;
 		display: flex;
 		gap: 0.5rem;
@@ -148,7 +147,6 @@
 	button {
 		padding: 0.5rem 1rem;
 		background: #f0f0f0;
-
 		border-radius: 4px;
 		cursor: pointer;
 		transition:

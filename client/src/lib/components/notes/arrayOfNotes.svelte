@@ -27,8 +27,8 @@
 		justify-content: flex-start;
 		align-items: center;
 		gap: 1rem;
-		max-height: calc(100vh - 180px);
-		overflow: auto;
+		/* max-height: calc(100vh - 150px); */
+		overflow-y: auto;
 
 		padding-right: 0.5rem;
 		scrollbar-gutter: stable; // ensures space for the scrollbar even when it’s not visible.
