@@ -14,41 +14,60 @@
 	};
 </script>
 
-<nav>
-	<div class="navigation-wrapper">
-		<div class="left-nav">
-			{#if page.url.pathname !== '/'}
-				<SvgButton src="/svg/button/back.svg" alt="back" onclick={() => goto('/')} />
-				<div class="sidebar-icon">
-					<SvgButton
-						src="/svg/button/sidebar.svg"
-						alt="sidebar"
-						shape={'rectangular'}
-						onclick={appStore.toggleHideMenuVisibility}
-					/>
-				</div>
-			{:else}
-				<SvgButton src="/svg/button/add.svg" alt="add" onclick={noteUtils.createNote} />
-			{/if}
-		</div>
-		<div class="drag-area"></div>
-		<div class="right-nav">
-			<SvgButton src="/svg/button/settings.svg" alt="settings" />
-			<ImgButton src="/img/profile.JPG" alt="profile" />
-			<SvgButton
-				src="/svg/button/windows_hide.svg"
-				alt="windows_hide"
-				size="35px"
-				onclick={electronUtils.hideWindow}
-			/>
-			<!-- <SvgButton
+{#snippet windowButtons()}
+	<SvgButton
+		src="/svg/button/windows_hide.svg"
+		alt="windows_hide"
+		size="35px"
+		onclick={electronUtils.hideWindow}
+	/>
+	<!-- <SvgButton
 				src="/svg/button/windows_full_screen.svg"
 				alt="windows_full_screen"
 				shape="rectangular"
 				size="35px"
 				onclick={electronUtils.toggleFullScreen}
 			/> -->
-			<SvgButton src="/svg/button/close.svg" alt="close" onclick={closeApp} />
+	<SvgButton src="/svg/button/close.svg" alt="close" onclick={closeApp} />
+{/snippet}
+
+{#snippet userButtons()}
+	<SvgButton src="/svg/button/settings.svg" alt="settings" />
+	<ImgButton src="/img/profile.JPG" alt="profile" />
+{/snippet}
+
+{#snippet selectedNoteButtons()}
+	<SvgButton src="/svg/button/back.svg" alt="back" onclick={() => goto('/')} />
+	<div class="sidebar-icon">
+		<SvgButton
+			src="/svg/button/sidebar.svg"
+			alt="sidebar"
+			shape={'rectangular'}
+			onclick={appStore.toggleHideMenuVisibility}
+		/>
+	</div>
+{/snippet}
+{#snippet mainPageButtons()}
+	<SvgButton src="/svg/button/add.svg" alt="add" onclick={noteUtils.createNote} />
+{/snippet}
+
+<nav>
+	<div class="navigation-wrapper">
+		<div class="left-nav">
+			{#if page.url.pathname === '/display-notes'}
+				{@render selectedNoteButtons()}
+			{/if}
+			{#if page.url.pathname === '/'}
+				{@render mainPageButtons()}
+			{/if}
+		</div>
+		<div class="drag-area"></div>
+		<div class="right-nav">
+			<!-- <SvgButton src="/svg/button/settings.svg" alt="settings" onclick={() => goto('/login')} /> -->
+			{#if ['/login', '/register'].includes(page.url.pathname) === false}
+				{@render userButtons()}
+			{/if}
+			{@render windowButtons()}
 		</div>
 	</div>
 </nav>
