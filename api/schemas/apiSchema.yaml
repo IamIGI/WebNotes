@@ -224,6 +224,23 @@ paths:
                     example: 'Session removed'
         '404':
           description: Session not found
+  /user:
+    get:
+      summary: Get user details
+      description: Returns details of the authenticated user.
+      tags:
+        - user
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: User details retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserWithoutPassword'
+        '404':
+          description: User not found
 
 components:
   securitySchemes:
@@ -320,6 +337,31 @@ components:
           type: string
         updatedAt:
           type: string
+
+    UserWithoutPassword:
+      type: object
+      properties:
+        _id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        verified:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+        - _id
+        - name
+        - email
+        - verified
+        - createdAt
+        - updatedAt
 
     Session:
       type: object
