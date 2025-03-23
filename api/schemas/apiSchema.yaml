@@ -186,7 +186,7 @@ paths:
       tags:
         - user
       security:
-        - BearerAuth: []
+        - CookieAuth: []
       responses:
         '200':
           description: List of active sessions
@@ -196,6 +196,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Session'
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+        '403':
+          description: Forbidden - Token expired or invalid
 
   /sessions/{id}:
     delete:
@@ -204,7 +208,7 @@ paths:
       tags:
         - user
       security:
-        - BearerAuth: []
+        - CookieAuth: []
       parameters:
         - name: id
           in: path
@@ -222,6 +226,10 @@ paths:
                   message:
                     type: string
                     example: 'Session removed'
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+        '403':
+          description: Forbidden - Token expired or invalid
         '404':
           description: Session not found
   /user:
@@ -231,7 +239,7 @@ paths:
       tags:
         - user
       security:
-        - BearerAuth: []
+        - CookieAuth: []
       responses:
         '200':
           description: User details retrieved successfully
@@ -239,6 +247,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserWithoutPassword'
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+        '403':
+          description: Forbidden - Token expired or invalid
         '404':
           description: User not found
 
@@ -248,6 +260,10 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
+    CookieAuth:
+      type: apiKey
+      in: cookie
+      name: accessToken
 
   schemas:
     NotePreview:
