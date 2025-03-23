@@ -3,7 +3,7 @@ import { redirect } from '@sveltejs/kit';
 
 export async function load({ url }) {
 	console.log(authStore.isAuth());
-	if (authStore.isAuth() === false && url.pathname !== '/login') {
+	if (authStore.isAuth() === false && ['/login', '/register'].includes(url.pathname) === false) {
 		console.log('t1');
 		throw redirect(302, '/login');
 	}

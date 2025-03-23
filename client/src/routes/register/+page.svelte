@@ -4,12 +4,14 @@
 	import AppTitle from '$lib/components/appTitle.svelte';
 	import authStore from '$lib/stores/auth.store';
 
+	let name: string = '';
 	let email: string = '';
 	let password: string = '';
+	let confirm_password: string = '';
 
 	async function handleSubmit(event: Event) {
 		event.preventDefault(); // Prevent default form submission
-		console.log('Logging in with:', { email, password });
+		console.log('Logging in with:', { name, email, password, confirm_password });
 		authStore.setAuth(true);
 		goto('/');
 	}
@@ -21,18 +23,20 @@
 	</div>
 
 	<form on:submit={handleSubmit}>
+		<input type="text" bind:value={name} placeholder="Name" />
 		<input type="email" bind:value={email} placeholder="Email" />
 		<!-- required -->
 		<input type="password" bind:value={password} placeholder="Password" />
-		<button type="submit">Login</button>
+		<input type="password" bind:value={confirm_password} placeholder="Confirm Password" />
+		<button type="submit">Register</button>
 	</form>
 
 	<button class="google-login"
-		>Log in with Google
+		>Register in with Google
 		<img src={`${base}/svg/button/google.svg`} alt="google" />
 	</button>
 
-	<p class="register-link">Not a member? <a href="/register">Join now</a></p>
+	<p class="register-link">Already a member? <a href="/login">Log in</a></p>
 </div>
 
 <style lang="scss">
