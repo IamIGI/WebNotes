@@ -8,6 +8,7 @@
 	let password: string = '';
 
 	async function handleSubmit(event: Event) {
+		console.log('h1');
 		event.preventDefault(); // Prevent default form submission
 		console.log('Logging in with:', { email, password });
 		authStore.setAuth(true);
@@ -21,10 +22,11 @@
 	</div>
 
 	<form on:submit={handleSubmit}>
-		<input type="email" bind:value={email} placeholder="Email" />
+		<input type="email" bind:value={email} placeholder="Email" required />
 		<!-- required -->
-		<input type="password" bind:value={password} placeholder="Password" />
-		<button type="submit">Login</button>
+		<input type="password" bind:value={password} placeholder="Password" required />
+		<a class="forgot-password" href="/password-forgot">Forgot password?</a>
+		<button type="submit" disabled={email.length < 3 || password.length < 3}>Login</button>
 	</form>
 
 	<button class="google-login"
@@ -78,6 +80,9 @@
 		border-radius: 0;
 		border-radius: 0.5rem;
 
+		&:disabled {
+			filter: brightness(0.5);
+		}
 		&:hover {
 			filter: brightness(1.1);
 		}
@@ -103,12 +108,22 @@
 		margin-top: 20px;
 		font-size: var(--font-size-p);
 		color: var(--main-text-color);
+
+		a {
+			color: darkgreen;
+			font-weight: bold;
+			&:hover {
+				filter: brightness(1.2);
+			}
+		}
 	}
 
-	.register-link a {
-		color: darkgreen;
-		text-decoration: none;
-		font-weight: bold;
+	.forgot-password {
+		/* outline: 1px solid red; */
+		width: fit-content;
+		margin-left: auto;
+		color: rgb(67, 164, 67);
+		/* font-weight: bold; */
 		&:hover {
 			filter: brightness(1.2);
 		}
