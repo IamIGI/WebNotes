@@ -254,6 +254,160 @@ paths:
         '404':
           description: User not found
 
+  /auth/register:
+    post:
+      summary: Register a new user
+      description: Creates a new user account and sends an email verification.
+      tags:
+        - user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  format: password
+              required:
+                - name
+                - email
+                - password
+      responses:
+        '201':
+          description: User registered successfully
+        '409':
+          description: Email already in use
+
+  /auth/login:
+    post:
+      summary: Log in a user
+      description: Authenticates a user and returns access and refresh tokens.
+      tags:
+        - user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  format: password
+              required:
+                - email
+                - password
+      responses:
+        '200':
+          description: Login successful, returns access and refresh tokens
+        '401':
+          description: Invalid email or password
+
+  /auth/logout:
+    get:
+      summary: Log out a user
+      description: Logs out the current session and clears authentication cookies.
+      tags:
+        - user
+      security:
+        - CookieAuth: []
+      responses:
+        '200':
+          description: Logout successful
+
+  /auth/refresh:
+    get:
+      summary: Refresh access token
+      description: Refreshes the access token using the refresh token.
+      tags:
+        - user
+      security:
+        - CookieAuth: []
+      responses:
+        '200':
+          description: Access token refreshed
+        '401':
+          description: Missing or invalid refresh token
+
+  /auth/email/verify/{code}:
+    get:
+      summary: Verify email
+      description: Verifies a user's email using a verification code.
+      tags:
+        - user
+      parameters:
+        - name: code
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Email verified successfully
+        '404':
+          description: Invalid or expired verification code
+
+  /auth/password/forgot:
+    post:
+      summary: Send password reset email
+      description: Sends an email with a password reset link.
+      tags:
+        - user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+              required:
+                - email
+      responses:
+        '200':
+          description: Password reset email sent
+        '404':
+          description: User not found
+
+  /auth/password/reset:
+    post:
+      summary: Reset password
+      description: Resets a user's password using a verification code.
+      tags:
+        - user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  format: password
+                verificationCode:
+                  type: string
+              required:
+                - password
+                - verificationCode
+      responses:
+        '200':
+          description: Password reset successful
+        '404':
+          description: Invalid or expired verification code
+
 components:
   securitySchemes:
     BearerAuth:
@@ -403,3 +557,9 @@ components:
         - userId
         - createdAt
         - expiresAt
+
+    VerificationCodeType:
+      type: string
+      enum:
+        - EmailVerification
+        - PasswordReset
