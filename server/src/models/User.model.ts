@@ -3,6 +3,7 @@ import bcryptUtils from '../utils/bcrypt.utils';
 import { DB_COLLECTIONS } from '../config/MongoDB.config';
 
 export interface UserDocument extends mongoose.Document {
+  name: string;
   email: string;
   password: string;
   verified: boolean;
@@ -14,6 +15,7 @@ export interface UserDocument extends mongoose.Document {
 
 const userSchema = new mongoose.Schema<UserDocument>(
   {
+    name: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     verified: { type: Boolean, required: true, default: false },
@@ -38,10 +40,6 @@ userSchema.methods.omitPassword = function () {
   return user;
 };
 
-const UserModel = mongoose.model<UserDocument>(
-  DB_COLLECTIONS.Users,
-  userSchema,
-  DB_COLLECTIONS.Users
-);
+const UserModel = mongoose.model<UserDocument>(DB_COLLECTIONS.Users, userSchema, DB_COLLECTIONS.Users);
 
 export default UserModel;

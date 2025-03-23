@@ -11,6 +11,8 @@ servers:
 tags:
   - name: notes
     description: Endpoints related to note management
+  - name: user
+    description: Endpoints related to user / authorization management
 
 paths:
   /notes/all:
@@ -177,8 +179,59 @@ paths:
           description: Invalid request data
         '404':
           description: Note not found
+  /sessions:
+    get:
+      summary: Get active sessions for the authenticated user
+      description: Returns a list of active sessions for the logged-in user.
+      tags:
+        - user
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: List of active sessions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Session'
+
+  /sessions/{id}:
+    delete:
+      summary: Delete a session by ID
+      description: Deletes a specific session, logging out that session.
+      tags:
+        - user
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Session removed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: 'Session removed'
+        '404':
+          description: Session not found
 
 components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
   schemas:
     NotePreview:
       type: object
@@ -267,3 +320,28 @@ components:
           type: string
         updatedAt:
           type: string
+
+    Session:
+      type: object
+      properties:
+        _id:
+          type: string
+        userId:
+          type: string
+        userAgent:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        expiresAt:
+          type: string
+          format: date-time
+        isCurrent:
+          type: boolean
+          description: Indicates if this is the current session of the user
+      required:
+        - _id
+        - userId
+        - createdAt
+        - expiresAt
