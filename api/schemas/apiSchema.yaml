@@ -11,6 +11,8 @@ servers:
 tags:
   - name: notes
     description: Endpoints related to note management
+  - name: user
+    description: Endpoints related to user / authorization management
 
 paths:
   /notes/all:
@@ -177,8 +179,246 @@ paths:
           description: Invalid request data
         '404':
           description: Note not found
+  /sessions:
+    get:
+      summary: Get active sessions for the authenticated user
+      description: Returns a list of active sessions for the logged-in user.
+      tags:
+        - user
+      security:
+        - CookieAuth: []
+      responses:
+        '200':
+          description: List of active sessions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Session'
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+        '403':
+          description: Forbidden - Token expired or invalid
+
+  /sessions/{id}:
+    delete:
+      summary: Delete a session by ID
+      description: Deletes a specific session, logging out that session.
+      tags:
+        - user
+      security:
+        - CookieAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Session removed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: 'Session removed'
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+        '403':
+          description: Forbidden - Token expired or invalid
+        '404':
+          description: Session not found
+  /user:
+    get:
+      summary: Get user details
+      description: Returns details of the authenticated user.
+      tags:
+        - user
+      security:
+        - CookieAuth: []
+      responses:
+        '200':
+          description: User details retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserWithoutPassword'
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+        '403':
+          description: Forbidden - Token expired or invalid
+        '404':
+          description: User not found
+
+  /auth/register:
+    post:
+      summary: Register a new user
+      description: Creates a new user account and sends an email verification.
+      tags:
+        - user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  format: password
+              required:
+                - name
+                - email
+                - password
+      responses:
+        '201':
+          description: User registered successfully
+        '409':
+          description: Email already in use
+
+  /auth/login:
+    post:
+      summary: Log in a user
+      description: Authenticates a user and returns access and refresh tokens.
+      tags:
+        - user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  format: password
+              required:
+                - email
+                - password
+      responses:
+        '200':
+          description: Login successful, returns access and refresh tokens
+        '401':
+          description: Invalid email or password
+
+  /auth/logout:
+    get:
+      summary: Log out a user
+      description: Logs out the current session and clears authentication cookies.
+      tags:
+        - user
+      security:
+        - CookieAuth: []
+      responses:
+        '200':
+          description: Logout successful
+
+  /auth/refresh:
+    get:
+      summary: Refresh access token
+      description: Refreshes the access token using the refresh token.
+      tags:
+        - user
+      security:
+        - CookieAuth: []
+      responses:
+        '200':
+          description: Access token refreshed
+        '401':
+          description: Missing or invalid refresh token
+
+  /auth/email/verify/{code}:
+    get:
+      summary: Verify email
+      description: Verifies a user's email using a verification code.
+      tags:
+        - user
+      parameters:
+        - name: code
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Email verified successfully
+        '404':
+          description: Invalid or expired verification code
+
+  /auth/password/forgot:
+    post:
+      summary: Send password reset email
+      description: Sends an email with a password reset link.
+      tags:
+        - user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+              required:
+                - email
+      responses:
+        '200':
+          description: Password reset email sent
+        '404':
+          description: User not found
+
+  /auth/password/reset:
+    post:
+      summary: Reset password
+      description: Resets a user's password using a verification code.
+      tags:
+        - user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  format: password
+                verificationCode:
+                  type: string
+              required:
+                - password
+                - verificationCode
+      responses:
+        '200':
+          description: Password reset successful
+        '404':
+          description: Invalid or expired verification code
 
 components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    CookieAuth:
+      type: apiKey
+      in: cookie
+      name: accessToken
+
   schemas:
     NotePreview:
       type: object
@@ -267,3 +507,59 @@ components:
           type: string
         updatedAt:
           type: string
+
+    UserWithoutPassword:
+      type: object
+      properties:
+        _id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        verified:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+        - _id
+        - name
+        - email
+        - verified
+        - createdAt
+        - updatedAt
+
+    Session:
+      type: object
+      properties:
+        _id:
+          type: string
+        userId:
+          type: string
+        userAgent:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        expiresAt:
+          type: string
+          format: date-time
+        isCurrent:
+          type: boolean
+          description: Indicates if this is the current session of the user
+      required:
+        - _id
+        - userId
+        - createdAt
+        - expiresAt
+
+    VerificationCodeType:
+      type: string
+      enum:
+        - EmailVerification
+        - PasswordReset
