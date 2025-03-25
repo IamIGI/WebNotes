@@ -1,19 +1,39 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { base } from '$app/paths';
+	import authApi from '$lib/api/auth.api';
+	import type { CustomError } from '$lib/api/generated';
 	import AppTitle from '$lib/components/appTitle.svelte';
 	import authStore from '$lib/stores/auth.store';
+	import { config } from 'dotenv';
 
-	let name: string = '';
-	let email: string = '';
-	let password: string = '';
-	let confirm_password: string = '';
+	let name = $state<string>('');
+	let email = $state<string>('');
+	let password = $state<string>('');
+	let confirmPassword = $state<string>('');
+
+	let isRequestSending = $state<boolean>(false);
+	let errorMsg = $state<string>(' ');
 
 	async function handleSubmit(event: Event) {
 		event.preventDefault(); // Prevent default form submission
-		console.log('Logging in with:', { name, email, password, confirm_password });
-		authStore.setAuth(true);
-		goto('/');
+		errorMsg = '';
+
+		try {
+			isRequestSending = true;
+			await authApi.register({ name, email, password, confirmPassword });
+			authStore.setAuth(true); //TODO: Delete later
+			goto('/', { replaceState: true }); // Ensures the navigation does not add to history stack
+		} catch (error) {
+			console.log('t:', error);
+			errorMsg = 'Invalid Register data';
+			const customError = error as CustomError;
+			if (customError.dedicatedError) {
+				errorMsg = customError.message ?? 'Invalid Register data';
+			}
+		} finally {
+			isRequestSending = false;
+		}
 	}
 </script>
 
@@ -22,13 +42,45 @@
 		<AppTitle />
 	</div>
 
-	<form on:submit={handleSubmit}>
-		<input type="text" bind:value={name} placeholder="Name" />
-		<input type="email" bind:value={email} placeholder="Email" />
+	<form onsubmit={handleSubmit}>
+		<div class="error-box">
+			<p>{errorMsg}</p>
+		</div>
+		<div class="input-box">
+			<input type="text" bind:value={name} placeholder="Name" />
+			<ul class="hint"><li>Name be at least 3 characters long</li></ul>
+		</div>
+		<div class="input-box">
+			<input type="email" bind:value={email} placeholder="Email" />
+		</div>
 		<!-- required -->
-		<input type="password" bind:value={password} placeholder="Password" />
-		<input type="password" bind:value={confirm_password} placeholder="Confirm Password" />
-		<button type="submit">Register</button>
+		<div class="input-box">
+			<input type="password" bind:value={password} placeholder="Password" />
+			<ul class="hint"><li>Must be at least 6 characters long</li></ul>
+		</div>
+
+		<div class="input-box">
+			<input
+				type="password"
+				bind:value={confirmPassword}
+				placeholder="Confirm Password"
+				onkeydown={(e) => e.key === 'Enter' && handleSubmit}
+			/>
+			<ul class="hint">
+				{#if password.length > 6 && confirmPassword.length > 6 && password !== confirmPassword}
+					<li style="color: red">Passwords have to be the same</li>
+				{/if}
+			</ul>
+		</div>
+		<button
+			type="submit"
+			disabled={confirmPassword !== password ||
+				isRequestSending ||
+				name.length < 3 ||
+				email.length < 3 ||
+				password.length < 3 ||
+				confirmPassword.length < 3}>Register</button
+		>
 	</form>
 
 	<button class="google-login"
@@ -62,13 +114,42 @@
 		padding: 1.5rem;
 		background: var(--main-second-color);
 		border-radius: 0.5rem;
+
+		button {
+			margin-top: 1rem;
+		}
 	}
 
-	input {
-		padding-left: 0.6rem;
-		height: 40px;
-		font-size: 1rem;
-		border-bottom: 2px solid var(--main-text-color);
+	.error-box {
+		height: 20px;
+		p {
+			width: 100%;
+			text-align: center;
+			color: rgb(212, 20, 20);
+			font-weight: 700;
+		}
+	}
+
+	.input-box {
+		width: 100%;
+
+		.hint {
+			height: 20px;
+			padding: 0.2rem 0 0 1.3rem;
+			margin: 0;
+			color: gray;
+			ul,
+			li {
+				font-size: var(--font-size-minV2);
+			}
+		}
+		input {
+			width: 100%;
+			padding-left: 0.6rem;
+			height: 40px;
+			font-size: 1rem;
+			border-bottom: 2px solid var(--main-text-color);
+		}
 	}
 
 	button {
@@ -81,10 +162,6 @@
 		font-size: 1rem;
 		border-radius: 0;
 		border-radius: 0.5rem;
-
-		&:hover {
-			filter: brightness(1.1);
-		}
 	}
 
 	.google-login {

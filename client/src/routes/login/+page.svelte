@@ -1,18 +1,30 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { base } from '$app/paths';
+	import authApi from '$lib/api/auth.api';
 	import AppTitle from '$lib/components/appTitle.svelte';
 	import authStore from '$lib/stores/auth.store';
 
-	let email: string = '';
-	let password: string = '';
+	let email = $state<string>('');
+	let password = $state<string>('');
+
+	let isRequestSending = $state<boolean>(false);
+	let errorMsg = $state<string>(' ');
 
 	async function handleSubmit(event: Event) {
-		console.log('h1');
 		event.preventDefault(); // Prevent default form submission
-		console.log('Logging in with:', { email, password });
-		authStore.setAuth(true);
-		goto('/');
+		errorMsg = '';
+
+		try {
+			isRequestSending = true;
+			await authApi.login({ email, password });
+			authStore.setAuth(true); //TODO: Delete later
+			goto('/', { replaceState: true }); // Ensures the navigation does not add to history stack
+		} catch (error) {
+			errorMsg = 'Invalid email or password';
+		} finally {
+			isRequestSending = false;
+		}
 	}
 </script>
 
@@ -21,15 +33,27 @@
 		<AppTitle />
 	</div>
 
-	<form on:submit={handleSubmit}>
+	<form onsubmit={handleSubmit}>
+		<div class="error-box">
+			<p>{errorMsg}</p>
+		</div>
+
 		<input type="email" bind:value={email} placeholder="Email" required />
 		<!-- required -->
-		<input type="password" bind:value={password} placeholder="Password" required />
+		<input
+			type="password"
+			bind:value={password}
+			placeholder="Password"
+			required
+			onkeydown={(e) => e.key === 'Enter' && handleSubmit}
+		/>
 		<a class="forgot-password" href="/password-forgot">Forgot password?</a>
-		<button type="submit" disabled={email.length < 3 || password.length < 3}>Login</button>
+		<button type="submit" disabled={email.length < 3 || password.length < 3 || isRequestSending}
+			>Login</button
+		>
 	</form>
 
-	<button class="google-login"
+	<button class="google-login" disabled={isRequestSending}
 		>Log in with Google
 		<img src={`${base}/svg/button/google.svg`} alt="google" />
 	</button>
@@ -60,6 +84,20 @@
 		padding: 1.5rem;
 		background: var(--main-second-color);
 		border-radius: 0.5rem;
+
+		button {
+			margin-top: 1rem;
+		}
+	}
+
+	.error-box {
+		height: 20px;
+		p {
+			width: 100%;
+			text-align: center;
+			color: rgb(212, 20, 20);
+			font-weight: 700;
+		}
 	}
 
 	input {
@@ -79,13 +117,6 @@
 		font-size: 1rem;
 		border-radius: 0;
 		border-radius: 0.5rem;
-
-		&:disabled {
-			filter: brightness(0.5);
-		}
-		&:hover {
-			filter: brightness(1.1);
-		}
 	}
 
 	.google-login {

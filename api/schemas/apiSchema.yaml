@@ -265,20 +265,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                email:
-                  type: string
-                  format: email
-                password:
-                  type: string
-                  format: password
-              required:
-                - name
-                - email
-                - password
+              $ref: '#/components/schemas/UserRegisterPayload'
       responses:
         '201':
           description: User registered successfully
@@ -296,17 +283,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  format: email
-                password:
-                  type: string
-                  format: password
-              required:
-                - email
-                - password
+              $ref: '#/components/schemas/UserLoginPayload'
       responses:
         '200':
           description: Login successful, returns access and refresh tokens
@@ -368,13 +345,8 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  format: email
-              required:
-                - email
+              $ref: '#/components/schemas/PasswordRestPayload'
+
       responses:
         '200':
           description: Password reset email sent
@@ -563,3 +535,57 @@ components:
       enum:
         - EmailVerification
         - PasswordReset
+
+    UserLoginPayload:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          format: password
+      required:
+        - email
+        - password
+
+    UserRegisterPayload:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          format: password
+        confirmPassword:
+          type: string
+          format: password
+      required:
+        - name
+        - email
+        - password
+        - confirmPassword
+
+    PasswordRestPayload:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+      required:
+        - email
+
+    CustomError:
+      type: object
+      properties:
+        dedicatedError:
+          type: boolean
+        service:
+          type: string
+        errorCode:
+          type: string
+        message:
+          type: string
