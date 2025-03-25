@@ -7,7 +7,7 @@ import { bookmarkColors } from '$lib/mocks';
 import { page } from '$app/state';
 import { goto } from '$app/navigation';
 
-async function fetchNotes() {
+const fetchNotes = async () => {
 	return await notesPreviewStore.fetchNotesPreviews().then((data) => {
 		// Render  UI after  first fetch
 		setTimeout(async () => {
@@ -18,9 +18,8 @@ async function fetchNotes() {
 
 		return data;
 	});
-}
-
-async function createNote() {
+};
+const createNote = async () => {
 	const color = bookmarkColors[Math.floor(Math.random() * bookmarkColors.length)];
 	const note = await webNotesServer.notesService.notesPost({
 		bookmark: { title: 'Happy Note', color },
@@ -29,9 +28,9 @@ async function createNote() {
 	notesPreviewStore.addOne(note);
 	noteSelectedStore.addOne(note);
 	if (page.url.pathname === '/') goto('/display-notes');
-}
+};
 
-async function openNote(id: string) {
+const openNote = async (id: string) => {
 	//Update stores
 	await noteSelectedStore.addExisted(id);
 	notesPreviewStore.selected(id);
@@ -39,9 +38,9 @@ async function openNote(id: string) {
 
 	//Update database
 	await webNotesServer.notesService.notesOpenedIdPut(id);
-}
+};
 
-async function updateColor(note: Note, color: string) {
+const updateColor = async (note: Note, color: string) => {
 	if (note.bookmark.color !== color) {
 		//Update stores
 		noteSelectedStore.updateColor(note._id, color);
@@ -50,9 +49,9 @@ async function updateColor(note: Note, color: string) {
 		const payload: NoteUpdate = { ...note, bookmark: { ...note.bookmark, color } };
 		await webNotesServer.notesService.notesIdPut(payload, note._id);
 	}
-}
+};
 
-async function updateTitle(id: string, title: string) {
+const updateTitle = async (id: string, title: string) => {
 	const note = noteSelectedStore.getNote(id);
 	if (note && note.bookmark.title !== title) {
 		//Update stores
@@ -62,13 +61,13 @@ async function updateTitle(id: string, title: string) {
 		const payload: NoteUpdate = { ...note, bookmark: { ...note.bookmark, title } };
 		await webNotesServer.notesService.notesIdPut(payload, id);
 	}
-}
+};
 
-async function updateText(
+const updateText = async (
 	id: string,
 	text: string,
 	params: { onNoteClose: boolean } = { onNoteClose: false }
-) {
+) => {
 	const note = params.onNoteClose
 		? await webNotesServer.notesService.notesIdGet(id)
 		: noteSelectedStore.getNote(id);
@@ -81,31 +80,31 @@ async function updateText(
 		const payload: NoteUpdate = { ...note, text };
 		await webNotesServer.notesService.notesIdPut(payload, id);
 	}
-}
+};
 
-async function removeOneNote(id: string) {
+const removeOneNote = async (id: string) => {
 	//Update stores
 	noteSelectedStore.removeOne(id);
 	notesPreviewStore.removeOne(id);
 	if (noteSelectedStore.getNotes().length === 0) goto('/');
 	//Update database
 	await webNotesServer.notesService.notesIdDelete(id);
-}
+};
 
-function filterNotesBySearchTerm(notesPreviews: NotePreview[], searchTerm: string) {
+const filterNotesBySearchTerm = (notesPreviews: NotePreview[], searchTerm: string) => {
 	return notesPreviews.filter((note) =>
 		note.textPreview.toLowerCase().includes(searchTerm.toLowerCase())
 	);
-}
+};
 
-async function updateTextOnAppClose(noteText: string) {
+const updateTextOnAppClose = async (noteText: string) => {
 	const selectedNote = noteSelectedStore.getSelectedNote();
 	const updatedNoteText = noteText.slice(1, -1); // remove "
 	if (selectedNote?._id && noteText && selectedNote?.text !== updatedNoteText) {
 		const payload: NoteUpdate = { ...selectedNote, text: updatedNoteText };
 		await webNotesServer.notesService.notesIdPut(payload, selectedNote._id);
 	}
-}
+};
 
 export default {
 	fetchNotes,

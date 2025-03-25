@@ -2,13 +2,7 @@ import catchErrors from '../../utils/catchErrors.utils';
 import authService from '../../services/auth.service';
 import { HttpStatusCode } from '../../constants/error.constants';
 import cookiesUtils, { CookieKeys } from '../../utils/cookies.utils';
-import {
-  emailSchema,
-  loginSchema,
-  registerSchema,
-  resetPasswordSchema,
-  verificationCodeSchema,
-} from './auth.schemas';
+import { emailSchema, loginSchema, registerSchema, resetPasswordSchema, verificationCodeSchema } from './auth.schemas';
 import jwtUtils from '../../utils/jwt.utils';
 import SessionModel from '../../models/Session.model';
 import appAssert from '../../utils/appErrorAssert.utils';
@@ -19,13 +13,8 @@ const register = catchErrors(async (req, res) => {
     userAgent: req.headers['user-Agent'],
   });
 
-  const { user, accessToken, refreshToken } = await authService.createAccount(
-    payload
-  );
-  return cookiesUtils
-    .setAuthCookies({ res, accessToken, refreshToken })
-    .status(HttpStatusCode.Created)
-    .json(user);
+  const { user, accessToken, refreshToken } = await authService.createAccount(payload);
+  return cookiesUtils.setAuthCookies({ res, accessToken, refreshToken }).status(HttpStatusCode.Created).json(user);
 });
 
 export const login = catchErrors(async (req, res) => {
@@ -59,23 +48,14 @@ export const refresh = catchErrors(async (req, res) => {
   const refreshToken = req.cookies.refreshToken as string | undefined;
   appAssert(refreshToken, HttpStatusCode.Unauthorized, 'Missing refresh token');
 
-  const { accessToken, newRefreshToken } =
-    await authService.refreshUserAccessToken(refreshToken);
+  const { accessToken, newRefreshToken } = await authService.refreshUserAccessToken(refreshToken);
 
   if (newRefreshToken) {
-    res.cookie(
-      CookieKeys.RefreshToken,
-      newRefreshToken,
-      cookiesUtils.getRefreshTokenCookieOptions()
-    );
+    res.cookie(CookieKeys.RefreshToken, newRefreshToken, cookiesUtils.getRefreshTokenCookieOptions());
   }
   return res
     .status(HttpStatusCode.OK)
-    .cookie(
-      CookieKeys.AccessToken,
-      accessToken,
-      cookiesUtils.getAccessTokenCookieOptions()
-    )
+    .cookie(CookieKeys.AccessToken, accessToken, cookiesUtils.getAccessTokenCookieOptions())
     .json({
       message: 'Access token refreshed',
     });
@@ -103,10 +83,7 @@ export const resetPassword = catchErrors(async (req, res) => {
 
   await authService.resetPassword(request);
 
-  return cookiesUtils
-    .clearAuthCookies(res)
-    .status(HttpStatusCode.OK)
-    .json({ message: 'Password reset successful' });
+  return cookiesUtils.clearAuthCookies(res).status(HttpStatusCode.OK).json({ message: 'Password reset successful' });
 });
 
 export default {

@@ -24,6 +24,7 @@ const handleZodError = (res: Response, err: z.ZodError) => {
 
 const handleAppError = (res: Response, err: AppError) => {
   return res.status(err.statusCode).json({
+    dedicatedError: true,
     service: err.service,
     errorCode: err.appErrorCode,
     message: err.message,
