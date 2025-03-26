@@ -1,30 +1,27 @@
 <script lang="ts">
-	import type { PageProps } from './$types';
-
-	let { data }: PageProps = $props();
-
-	console.log(data.params);
+	//The same approaches
+	//1
+	const { data } = $props();
+	const { isSuccess } = data;
+	//2
+	// let isSuccess = page.data.isSuccess;
 </script>
 
 <div class="container">
-	{#if isPending}
-		<div class="spinner"></div>
-	{:else}
-		<div class="content">
-			<div class="alert {isSuccess ? 'success' : 'error'}">
-				{isSuccess ? 'Email Verified!' : 'Invalid Link'}
-			</div>
-
-			{#if isError}
-				<p class="error-text">
-					The link is either invalid or expired.
-					<a href="/password/forgot">Get a new link</a>
-				</p>
-			{/if}
-
-			<button on:click={() => goto('/')}>Back to home</button>
+	<div class="content">
+		<div class="alert {isSuccess ? 'success' : 'error'}">
+			{isSuccess ? 'Email Verified!' : 'Invalid Link'}
 		</div>
-	{/if}
+
+		{#if !isSuccess}
+			<p class="error-text">
+				The link is either invalid or expired.
+				<a href="/password/forgot">Get a new link</a>
+			</p>
+		{/if}
+
+		<a href="/" class="back_link">Back to home</a>
+	</div>
 </div>
 
 <style lang="scss">
@@ -33,13 +30,15 @@
 		justify-content: center;
 		align-items: center;
 		min-height: 100vh;
+		width: 100%;
 	}
 
 	.content {
 		text-align: center;
 		padding: 20px;
 		border-radius: 8px;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+		gap: 1rem;
 	}
 
 	.alert {
@@ -67,31 +66,7 @@
 		}
 	}
 
-	.spinner {
-		width: 40px;
-		height: 40px;
-		border: 4px solid rgba(0, 0, 0, 0.1);
-		border-top: 4px solid #007bff;
-		border-radius: 50%;
-		animation: spin 1s linear infinite;
-	}
-
-	@keyframes spin {
-		to {
-			transform: rotate(360deg);
-		}
-	}
-
-	button {
-		margin-top: 10px;
-		padding: 8px 16px;
-		border: none;
-		background-color: #007bff;
-		color: white;
-		border-radius: 5px;
-		cursor: pointer;
-		&:hover {
-			background-color: #0056b3;
-		}
+	.back_link {
+		color: green;
 	}
 </style>
