@@ -47,7 +47,7 @@
 			required
 			onkeydown={(e) => e.key === 'Enter' && handleSubmit}
 		/>
-		<a class="forgot-password" href="/password-forgot">Forgot password?</a>
+		<a class="forgot-password" href="/password/forgot">Forgot password?</a>
 		<button type="submit" disabled={email.length < 3 || password.length < 3 || isRequestSending}
 			>Login</button
 		>
@@ -95,7 +95,7 @@
 		p {
 			width: 100%;
 			text-align: center;
-			color: rgb(212, 20, 20);
+			color: var(--main-alert-color);
 			font-weight: 700;
 		}
 	}

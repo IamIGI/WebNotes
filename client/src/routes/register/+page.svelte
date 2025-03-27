@@ -28,8 +28,8 @@
 			console.log('t:', error);
 			errorMsg = 'Invalid Register data';
 			const customError = error as CustomError;
-			if (customError.dedicatedError) {
-				errorMsg = customError.message ?? 'Invalid Register data';
+			if (customError.dedicatedError && customError.message) {
+				errorMsg = customError.message;
 			}
 		} finally {
 			isRequestSending = false;
@@ -67,8 +67,8 @@
 				onkeydown={(e) => e.key === 'Enter' && handleSubmit}
 			/>
 			<ul class="hint">
-				{#if password.length > 6 && confirmPassword.length > 6 && password !== confirmPassword}
-					<li style="color: red">Passwords have to be the same</li>
+				{#if password.length >= 6 && confirmPassword.length >= 6 && password !== confirmPassword}
+					<li style="color: rgb(193, 71, 71);">Passwords have to be the same</li>
 				{/if}
 			</ul>
 		</div>
@@ -76,7 +76,7 @@
 			type="submit"
 			disabled={confirmPassword !== password ||
 				isRequestSending ||
-				name.length < 3 ||
+				name.length < 4 ||
 				email.length < 3 ||
 				password.length < 3 ||
 				confirmPassword.length < 3}>Register</button
@@ -125,7 +125,7 @@
 		p {
 			width: 100%;
 			text-align: center;
-			color: rgb(212, 20, 20);
+			color: var(--main-alert-color);
 			font-weight: 700;
 		}
 	}
@@ -138,7 +138,7 @@
 			padding: 0.2rem 0 0 1.3rem;
 			margin: 0;
 			color: gray;
-			ul,
+
 			li {
 				font-size: var(--font-size-minV2);
 			}

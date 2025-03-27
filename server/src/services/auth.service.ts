@@ -211,7 +211,7 @@ const sendPasswordResetEmail = async (email: string) => {
   });
 
   // send verification email
-  const resetURL = `${envConstants.APP_ORIGIN}/password/reset?code=${verificationCode._id}$exp=${expiresAt.getTime()}`;
+  const resetURL = `${envConstants.APP_ORIGIN}/password/reset?code=${verificationCode._id}&exp=${expiresAt.getTime()}`;
 
   const { data, error } = await sendEmail({
     to: user.email,

@@ -16,7 +16,7 @@
 		{#if !isSuccess}
 			<p class="error-text">
 				The link is either invalid or expired.
-				<a href="/password/forgot">Get a new link</a>
+				<a href="/password-forgot">Get a new link</a>
 			</p>
 		{/if}
 
