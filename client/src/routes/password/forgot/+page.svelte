@@ -2,6 +2,7 @@
 	import authApi from '$lib/api/auth.api';
 	import type { CustomError } from '$lib/api/generated';
 	import AppTitle from '$lib/components/appTitle.svelte';
+	import AsyncButton from '$lib/components/ui/asyncButton.svelte';
 
 	let email = $state<string>('');
 	let isSuccess = $state<boolean>(false);
@@ -45,8 +46,12 @@
 			<div class="input-box">
 				<input type="email" bind:value={email} placeholder="Email address" required />
 			</div>
-
-			<button type="submit" disabled={email.length < 3}>Reset password</button>
+			<AsyncButton
+				type="submit"
+				disabled={email.length < 3}
+				text="Reset password"
+				isLoading={isRequestSending}
+			/>
 		</form>
 	{/if}
 	<p>Go back to <a href="/login">Log in</a> or <a href="/register">Register</a></p>

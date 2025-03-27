@@ -1,12 +1,13 @@
 <script lang="ts">
 	import authApi from '$lib/api/auth.api';
+	import AsyncButton from '$lib/components/ui/asyncButton.svelte';
 
 	let { data } = $props();
 	const { linkIsValid } = data;
 
 	let password = $state<string>('');
 	let confirmPassword = $state<string>('');
-	let isSubmitting = $state<boolean>(false);
+	let isRequestSending = $state<boolean>(false);
 	let errorMsg = $state<string>('');
 	let successMsg = $state<string>('');
 
@@ -25,13 +26,13 @@
 		}
 
 		try {
-			isSubmitting = true;
+			isRequestSending = true;
 			await authApi.resetPassword({ verificationCode: data.code, password }); // Replace with your API
 			successMsg = 'Password reset successful!';
 		} catch (e) {
 			errorMsg = 'Something went wrong. Please try again.';
 		} finally {
-			isSubmitting = false;
+			isRequestSending = false;
 		}
 	}
 </script>
@@ -68,12 +69,12 @@
 					</ul>
 				</div>
 
-				<button
+				<AsyncButton
 					type="submit"
-					disabled={isSubmitting || password.length < 6 || confirmPassword.length < 6}
-				>
-					{isSubmitting ? 'Submitting...' : 'Reset Password'}
-				</button>
+					disabled={isRequestSending || password.length < 6 || confirmPassword.length < 6}
+					text="Reset Password"
+					isLoading={isRequestSending}
+				/>
 			</form>
 		{/if}
 	{:else}
@@ -117,10 +118,6 @@
 		padding: 1.5rem;
 		background: var(--main-second-color);
 		border-radius: 0.5rem;
-
-		button {
-			margin-top: 1rem;
-		}
 	}
 
 	.input-box {
@@ -142,21 +139,6 @@
 			li {
 				font-size: var(--font-size-minV2);
 			}
-		}
-	}
-
-	button {
-		background-color: darkgreen;
-		height: 40px;
-		font-size: var(--font-size-p);
-		color: var(--main-text-color);
-		border: none;
-		cursor: pointer;
-		border-radius: 0.5rem;
-
-		&:disabled {
-			opacity: 0.6;
-			cursor: not-allowed;
 		}
 	}
 
@@ -190,20 +172,6 @@
 		align-items: center;
 		gap: 1.5rem;
 		text-align: center;
-	}
-
-	.alert {
-		display: flex;
-		align-items: center;
-		background-color: #fed7d7;
-		color: #c53030;
-		padding: 0.75rem 1rem;
-		border-radius: 0.75rem;
-		font-weight: 500;
-	}
-
-	.alert-icon {
-		margin-right: 0.5rem;
 	}
 
 	.subtext {

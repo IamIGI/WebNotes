@@ -4,8 +4,8 @@
 	import authApi from '$lib/api/auth.api';
 	import type { CustomError } from '$lib/api/generated';
 	import AppTitle from '$lib/components/appTitle.svelte';
+	import AsyncButton from '$lib/components/ui/asyncButton.svelte';
 	import authStore from '$lib/stores/auth.store';
-	import { config } from 'dotenv';
 
 	let name = $state<string>('');
 	let email = $state<string>('');
@@ -72,15 +72,17 @@
 				{/if}
 			</ul>
 		</div>
-		<button
+		<AsyncButton
 			type="submit"
 			disabled={confirmPassword !== password ||
 				isRequestSending ||
 				name.length < 4 ||
 				email.length < 3 ||
 				password.length < 3 ||
-				confirmPassword.length < 3}>Register</button
-		>
+				confirmPassword.length < 3}
+			text="Register"
+			isLoading={isRequestSending}
+		/>
 	</form>
 
 	<button class="google-login"

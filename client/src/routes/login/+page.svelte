@@ -3,6 +3,7 @@
 	import { base } from '$app/paths';
 	import authApi from '$lib/api/auth.api';
 	import AppTitle from '$lib/components/appTitle.svelte';
+	import AsyncButton from '$lib/components/ui/asyncButton.svelte';
 	import authStore from '$lib/stores/auth.store';
 
 	let email = $state<string>('');
@@ -48,9 +49,13 @@
 			onkeydown={(e) => e.key === 'Enter' && handleSubmit}
 		/>
 		<a class="forgot-password" href="/password/forgot">Forgot password?</a>
-		<button type="submit" disabled={email.length < 3 || password.length < 3 || isRequestSending}
-			>Login</button
-		>
+
+		<AsyncButton
+			type="submit"
+			disabled={email.length < 3 || password.length < 3 || isRequestSending}
+			text="Login"
+			isLoading={isRequestSending}
+		/>
 	</form>
 
 	<button class="google-login" disabled={isRequestSending}
@@ -84,10 +89,6 @@
 		padding: 1.5rem;
 		background: var(--main-second-color);
 		border-radius: 0.5rem;
-
-		button {
-			margin-top: 1rem;
-		}
 	}
 
 	.error-box {
