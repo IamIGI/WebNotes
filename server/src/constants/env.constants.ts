@@ -5,12 +5,9 @@ function getEnv(key: string, defaultValue?: string): string {
   return value;
 }
 
-const DB_URL =
-  getEnv('PROD') === 'true'
-    ? getEnv('DATABASE_URI_PROD')
-    : getEnv('DATABASE_URI_DEV');
+const DB_URL = getEnv('ENV') === 'PROD' ? getEnv('DATABASE_URI_PROD') : getEnv('DATABASE_URI_DEV');
 
-const PROD = getEnv('PROD', 'false');
+const ENV = getEnv('ENV', 'DEV');
 const PORT = getEnv('PORT', '4000');
 const APP_ORIGIN = getEnv('APP_ORIGIN'); // frontend
 const JWT_SECRET = getEnv('JWT_SECRET');
@@ -20,7 +17,7 @@ const RESEND_API_KEY = getEnv('RESEND_API_KEY');
 
 export default {
   DB_URL,
-  PROD,
+  ENV,
   PORT,
   APP_ORIGIN,
   JWT_SECRET,

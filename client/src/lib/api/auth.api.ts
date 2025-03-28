@@ -13,5 +13,6 @@ export default {
 	forgotPassword: async (email: string) =>
 		webNotesServer.userService.authPasswordForgotPost({ email }),
 	resetPassword: async (data: AuthPasswordResetPostRequest) =>
-		webNotesServer.userService.authPasswordResetPost(data)
+		webNotesServer.userService.authPasswordResetPost(data),
+	getUser: async () => webNotesServer.userService.userGet()
 };
