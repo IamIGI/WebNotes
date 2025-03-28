@@ -22,22 +22,20 @@
 		onclick={electronUtils.hideWindow}
 	/>
 	<!-- <SvgButton
-				src="/svg/button/windows_full_screen.svg"
-				alt="windows_full_screen"
-				shape="rectangular"
-				size="35px"
-				onclick={electronUtils.toggleFullScreen}
-			/> -->
+		src="/svg/button/windows_full_screen.svg"
+		alt="windows_full_screen"
+		shape="rectangular"
+		size="35px"
+		onclick={electronUtils.toggleFullScreen}
+	/> -->
 	<SvgButton src="/svg/button/close.svg" alt="close" onclick={closeApp} />
 {/snippet}
 
 {#snippet userButtons()}
-	<SvgButton src="/svg/button/settings.svg" alt="settings" />
-	<ImgButton src="/img/profile.JPG" alt="profile" />
+	<ImgButton src="/img/profile.JPG" alt="profile" onclick={() => goto('/settings')} />
 {/snippet}
 
 {#snippet selectedNoteButtons()}
-	<SvgButton src="/svg/button/back.svg" alt="back" onclick={() => goto('/')} />
 	<div class="sidebar-icon">
 		<SvgButton
 			src="/svg/button/sidebar.svg"
@@ -50,11 +48,17 @@
 {#snippet mainPageButtons()}
 	<SvgButton src="/svg/button/add.svg" alt="add" onclick={noteUtils.createNote} />
 {/snippet}
-
+{#snippet goBackButton()}
+	<SvgButton src="/svg/button/back.svg" alt="back" onclick={() => goto('/')} />
+{/snippet}
 <nav>
 	<div class="navigation-wrapper">
 		<div class="left-nav">
+			{#if page.url.pathname === '/settings'}
+				{@render goBackButton()}
+			{/if}
 			{#if page.url.pathname === '/display-notes'}
+				{@render goBackButton()}
 				{@render selectedNoteButtons()}
 			{/if}
 			{#if page.url.pathname === '/'}
@@ -64,7 +68,7 @@
 		<div class="drag-area"></div>
 		<div class="right-nav">
 			<!-- <SvgButton src="/svg/button/settings.svg" alt="settings" onclick={() => goto('/login')} /> -->
-			{#if ['/login', '/register'].includes(page.url.pathname) === false}
+			{#if ['/login', '/register', '/settings'].includes(page.url.pathname) === false}
 				{@render userButtons()}
 			{/if}
 			{@render windowButtons()}

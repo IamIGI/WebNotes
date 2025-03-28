@@ -5,7 +5,6 @@
 	import type { CustomError } from '$lib/api/generated';
 	import AppTitle from '$lib/components/appTitle.svelte';
 	import AsyncButton from '$lib/components/ui/asyncButton.svelte';
-	import authStore from '$lib/stores/auth.store';
 
 	let name = $state<string>('');
 	let email = $state<string>('');
@@ -22,7 +21,6 @@
 		try {
 			isRequestSending = true;
 			await authApi.register({ name, email, password, confirmPassword });
-			authStore.setAuth(true); //TODO: Delete later
 			goto('/', { replaceState: true }); // Ensures the navigation does not add to history stack
 		} catch (error) {
 			console.log('t:', error);
@@ -80,9 +78,10 @@
 				email.length < 3 ||
 				password.length < 3 ||
 				confirmPassword.length < 3}
-			text="Register"
 			isLoading={isRequestSending}
-		/>
+		>
+			Register
+		</AsyncButton>
 	</form>
 
 	<button class="google-login"
@@ -96,7 +95,7 @@
 <style lang="scss">
 	.wrapper {
 		/* outline: 1px solid red; */
-		margin: auto;
+		margin: 0 auto;
 		width: 100%;
 		max-width: 800px;
 		display: flex;
