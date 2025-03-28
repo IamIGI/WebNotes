@@ -52,9 +52,10 @@
 		<AsyncButton
 			type="submit"
 			disabled={email.length < 3 || password.length < 3 || isRequestSending}
-			text="Login"
 			isLoading={isRequestSending}
-		/>
+		>
+			Login
+		</AsyncButton>
 	</form>
 
 	<button class="google-login" disabled={isRequestSending}
@@ -68,7 +69,7 @@
 <style lang="scss">
 	.wrapper {
 		/* outline: 1px solid red; */
-		margin: auto;
+		margin: 0 auto;
 		width: 100%;
 		max-width: 800px;
 		display: flex;

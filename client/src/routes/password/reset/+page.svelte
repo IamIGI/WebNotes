@@ -72,9 +72,10 @@
 				<AsyncButton
 					type="submit"
 					disabled={isRequestSending || password.length < 6 || confirmPassword.length < 6}
-					text="Reset Password"
 					isLoading={isRequestSending}
-				/>
+				>
+					Reset Password
+				</AsyncButton>
 			</form>
 		{/if}
 	{:else}
@@ -89,7 +90,7 @@
 
 <style lang="scss">
 	.wrapper {
-		margin: auto;
+		margin: 0 auto;
 		width: 100%;
 		max-width: 800px;
 		display: flex;

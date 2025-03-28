@@ -3,23 +3,22 @@
 
 	interface Props extends HTMLButtonAttributes {
 		isLoading: boolean;
-		text: string;
 	}
-	let { isLoading, text, ...restProps }: Props = $props();
+	let { isLoading, children, ...restProps }: Props = $props();
 </script>
 
 <button class="async-button" {...restProps}>
 	{#if isLoading}
 		<div class="loader-spinner"></div>
 	{:else}
-		{text}
+		{@render children?.()}
 	{/if}
 </button>
 
 <style lang="scss">
 	.async-button {
 		width: 100%;
-		background-color: darkgreen;
+		background-color: var(--main-accent_color_button);
 		height: 40px;
 		font-size: var(--font-size-p);
 		color: var(--main-text-color);

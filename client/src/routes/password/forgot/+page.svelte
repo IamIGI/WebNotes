@@ -46,12 +46,9 @@
 			<div class="input-box">
 				<input type="email" bind:value={email} placeholder="Email address" required />
 			</div>
-			<AsyncButton
-				type="submit"
-				disabled={email.length < 3}
-				text="Reset password"
-				isLoading={isRequestSending}
-			/>
+			<AsyncButton type="submit" disabled={email.length < 3} isLoading={isRequestSending}>
+				Reset password
+			</AsyncButton>
 		</form>
 	{/if}
 	<p>Go back to <a href="/login">Log in</a> or <a href="/register">Register</a></p>
@@ -60,7 +57,7 @@
 <style lang="scss">
 	.wrapper {
 		/* outline: 1px solid red; */
-		margin: auto;
+		margin: 0 auto;
 		width: 100%;
 		max-width: 800px;
 		display: flex;
