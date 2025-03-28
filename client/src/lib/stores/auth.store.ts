@@ -1,14 +1,21 @@
+import type { UserWithoutPassword } from '$lib/api/generated';
 import { get, writable } from 'svelte/store';
 
-const init = false;
+interface AuthStore {
+	user: UserWithoutPassword | undefined;
+}
+
+const init: AuthStore = { user: undefined };
+
 function authStore() {
-	const store = writable<boolean>(init);
+	const store = writable<{ user: UserWithoutPassword | undefined }>(init);
 	const { subscribe, set } = store;
 
 	return {
 		subscribe,
-		setAuth: (value: boolean) => set(value),
-		isAuth: () => get(store)
+		setUser: (user: UserWithoutPassword) => set({ user }),
+		removeUser: () => store.set(init),
+		isUser: () => get(store).user
 	};
 }
 

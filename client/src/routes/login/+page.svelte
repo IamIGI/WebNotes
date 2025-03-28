@@ -4,7 +4,6 @@
 	import authApi from '$lib/api/auth.api';
 	import AppTitle from '$lib/components/appTitle.svelte';
 	import AsyncButton from '$lib/components/ui/asyncButton.svelte';
-	import authStore from '$lib/stores/auth.store';
 
 	let email = $state<string>('');
 	let password = $state<string>('');
@@ -19,7 +18,7 @@
 		try {
 			isRequestSending = true;
 			await authApi.login({ email, password });
-			authStore.setAuth(true); //TODO: Delete later
+
 			goto('/', { replaceState: true }); // Ensures the navigation does not add to history stack
 		} catch (error) {
 			errorMsg = 'Invalid email or password';

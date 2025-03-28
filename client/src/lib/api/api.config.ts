@@ -3,15 +3,12 @@
 import envConstants from '$lib/constants/env.constants';
 import { Configuration, NotesApi, ResponseError, UserApi } from './generated';
 
-const SERVER_URL =
-	envConstants.PROD === 'true' ? envConstants.PROD_SERVER_URL : 'http://localhost:4000';
-
 const configuration = new Configuration({
-	basePath: SERVER_URL,
+	basePath: envConstants.API_URL,
 	headers: {
 		// 'X-API-KEY': API_KEY!,
-	}
-	// credentials: 'include' //Ensure cookies are sent with request
+	},
+	credentials: 'include' //Ensure cookies are sent with request
 });
 class WebNotesServer {
 	public notesService: NotesApi;

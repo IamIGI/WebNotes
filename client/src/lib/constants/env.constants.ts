@@ -5,10 +5,14 @@ function getEnv(key: string, defaultValue?: string) {
 	return value;
 }
 
-const PROD = getEnv('VITE_PROD');
+const API_URL =
+	getEnv('VITE_ENV') === 'PROD' ? getEnv('VITE_API_SERVER_URL_PROD') : 'http://localhost:4000';
+
+const ENV = getEnv('VITE_ENV');
 const PROD_SERVER_URL = getEnv('VITE_API_SERVER_URL_PROD');
 
 export default {
-	PROD,
+	API_URL,
+	ENV,
 	PROD_SERVER_URL
 };
