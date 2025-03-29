@@ -21,9 +21,10 @@
 		try {
 			isRequestSending = true;
 			await authApi.register({ name, email, password, confirmPassword });
+
 			goto('/', { replaceState: true }); // Ensures the navigation does not add to history stack
 		} catch (error) {
-			console.log('t:', error);
+			console.log('registerError:', error);
 			errorMsg = 'Invalid Register data';
 			const customError = error as CustomError;
 			if (customError.dedicatedError && customError.message) {

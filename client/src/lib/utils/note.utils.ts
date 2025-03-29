@@ -6,6 +6,7 @@ import appStore from '$lib/stores/app.store';
 import { bookmarkColors } from '$lib/mocks';
 import { page } from '$app/state';
 import { goto } from '$app/navigation';
+import authApi from '$lib/api/auth.api';
 
 const fetchNotes = async () => {
 	return await notesPreviewStore.fetchNotesPreviews().then((data) => {
@@ -27,17 +28,18 @@ const createNote = async () => {
 	});
 	notesPreviewStore.addOne(note);
 	noteSelectedStore.addOne(note);
-	if (page.url.pathname === '/') goto('/display-notes');
+	if (page.url.pathname === '/') goto('/selected');
 };
 
 const openNote = async (id: string) => {
 	//Update stores
 	await noteSelectedStore.addExisted(id);
 	notesPreviewStore.selected(id);
-	if (page.url.pathname === '/') goto('/display-notes');
+	if (page.url.pathname === '/') goto('/selected');
 
 	//Update database
 	await webNotesServer.notesService.notesOpenedIdPut(id);
+	authApi.triggerVerification();
 };
 
 const updateColor = async (note: Note, color: string) => {

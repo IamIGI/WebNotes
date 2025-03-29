@@ -18,7 +18,6 @@
 		try {
 			isRequestSending = true;
 			await authApi.login({ email, password });
-
 			goto('/', { replaceState: true }); // Ensures the navigation does not add to history stack
 		} catch (error) {
 			errorMsg = 'Invalid email or password';

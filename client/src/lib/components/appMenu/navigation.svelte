@@ -57,7 +57,7 @@
 			{#if page.url.pathname === '/settings'}
 				{@render goBackButton()}
 			{/if}
-			{#if page.url.pathname === '/display-notes'}
+			{#if page.url.pathname === '/selected'}
 				{@render goBackButton()}
 				{@render selectedNoteButtons()}
 			{/if}
