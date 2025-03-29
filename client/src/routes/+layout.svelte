@@ -2,9 +2,12 @@
 	import Navigation from '$lib/components/appMenu/navigation.svelte';
 	import GlobalDimmer from '$lib/components/globalDimmer.svelte';
 	import appStore from '$lib/stores/app.store';
+	import authStore from '$lib/stores/auth.store.js';
 	import '$lib/styles/global.scss';
+	import { onMount } from 'svelte';
 
-	let { children } = $props();
+	let { children, data } = $props();
+	onMount(() => data.user && authStore.setUser(data.user));
 </script>
 
 <main>
