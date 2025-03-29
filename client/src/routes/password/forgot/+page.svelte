@@ -19,7 +19,7 @@
 			isSuccess = true;
 		} catch (error) {
 			isSuccess = false;
-			console.log('t:', error);
+			console.log('password-forgot:', error);
 			errorMsg = 'Email do not exists';
 			const customError = error as CustomError;
 			if (customError.dedicatedError && customError.message) {

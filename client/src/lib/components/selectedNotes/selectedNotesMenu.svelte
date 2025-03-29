@@ -134,7 +134,6 @@
 		}
 
 		button {
-			@include title-wrapper;
 			$width: 80%;
 			min-width: $width;
 			max-width: $width;
@@ -144,19 +143,22 @@
 			max-width: 200px;
 			overflow: hidden;
 
+			@include title-wrapper;
+
 			@media screen and (max-width: 550px) {
 				max-width: 10px;
 			}
 		}
 
 		input {
-			@include title-wrapper;
-			color: var(--main-text-color);
-			height: 90%;
 			$width: 85%;
 			min-width: $width;
 			max-width: $width;
 			width: $width;
+			color: var(--main-text-color);
+			height: 90%;
+
+			@include title-wrapper;
 		}
 	}
 
@@ -168,17 +170,17 @@
 
 	$markSize: 20px;
 	.marked-as-open-white {
-		position: absolute;
-		top: 0;
-		left: 0;
 		border-left: $markSize solid transparent;
 		border-bottom: $markSize solid var(--main-accent-color);
-	}
-	.marked-as-open-black {
 		position: absolute;
 		top: 0;
 		left: 0;
+	}
+	.marked-as-open-black {
 		border-right: $markSize solid transparent;
 		border-top: $markSize solid var(--main-background-color);
+		position: absolute;
+		top: 0;
+		left: 0;
 	}
 </style>

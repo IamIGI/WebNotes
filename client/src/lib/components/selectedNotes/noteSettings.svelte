@@ -25,7 +25,6 @@
 	// Function to detect clicks outside the component
 	function handleClickOutside(event: MouseEvent) {
 		if (wrapper && !wrapper.contains(event.target as Node)) {
-			console.log('Clicked outside');
 			onCloseSettings();
 		}
 	}

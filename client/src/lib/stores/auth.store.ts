@@ -14,8 +14,9 @@ function authStore() {
 	return {
 		subscribe,
 		setUser: (user: UserWithoutPassword) => set({ user }),
+		getUser: () => get(store).user,
 		removeUser: () => store.set(init),
-		isUser: () => get(store).user
+		isUser: () => get(store).user !== undefined
 	};
 }
 
