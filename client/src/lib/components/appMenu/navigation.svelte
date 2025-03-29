@@ -6,6 +6,8 @@
 	import noteUtils from '$lib/utils/note.utils';
 	import appStore from '$lib/stores/app.store';
 	import electronUtils from '$lib/utils/electron.utils';
+	import UserAvatar from '../userAvatar/userAvatar.svelte';
+	import authStore from '$lib/stores/auth.store';
 
 	const closeApp = async () => {
 		const noteText = document.querySelector('.editor p');
@@ -32,7 +34,9 @@
 {/snippet}
 
 {#snippet userButtons()}
-	<ImgButton src="/img/profile.JPG" alt="profile" onclick={() => goto('/settings')} />
+	{#if $authStore.user}
+		<ImgButton text={$authStore.user.name[0]} onclick={() => goto('/settings')} />
+	{/if}
 {/snippet}
 
 {#snippet selectedNoteButtons()}

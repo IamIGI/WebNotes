@@ -1,12 +1,12 @@
 <script lang="ts">
 	import AsyncButton from '$lib/components/ui/asyncButton.svelte';
+	import UserAvatar from '$lib/components/userAvatar/userAvatar.svelte';
 	import noteUtils from '$lib/utils/note.utils';
+	import authStore from '$lib/stores/auth.store';
 
-	let isDetailedInfoEnabled = $state<boolean>(false);
-	let confirmBeforeDelete = $state<boolean>(true);
-	let theme = $state<'light' | 'dark' | 'system'>('dark'); // Options: "light", "dark", "system"
-
+	let theme = $state<'light' | 'dark' | 'system'>('dark');
 	let isRequestSending = $state<boolean>(false);
+
 	const synchronizeNotes = async () => {
 		isRequestSending = true;
 		await noteUtils.fetchNotes();
@@ -16,12 +16,14 @@
 
 <div class="settings-container">
 	<div class="header">
-		<div class="avatar"></div>
-		<div class="user-info">
-			<strong>Igor Klusek</strong>
-			<span>i.klusek@mccomp.pl</span>
-			<a href="#">Wyloguj się</a>
-		</div>
+		{#if $authStore.user}
+			<UserAvatar userName={$authStore.user.name} />
+			<div class="user-info">
+				<strong>{$authStore.user.name}</strong>
+				<span>{$authStore.user.email}</span>
+				<a href="#">Wyloguj się</a>
+			</div>
+		{/if}
 	</div>
 
 	<div class="section">
@@ -74,14 +76,6 @@
 		margin-bottom: 1rem;
 		padding-bottom: 0.5rem;
 		border-bottom: 2px solid var(--main-input-color);
-
-		.avatar {
-			$size: 60px;
-			width: $size;
-			height: $size;
-			border-radius: 50%;
-			background: var(--main-second-color);
-		}
 
 		.user-info {
 			display: flex;
