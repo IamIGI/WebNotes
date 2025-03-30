@@ -3,6 +3,8 @@
 	import UserAvatar from '$lib/components/userAvatar/userAvatar.svelte';
 	import noteUtils from '$lib/utils/note.utils';
 	import authStore from '$lib/stores/auth.store';
+	import authApi from '$lib/api/auth.api';
+	import { goto, invalidateAll } from '$app/navigation';
 
 	let theme = $state<'light' | 'dark' | 'system'>('dark');
 	let isRequestSending = $state<boolean>(false);
@@ -11,6 +13,12 @@
 		isRequestSending = true;
 		await noteUtils.fetchNotes();
 		isRequestSending = false;
+	};
+
+	const logout = async (e: Event) => {
+		e.preventDefault();
+		await authApi.logout();
+		await goto('/login', { replaceState: true });
 	};
 </script>
 
@@ -21,7 +29,7 @@
 			<div class="user-info">
 				<strong>{$authStore.user.name}</strong>
 				<span>{$authStore.user.email}</span>
-				<a href="#">Wyloguj się</a>
+				<a href="/login" onclick={logout}>Wyloguj się</a>
 			</div>
 		{/if}
 	</div>

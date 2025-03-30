@@ -13,6 +13,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 	if (isProtectedRoute) {
 		if (!accessToken) {
+			console.log('t1');
 			event.locals.user = undefined;
 			authStore.removeUser();
 			throw redirect(303, '/login');
@@ -22,6 +23,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 			console.log('get from cache');
 			event.locals.user = userCache.get(accessToken);
 		} else {
+			console.log('get from server');
 			const response = await fetch(`${envConstants.API_URL}/user`, {
 				method: 'GET',
 				credentials: 'include',
@@ -32,6 +34,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 			});
 
 			if (response.status === 200) {
+				console.log('status: 200');
 				const user = (await response.json()) as UserWithoutPassword;
 				userCache.set(accessToken, user);
 				event.locals.user = user;
