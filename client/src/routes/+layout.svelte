@@ -4,10 +4,10 @@
 	import appStore from '$lib/stores/app.store';
 	import authStore from '$lib/stores/auth.store.js';
 	import '$lib/styles/global.scss';
-	import { onMount } from 'svelte';
 
 	let { children, data } = $props();
-	onMount(() => data.user && authStore.setUser(data.user));
+
+	$effect(() => data.user && authStore.setUser(data.user));
 </script>
 
 <main>

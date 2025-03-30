@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
+	import { goto, invalidateAll } from '$app/navigation';
 	import { base } from '$app/paths';
 	import authApi from '$lib/api/auth.api';
 	import AppTitle from '$lib/components/appTitle.svelte';
@@ -18,7 +18,7 @@
 		try {
 			isRequestSending = true;
 			await authApi.login({ email, password });
-			goto('/', { replaceState: true }); // Ensures the navigation does not add to history stack
+			await goto('/', { replaceState: true }); // Ensures the navigation does not add to history stack
 		} catch (error) {
 			errorMsg = 'Invalid email or password';
 		} finally {

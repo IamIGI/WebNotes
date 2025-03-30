@@ -1,3 +1,4 @@
+import { invalidateAll } from '$app/navigation';
 import webNotesServer from './api.config';
 import type {
 	AuthPasswordResetPostRequest,
@@ -6,9 +7,14 @@ import type {
 } from './generated';
 
 export default {
-	login: async (data: UserLoginPayload) => await webNotesServer.userService.authLoginPost(data),
-	register: async (data: UserRegisterPayload) =>
-		await webNotesServer.userService.authRegisterPost(data),
+	login: async (data: UserLoginPayload) => {
+		await webNotesServer.userService.authLoginPost(data);
+		await invalidateAll();
+	},
+	register: async (data: UserRegisterPayload) => {
+		await webNotesServer.userService.authRegisterPost(data);
+		await invalidateAll();
+	},
 	verifyEmail: async (code: string) =>
 		await webNotesServer.userService.authEmailVerifyCodeGet(code),
 	forgotPassword: async (email: string) =>
@@ -16,6 +22,10 @@ export default {
 	resetPassword: async (data: AuthPasswordResetPostRequest) =>
 		await webNotesServer.userService.authPasswordResetPost(data),
 	getUser: async () => await webNotesServer.userService.userGet(),
+	logout: async () => {
+		await webNotesServer.userService.authLogoutGet();
+		await invalidateAll();
+	},
 
 	triggerVerification: async () => {
 		// Manually trigger `hooks.server.ts` by calling a protected route
