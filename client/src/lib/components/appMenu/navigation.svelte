@@ -14,6 +14,14 @@
 		if (noteText) await noteUtils.updateTextOnAppClose(JSON.stringify(noteText?.innerHTML));
 		electronUtils.closeApp();
 	};
+
+	const goBack = () => {
+		if (window.history.length > 1) {
+			window.history.back();
+		} else {
+			goto('/');
+		}
+	};
 </script>
 
 {#snippet windowButtons()}
@@ -53,12 +61,12 @@
 	<SvgButton src="/svg/button/add.svg" alt="add" onclick={noteUtils.createNote} />
 {/snippet}
 {#snippet goBackButton()}
-	<SvgButton src="/svg/button/back.svg" alt="back" onclick={() => goto('/')} />
+	<SvgButton src="/svg/button/back.svg" alt="back" onclick={goBack} />
 {/snippet}
 <nav>
 	<div class="navigation-wrapper">
 		<div class="left-nav">
-			{#if page.url.pathname === '/settings'}
+			{#if ['/settings', '/sessions'].includes(page.url.pathname)}
 				{@render goBackButton()}
 			{/if}
 			{#if page.url.pathname === '/selected'}
@@ -72,7 +80,7 @@
 		<div class="drag-area"></div>
 		<div class="right-nav">
 			<!-- <SvgButton src="/svg/button/settings.svg" alt="settings" onclick={() => goto('/login')} /> -->
-			{#if ['/login', '/register', '/settings'].includes(page.url.pathname) === false}
+			{#if ['/login', '/register', '/settings', '/sessions'].includes(page.url.pathname) === false}
 				{@render userButtons()}
 			{/if}
 			{@render windowButtons()}

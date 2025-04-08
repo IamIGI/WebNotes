@@ -232,6 +232,38 @@ paths:
           description: Forbidden - Token expired or invalid
         '404':
           description: Session not found
+  /sessions/all/{userId}:
+    delete:
+      summary: Delete all sessions by userId
+      description: Deletes all user sessions, logging out the user
+      tags:
+        - user
+      security:
+        - CookieAuth: []
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Sessions removed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: 'Sessions removed successfully'
+        '401':
+          description: Unauthorized - Missing or invalid authentication token
+        '403':
+          description: Forbidden - Token expired or invalid
+        '404':
+          description: User has no active sessions
+
   /user:
     get:
       summary: Get user details

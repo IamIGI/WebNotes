@@ -30,6 +30,7 @@
 				<strong>{$authStore.user.name}</strong>
 				<span>{$authStore.user.email}</span>
 				<a href="/login" onclick={logout}>Wyloguj się</a>
+				<a href="/sessions">Zarządzaj sesjami</a>
 			</div>
 		{/if}
 	</div>
@@ -69,12 +70,11 @@
 		display: flex;
 		flex-direction: column;
 		margin: 0 auto;
+		padding: 20px;
+		border-radius: 10px;
 		background: var(--main-background-color);
 		color: var(--main-text-color);
-		padding: 20px;
-		max-width: 400px;
-		border-radius: 10px;
-		font-family: Arial, sans-serif;
+		max-width: var(--max-width);
 	}
 
 	.header {
