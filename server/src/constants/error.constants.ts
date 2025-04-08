@@ -75,4 +75,5 @@ export enum HttpStatusCode {
 
 export const enum AppErrorCode {
   InvalidAccessToken = 'InvalidAccessToken',
+  MissingSession = 'MissingSession'
 }

@@ -28,12 +28,4 @@ const appAssert: appAssert = (
     new AppError(httpStatusCode, message, service, appErrorCode)
   );
 
-// const appAssert: appAssert = (
-//   condition,
-//   httpStatusCode,
-//   message,
-//   service,
-//   appErrorCode
-// ) => condition && new AppError(httpStatusCode, message, service, appErrorCode);
-
 export default appAssert;

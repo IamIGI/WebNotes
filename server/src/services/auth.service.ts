@@ -12,7 +12,6 @@ import jwtUtils, { RefreshTokenPayload } from '../utils/jwt.utils';
 import { sendEmail } from '../utils/sendEmail.utils';
 import { getPasswordResetTemplate, getVerifyEmailTemplate } from '../utils/emailTemplates.utils';
 import bcryptUtils from '../utils/bcrypt.utils';
-import mongoose from 'mongoose';
 
 const SERVICE_NAME = DB_COLLECTIONS.Users;
 

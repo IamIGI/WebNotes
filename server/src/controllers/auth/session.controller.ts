@@ -40,19 +40,26 @@ const deleteSession = catchErrors(async (req, res) => {
     _id: sessionId,
     userId: req.userId,
   });
-  appAssert(
-    deleted,
-    HttpStatusCode.NotFound,
-    'Session not found',
-    SERVICE_NAME
-  );
+  appAssert(deleted, HttpStatusCode.NotFound, 'Session not found', SERVICE_NAME);
 
   return res.status(HttpStatusCode.OK).json({
-    message: 'Session removed',
+    message: 'Session removed successfully',
+  });
+});
+
+const deleteAllSessions = catchErrors(async (req, res) => {
+  const userId = z.string().parse(req.params.userId);
+  const deleted = await SessionModel.deleteMany({ userId });
+
+  appAssert(deleted, HttpStatusCode.NotFound, 'User has no active sessions', SERVICE_NAME);
+
+  return res.status(HttpStatusCode.OK).json({
+    message: 'Sessions removed successfully',
   });
 });
 
 export default {
   getSessions,
   deleteSession,
+  deleteAllSessions,
 };

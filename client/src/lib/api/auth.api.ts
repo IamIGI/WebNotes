@@ -6,6 +6,11 @@ import type {
 	UserRegisterPayload
 } from './generated';
 
+const logout = async () => {
+	await webNotesServer.userService.authLogoutGet();
+	await invalidateAll();
+};
+
 export default {
 	login: async (data: UserLoginPayload) => {
 		await webNotesServer.userService.authLoginPost(data);
@@ -22,9 +27,11 @@ export default {
 	resetPassword: async (data: AuthPasswordResetPostRequest) =>
 		await webNotesServer.userService.authPasswordResetPost(data),
 	getUser: async () => await webNotesServer.userService.userGet(),
-	logout: async () => {
-		await webNotesServer.userService.authLogoutGet();
-		await invalidateAll();
+	logout,
+	removeSession: async (id: string) => await webNotesServer.userService.sessionsIdDelete(id),
+	removeAllSession: async (id: string) => {
+		await webNotesServer.userService.sessionsAllUserIdDelete(id);
+		await logout;
 	},
 
 	triggerVerification: async () => {

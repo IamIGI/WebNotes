@@ -10,7 +10,7 @@ import appAssert from '../../utils/appErrorAssert.utils';
 const register = catchErrors(async (req, res) => {
   const payload = registerSchema.parse({
     ...req.body,
-    userAgent: req.headers['user-Agent'],
+    userAgent: req.headers['user-agent'],
   });
 
   const { user, accessToken, refreshToken } = await authService.createAccount(payload);
@@ -20,9 +20,10 @@ const register = catchErrors(async (req, res) => {
 export const login = catchErrors(async (req, res) => {
   const payload = loginSchema.parse({
     ...req.body,
-    userAgent: req.headers['user-Agent'],
+    userAgent: req.headers['user-agent'],
   });
 
+  
   const { accessToken, refreshToken } = await authService.login(payload);
 
   return cookiesUtils

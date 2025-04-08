@@ -4,26 +4,33 @@ import authStore from '$lib/stores/auth.store';
 import { redirect, type Handle } from '@sveltejs/kit';
 
 const userCache = new Map<string, UserWithoutPassword>();
+let lastCacheClearDate: number | null  = null;
+const CACHE_INTERVAL_MS = 60 * 1000 //60 seconds
 
 // This runs on EVERY server-side request
 export const handle: Handle = async ({ event, resolve }) => {
-	console.log('Authorization handle');
 	const isProtectedRoute = event.route.id?.startsWith('/(protected)');
 	const accessToken = event.cookies.get('accessToken');
 
 	if (isProtectedRoute) {
+
+		if(lastCacheClearDate == null || Date.now() - lastCacheClearDate > CACHE_INTERVAL_MS) {
+			console.log('Authorization - Clearing user cache');
+			userCache.clear();
+			lastCacheClearDate = Date.now()
+		}
+
 		if (!accessToken) {
-			console.log('t1');
+			console.log('Authorization - logout (accessToken)')
 			event.locals.user = undefined;
 			authStore.removeUser();
 			throw redirect(303, '/login');
 		}
 
 		if (userCache.has(accessToken)) {
-			console.log('get from cache');
 			event.locals.user = userCache.get(accessToken);
 		} else {
-			console.log('get from server');
+			console.log('Authorization - get from server');
 			const response = await fetch(`${envConstants.API_URL}/user`, {
 				method: 'GET',
 				credentials: 'include',
@@ -34,11 +41,11 @@ export const handle: Handle = async ({ event, resolve }) => {
 			});
 
 			if (response.status === 200) {
-				console.log('status: 200');
 				const user = (await response.json()) as UserWithoutPassword;
 				userCache.set(accessToken, user);
 				event.locals.user = user;
 			} else {
+				console.log('Authorization - logout (Session not found)')
 				userCache.delete(accessToken);
 				event.locals.user = undefined;
 				throw redirect(303, '/login');
