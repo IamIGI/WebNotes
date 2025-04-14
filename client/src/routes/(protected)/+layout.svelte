@@ -3,7 +3,6 @@
 
 	let { children, data } = $props();
 
-	$inspect('User data: ', data.user);
 	$effect(() => data.user && authStore.setUser(data.user));
 </script>
 
