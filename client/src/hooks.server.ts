@@ -1,7 +1,7 @@
 import type { UserWithoutPassword } from '$lib/api/generated';
 import envConstants from '$lib/constants/env.constants';
 import authStore from '$lib/stores/auth.store';
-import { redirect, type Handle } from '@sveltejs/kit';
+import { redirect, type Handle, type RequestEvent } from '@sveltejs/kit';
 
 const userCache = new Map<string, UserWithoutPassword>();
 let lastCacheClearDate: number | null  = null;
@@ -22,9 +22,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 		if (!accessToken) {
 			console.log('Authorization - logout (accessToken)')
-			event.locals.user = undefined;
-			authStore.removeUser();
-			throw redirect(303, '/login');
+			throw logoutUser(event);
 		}
 
 		if (userCache.has(accessToken)) {
@@ -46,9 +44,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 				event.locals.user = user;
 			} else {
 				console.log('Authorization - logout (Session not found)')
-				userCache.delete(accessToken);
-				event.locals.user = undefined;
-				throw redirect(303, '/login');
+				throw logoutUser(event)
 			}
 		}
 	}
@@ -56,3 +52,9 @@ export const handle: Handle = async ({ event, resolve }) => {
 	const response = await resolve(event);
 	return response;
 };
+
+function logoutUser(event: RequestEvent<Partial<Record<string, string>>, string | null>) {
+	event.locals.user = undefined;
+	authStore.removeUser();
+	throw redirect(303, '/login');
+}

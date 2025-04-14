@@ -18,7 +18,7 @@
 	</div>
 	{#if !isCurrent}
 		<button class="delete-btn" title="Delete Session" onclick={() => onSessionDelete(_id)}>
-			&times;
+			zamknij
 		</button>
 	{/if}
 </div>
@@ -48,7 +48,7 @@
 	}
 
 	.delete-btn {
-		font-size: 1.5rem;
+		/* font-size: 1.5rem; */
 		color: #e53e3e;
 		background: none;
 		border: none;

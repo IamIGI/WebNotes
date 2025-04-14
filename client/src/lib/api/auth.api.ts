@@ -29,10 +29,7 @@ export default {
 	getUser: async () => await webNotesServer.userService.userGet(),
 	logout,
 	removeSession: async (id: string) => await webNotesServer.userService.sessionsIdDelete(id),
-	removeAllSession: async (id: string) => {
-		await webNotesServer.userService.sessionsAllUserIdDelete(id);
-		await logout;
-	},
+	removeAllSession: async (id: string) => await webNotesServer.userService.sessionsAllUserIdDelete(id),
 
 	triggerVerification: async () => {
 		// Manually trigger `hooks.server.ts` by calling a protected route
