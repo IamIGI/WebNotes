@@ -6,7 +6,6 @@
 	import noteUtils from '$lib/utils/note.utils';
 	import appStore from '$lib/stores/app.store';
 	import electronUtils from '$lib/utils/electron.utils';
-	import UserAvatar from '../userAvatar/userAvatar.svelte';
 	import authStore from '$lib/stores/auth.store';
 
 	const closeApp = async () => {
