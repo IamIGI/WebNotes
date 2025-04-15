@@ -31,7 +31,7 @@
 
 <div class="wrapper">
 	<div class="titles">
-		<h1>Sesje użytkownika</h1>
+		<h1>Aktywne sesje użytkownika</h1>
 		<h4>Zamknij wybrane lub wszystkie sesje co spowoduje wylogowanie z danego urządzenia.</h4>
 		<div class="button-wrapper">
 			<button onclick={deleteAllSessions}>Wyloguje wszystkie</button>
