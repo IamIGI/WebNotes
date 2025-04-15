@@ -4,7 +4,7 @@
 	import noteUtils from '$lib/utils/note.utils';
 	import authStore from '$lib/stores/auth.store';
 	import authApi from '$lib/api/auth.api';
-	import { goto, invalidateAll } from '$app/navigation';
+	import { goto } from '$app/navigation';
 
 	let theme = $state<'light' | 'dark' | 'system'>('dark');
 	let isRequestSending = $state<boolean>(false);

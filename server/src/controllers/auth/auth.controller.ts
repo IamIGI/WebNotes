@@ -36,9 +36,7 @@ export const logout = catchErrors(async (req, res) => {
   const accessToken = req.cookies.accessToken as string | undefined;
   const { payload } = jwtUtils.verifyToken(accessToken || '');
 
-  if (payload) {
-    await SessionModel.findByIdAndDelete(payload.sessionId);
-  }
+  if (payload) await SessionModel.findByIdAndDelete(payload.sessionId);
 
   return cookiesUtils.clearAuthCookies(res).status(HttpStatusCode.OK).json({
     message: 'Logout successful',
