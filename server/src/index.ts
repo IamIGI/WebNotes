@@ -38,9 +38,9 @@ app.get('/', (req, res, next) => {
   res.status(HttpStatusCode.OK).json({ status: 'Healthy' });
 });
 app.use('/auth', authRoutes);
-app.use('/notes', noteRoutes);
 
 //protected routes
+app.use('/notes',authenticate, noteRoutes);
 app.use('/user', authenticate, userRoutes);
 app.use('/sessions', authenticate, sessionRoutes);
 

@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { goto } from '$app/navigation';
 import envConstants from '$lib/constants/env.constants';
+import authStore from '$lib/stores/auth.store';
 import { Configuration, NotesApi, ResponseError, UserApi } from './generated';
 
 const configuration = new Configuration({
@@ -30,12 +32,18 @@ class WebNotesServer {
 						} catch (error) {
 							if (error instanceof ResponseError) {
 								const responseError = await error.response.json();
+								const statusError = error.response.status;
+
 								console.error(responseError);
 
-								if (responseError.status == 401) {
-									console.warn('Unauthorized! Redirecting to login...');
-									window.location.href = '/login';
+								if (statusError === 401) {
+									console.warn('Unauthorized! Redirecting to login page');
+									authStore.removeUser();
+
+									await goto('/login', { replaceState: true });
+									return;
 								}
+
 								// Handle specific error codes here if needed
 								switch (responseError.errorCode) {
 									default:
