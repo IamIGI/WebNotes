@@ -25,10 +25,9 @@ class WebNotesServer {
 		return new Proxy(service, {
 			get: function (target, method) {
 				if (typeof target[method] === 'function') {
-					return async function (...values: any) {
+					return async function (...args: any) {
 						try {
-							const result = await target[method](...values);
-							return result;
+							return await target[method](...args);
 						} catch (error) {
 							if (error instanceof ResponseError) {
 								const responseError = await error.response.json();
@@ -36,10 +35,23 @@ class WebNotesServer {
 
 								console.error(responseError);
 
+								if (statusError === 401 && responseError.errorCode === 'InvalidAccessToken') {
+									try {
+										await webNotesServer.userService.authRefreshGet();
+
+										//retry original request
+										return await target[method](...args);
+									} catch (refreshError) {
+										console.error('Token refresh failed:', refreshError);
+										authStore.removeUser();
+										await goto('/login', { replaceState: true });
+										return;
+									}
+								}
+
 								if (statusError === 401) {
 									console.warn('Unauthorized! Redirecting to login page');
 									authStore.removeUser();
-
 									await goto('/login', { replaceState: true });
 									return;
 								}
