@@ -12,7 +12,8 @@ export const enum CookieKeys {
   RefreshToken = 'refreshToken',
   AccessToken = 'accessToken',
 }
-export const REFRESH_PATH = '/auth/refresh';
+
+export const REFRESH_PATH = '/';  '/auth/refresh';
 
 const SECURE = envConstants.ENV === 'PROD'; //when in development, secure should be false
 
