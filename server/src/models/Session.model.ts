@@ -1,12 +1,10 @@
 import mongoose, { mongo } from 'mongoose';
-import { DB_COLLECTIONS } from '../config/MongoDB.config';
+import { DB_COLLECTIONS, MongoDocument } from '../config/MongoDB.config';
 import dateUtils from '../utils/date.utils';
+import { Session } from '../api/generated';
 
-export interface SessionDocument extends mongoose.Document {
+export interface SessionDocument extends MongoDocument<Omit<Session, 'userId'>> {
   userId: mongoose.Types.ObjectId;
-  userAgent?: string; // helps to know from which device user logged in
-  createdAt: Date;
-  expiresAt: Date;
 }
 
 const sessionSchema = new mongoose.Schema<SessionDocument>({
@@ -16,9 +14,7 @@ const sessionSchema = new mongoose.Schema<SessionDocument>({
     required: true,
     index: true, //use it as index, cuz we will search by userId
   },
-  userAgent: {
-    type: String,
-  },
+  userAgent: String,
   createdAt: { type: Date, default: Date.now, required: true },
   expiresAt: {
     type: Date,

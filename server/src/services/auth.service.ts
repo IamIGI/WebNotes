@@ -23,13 +23,15 @@ export type CreateAccountParams = {
 };
 
 const createAccount = async (data: CreateAccountParams) => {
-  const existingUser = await UserModel.exists({ email: data.email });
+  const existingUserEmail = await UserModel.exists({ email: data.email });
+  const existingUserName = await UserModel.exists({name: data.name});
 
   //Verfiy if user already exists
-  appAssert(!existingUser, HttpStatusCode.Conflict, 'Email already in use', SERVICE_NAME);
+  appAssert(!existingUserEmail, HttpStatusCode.Conflict, 'Email already in use', SERVICE_NAME);
+  appAssert(!existingUserName, HttpStatusCode.Conflict, 'Name already in use', SERVICE_NAME);
 
   //create User
-  const user = await UserModEl.create({
+  const user = await UserModel.create({
     name: data.name,
     email: data.email,
     password: data.password,

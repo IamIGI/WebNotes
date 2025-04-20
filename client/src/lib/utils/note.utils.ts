@@ -22,10 +22,12 @@ const fetchNotes = async () => {
 };
 const createNote = async () => {
 	const color = bookmarkColors[Math.floor(Math.random() * bookmarkColors.length)];
+
 	const note = await webNotesServer.notesService.notesPost({
 		bookmark: { title: 'Happy Note', color },
 		text: ''
 	});
+
 	notesPreviewStore.addOne(note);
 	noteSelectedStore.addOne(note);
 	if (page.url.pathname === '/') goto('/selected');

@@ -73,6 +73,6 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 function logoutUser(event: RequestEvent<Partial<Record<string, string>>, string | null>) {
 	event.locals.user = undefined;
-	authStore.removeUser();
+	authStore.clear();
 	throw redirect(303, '/login');
 }

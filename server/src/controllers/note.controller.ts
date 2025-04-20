@@ -9,12 +9,13 @@ import { DB_COLLECTIONS } from '../config/MongoDB.config';
 const REQUIRED_KEYS: Array<keyof NoteUpdate> = ['bookmark', 'text'];
 
 const getAll = catchErrors(async (req, res) => {
-  const notes = await noteService.getAll();
+
+  const notes = await noteService.getAll(req.userId);
   res.status(200).json(notes);
 });
 
 const getPreviews = catchErrors(async (req, res) => {
-  const notes = await noteService.getPreviews();
+  const notes = await noteService.getPreviews(req.userId);
   res.status(200).json(notes);
 });
 
@@ -22,7 +23,7 @@ const getRecent = catchErrors(async (req, res) => {
   try {
     const limit = parseInt(req.query.limit as string) || 5; // Default to 5 if not provided
 
-    const recentNotes = await noteService.getRecent(limit);
+    const recentNotes = await noteService.getRecent(req.userId,limit);
 
     res.status(200).json(recentNotes);
   } catch (error) {
@@ -43,10 +44,11 @@ const getById = catchErrors(async (req, res) => {
 
 const add = catchErrors(async (req, res) => {
   const payload = req.body as NoteUpdate;
+  const userId = req.userId;
 
   validateRequestUtil.isValidPayload(payload.bookmark, ['title', 'color']);
 
-  const newProduct = await noteService.add(payload);
+  const newProduct = await noteService.add(userId, payload);
 
   res.status(HttpStatusCode.Created).json(newProduct);
 });

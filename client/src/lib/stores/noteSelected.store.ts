@@ -14,7 +14,7 @@ const init: NoteSelectedStore = {
 
 function noteSelectedStore() {
 	const store = writable<NoteSelectedStore>(init);
-	const { update, subscribe } = store;
+	const { set, update, subscribe } = store;
 
 	const getNotes = () => get(store).notes;
 
@@ -106,6 +106,8 @@ function noteSelectedStore() {
 			return { ...prev, notes: newNotes, selectedNoteId: newSelectedNoteId };
 		});
 
+	const clear = () => set(init);
+
 	return {
 		subscribe,
 		addExisted,
@@ -117,7 +119,8 @@ function noteSelectedStore() {
 		updateTitle,
 		addOne,
 		getNotes,
-		getSelectedNote
+		getSelectedNote,
+		clear
 	};
 }
 
