@@ -68,6 +68,8 @@ function notesPreviewStore() {
 
 	const addOne = (newNote: Note) => update((prev) => [mapNote_NotePreview(newNote), ...prev]);
 
+	const clear = () => set([]);
+
 	return {
 		subscribe,
 		fetchNotesAll,
@@ -78,7 +80,8 @@ function notesPreviewStore() {
 		updateText,
 		removeOne,
 		selected,
-		addOne
+		addOne,
+		clear
 	};
 }
 

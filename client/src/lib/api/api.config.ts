@@ -43,7 +43,7 @@ class WebNotesServer {
 										return await target[method](...args);
 									} catch (refreshError) {
 										console.error('Token refresh failed:', refreshError);
-										authStore.removeUser();
+										authStore.clear();
 										await goto('/login', { replaceState: true });
 										return;
 									}
@@ -51,7 +51,7 @@ class WebNotesServer {
 
 								if (statusError === 401) {
 									console.warn('Unauthorized! Redirecting to login page');
-									authStore.removeUser();
+									authStore.clear();
 									await goto('/login', { replaceState: true });
 									return;
 								}
