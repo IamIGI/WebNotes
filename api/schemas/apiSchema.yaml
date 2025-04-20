@@ -430,6 +430,8 @@ components:
         _id:
           type: string
           x-originalName: _id
+        userId:
+          type: string
         bookmark:
           $ref: '#/components/schemas/Bookmark'
         textPreview:
@@ -440,6 +442,7 @@ components:
           type: string
       required:
         - _id
+        - userId
         - bookmark
         - textPreview
         - updatedAt
@@ -451,6 +454,8 @@ components:
         _id:
           type: string
           x-originalName: _id
+        userId:
+          type: string
         bookmark:
           $ref: '#/components/schemas/Bookmark'
         text:
@@ -461,6 +466,7 @@ components:
           type: string
       required:
         - _id
+        - userId
         - bookmark
         - text
         - updatedAt

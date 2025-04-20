@@ -1,12 +1,25 @@
 import mongoose from 'mongoose';
-
 import { DB_COLLECTIONS, MongoDocument } from '../config/MongoDB.config';
-import { Note } from '../api/generated';
+import { Note, NotePreview } from '../api/generated';
 
-export interface NoteDocument extends MongoDocument<Note> {}
+export interface Note_ObjectId  extends Omit<Note, 'userId'> {
+  userId: mongoose.Types.ObjectId
+}
 
-const noteSchema = new mongoose.Schema(
+export interface NotePreview_ObjectId  extends Omit<NotePreview, 'userId'> {
+  userId: mongoose.Types.ObjectId
+}
+
+export interface NoteDocument extends MongoDocument<Note_ObjectId> {}
+
+const noteSchema = new mongoose.Schema<NoteDocument>(
   {
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: DB_COLLECTIONS.Users,
+        required: true,
+        index: true, //use it as index, cuz we will search by userId
+    },
     bookmark: {
       title: String,
       color: String,

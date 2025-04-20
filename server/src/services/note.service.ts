@@ -1,16 +1,18 @@
 import { DB_COLLECTIONS } from '../config/MongoDB.config';
-import NoteModel from '../models/Note.model';
+import NoteModel, { Note_ObjectId, NotePreview_ObjectId } from '../models/Note.model';
 import { HttpStatusCode } from '../constants/error.constants';
 import appAssert from '../utils/appErrorAssert.utils';
-import { Note, NotePreview, NoteUpdate } from '../api/generated';
+import { NoteUpdate } from '../api/generated';
 
 const SERVICE_NAME = DB_COLLECTIONS.Notes;
 
-const getAll = async (): Promise<Note[]> => await NoteModel.find().lean().sort({ updatedAt: -1 });
+const getAll = async (userId: string): Promise<Note_ObjectId[]> => await NoteModel.find({
+  userId
+}).lean().sort({ updatedAt: -1 });
 
-const getPreviews = async (): Promise<NotePreview[]> => {
-  const notes = await getAll();
-  const notePreviews: NotePreview[] = notes.map((note) => ({
+const getPreviews = async (userId: string): Promise<NotePreview_ObjectId[]> => {
+  const notes = await getAll(userId);
+  const notePreviews: NotePreview_ObjectId[] = notes.map((note) => ({
     ...note,
     textPreview: note.text.slice(0, 200),
     text: undefined,
@@ -19,8 +21,8 @@ const getPreviews = async (): Promise<NotePreview[]> => {
   return notePreviews;
 };
 
-const getRecent = async (limit: number): Promise<Note[]> => {
-  const recentNotes = await NoteModel.find()
+const getRecent = async (userId:string, limit: number) => {
+  const recentNotes = await NoteModel.find({userId})
     .lean()
     .sort({ updatedAt: -1 }) // Get the most recently updated notes
     .limit(limit);
@@ -28,12 +30,13 @@ const getRecent = async (limit: number): Promise<Note[]> => {
   return recentNotes;
 };
 
-const getById = async (id: string) => {
+const getById = async (id: string): Promise<Note_ObjectId | null> => {
   return await NoteModel.findById(id).lean();
 };
 
-const add = async (payload: NoteUpdate): Promise<Note> => {
-  const newNote = new NoteModel(payload);
+const add = async (userId: string,payload: NoteUpdate): Promise<Note_ObjectId> => {
+  const newNoteData = {...payload, userId}
+  const newNote = new NoteModel(newNoteData);
 
   return await newNote.save();
 };
