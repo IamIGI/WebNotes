@@ -1,11 +1,9 @@
-// src/lib/WebSocketClient.ts
-
 export default class WebSocketClient {
 	private socket: WebSocket | null = null;
 	private url: string;
 
-	constructor(url: string) {
-		this.url = url;
+	constructor(baseUrl: string, accessToken: string) {
+		this.url = `${baseUrl}?token=${accessToken}`;
 	}
 
 	connect() {

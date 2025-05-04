@@ -1,19 +1,10 @@
 <script lang="ts">
 	import Navigation from '$lib/components/appMenu/navigation.svelte';
 	import GlobalDimmer from '$lib/components/globalDimmer.svelte';
-	import WebSocketClient from '$lib/services/wsClient.service';
 	import appStore from '$lib/stores/app.store';
 	import '$lib/styles/global.scss';
-	import { onDestroy } from 'svelte';
 
 	let { children } = $props();
-
-	let wsClient = new WebSocketClient('ws://localhost:4000');
-	wsClient.connect();
-
-	onDestroy(() => {
-		wsClient.disconnect();
-	});
 </script>
 
 <main>
