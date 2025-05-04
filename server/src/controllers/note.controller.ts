@@ -45,21 +45,21 @@ const getById = catchErrors(async (req, res) => {
 
 const add = catchErrors(async (req, res) => {
   const payload = req.body as NoteUpdate;
-  const userId = req.userId;
+  const {userId, sessionId} = req;
 
   validateRequestUtil.isValidPayload(payload.bookmark, ['title', 'color']);
 
   const newNote = await noteService.add(userId, payload);
 
   // Send WebSocket notification
-  broadcastMessageToUser(userId, JSON.stringify({ type: 'note_created', noteId: newNote._id}));
+  broadcastMessageToUser(userId, sessionId, JSON.stringify({ type: 'note_created', noteId: newNote._id}));
 
   res.status(HttpStatusCode.Created).json(newNote);
 });
 
 const editById = catchErrors(async (req, res) => {
   const { id } = req.params;
-  const userId = req.userId;
+  const {userId, sessionId} = req;
   const payload = req.body as NoteUpdate;
 
   validateRequestUtil.validateId(id);
@@ -69,21 +69,21 @@ const editById = catchErrors(async (req, res) => {
   appAssert(updatedNote, HttpStatusCode.NotFound, `Note not found/updated, id: ${id}`, DB_COLLECTIONS.Notes);
 
   // Send WebSocket notification
-  broadcastMessageToUser(userId,JSON.stringify({ type: 'note_edited', noteId: id }));
+  broadcastMessageToUser(userId, sessionId, JSON.stringify({ type: 'note_edited', noteId: id }));
 
   res.status(HttpStatusCode.OK).json(updatedNote);
 });
 
 const removeById = catchErrors(async (req, res) => {
   const { id } = req.params;
-    const userId = req.userId;
+  const {userId, sessionId} = req;
 
   validateRequestUtil.validateId(id);
   await noteService.removeById(id);
 
   
   // Send WebSocket notification
-  broadcastMessageToUser(userId,JSON.stringify({ type: 'note_created', noteId: id }));
+  broadcastMessageToUser(userId, sessionId, JSON.stringify({ type: 'note_created', noteId: id }));
 
   res.status(HttpStatusCode.OK).send({ id });
 });

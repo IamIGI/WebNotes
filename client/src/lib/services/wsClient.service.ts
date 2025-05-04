@@ -1,3 +1,5 @@
+import authStore from '$lib/stores/auth.store';
+
 export default class WebSocketClient {
 	private socket: WebSocket | null = null;
 	private url: string;
@@ -15,7 +17,8 @@ export default class WebSocketClient {
 		};
 
 		this.socket.onmessage = (event) => {
-			console.log('Received message:', event.data);
+			console.log('UserSession: ', authStore.getSession());
+			console.log('Received message:', JSON.parse(event.data));
 		};
 
 		this.socket.onclose = (event) => {

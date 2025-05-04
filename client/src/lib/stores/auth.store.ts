@@ -1,12 +1,8 @@
-import type { UserWithoutPassword } from '$lib/api/generated';
 import { get, writable } from 'svelte/store';
 
-export interface AuthStore {
-	user: UserWithoutPassword | undefined;
-	accessToken: string | undefined;
-}
+export type AuthStore = App.Locals;
 
-const init: AuthStore = { user: undefined, accessToken: undefined };
+const init: AuthStore = { user: undefined, accessToken: undefined, session: undefined };
 
 function authStore() {
 	const store = writable<AuthStore>(init);
@@ -15,10 +11,13 @@ function authStore() {
 	return {
 		subscribe,
 		setData: (data: AuthStore) => set(data),
+		clear: () => store.set(init),
+
 		getUser: () => get(store).user,
 		getAccessToken: () => get(store).accessToken,
+		getSession: () => get(store).session,
 		getUserId: () => get(store).user?._id,
-		clear: () => store.set(init),
+
 		isUser: () => get(store).user !== undefined
 	};
 }

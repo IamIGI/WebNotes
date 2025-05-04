@@ -35,7 +35,7 @@ export const initWebSocketServer = (server: HttpServer) => {
 };
 
 // Export a helper function to send messages to all clients
-export const broadcastMessageToUser = (userId: string, message: string) => {
+export const broadcastMessageToUser = (userId: string, sessionId: string, message: string) => {
 
   if (!wss) {
     console.error('WebSocket server not initialized');
@@ -46,7 +46,10 @@ export const broadcastMessageToUser = (userId: string, message: string) => {
   wss.clients.forEach((client) => {
     const authedClient = client as AuthWebSocket;
     if (client.readyState === WebSocket.OPEN && authedClient.userId === userId) {
-      authedClient.send(message);
+      
+      const eventData =  JSON.stringify({message, user: {session: sessionId}});
+
+      authedClient.send(eventData);
     }
   });
 };

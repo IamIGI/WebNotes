@@ -278,7 +278,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UserWithoutPassword'
+                type: object
+                properties:
+                  user: 
+                    $ref: '#/components/schemas/UserWithoutPassword'
+                  session:
+                    type: string
         '401':
           description: Unauthorized - Missing or invalid authentication token
         '403':
