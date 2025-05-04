@@ -1,8 +1,7 @@
-import { Request, RequestHandler } from 'express';
+import {  RequestHandler } from 'express';
 import appAssert from '../utils/appErrorAssert.utils';
 import { AppErrorCode, HttpStatusCode } from '../constants/error.constants';
 import jwtUtils from '../utils/jwt.utils';
-import mongoose from 'mongoose';
 import SessionModel from '../models/Session.model';
 import catchErrors from '../utils/catchErrors.utils';
 

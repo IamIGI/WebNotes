@@ -15,6 +15,10 @@ import authenticate from './middleware/authentication.middeleware';
 import userRoutes from './routes/api/user.route';
 import sessionRoutes from './routes/api/session.route';
 import noteRoutes from './routes/api/note.route';
+import { createServer } from 'http';
+import { initWebSocketServer } from './websocket/websocket';
+
+ 
 
 const PORT = process.env.PORT || 4000;
 
@@ -22,6 +26,7 @@ const PORT = process.env.PORT || 4000;
 mongoose.set('strictQuery', false);
 connectDB();
 const app = express();
+const server = createServer(app);
 
 app.use(express.json()); //allows to parse JSON request bodies
 app.use(express.urlencoded({ extended: true })); //parse FORM data
@@ -49,7 +54,11 @@ app.all('*', unknownURLHandler);
 
 mongoose.connection.once('open', () => {
   console.log('Successfully connected to MongoDB');
-  app.listen(PORT, () => {
+
+  //WS
+  initWebSocketServer(server);
+
+  server.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
 });

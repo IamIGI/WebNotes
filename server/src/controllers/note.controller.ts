@@ -5,6 +5,7 @@ import { NoteUpdate } from '../api/generated';
 import appAssert from '../utils/appErrorAssert.utils';
 import { HttpStatusCode } from '../constants/error.constants';
 import { DB_COLLECTIONS } from '../config/MongoDB.config';
+import { broadcastMessage } from '../websocket/websocket';
 
 const REQUIRED_KEYS: Array<keyof NoteUpdate> = ['bookmark', 'text'];
 
@@ -48,9 +49,13 @@ const add = catchErrors(async (req, res) => {
 
   validateRequestUtil.isValidPayload(payload.bookmark, ['title', 'color']);
 
-  const newProduct = await noteService.add(userId, payload);
+  const newNote = await noteService.add(userId, payload);
 
-  res.status(HttpStatusCode.Created).json(newProduct);
+  
+  // Send WebSocket notification
+  broadcastMessage(JSON.stringify({ type: 'note_created', noteId: newNote._id}));
+
+  res.status(HttpStatusCode.Created).json(newNote);
 });
 
 const editById = catchErrors(async (req, res) => {
@@ -63,6 +68,9 @@ const editById = catchErrors(async (req, res) => {
   const updatedNote = await noteService.editById(id, payload);
   appAssert(updatedNote, HttpStatusCode.NotFound, `Note not found/updated, id: ${id}`, DB_COLLECTIONS.Notes);
 
+  // Send WebSocket notification
+  broadcastMessage(JSON.stringify({ type: 'note_edited', noteId: id }));
+
   res.status(HttpStatusCode.OK).json(updatedNote);
 });
 
@@ -71,6 +79,10 @@ const removeById = catchErrors(async (req, res) => {
 
   validateRequestUtil.validateId(id);
   await noteService.removeById(id);
+
+  
+  // Send WebSocket notification
+  broadcastMessage(JSON.stringify({ type: 'note_created', noteId: id }));
 
   res.status(HttpStatusCode.OK).send({ id });
 });
