@@ -44,7 +44,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 		}
 
 		if (userCache.has(accessToken)) {
-			event.locals.user = userCache.get(accessToken);
+			setLocals(event, { user: userCache.get(accessToken), accessToken });
 		} else {
 			console.log('Authorization - get from server');
 			const response = await fetch(`${envConstants.API_URL}/user`, {
@@ -59,7 +59,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 			if (response.status === 200) {
 				const user = (await response.json()) as UserWithoutPassword;
 				userCache.set(accessToken, user);
-				event.locals.user = user;
+				setLocals(event, { user, accessToken });
 			} else {
 				console.log('Authorization - logout (Session not found)');
 				throw logoutUser(event);
@@ -72,7 +72,15 @@ export const handle: Handle = async ({ event, resolve }) => {
 };
 
 function logoutUser(event: RequestEvent<Partial<Record<string, string>>, string | null>) {
-	event.locals.user = undefined;
+	setLocals(event, { accessToken: undefined, user: undefined });
 	authStore.clear();
 	throw redirect(303, '/login');
+}
+
+function setLocals(
+	event: RequestEvent<Partial<Record<string, string>>, string | null>,
+	data: { user: UserWithoutPassword | undefined; accessToken: string | undefined }
+) {
+	event.locals.accessToken = data.accessToken;
+	event.locals.user = data.user;
 }
