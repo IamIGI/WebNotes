@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
-import { goto } from '$app/navigation';
 import envConstants from '$lib/constants/env.constants';
 import authStore from '$lib/stores/auth.store';
+import { redirect } from '@sveltejs/kit';
 import { Configuration, NotesApi, ResponseError, UserApi } from './generated';
 
 const configuration = new Configuration({
@@ -44,16 +43,14 @@ class WebNotesServer {
 									} catch (refreshError) {
 										console.error('Token refresh failed:', refreshError);
 										authStore.clear();
-										await goto('/login', { replaceState: true });
-										return;
+										throw redirect(302, '/login');
 									}
 								}
 
 								if (statusError === 401) {
 									console.warn('Unauthorized! Redirecting to login page');
 									authStore.clear();
-									await goto('/login', { replaceState: true });
-									return;
+									throw redirect(302, '/login');
 								}
 
 								// Handle specific error codes here if needed

@@ -9,6 +9,7 @@ declare global {
 		interface Locals {
 			user: UserWithoutPassword | undefined;
 			accessToken: string | undefined;
+			session: string | undefined;
 		}
 		// interface PageData {}
 		// interface PageState {}

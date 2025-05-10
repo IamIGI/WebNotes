@@ -1,9 +1,9 @@
-import type { UserWithoutPassword } from '$lib/api/generated';
+import type { UserGet200Response } from '$lib/api/generated';
 import envConstants from '$lib/constants/env.constants';
 import authStore from '$lib/stores/auth.store';
 import { redirect, type Handle, type RequestEvent } from '@sveltejs/kit';
 
-const userCache = new Map<string, UserWithoutPassword>();
+const userCache = new Map<string, App.Locals>();
 let lastCacheClearDate: number | null = null;
 const CACHE_INTERVAL_MS = 60 * 1000; //60 seconds
 
@@ -44,7 +44,8 @@ export const handle: Handle = async ({ event, resolve }) => {
 		}
 
 		if (userCache.has(accessToken)) {
-			setLocals(event, { user: userCache.get(accessToken), accessToken });
+			const userData = userCache.get(accessToken)!;
+			setLocals(event, userData);
 		} else {
 			console.log('Authorization - get from server');
 			const response = await fetch(`${envConstants.API_URL}/user`, {
@@ -57,9 +58,11 @@ export const handle: Handle = async ({ event, resolve }) => {
 			});
 
 			if (response.status === 200) {
-				const user = (await response.json()) as UserWithoutPassword;
-				userCache.set(accessToken, user);
-				setLocals(event, { user, accessToken });
+				const { user, session } = (await response.json()) as UserGet200Response;
+				if (!user || !session) throw new Error('User do not exists');
+
+				userCache.set(accessToken, { accessToken, user, session });
+				setLocals(event, { user, accessToken, session });
 			} else {
 				console.log('Authorization - logout (Session not found)');
 				throw logoutUser(event);
@@ -72,15 +75,16 @@ export const handle: Handle = async ({ event, resolve }) => {
 };
 
 function logoutUser(event: RequestEvent<Partial<Record<string, string>>, string | null>) {
-	setLocals(event, { accessToken: undefined, user: undefined });
+	setLocals(event, { accessToken: undefined, user: undefined, session: undefined });
 	authStore.clear();
 	throw redirect(303, '/login');
 }
 
 function setLocals(
 	event: RequestEvent<Partial<Record<string, string>>, string | null>,
-	data: { user: UserWithoutPassword | undefined; accessToken: string | undefined }
+	data: App.Locals
 ) {
 	event.locals.accessToken = data.accessToken;
+	event.locals.session = data.session;
 	event.locals.user = data.user;
 }

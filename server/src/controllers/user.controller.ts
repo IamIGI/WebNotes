@@ -9,7 +9,9 @@ const SERVICE_NAME = DB_COLLECTIONS.Users;
 export const getUser = catchErrors(async (req, res) => {
   const user = await UserModel.findById(req.userId);
   appAssert(user, HttpStatusCode.NotFound, 'User not found', SERVICE_NAME);
-  return res.status(HttpStatusCode.OK).json(user.omitPassword());
+  const data = {user: user.omitPassword(), session: req.sessionId};
+  
+  return res.status(HttpStatusCode.OK).json(data);
 });
 
 export default { getUser };

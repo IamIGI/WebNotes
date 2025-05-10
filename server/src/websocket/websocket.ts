@@ -1,6 +1,7 @@
 import { Server as HttpServer } from 'http';
 import { WebSocketServer, WebSocket } from 'ws';
 import jwtUtils from '../utils/jwt.utils';
+import { NoteUpdate, WsMessage, WsNoteUpdate } from '../api/generated';
 
 interface AuthWebSocket extends WebSocket {
   userId?: string;  
@@ -8,7 +9,7 @@ interface AuthWebSocket extends WebSocket {
 
 let wss: WebSocketServer | null = null;
 
-export const initWebSocketServer = (server: HttpServer) => {
+const initWebSocketServer = (server: HttpServer) => {
   wss = new WebSocketServer({ server });
 
   wss.on('connection', (ws: AuthWebSocket, req) => {
@@ -35,7 +36,8 @@ export const initWebSocketServer = (server: HttpServer) => {
 };
 
 // Export a helper function to send messages to all clients
-export const broadcastMessageToUser = (userId: string, message: string) => {
+const broadcastMessageToUser = (userId: string, sessionId: string, message: WsNoteUpdate) => {
+  console.log('broadcastMessageToUser')
 
   if (!wss) {
     console.error('WebSocket server not initialized');
@@ -46,7 +48,19 @@ export const broadcastMessageToUser = (userId: string, message: string) => {
   wss.clients.forEach((client) => {
     const authedClient = client as AuthWebSocket;
     if (client.readyState === WebSocket.OPEN && authedClient.userId === userId) {
-      authedClient.send(message);
+      const msg: WsMessage = {
+        message,
+        user: {sessionId}
+      }
+      console.log(msg)
+      const eventData =  JSON.stringify(msg);
+
+      authedClient.send(eventData);
     }
   });
 };
+
+
+export default {
+  initWebSocketServer, broadcastMessageToUser
+}

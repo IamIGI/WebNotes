@@ -16,9 +16,7 @@ import userRoutes from './routes/api/user.route';
 import sessionRoutes from './routes/api/session.route';
 import noteRoutes from './routes/api/note.route';
 import { createServer } from 'http';
-import { initWebSocketServer } from './websocket/websocket';
-
- 
+import websocket from './websocket/websocket';
 
 const PORT = process.env.PORT || 4000;
 
@@ -56,7 +54,7 @@ mongoose.connection.once('open', () => {
   console.log('Successfully connected to MongoDB');
 
   //WS
-  initWebSocketServer(server);
+  websocket.initWebSocketServer(server);
 
   server.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

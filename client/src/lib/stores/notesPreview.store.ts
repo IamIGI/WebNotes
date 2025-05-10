@@ -1,5 +1,5 @@
 import webNotesServer from '$lib/api/api.config';
-import type { Note, NotePreview } from '$lib/api/generated';
+import type { Note, NotePreview, NoteUpdate } from '$lib/api/generated';
 
 import { get, writable } from 'svelte/store';
 
@@ -51,6 +51,19 @@ function notesPreviewStore() {
 	const updateText = async (id: string, text: string) =>
 		update((prev) => prev.map((note) => (note._id === id ? { ...note, textPreview: text } : note)));
 
+	/**
+	 * Used by WS
+	 */
+	const updateAllNoteProperties = (id: string, updatedNote: NoteUpdate) => {
+		update((prev) =>
+			prev.map((note) =>
+				note._id === id
+					? { ...note, textPreview: updatedNote.text, bookmark: updatedNote.bookmark }
+					: note
+			)
+		);
+	};
+
 	const removeOne = (id: string) => update((prev) => prev.filter((note) => note._id !== id));
 
 	const selected = (id: string) =>
@@ -78,6 +91,8 @@ function notesPreviewStore() {
 		updateColor,
 		updateTitle,
 		updateText,
+		updateAllNoteProperties,
+
 		removeOne,
 		selected,
 		addOne,

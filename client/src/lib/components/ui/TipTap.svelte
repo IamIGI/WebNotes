@@ -9,7 +9,7 @@
 	import appUtils from '../../../utils/app.utils';
 	import appStore from '$lib/stores/app.store';
 
-	let { text, _id }: Omit<Note, 'bookmark' | 'updatedAt' | 'createdAt'> = $props();
+	let { text, _id }: Omit<Note, 'bookmark' | 'updatedAt' | 'createdAt' | 'userId'> = $props();
 
 	let noteId = $state(_id);
 	let element: HTMLDivElement | null = $state(null);
@@ -35,9 +35,16 @@
 	});
 
 	$effect(() => {
-		if (_id !== noteId) {
-			editor && editor.commands.setContent(text);
-			noteId = _id;
+		if (editor) {
+			if (_id !== noteId) {
+				editor.commands.setContent(text);
+				noteId = _id;
+			}
+
+			if (text !== editor.getText()) {
+				//Update from WS (also triggers self update, but do not see any errors cuz of that)
+				editor.commands.setContent(text);
+			}
 		}
 	});
 

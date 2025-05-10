@@ -20,18 +20,6 @@ const fetchNotes = async () => {
 		return data;
 	});
 };
-const createNote = async () => {
-	const color = bookmarkColors[Math.floor(Math.random() * bookmarkColors.length)];
-
-	const note = await webNotesServer.notesService.notesPost({
-		bookmark: { title: 'Happy Note', color },
-		text: ''
-	});
-
-	notesPreviewStore.addOne(note);
-	noteSelectedStore.addOne(note);
-	if (page.url.pathname === '/') goto('/selected');
-};
 
 const openNote = async (id: string) => {
 	//Update stores
@@ -42,6 +30,25 @@ const openNote = async (id: string) => {
 	//Update database
 	await webNotesServer.notesService.notesOpenedIdPut(id);
 	authApi.triggerVerification();
+};
+
+/**
+ *Create new note
+ * @param newNote - pass new note data from WS, otherwise note will be create and saved to DB
+ */
+const createNote = async (newNote?: Note) => {
+	let note = newNote;
+	if (!note) {
+		const color = bookmarkColors[Math.floor(Math.random() * bookmarkColors.length)];
+		note = await webNotesServer.notesService.notesPost({
+			bookmark: { title: 'Happy Note', color },
+			text: ''
+		});
+	}
+
+	notesPreviewStore.addOne(note);
+	noteSelectedStore.addOne(note);
+	if (page.url.pathname === '/' && !newNote) goto('/selected');
 };
 
 const updateColor = async (note: Note, color: string) => {
@@ -86,11 +93,18 @@ const updateText = async (
 	}
 };
 
-const removeOneNote = async (id: string) => {
+const updateAllNoteProperties = (id: string, updatedNote: NoteUpdate) => {
+	noteSelectedStore.updateAllNoteProperties(id, updatedNote);
+	notesPreviewStore.updateAllNoteProperties(id, updatedNote);
+};
+
+const removeOneNote = async (id: string, params?: { isWs?: boolean }) => {
 	//Update stores
 	noteSelectedStore.removeOne(id);
 	notesPreviewStore.removeOne(id);
 	if (noteSelectedStore.getNotes().length === 0) goto('/');
+
+	if (params?.isWs) return;
 	//Update database
 	await webNotesServer.notesService.notesIdDelete(id);
 };
@@ -115,6 +129,8 @@ export default {
 	updateColor,
 	updateTitle,
 	updateText,
+	updateAllNoteProperties,
+
 	removeOneNote,
 	filterNotesBySearchTerm,
 	openNote,
