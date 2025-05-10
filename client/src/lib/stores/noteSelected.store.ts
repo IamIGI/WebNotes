@@ -1,5 +1,5 @@
 import { get, writable } from 'svelte/store';
-import type { Note } from '$lib/api/generated';
+import type { Note, NoteUpdate } from '$lib/api/generated';
 import webNotesServer from '$lib/api/api.config';
 
 export interface NoteSelectedStore {
@@ -98,6 +98,23 @@ function noteSelectedStore() {
 		}));
 	};
 
+	/**
+	 * Used by WS
+	 */
+	const updateAllNoteProperties = (id: string, updatedNote: NoteUpdate) => {
+		console.log('selected - updateAllNoteProperties');
+		console.log(id, updatedNote);
+
+		update((prev) => {
+			console.log(prev);
+			const updatedNotes = prev.notes.map((note) =>
+				note._id === id ? { ...note, ...updatedNote } : note
+			);
+			console.log(updatedNotes);
+			return { ...prev, notes: updatedNotes };
+		});
+	};
+
 	const removeOne = (id: string) =>
 		update((prev) => {
 			const newNotes = prev.notes.filter((n) => n._id !== id);
@@ -113,6 +130,7 @@ function noteSelectedStore() {
 		addExisted,
 		updateColor,
 		updateText,
+		updateAllNoteProperties,
 		removeOne,
 		select,
 		getNote,

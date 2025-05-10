@@ -632,3 +632,39 @@ components:
           type: string
         message:
           type: string
+
+    WsMessageType:
+      type: string
+      enum:
+        - note_created
+        - note_edited
+        - note_deleted
+
+    WsNoteUpdate:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/WsMessageType'
+        id:
+          type: string
+        update:
+          $ref: '#/components/schemas/NoteUpdate'
+        create:
+          $ref: '#/components/schemas/Note'
+      required:
+        - type
+        - id
+
+    WsMessage:
+      type: object
+      properties:
+        message:
+          $ref: '#/components/schemas/WsNoteUpdate'
+        user:
+          type: object
+          properties:
+            sessionId:
+              type: string
+      required:
+        - message
+        - user

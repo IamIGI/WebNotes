@@ -15,7 +15,7 @@ function authStore() {
 
 		getUser: () => get(store).user,
 		getAccessToken: () => get(store).accessToken,
-		getSession: () => get(store).session,
+		getSessionId: () => get(store).session,
 		getUserId: () => get(store).user?._id,
 
 		isUser: () => get(store).user !== undefined

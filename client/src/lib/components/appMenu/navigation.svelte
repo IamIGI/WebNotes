@@ -57,7 +57,7 @@
 	</div>
 {/snippet}
 {#snippet mainPageButtons()}
-	<SvgButton src="/svg/button/add.svg" alt="add" onclick={noteUtils.createNote} />
+	<SvgButton src="/svg/button/add.svg" alt="add" onclick={() => noteUtils.createNote()} />
 {/snippet}
 {#snippet goBackButton()}
 	<SvgButton src="/svg/button/back.svg" alt="back" onclick={goBack} />

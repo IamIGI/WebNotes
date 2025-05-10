@@ -2,7 +2,7 @@
 	import type { Note } from '$lib/api/generated';
 	import TipTap from '../ui/TipTap.svelte';
 
-	let { text, _id }: Omit<Note, 'bookmark' | 'updatedAt' | 'createdAt'> = $props();
+	let { text, _id }: Omit<Note, 'bookmark' | 'updatedAt' | 'createdAt' | 'userId'> = $props();
 </script>
 
 <div class="note-wrapper">
