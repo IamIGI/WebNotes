@@ -41,8 +41,8 @@ function isValidPayload<T>(payload: Partial<T>, requiredKeys: Array<keyof T>, pa
     //Check for missing key value
     if (
       payload[key] === null ||
-      payload[key] === undefined ||
-      (typeof payload[key] === 'string' && payload[key].length === 0)
+      payload[key] === undefined
+      // (typeof payload[key] === 'string' && payload[key].length === 0)
     ) {
       throw new AppError(
         HttpStatusCode.NotAcceptable,
