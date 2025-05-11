@@ -56,7 +56,7 @@
 		/>
 	</div>
 {/snippet}
-{#snippet mainPageButtons()}
+{#snippet alwaysVisibleButtons()}
 	<SvgButton src="/svg/button/add.svg" alt="add" onclick={() => noteUtils.createNote()} />
 {/snippet}
 {#snippet goBackButton()}
@@ -72,9 +72,7 @@
 				{@render goBackButton()}
 				{@render selectedNoteButtons()}
 			{/if}
-			{#if page.url.pathname === '/'}
-				{@render mainPageButtons()}
-			{/if}
+			{@render alwaysVisibleButtons()}
 		</div>
 		<div class="drag-area"></div>
 		<div class="right-nav">
