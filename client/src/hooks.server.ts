@@ -34,8 +34,21 @@ export const handle: Handle = async ({ event, resolve }) => {
 				});
 
 				if (refreshResponse.ok) {
-					const response = await resolve(event);
+					const accessToken = getAccessTokenFromHeaders(refreshResponse);
 
+					if (!accessToken) {
+						console.log('Authorization - logout (Access Token not found in headers)');
+						throw logoutUser(event);
+					}
+
+					const userData = await fetchUserData(accessToken);
+					if (userData.ok) {
+						const { user, session } = (await userData.json()) as UserGet200Response;
+						userCache.set(accessToken, { accessToken, user, session });
+						setLocals(event, { user, accessToken, session });
+					}
+
+					const response = await resolve(event);
 					return response;
 				}
 			}
@@ -48,14 +61,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 			setLocals(event, userData);
 		} else {
 			console.log('Authorization - get from server');
-			const response = await fetch(`${envConstants.API_URL}/user`, {
-				method: 'GET',
-				credentials: 'include',
-				headers: {
-					'Content-Type': 'application/json',
-					Cookie: `accessToken=${accessToken}` // ✅ Manually forward cookies
-				}
-			});
+			const response = await fetchUserData(accessToken);
 
 			if (response.status === 200) {
 				const { user, session } = (await response.json()) as UserGet200Response;
@@ -78,6 +84,24 @@ function logoutUser(event: RequestEvent<Partial<Record<string, string>>, string 
 	setLocals(event, { accessToken: undefined, user: undefined, session: undefined });
 	authStore.clear();
 	throw redirect(303, '/login');
+}
+
+async function fetchUserData(accessToken: string) {
+	return await fetch(`${envConstants.API_URL}/user`, {
+		method: 'GET',
+		credentials: 'include',
+		headers: {
+			'Content-Type': 'application/json',
+			Cookie: `accessToken=${accessToken}` // ✅ Manually forward cookies
+		}
+	});
+}
+
+function getAccessTokenFromHeaders(response: Response) {
+	const setCookieHeader = response.headers.get('set-cookie');
+	const accessTokenMatch = setCookieHeader?.match(/accessToken=([^;]+)/);
+
+	return accessTokenMatch && accessTokenMatch[0] && accessTokenMatch[0].split('accessToken=')[1];
 }
 
 function setLocals(
